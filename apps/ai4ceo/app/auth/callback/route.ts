@@ -10,7 +10,22 @@ export async function GET(request: NextRequest) {
   if (code) {
     const supabase = await getSupabaseServer();
     const { error } = await supabase.auth.exchangeCodeForSession(code);
-    if (!error) return NextResponse.redirect(`${origin}${next}`);
+    if (!error) {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      if (user) {
+        // Design Ref: PRD 2.2 RBAC — ensure a profiles row exists on first login.
+        // ignoreDuplicates so an existing role (e.g. admin) is never demoted.
+        await supabase
+          .from("profiles")
+          .upsert(
+            { id: user.id, name: user.user_metadata?.name ?? null },
+            { onConflict: "id", ignoreDuplicates: true }
+          );
+      }
+      return NextResponse.redirect(`${origin}${next}`);
+    }
   }
   return NextResponse.redirect(`${origin}/login?error=auth`);
 }
