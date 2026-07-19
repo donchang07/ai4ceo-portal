@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+body{margin:0;background:#E9EFF7;font-family:"Pretendard Variable",Pretendard,"Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif;color:#1B2733;-webkit-font-smoothing:antialiased;}
+a{color:#2C5CE6;text-decoration:none;} a:hover{color:#2247B8;}
+</style>
+</helmet>
+<section style="display:flex;flex-wrap:wrap;gap:56px;padding:56px;align-items:flex-start;border-bottom:1px dashed #B6C6D9;">
+
+  <!-- 2a 관리자 운영 대시보드 -->
+  <div id="2a" style="display:flex;flex-direction:column;gap:12px;">
+    <div style="display:flex;align-items:center;gap:10px;"><span style="background:#2C5CE6;color:#fff;font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;">2a</span><span style="font-size:14px;font-weight:600;color:#5E6E7E;">관리자 · 운영 대시보드 1440</span></div>
+    <div style="width:1440px;height:860px;background:#F2F6FB;border-radius:20px;box-shadow:0 24px 60px rgba(27,39,51,.12);overflow:hidden;border:1px solid #E3EAF3;display:flex;">
+      <div style="width:224px;background:#1B2733;display:flex;flex-direction:column;padding:20px 12px;gap:2px;flex-shrink:0;">
+        <div style="color:#fff;font-weight:800;font-size:16px;padding:4px 12px 16px;">AI4CEO <span style="font-size:11px;font-weight:600;color:#8A99A8;">ADMIN</span></div>
+        <div style="display:flex;align-items:center;gap:10px;background:rgba(44,92,230,.35);color:#fff;font-weight:600;font-size:13.5px;padding:9px 12px;border-radius:9px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>대시보드</div>
+        <div style="display:flex;align-items:center;gap:10px;color:#B6C6D9;font-weight:500;font-size:13.5px;padding:9px 12px;">선발 관리</div>
+        <div style="display:flex;align-items:center;gap:10px;color:#B6C6D9;font-weight:500;font-size:13.5px;padding:9px 12px;">기수 · 세션</div>
+        <div style="display:flex;align-items:center;gap:10px;color:#B6C6D9;font-weight:500;font-size:13.5px;padding:9px 12px;">Version Pack</div>
+        <div style="display:flex;align-items:center;gap:10px;color:#B6C6D9;font-weight:500;font-size:13.5px;padding:9px 12px;">결제 · 세금계산서</div>
+        <div style="display:flex;align-items:center;gap:10px;color:#B6C6D9;font-weight:500;font-size:13.5px;padding:9px 12px;">콘텐츠 발행</div>
+        <div style="display:flex;align-items:center;gap:10px;color:#B6C6D9;font-weight:500;font-size:13.5px;padding:9px 12px;">대화방 관리</div>
+        <div style="display:flex;align-items:center;gap:10px;color:#B6C6D9;font-weight:500;font-size:13.5px;padding:9px 12px;">AI 튜터 로그</div>
+        <div style="display:flex;align-items:center;gap:10px;color:#B6C6D9;font-weight:500;font-size:13.5px;padding:9px 12px;">추천 · 성과</div>
+        <div style="display:flex;align-items:center;gap:10px;color:#B6C6D9;font-weight:500;font-size:13.5px;padding:9px 12px;">알림 발송</div>
+        <div style="display:flex;align-items:center;gap:10px;color:#B6C6D9;font-weight:500;font-size:13.5px;padding:9px 12px;">Drive 권한 정책</div>
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;min-width:0;">
+        <div style="height:58px;background:#fff;border-bottom:1px solid #E8EEF6;display:flex;align-items:center;justify-content:space-between;padding:0 28px;">
+          <div style="display:flex;align-items:center;gap:8px;background:#F2F6FB;border:1px solid #D9E3EF;border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600;">18기 · 2026 가을<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#5E6E7E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:#5E6E7E;"><span style="width:7px;height:7px;border-radius:999px;background:#2F7D4F;display:inline-block;"></span>교육 진행 중 · 3주차 · 정원 24명</div>
+        </div>
+        <div style="flex:1;overflow:hidden;padding:24px 28px;display:flex;flex-direction:column;gap:16px;">
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;">
+            <div style="background:#fff;border:1px solid #E3EAF3;border-radius:14px;padding:18px;"><div style="font-size:12.5px;color:#5E6E7E;font-weight:500;">지원자 (19기 모집)</div><div style="font-size:28px;font-weight:800;margin-top:6px;font-variant-numeric:tabular-nums;">142</div><div style="font-size:12px;color:#2F7D4F;margin-top:4px;">▲ 18 이번 주</div></div>
+            <div style="background:#fff;border:1px solid #E3EAF3;border-radius:14px;padding:18px;"><div style="font-size:12.5px;color:#5E6E7E;font-weight:500;">추천 유입 비중</div><div style="font-size:28px;font-weight:800;margin-top:6px;font-variant-numeric:tabular-nums;">64%</div><div style="font-size:12px;color:#5E6E7E;margin-top:4px;">목표 60% 달성</div></div>
+            <div style="background:#fff;border:1px solid #E3EAF3;border-radius:14px;padding:18px;"><div style="font-size:12.5px;color:#5E6E7E;font-weight:500;">18기 입금 현황</div><div style="font-size:28px;font-weight:800;margin-top:6px;font-variant-numeric:tabular-nums;">21<span style="font-size:16px;color:#5E6E7E;font-weight:600;"> / 24</span></div><div style="font-size:12px;color:#B84A45;margin-top:4px;">미입금 3건 · 확인 필요</div></div>
+            <div style="background:#fff;border:1px solid #E3EAF3;border-radius:14px;padding:18px;"><div style="font-size:12.5px;color:#5E6E7E;font-weight:500;">결과물 완성률</div><div style="font-size:28px;font-weight:800;margin-top:6px;font-variant-numeric:tabular-nums;">78%</div><div style="font-size:12px;color:#5E6E7E;margin-top:4px;">목표 80% · Build 등록 기준</div></div>
+          </div>
+          <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:16px;flex:1;min-height:0;">
+            <div style="background:#fff;border:1px solid #E3EAF3;border-radius:14px;padding:22px;display:flex;flex-direction:column;">
+              <div style="font-size:15px;font-weight:700;">19기 전형 퍼널</div>
+              <div style="display:flex;flex-direction:column;gap:12px;margin-top:18px;">
+                <div><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px;"><span style="font-weight:600;">접수</span><span style="color:#5E6E7E;font-variant-numeric:tabular-nums;">142</span></div><div style="height:10px;border-radius:999px;background:#E8F0F8;"><div style="width:100%;height:10px;border-radius:999px;background:#2C5CE6;"></div></div></div>
+                <div><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px;"><span style="font-weight:600;">검토 중</span><span style="color:#5E6E7E;font-variant-numeric:tabular-nums;">86</span></div><div style="height:10px;border-radius:999px;background:#E8F0F8;"><div style="width:61%;height:10px;border-radius:999px;background:#2C5CE6;opacity:.8;"></div></div></div>
+                <div><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px;"><span style="font-weight:600;">합격 · 인보이스 발행</span><span style="color:#5E6E7E;font-variant-numeric:tabular-nums;">31</span></div><div style="height:10px;border-radius:999px;background:#E8F0F8;"><div style="width:22%;height:10px;border-radius:999px;background:#2C5CE6;opacity:.6;"></div></div></div>
+                <div><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px;"><span style="font-weight:600;">입금 완료</span><span style="color:#5E6E7E;font-variant-numeric:tabular-nums;">21</span></div><div style="height:10px;border-radius:999px;background:#E8F0F8;"><div style="width:15%;height:10px;border-radius:999px;background:#2E90D0;"></div></div></div>
+                <div><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px;"><span style="font-weight:600;">등록 확정</span><span style="color:#5E6E7E;font-variant-numeric:tabular-nums;">19</span></div><div style="height:10px;border-radius:999px;background:#E8F0F8;"><div style="width:13%;height:10px;border-radius:999px;background:#2F7D4F;"></div></div></div>
+              </div>
+              <div style="display:flex;gap:20px;margin-top:auto;padding-top:16px;border-top:1px solid #EDF2F8;font-size:12.5px;color:#5E6E7E;"><span>랜딩→지원 전환 8.4%</span><span>작성 완료율 73%</span><span>합격→입금 리드타임 중앙값 2.1일</span></div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:16px;min-height:0;">
+              <div style="background:#fff;border:1px solid #E3EAF3;border-radius:14px;padding:20px;flex:1;">
+                <div style="display:flex;justify-content:space-between;align-items:center;"><div style="font-size:15px;font-weight:700;">오늘 처리할 것</div><span style="font-size:12px;color:#5E6E7E;">4건</span></div>
+                <div style="display:flex;flex-direction:column;margin-top:8px;">
+                  <div style="display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid #EDF2F8;"><span style="width:7px;height:7px;border-radius:999px;background:#B84A45;flex-shrink:0;"></span><span style="flex:1;font-size:13.5px;font-weight:500;">입금 대조 3건 — (주)세림텍 외</span><span style="font-size:12.5px;color:#2C5CE6;font-weight:600;">처리</span></div>
+                  <div style="display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid #EDF2F8;"><span style="width:7px;height:7px;border-radius:999px;background:#5C7DA3;flex-shrink:0;"></span><span style="flex:1;font-size:13.5px;font-weight:500;">세금계산서 요청 2건 대기</span><span style="font-size:12.5px;color:#2C5CE6;font-weight:600;">처리</span></div>
+                  <div style="display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid #EDF2F8;"><span style="width:7px;height:7px;border-radius:999px;background:#2C5CE6;flex-shrink:0;"></span><span style="flex:1;font-size:13.5px;font-weight:500;">3주차 강의 영상 업로드 · 알림 발송</span><span style="font-size:12.5px;color:#2C5CE6;font-weight:600;">처리</span></div>
+                  <div style="display:flex;align-items:center;gap:10px;padding:11px 0;"><span style="width:7px;height:7px;border-radius:999px;background:#5C7DA3;flex-shrink:0;"></span><span style="flex:1;font-size:13.5px;font-weight:500;">AI 답변 신고 1건 검수</span><span style="font-size:12.5px;color:#2C5CE6;font-weight:600;">처리</span></div>
+                </div>
+              </div>
+              <div style="background:#fff;border:1px solid #E3EAF3;border-radius:14px;padding:20px;">
+                <div style="font-size:15px;font-weight:700;">알림 발송 현황 (7일)</div>
+                <div style="display:flex;gap:20px;margin-top:12px;">
+                  <div><div style="font-size:20px;font-weight:800;font-variant-numeric:tabular-nums;">312</div><div style="font-size:12px;color:#5E6E7E;">알림톡 성공</div></div>
+                  <div><div style="font-size:20px;font-weight:800;font-variant-numeric:tabular-nums;color:#B84A45;">4</div><div style="font-size:12px;color:#5E6E7E;">실패 → SMS 대체</div></div>
+                  <div><div style="font-size:20px;font-weight:800;font-variant-numeric:tabular-nums;">98.7%</div><div style="font-size:12px;color:#5E6E7E;">성공률</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2b 선발 관리 -->
+  <div id="2b" style="display:flex;flex-direction:column;gap:12px;">
+    <div style="display:flex;align-items:center;gap:10px;"><span style="background:#2C5CE6;color:#fff;font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;">2b</span><span style="font-size:14px;font-weight:600;color:#5E6E7E;">관리자 · 선발 관리 1440</span></div>
+    <div style="width:1440px;background:#F2F6FB;border-radius:20px;box-shadow:0 24px 60px rgba(27,39,51,.12);overflow:hidden;border:1px solid #E3EAF3;">
+      <div style="height:58px;background:#fff;border-bottom:1px solid #E8EEF6;display:flex;align-items:center;justify-content:space-between;padding:0 28px;">
+        <div style="font-size:16px;font-weight:700;">선발 관리 — 19기 지원서</div>
+        <div style="display:flex;gap:10px;"><span style="border:1px solid #D9E3EF;background:#fff;font-size:13px;font-weight:600;color:#3A4856;padding:8px 16px;border-radius:999px;">CSV 내보내기</span><span style="background:#2C5CE6;color:#fff;font-size:13px;font-weight:600;padding:8px 16px;border-radius:999px;">합격 일괄 처리</span></div>
+      </div>
+      <div style="padding:20px 28px 28px;">
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span style="background:#2C5CE6;color:#fff;font-size:13px;font-weight:600;padding:7px 15px;border-radius:999px;">전체 142</span>
+          <span style="background:#fff;border:1px solid #D9E3EF;font-size:13px;font-weight:600;color:#3A4856;padding:7px 15px;border-radius:999px;">접수 56</span>
+          <span style="background:#fff;border:1px solid #D9E3EF;font-size:13px;font-weight:600;color:#3A4856;padding:7px 15px;border-radius:999px;">검토 중 30</span>
+          <span style="background:#fff;border:1px solid #D9E3EF;font-size:13px;font-weight:600;color:#3A4856;padding:7px 15px;border-radius:999px;">합격 31</span>
+          <span style="background:#fff;border:1px solid #D9E3EF;font-size:13px;font-weight:600;color:#3A4856;padding:7px 15px;border-radius:999px;">대기 14</span>
+          <span style="background:#fff;border:1px solid #D9E3EF;font-size:13px;font-weight:600;color:#3A4856;padding:7px 15px;border-radius:999px;">불합격 11</span>
+          <div style="flex:1;"></div>
+          <div style="display:flex;align-items:center;gap:8px;background:#fff;border:1px solid #D9E3EF;border-radius:999px;padding:8px 16px;width:240px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8A99A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.5" y2="16.5"></line></svg><span style="font-size:13px;color:#8A99A8;">이름 · 회사 검색</span></div>
+        </div>
+        <div style="background:#fff;border:1px solid #E3EAF3;border-radius:14px;overflow:hidden;margin-top:16px;">
+          <div style="display:grid;grid-template-columns:44px 1.2fr 1.4fr 1fr .9fr .9fr .8fr 100px;padding:12px 20px;border-bottom:1px solid #E8EEF6;font-size:12px;font-weight:700;color:#5E6E7E;background:#FBFCFE;"><span></span><span>이름 · 직함</span><span>회사</span><span>지원 동기 요약</span><span>추천 경로</span><span>상태</span><span>지원일</span><span></span></div>
+          <div style="display:grid;grid-template-columns:44px 1.2fr 1.4fr 1fr .9fr .9fr .8fr 100px;padding:14px 20px;border-bottom:1px solid #EDF2F8;font-size:13.5px;align-items:center;">
+            <input type="checkbox" style="width:16px;height:16px;accent-color:#2C5CE6;"><span><b>이재원</b> · 대표이사</span><span>(주)세림텍 <span style="color:#8A99A8;font-size:12px;">제조</span></span><span style="color:#5E6E7E;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">품질검사 리포트 자동화</span><span style="font-size:12.5px;"><span style="background:#EAF2FA;color:#2C5CE6;font-weight:600;padding:3px 9px;border-radius:999px;">17기 김성훈</span></span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:#3A4856;background:#F2F6FB;border:1px solid #E3EAF3;padding:4px 10px;border-radius:999px;width:fit-content;"><span style="width:6px;height:6px;border-radius:999px;background:#2C5CE6;display:inline-block;"></span>검토 중</span><span style="color:#5E6E7E;font-variant-numeric:tabular-nums;">7/14</span><span style="color:#2C5CE6;font-weight:600;font-size:13px;">검토 →</span>
+          </div>
+          <div style="display:grid;grid-template-columns:44px 1.2fr 1.4fr 1fr .9fr .9fr .8fr 100px;padding:14px 20px;border-bottom:1px solid #EDF2F8;font-size:13.5px;align-items:center;background:#FBFDFF;">
+            <input type="checkbox" checked style="width:16px;height:16px;accent-color:#2C5CE6;"><span><b>최윤정</b> · COO</span><span>메디코어 <span style="color:#8A99A8;font-size:12px;">헬스케어</span></span><span style="color:#5E6E7E;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">보험 청구 서류 자동 검토</span><span style="font-size:12.5px;color:#8A99A8;">직접 유입</span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:#3A4856;background:#F2F6FB;border:1px solid #E3EAF3;padding:4px 10px;border-radius:999px;width:fit-content;"><span style="width:6px;height:6px;border-radius:999px;background:#2F7D4F;display:inline-block;"></span>합격</span><span style="color:#5E6E7E;font-variant-numeric:tabular-nums;">7/12</span><span style="color:#2C5CE6;font-weight:600;font-size:13px;">검토 →</span>
+          </div>
+          <div style="display:grid;grid-template-columns:44px 1.2fr 1.4fr 1fr .9fr .9fr .8fr 100px;padding:14px 20px;border-bottom:1px solid #EDF2F8;font-size:13.5px;align-items:center;">
+            <input type="checkbox" style="width:16px;height:16px;accent-color:#2C5CE6;"><span><b>정민호</b> · 대표</span><span>한올푸드 <span style="color:#8A99A8;font-size:12px;">식품유통</span></span><span style="color:#5E6E7E;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">발주·재고 엑셀 업무 위임</span><span style="font-size:12.5px;"><span style="background:#EAF2FA;color:#2C5CE6;font-weight:600;padding:3px 9px;border-radius:999px;">파트너 AIBB</span></span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:#3A4856;background:#F2F6FB;border:1px solid #E3EAF3;padding:4px 10px;border-radius:999px;width:fit-content;"><span style="width:6px;height:6px;border-radius:999px;background:#5C7DA3;display:inline-block;"></span>접수</span><span style="color:#5E6E7E;font-variant-numeric:tabular-nums;">7/16</span><span style="color:#2C5CE6;font-weight:600;font-size:13px;">검토 →</span>
+          </div>
+          <div style="display:grid;grid-template-columns:44px 1.2fr 1.4fr 1fr .9fr .9fr .8fr 100px;padding:14px 20px;border-bottom:1px solid #EDF2F8;font-size:13.5px;align-items:center;">
+            <input type="checkbox" style="width:16px;height:16px;accent-color:#2C5CE6;"><span><b>한수진</b> · 부사장</span><span>디에스로지스 <span style="color:#8A99A8;font-size:12px;">물류</span></span><span style="color:#5E6E7E;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">고객 문의 응대 에이전트</span><span style="font-size:12.5px;"><span style="background:#EAF2FA;color:#2C5CE6;font-weight:600;padding:3px 9px;border-radius:999px;">18기 박은영</span></span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:#3A4856;background:#F2F6FB;border:1px solid #E3EAF3;padding:4px 10px;border-radius:999px;width:fit-content;"><span style="width:6px;height:6px;border-radius:999px;background:#5C7DA3;display:inline-block;"></span>대기</span><span style="color:#5E6E7E;font-variant-numeric:tabular-nums;">7/10</span><span style="color:#2C5CE6;font-weight:600;font-size:13px;">검토 →</span>
+          </div>
+          <div style="display:grid;grid-template-columns:44px 1.2fr 1.4fr 1fr .9fr .9fr .8fr 100px;padding:14px 20px;font-size:13.5px;align-items:center;">
+            <input type="checkbox" style="width:16px;height:16px;accent-color:#2C5CE6;"><span><b>오창섭</b> · 대표이사</span><span>세운건설 <span style="color:#8A99A8;font-size:12px;">건설</span></span><span style="color:#5E6E7E;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">현장 일보 취합 자동화</span><span style="font-size:12.5px;color:#8A99A8;">직접 유입</span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:#3A4856;background:#F2F6FB;border:1px solid #E3EAF3;padding:4px 10px;border-radius:999px;width:fit-content;"><span style="width:6px;height:6px;border-radius:999px;background:#B84A45;display:inline-block;"></span>불합격</span><span style="color:#5E6E7E;font-variant-numeric:tabular-nums;">7/08</span><span style="color:#2C5CE6;font-weight:600;font-size:13px;">검토 →</span>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;background:#EAF2FA;border:1px solid #D9E3EF;border-radius:12px;padding:12px 18px;margin-top:14px;font-size:13px;color:#3A4856;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2C5CE6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4M12 8h.01"></path></svg>
+          상태를 <b>합격</b>으로 변경하면 알림톡 T-02 + 계정 초대 링크 + 인보이스가 자동 발송됩니다.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2c 커리큘럼 인라인 편집 + Version Pack -->
+  <div id="2c" style="display:flex;flex-direction:column;gap:12px;">
+    <div style="display:flex;align-items:center;gap:10px;"><span style="background:#2C5CE6;color:#fff;font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;">2c</span><span style="font-size:14px;font-weight:600;color:#5E6E7E;">관리자 · 세션 인라인 편집 + Version Pack (D-28/29/24) 1440</span></div>
+    <div style="width:1440px;height:880px;background:#F2F6FB;border-radius:20px;box-shadow:0 24px 60px rgba(27,39,51,.12);overflow:hidden;border:1px solid #E3EAF3;display:flex;flex-direction:column;">
+      <div style="height:58px;background:#fff;border-bottom:1px solid #E8EEF6;display:flex;align-items:center;justify-content:space-between;padding:0 28px;">
+        <div style="display:flex;align-items:center;gap:12px;"><div style="font-size:16px;font-weight:700;">18기 커리큘럼 · 세션 관리</div><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#3A4856;background:#F2F6FB;border:1px solid #E3EAF3;padding:4px 11px;border-radius:999px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#5E6E7E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>Version Pack v18 · 잠금됨</span></div>
+        <div style="display:flex;gap:10px;"><span style="border:1px solid #D9E3EF;background:#fff;font-size:13px;font-weight:600;color:#3A4856;padding:8px 16px;border-radius:999px;">변경 이력</span><span style="background:#2C5CE6;color:#fff;font-size:13px;font-weight:600;padding:8px 16px;border-radius:999px;">+ 세션 삽입</span></div>
+      </div>
+      <div style="flex:1;display:flex;min-height:0;">
+        <div style="width:360px;border-right:1px solid #E8EEF6;background:#FBFCFE;overflow:hidden;padding:16px;display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+          <div style="display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:10px;font-size:13.5px;"><span style="width:24px;height:24px;border-radius:999px;background:#E8F0F8;color:#5E6E7E;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</span><span style="flex:1;font-weight:600;color:#5E6E7E;">개발 환경 구축과 첫 프로젝트</span><span style="width:6px;height:6px;border-radius:999px;background:#2F7D4F;"></span></div>
+          <div style="background:#fff;border:1.5px solid #2C5CE6;border-radius:12px;padding:11px 14px;display:flex;align-items:center;gap:10px;font-size:13.5px;box-shadow:0 0 0 4px rgba(44,92,230,.07);"><span style="width:24px;height:24px;border-radius:999px;background:#2C5CE6;color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</span><span style="flex:1;font-weight:700;">에이전트 코딩 심화 + AX</span><span style="font-size:11px;color:#2C5CE6;font-weight:700;">편집 중</span></div>
+          <div style="border:1.5px dashed #2C5CE6;background:#EAF2FA;border-radius:12px;padding:11px 14px;display:flex;align-items:center;gap:10px;font-size:13px;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2C5CE6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            <span style="flex:1;font-weight:600;color:#2C5CE6;">특강 삽입 — Claude 신모델 데모</span><span style="background:#fff;border:1px solid #D9E3EF;color:#5E6E7E;font-size:10.5px;font-weight:700;padding:2px 7px;border-radius:999px;">special</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:10px;font-size:13.5px;"><span style="width:24px;height:24px;border-radius:999px;background:#E8F0F8;color:#5E6E7E;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">4</span><span style="flex:1;font-weight:600;color:#3A4856;">에이전트 하네스 개념</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#B6C6D9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="6" r="1.2"></circle><circle cx="15" cy="6" r="1.2"></circle><circle cx="9" cy="12" r="1.2"></circle><circle cx="15" cy="12" r="1.2"></circle><circle cx="9" cy="18" r="1.2"></circle><circle cx="15" cy="18" r="1.2"></circle></svg></div>
+          <div style="display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:10px;font-size:13.5px;"><span style="width:24px;height:24px;border-radius:999px;background:#E8F0F8;color:#5E6E7E;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">5</span><span style="flex:1;font-weight:600;color:#3A4856;">Claude Design + PoC 설계</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#B6C6D9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="6" r="1.2"></circle><circle cx="15" cy="6" r="1.2"></circle><circle cx="9" cy="12" r="1.2"></circle><circle cx="15" cy="12" r="1.2"></circle><circle cx="9" cy="18" r="1.2"></circle><circle cx="15" cy="18" r="1.2"></circle></svg></div>
+          <div style="display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:10px;font-size:13.5px;"><span style="width:24px;height:24px;border-radius:999px;background:#EAF2FA;color:#2C5CE6;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">보1</span><span style="flex:1;font-weight:600;color:#3A4856;">오프라인 보충 — 10/17(토)</span><span style="background:#F2F6FB;border:1px solid #E3EAF3;color:#5E6E7E;font-size:10.5px;font-weight:700;padding:2px 7px;border-radius:999px;">offline</span></div>
+          <div style="margin-top:auto;font-size:12px;color:#8A99A8;padding:8px 6px;line-height:1.5;">드래그로 순서 변경 · special 세션은 수료 기준 10회에 포함되지 않습니다.</div>
+        </div>
+        <div style="flex:1;overflow:hidden;padding:24px 28px;display:flex;gap:20px;min-width:0;">
+          <div style="flex:1.5;min-width:0;display:flex;flex-direction:column;gap:14px;">
+            <div style="background:#fff;border:1px solid #E3EAF3;border-radius:14px;padding:22px;">
+              <div style="font-size:12px;font-weight:700;color:#8A99A8;letter-spacing:.5px;">세션 제목</div>
+              <div style="border:1.5px solid #2C5CE6;border-radius:10px;padding:11px 14px;font-size:15.5px;font-weight:700;margin-top:8px;box-shadow:0 0 0 4px rgba(44,92,230,.07);">3주차 — 에이전트 코딩 심화 + AX 후보 도출<span style="display:inline-block;width:2px;height:16px;background:#2C5CE6;vertical-align:-2px;margin-left:1px;"></span></div>
+              <div style="display:flex;gap:12px;margin-top:14px;">
+                <div style="flex:1;"><div style="font-size:12px;font-weight:700;color:#8A99A8;letter-spacing:.5px;">일시</div><div style="border:1px solid #D9E3EF;border-radius:10px;padding:10px 14px;font-size:13.5px;margin-top:8px;">2026-09-21(월) 18:00–21:00</div></div>
+                <div style="flex:1;"><div style="font-size:12px;font-weight:700;color:#8A99A8;letter-spacing:.5px;">실습 주제</div><div style="border:1px solid #D9E3EF;border-radius:10px;padding:10px 14px;font-size:13.5px;margin-top:8px;">CLAUDE.md · 스킬 · 컨텍스트 관리</div></div>
+              </div>
+              <div style="font-size:12px;font-weight:700;color:#8A99A8;letter-spacing:.5px;margin-top:14px;">콘텐츠 본문 (MDX)</div>
+              <div style="border:1px solid #D9E3EF;border-radius:10px;padding:14px;font-size:13px;font-family:ui-monospace,monospace;color:#3A4856;line-height:1.7;margin-top:8px;background:#FBFCFE;">## 이번 주 목표<br>- CLAUDE.md로 에이전트에게 회사 컨텍스트 주기<br>- 스킬 1개를 직접 작성해 반복 작업 위임<br><br>&lt;Callout&gt;수업 전 week3_practice.zip 설치 필수&lt;/Callout&gt;</div>
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-top:16px;">
+                <div style="font-size:12.5px;color:#2F7D4F;display:flex;align-items:center;gap:6px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#2F7D4F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>저장 즉시 수강생 화면 반영 · AI 조교 인덱스 자동 갱신</div>
+                <div style="display:flex;gap:8px;"><span style="border:1px solid #D9E3EF;background:#fff;font-size:13px;font-weight:600;color:#3A4856;padding:8px 16px;border-radius:999px;">미리보기</span><span style="background:#2C5CE6;color:#fff;font-size:13px;font-weight:600;padding:8px 16px;border-radius:999px;">저장</span></div>
+              </div>
+            </div>
+            <div style="background:#fff;border:1px solid #E3EAF3;border-radius:14px;padding:20px;">
+              <div style="display:flex;justify-content:space-between;align-items:center;"><div style="font-size:14.5px;font-weight:700;">첨부 자료</div><span style="font-size:12.5px;color:#2C5CE6;font-weight:600;">+ 자료 추가</span></div>
+              <div style="display:flex;align-items:center;gap:12px;border:1px solid #E8EEF6;border-radius:10px;padding:11px 14px;margin-top:12px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2C5CE6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                <span style="font-size:13.5px;font-weight:600;flex:1;">3주차_에이전트코딩.pdf <span style="color:#8A99A8;font-weight:400;font-size:12px;">v2 · 오늘 교체됨</span></span>
+                <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#3A4856;background:#F2F6FB;border:1px solid #E3EAF3;padding:4px 10px;border-radius:999px;"><span style="width:6px;height:6px;border-radius:999px;background:#5C7DA3;display:inline-block;"></span>공개 예약 9/21 17:00</span>
+                <span style="font-size:12.5px;color:#2C5CE6;font-weight:600;">교체</span>
+              </div>
+            </div>
+          </div>
+          <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:14px;">
+            <div style="background:#fff;border:1px solid #E3EAF3;border-radius:14px;padding:20px;flex:1;">
+              <div style="font-size:14.5px;font-weight:700;">변경 이력 (D-15 자동 기록)</div>
+              <div style="display:flex;flex-direction:column;margin-top:14px;">
+                <div style="display:flex;gap:12px;padding-bottom:16px;position:relative;"><div style="display:flex;flex-direction:column;align-items:center;"><span style="width:9px;height:9px;border-radius:999px;background:#2C5CE6;margin-top:4px;"></span><span style="width:1.5px;flex:1;background:#E3EAF3;"></span></div><div><div style="font-size:13px;font-weight:600;">자료 교체 — 3주차 PDF v1 → v2</div><div style="font-size:12px;color:#5E6E7E;margin-top:3px;">장동인 · 오늘 14:02 · 수강생 공개 · 알림 미발송</div></div></div>
+                <div style="display:flex;gap:12px;padding-bottom:16px;"><div style="display:flex;flex-direction:column;align-items:center;"><span style="width:9px;height:9px;border-radius:999px;background:#2C5CE6;margin-top:4px;"></span><span style="width:1.5px;flex:1;background:#E3EAF3;"></span></div><div><div style="font-size:13px;font-weight:600;">special 세션 삽입 — 신모델 데모</div><div style="font-size:12px;color:#5E6E7E;margin-top:3px;">장동인 · 어제 21:40 · 공개 시 알림톡 발송 예약</div></div></div>
+                <div style="display:flex;gap:12px;"><div style="display:flex;flex-direction:column;align-items:center;"><span style="width:9px;height:9px;border-radius:999px;background:#B6C6D9;margin-top:4px;"></span></div><div><div style="font-size:13px;font-weight:600;">세션 설명 인라인 수정 — 3주차</div><div style="font-size:12px;color:#5E6E7E;margin-top:3px;">장동인 · 9/15 10:12 · 수강생 공개</div></div></div>
+              </div>
+            </div>
+            <div style="background:#EAF2FA;border:1px solid #D9E3EF;border-radius:14px;padding:20px;">
+              <div style="display:flex;align-items:center;gap:8px;font-size:14px;font-weight:700;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2C5CE6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>Version Pack v18 — 잠금 후 변경 정책</div>
+              <div style="font-size:12.5px;color:#3A4856;line-height:1.6;margin-top:8px;">잠금 후 편집은 새 버전 팩을 만들지 않고 <b>변경 이력 + 선택적 알림</b>으로 처리됩니다. 재생성은 19기 복제 시에만 수행됩니다.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2d 결제·세금계산서 관리 -->
+  <div id="2d" style="display:flex;flex-direction:column;gap:12px;">
+    <div style="display:flex;align-items:center;gap:10px;"><span style="background:#2C5CE6;color:#fff;font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;">2d</span><span style="font-size:14px;font-weight:600;color:#5E6E7E;">관리자 · 결제 · 세금계산서 1440</span></div>
+    <div style="width:1440px;background:#F2F6FB;border-radius:20px;box-shadow:0 24px 60px rgba(27,39,51,.12);overflow:hidden;border:1px solid #E3EAF3;">
+      <div style="height:58px;background:#fff;border-bottom:1px solid #E8EEF6;display:flex;align-items:center;justify-content:space-between;padding:0 28px;">
+        <div style="display:flex;align-items:center;gap:20px;">
+          <div style="font-size:16px;font-weight:700;">결제 · 세금계산서</div>
+          <div style="display:flex;gap:2px;background:#F2F6FB;border:1px solid #E3EAF3;border-radius:999px;padding:3px;">
+            <span style="background:#fff;box-shadow:0 1px 3px rgba(27,39,51,.1);font-size:12.5px;font-weight:700;padding:6px 16px;border-radius:999px;">인보이스</span>
+            <span style="font-size:12.5px;font-weight:600;color:#5E6E7E;padding:6px 16px;">입금 확인</span>
+            <span style="font-size:12.5px;font-weight:600;color:#5E6E7E;padding:6px 16px;">세금계산서 큐 <span style="color:#B84A45;">2</span></span>
+          </div>
+        </div>
+        <span style="background:#2C5CE6;color:#fff;font-size:13px;font-weight:600;padding:8px 16px;border-radius:999px;">인보이스 발행</span>
+      </div>
+      <div style="padding:20px 28px 28px;">
+        <div style="display:flex;align-items:center;gap:10px;background:#EAF2FA;border:1px solid #D9E3EF;border-radius:12px;padding:12px 18px;font-size:13px;color:#3A4856;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2C5CE6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4M12 8h.01"></path></svg>
+          팝빌 <b>mock 모드</b> 동작 중 — 발행 시뮬레이션·로그만 기록되며 manual 큐로 전달됩니다. API 키 설정 시 실발행으로 전환. · Toss 결제 건 증빙은 Toss가 처리(팝빌 제외)
+        </div>
+        <div style="background:#fff;border:1px solid #E3EAF3;border-radius:14px;overflow:hidden;margin-top:16px;">
+          <div style="display:grid;grid-template-columns:1.3fr 1fr .9fr 1fr 1fr 1.1fr 90px;padding:12px 20px;border-bottom:1px solid #E8EEF6;font-size:12px;font-weight:700;color:#5E6E7E;background:#FBFCFE;"><span>법인 · 수강생</span><span>금액</span><span>결제 경로</span><span>결제 상태</span><span>증빙</span><span>발행/입금일</span><span></span></div>
+          <div style="display:grid;grid-template-columns:1.3fr 1fr .9fr 1fr 1fr 1.1fr 90px;padding:14px 20px;border-bottom:1px solid #EDF2F8;font-size:13.5px;align-items:center;">
+            <span><b>(주)한빛물류</b> · 김성훈</span><span style="font-variant-numeric:tabular-nums;font-weight:600;">2,200,000원 <span style="color:#8A99A8;font-size:11.5px;font-weight:400;">VAT포함</span></span><span style="font-size:12.5px;color:#3A4856;">계좌이체</span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:#3A4856;background:#F2F6FB;border:1px solid #E3EAF3;padding:4px 10px;border-radius:999px;width:fit-content;"><span style="width:6px;height:6px;border-radius:999px;background:#2F7D4F;display:inline-block;"></span>입금 완료</span><span style="font-size:12.5px;color:#3A4856;">세금계산서 발행됨 <span style="color:#8A99A8;">(팝빌 mock)</span></span><span style="color:#5E6E7E;font-variant-numeric:tabular-nums;">8/28 · 9/01</span><span style="color:#2C5CE6;font-weight:600;font-size:13px;">상세 →</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1.3fr 1fr .9fr 1fr 1fr 1.1fr 90px;padding:14px 20px;border-bottom:1px solid #EDF2F8;font-size:13.5px;align-items:center;background:#FFFBF9;">
+            <span><b>(주)세림텍</b> · 이재원</span><span style="font-variant-numeric:tabular-nums;font-weight:600;">2,200,000원 <span style="color:#8A99A8;font-size:11.5px;font-weight:400;">VAT포함</span></span><span style="font-size:12.5px;color:#3A4856;">계좌이체</span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:#3A4856;background:#F2F6FB;border:1px solid #E3EAF3;padding:4px 10px;border-radius:999px;width:fit-content;"><span style="width:6px;height:6px;border-radius:999px;background:#B84A45;display:inline-block;"></span>입금 대기 D+3</span><span style="font-size:12.5px;color:#8A99A8;">—</span><span style="color:#5E6E7E;font-variant-numeric:tabular-nums;">9/12 · —</span><span style="color:#2C5CE6;font-weight:600;font-size:13px;">입금 대조</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1.3fr 1fr .9fr 1fr 1fr 1.1fr 90px;padding:14px 20px;border-bottom:1px solid #EDF2F8;font-size:13.5px;align-items:center;">
+            <span><b>메디코어</b> · 최윤정</span><span style="font-variant-numeric:tabular-nums;font-weight:600;">2,200,000원 <span style="color:#8A99A8;font-size:11.5px;font-weight:400;">VAT포함</span></span><span style="font-size:12.5px;color:#3A4856;">스마트스토어</span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:#3A4856;background:#F2F6FB;border:1px solid #E3EAF3;padding:4px 10px;border-radius:999px;width:fit-content;"><span style="width:6px;height:6px;border-radius:999px;background:#5C7DA3;display:inline-block;"></span>구매확정 대조 중</span><span style="font-size:12.5px;color:#3A4856;">스토어 증빙</span><span style="color:#5E6E7E;font-variant-numeric:tabular-nums;">9/10 · —</span><span style="color:#2C5CE6;font-weight:600;font-size:13px;">paid 처리</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1.3fr 1fr .9fr 1fr 1fr 1.1fr 90px;padding:14px 20px;font-size:13.5px;align-items:center;">
+            <span><b>한올푸드</b> · 정민호</span><span style="font-variant-numeric:tabular-nums;font-weight:600;">2,200,000원 <span style="color:#8A99A8;font-size:11.5px;font-weight:400;">VAT포함</span></span><span style="font-size:12.5px;color:#3A4856;">Toss <span style="background:#EAF2FA;color:#2C5CE6;font-size:10.5px;font-weight:700;padding:2px 6px;border-radius:999px;">flag</span></span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:#3A4856;background:#F2F6FB;border:1px solid #E3EAF3;padding:4px 10px;border-radius:999px;width:fit-content;"><span style="width:6px;height:6px;border-radius:999px;background:#2F7D4F;display:inline-block;"></span>webhook 자동 paid</span><span style="font-size:12.5px;color:#3A4856;">Toss 매출전표</span><span style="color:#5E6E7E;font-variant-numeric:tabular-nums;">9/14 · 9/14</span><span style="color:#2C5CE6;font-weight:600;font-size:13px;">상세 →</span>
+          </div>
+        </div>
+        <div style="display:flex;gap:14px;margin-top:16px;">
+          <div style="flex:1;background:#fff;border:1px solid #E3EAF3;border-radius:14px;padding:18px;">
+            <div style="font-size:14px;font-weight:700;">세금계산서 요청 큐</div>
+            <div style="display:flex;align-items:center;gap:12px;margin-top:12px;padding:11px 0;border-bottom:1px solid #EDF2F8;"><span style="flex:1;font-size:13px;"><b>(주)한빛물류</b> — 사업자등록증 확인됨</span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#3A4856;background:#F2F6FB;border:1px solid #E3EAF3;padding:4px 10px;border-radius:999px;"><span style="width:6px;height:6px;border-radius:999px;background:#2F7D4F;display:inline-block;"></span>국세청 전송 완료</span></div>
+            <div style="display:flex;align-items:center;gap:12px;padding:11px 0;"><span style="flex:1;font-size:13px;"><b>디에스로지스</b> — 등록증 업로드 대기</span><span style="font-size:12.5px;color:#2C5CE6;font-weight:600;">요청 알림 재발송</span></div>
+          </div>
+          <div style="flex:1;background:#fff;border:1px solid #E3EAF3;border-radius:14px;padding:18px;">
+            <div style="font-size:14px;font-weight:700;">경로별 집계 (18기)</div>
+            <div style="display:flex;gap:24px;margin-top:14px;">
+              <div><div style="font-size:19px;font-weight:800;font-variant-numeric:tabular-nums;">14건</div><div style="font-size:12px;color:#5E6E7E;">스마트스토어</div></div>
+              <div><div style="font-size:19px;font-weight:800;font-variant-numeric:tabular-nums;">6건</div><div style="font-size:12px;color:#5E6E7E;">계좌이체</div></div>
+              <div><div style="font-size:19px;font-weight:800;font-variant-numeric:tabular-nums;">1건</div><div style="font-size:12px;color:#5E6E7E;">Toss (테스트)</div></div>
+              <div><div style="font-size:19px;font-weight:800;font-variant-numeric:tabular-nums;color:#B84A45;">3건</div><div style="font-size:12px;color:#5E6E7E;">미입금</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2e 동문 홈 데스크톱 -->
+  <div id="2e" style="display:flex;flex-direction:column;gap:12px;">
+    <div style="display:flex;align-items:center;gap:10px;"><span style="background:#2C5CE6;color:#fff;font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;">2e</span><span style="font-size:14px;font-weight:600;color:#5E6E7E;">동문 홈 (Alumni) · 데스크톱 1440</span></div>
+    <div style="width:1440px;background:#F2F6FB;border-radius:20px;box-shadow:0 24px 60px rgba(27,39,51,.12);overflow:hidden;border:1px solid #E3EAF3;">
+      <div style="height:60px;background:rgba(255,255,255,.85);border-bottom:1px solid #E8EEF6;display:flex;align-items:center;justify-content:space-between;padding:0 40px;">
+        <div style="display:flex;align-items:center;gap:28px;"><span style="font-weight:800;font-size:17px;">AI4CEO</span><span style="font-size:14px;font-weight:700;color:#2C5CE6;">동문 홈</span><span style="font-size:14px;font-weight:500;color:#3A4856;">AS Q&amp;A</span><span style="font-size:14px;font-weight:500;color:#3A4856;">디렉토리</span><span style="font-size:14px;font-weight:500;color:#3A4856;">아카이브</span><span style="font-size:14px;font-weight:500;color:#3A4856;">AI 브리프</span></div>
+        <div style="display:flex;align-items:center;gap:12px;"><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#3A4856;background:#F2F6FB;border:1px solid #E3EAF3;padding:5px 12px;border-radius:999px;"><span style="width:6px;height:6px;border-radius:999px;background:#2F7D4F;display:inline-block;"></span>멤버십 이용 중</span><div style="width:32px;height:32px;border-radius:999px;background:#2C5CE6;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;">김</div></div>
+      </div>
+      <div style="padding:32px 40px 40px;">
+        <div style="font-size:24px;font-weight:800;letter-spacing:-0.5px;">17기 수료 — 김성훈 대표님, 다시 오셨네요</div>
+        <div style="font-size:14px;color:#5E6E7E;margin-top:5px;">그때 만든 배차 분류 봇, 지금 회사에서 어디까지 쓰이고 있나요? <a href="#2e">3분 체크인 →</a></div>
+        <div style="display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:16px;margin-top:24px;">
+          <div style="background:#fff;border:1px solid #E3EAF3;border-radius:16px;padding:24px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;"><div style="font-size:15.5px;font-weight:700;">AS Q&amp;A</div><span style="display:inline-flex;align-items:center;gap:6px;font-size:11.5px;color:#3A4856;background:#F2F6FB;border:1px solid #E3EAF3;padding:3px 10px;border-radius:999px;"><span style="width:6px;height:6px;border-radius:999px;background:#2C5CE6;display:inline-block;"></span>이달 답변 SLA 영업일 3일</span></div>
+            <div style="display:flex;flex-direction:column;margin-top:10px;">
+              <div style="padding:13px 0;border-bottom:1px solid #EDF2F8;"><div style="font-size:14px;font-weight:600;">사내 데이터로 RAG 붙일 때 보안 기준이 궁금합니다</div><div style="font-size:12px;color:#5E6E7E;margin-top:4px;">15기 조현우 · 답변 완료 · 2일 전</div></div>
+              <div style="padding:13px 0;border-bottom:1px solid #EDF2F8;"><div style="font-size:14px;font-weight:600;">Claude 요금제, 팀 단위로 바꿀 때 고려할 점</div><div style="font-size:12px;color:#5E6E7E;margin-top:4px;">17기 김성훈 · 답변 대기 · 5시간 전</div></div>
+              <div style="padding:13px 0;"><div style="font-size:14px;font-weight:600;">수료 후 만든 자동화가 멈췄는데 디버깅 방향 좀</div><div style="font-size:12px;color:#5E6E7E;margin-top:4px;">16기 서지연 · 답변 완료 · 4일 전</div></div>
+            </div>
+            <span style="display:inline-block;margin-top:8px;border:1px solid #2C5CE6;color:#2C5CE6;font-size:13px;font-weight:600;padding:8px 18px;border-radius:999px;">질문 올리기</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div style="background:#fff;border:1px solid #E3EAF3;border-radius:16px;padding:22px;">
+              <div style="font-size:15px;font-weight:700;">오피스아워 — 8월</div>
+              <div style="font-size:13px;color:#5E6E7E;margin-top:6px;">장동인 교수 · 월 1회 · Zoom</div>
+              <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;">
+                <span style="border:1px solid #D9E3EF;background:#fff;font-size:12.5px;font-weight:600;padding:7px 13px;border-radius:999px;color:#8A99A8;text-decoration:line-through;">8/06 20:00</span>
+                <span style="border:1.5px solid #2C5CE6;background:#EAF2FA;color:#2C5CE6;font-size:12.5px;font-weight:700;padding:7px 13px;border-radius:999px;">8/20 20:00</span>
+                <span style="border:1px solid #D9E3EF;background:#fff;font-size:12.5px;font-weight:600;color:#3A4856;padding:7px 13px;border-radius:999px;">8/27 20:00</span>
+              </div>
+              <span style="display:inline-block;margin-top:14px;background:#2C5CE6;color:#fff;font-size:13px;font-weight:600;padding:8px 18px;border-radius:999px;">예약하기</span>
+            </div>
+            <div style="background:#fff;border:1px solid #E3EAF3;border-radius:16px;padding:22px;flex:1;">
+              <div style="font-size:15px;font-weight:700;">동문 디렉토리</div>
+              <div style="font-size:12.5px;color:#5E6E7E;margin-top:4px;">공개에 동의한 수료생만 노출됩니다</div>
+              <div style="display:flex;flex-direction:column;gap:10px;margin-top:12px;">
+                <div style="display:flex;align-items:center;gap:10px;"><div style="width:34px;height:34px;border-radius:999px;background:#EAF2FA;color:#2C5CE6;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;">박</div><div style="flex:1;"><div style="font-size:13.5px;font-weight:600;">박은영 · 그린바이오 대표</div><div style="font-size:11.5px;color:#5E6E7E;">18기 · 동문 공개 · 협업: 공동 PoC</div></div></div>
+                <div style="display:flex;align-items:center;gap:10px;"><div style="width:34px;height:34px;border-radius:999px;background:#EAF2FA;color:#2C5CE6;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;">조</div><div style="flex:1;"><div style="font-size:13.5px;font-weight:600;">조현우 · 넥스트로직 CEO</div><div style="font-size:11.5px;color:#5E6E7E;">15기 · 전체 공개 · 연락 동의</div></div></div>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div style="background:#1B2733;border-radius:16px;padding:24px;color:#fff;">
+              <div style="display:flex;align-items:center;gap:8px;font-size:15px;font-weight:700;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7FA8F0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.8L20 10.7l-5.9 1.9L12 18.4l-2.1-5.8L4 10.7l6.1-1.9z"></path></svg>멤버십</div>
+              <div style="font-size:12.5px;color:#B6C6D9;line-height:1.6;margin-top:8px;">전 기수 강의 녹화본·교재 아카이브, AX 행사 무료초대권, AI 뉴스·기술·AX 전체 열람.</div>
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-top:16px;">
+                <div><div style="font-size:18px;font-weight:800;">연 550,000원</div><div style="font-size:11px;color:#8A99A8;">VAT 포함 · 2027-03-14 만료</div></div>
+                <span style="background:#2C5CE6;color:#fff;font-size:12.5px;font-weight:600;padding:8px 16px;border-radius:999px;">갱신</span>
+              </div>
+            </div>
+            <div style="background:#fff;border:1px solid #E3EAF3;border-radius:16px;padding:22px;flex:1;">
+              <div style="font-size:15px;font-weight:700;">최신 AI 의사결정 브리프</div>
+              <div style="padding:12px 0;border-bottom:1px solid #EDF2F8;"><div style="font-size:13.5px;font-weight:600;line-height:1.45;">에이전트 상용화 원년 — CEO가 이번 주 결정할 질문 3개</div><div style="font-size:11.5px;color:#5E6E7E;margin-top:4px;">동문 전용 · 7/16</div></div>
+              <div style="padding:12px 0;"><div style="font-size:13.5px;font-weight:600;line-height:1.45;">사내 데이터 개방 범위, 어디까지가 안전한가</div><div style="font-size:11.5px;color:#5E6E7E;margin-top:4px;">공개 · 7/09</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 모바일 그룹 (turn 2) -->
+  <div style="display:flex;gap:56px;align-items:flex-start;flex-wrap:wrap;">
+
+    <!-- 2f 내 결제 모바일 -->
+    <div id="2f" style="display:flex;flex-direction:column;gap:12px;">
+      <div style="display:flex;align-items:center;gap:10px;"><span style="background:#2C5CE6;color:#fff;font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;">2f</span><span style="font-size:14px;font-weight:600;color:#5E6E7E;">내 결제 · 인보이스 · 모바일</span></div>
+      <div style="width:390px;height:844px;background:#F2F6FB;border-radius:44px;box-shadow:0 24px 60px rgba(27,39,51,.16),0 0 0 10px #1B2733;overflow:hidden;display:flex;flex-direction:column;">
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 26px 6px;font-size:14px;font-weight:600;"><span>9:41</span><span style="display:flex;gap:5px;align-items:center;"><svg width="16" height="12" viewBox="0 0 18 12" fill="#1B2733"><rect x="0" y="7" width="3" height="5" rx="1"></rect><rect x="5" y="5" width="3" height="7" rx="1"></rect><rect x="10" y="2" width="3" height="10" rx="1"></rect><rect x="15" y="0" width="3" height="12" rx="1" opacity=".3"></rect></svg><svg width="22" height="12" viewBox="0 0 25 12"><rect x="0.5" y="0.5" width="21" height="11" rx="3" fill="none" stroke="#1B2733" opacity=".4"></rect><rect x="2" y="2" width="15" height="8" rx="1.5" fill="#1B2733"></rect><rect x="23" y="4" width="2" height="4" rx="1" fill="#1B2733" opacity=".4"></rect></svg></span></div>
+        <div style="display:flex;align-items:center;gap:12px;padding:10px 20px 12px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1B2733" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          <div style="font-size:17px;font-weight:700;">결제 · 인보이스</div>
+        </div>
+        <div style="flex:1;overflow:hidden;padding:8px 20px 0;display:flex;flex-direction:column;gap:14px;">
+          <div style="background:#fff;border:1px solid #E3EAF3;border-radius:16px;padding:20px;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+              <div><div style="font-size:12.5px;color:#5E6E7E;">AI4CEO 18기 교육비</div><div style="font-size:26px;font-weight:800;margin-top:5px;font-variant-numeric:tabular-nums;">2,200,000원</div><div style="font-size:12px;color:#8A99A8;margin-top:2px;">VAT 포함 · 인보이스 IV-2026-0918</div></div>
+              <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#3A4856;background:#F2F6FB;border:1px solid #E3EAF3;padding:4px 10px;border-radius:999px;"><span style="width:6px;height:6px;border-radius:999px;background:#5C7DA3;display:inline-block;"></span>입금 대기</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:0;margin-top:18px;">
+              <div style="display:flex;gap:12px;"><div style="display:flex;flex-direction:column;align-items:center;"><span style="width:22px;height:22px;border-radius:999px;background:#2F7D4F;display:flex;align-items:center;justify-content:center;"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span style="width:1.5px;height:22px;background:#D9E3EF;"></span></div><div style="font-size:13px;padding-top:2px;"><b>합격 · 인보이스 발행</b> <span style="color:#8A99A8;">9/12</span></div></div>
+              <div style="display:flex;gap:12px;"><div style="display:flex;flex-direction:column;align-items:center;"><span style="width:22px;height:22px;border-radius:999px;background:#fff;border:2px solid #2C5CE6;box-sizing:border-box;display:flex;align-items:center;justify-content:center;"><span style="width:8px;height:8px;border-radius:999px;background:#2C5CE6;"></span></span><span style="width:1.5px;height:22px;background:#E3EAF3;"></span></div><div style="font-size:13px;padding-top:2px;color:#2C5CE6;font-weight:700;">입금 확인 대기</div></div>
+              <div style="display:flex;gap:12px;"><span style="width:22px;height:22px;border-radius:999px;background:#F2F6FB;border:1px solid #D9E3EF;box-sizing:border-box;"></span><div style="font-size:13px;padding-top:2px;color:#8A99A8;">등록 확정 · OT 안내</div></div>
+            </div>
+          </div>
+          <div style="background:#fff;border:1px solid #E3EAF3;border-radius:16px;padding:18px;">
+            <div style="font-size:14px;font-weight:700;">결제 방법</div>
+            <div style="border:1.5px solid #2C5CE6;background:#FBFDFF;border-radius:12px;padding:14px;margin-top:12px;">
+              <div style="display:flex;justify-content:space-between;align-items:center;"><span style="font-size:13.5px;font-weight:700;">계좌이체</span><span style="font-size:11.5px;color:#2C5CE6;font-weight:700;">권장</span></div>
+              <div style="font-size:13px;color:#3A4856;margin-top:8px;line-height:1.6;">국민은행 123-45-6789-01<br>예금주: AIBB LAB</div>
+              <span style="display:inline-block;margin-top:10px;border:1px solid #D9E3EF;background:#fff;font-size:12.5px;font-weight:600;color:#3A4856;padding:7px 14px;border-radius:999px;">계좌 복사</span>
+            </div>
+            <div style="border:1px solid #E3EAF3;border-radius:12px;padding:14px;margin-top:10px;display:flex;justify-content:space-between;align-items:center;">
+              <div><div style="font-size:13.5px;font-weight:700;">카드 결제 (스마트스토어)</div><div style="font-size:12px;color:#5E6E7E;margin-top:3px;">구매확정 후 1영업일 내 등록 처리</div></div>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8A99A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </div>
+          </div>
+          <div style="background:#fff;border:1px solid #E3EAF3;border-radius:16px;padding:18px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <div><div style="font-size:14px;font-weight:700;">세금계산서 요청</div><div style="font-size:12px;color:#5E6E7E;margin-top:3px;">사업자등록증 업로드 시 자동 발행</div></div>
+              <span style="background:#2C5CE6;color:#fff;font-size:12.5px;font-weight:600;padding:8px 15px;border-radius:999px;">요청하기</span>
+            </div>
+          </div>
+        </div>
+        <div style="padding:12px 20px 30px;font-size:11.5px;color:#8A99A8;text-align:center;">입금 확인 시 카카오 알림톡으로 바로 알려드립니다</div>
+      </div>
+    </div>
+
+    <!-- 2g AI 뉴스·브리프 피드 모바일 -->
+    <div id="2g" style="display:flex;flex-direction:column;gap:12px;">
+      <div style="display:flex;align-items:center;gap:10px;"><span style="background:#2C5CE6;color:#fff;font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;">2g</span><span style="font-size:14px;font-weight:600;color:#5E6E7E;">AI 뉴스·기술·AX 피드 · 모바일</span></div>
+      <div style="width:390px;height:844px;background:#F2F6FB;border-radius:44px;box-shadow:0 24px 60px rgba(27,39,51,.16),0 0 0 10px #1B2733;overflow:hidden;display:flex;flex-direction:column;">
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 26px 6px;font-size:14px;font-weight:600;"><span>9:41</span><span style="display:flex;gap:5px;align-items:center;"><svg width="16" height="12" viewBox="0 0 18 12" fill="#1B2733"><rect x="0" y="7" width="3" height="5" rx="1"></rect><rect x="5" y="5" width="3" height="7" rx="1"></rect><rect x="10" y="2" width="3" height="10" rx="1"></rect><rect x="15" y="0" width="3" height="12" rx="1" opacity=".3"></rect></svg><svg width="22" height="12" viewBox="0 0 25 12"><rect x="0.5" y="0.5" width="21" height="11" rx="3" fill="none" stroke="#1B2733" opacity=".4"></rect><rect x="2" y="2" width="15" height="8" rx="1.5" fill="#1B2733"></rect><rect x="23" y="4" width="2" height="4" rx="1" fill="#1B2733" opacity=".4"></rect></svg></span></div>
+        <div style="padding:10px 20px 0;">
+          <div style="font-size:24px;font-weight:800;letter-spacing:-0.5px;">AI 브리프 · 피드</div>
+          <div style="display:flex;gap:8px;margin-top:14px;">
+            <span style="background:#2C5CE6;color:#fff;font-size:12.5px;font-weight:600;padding:7px 15px;border-radius:999px;">전체</span>
+            <span style="background:#fff;border:1px solid #D9E3EF;font-size:12.5px;font-weight:600;color:#3A4856;padding:7px 15px;border-radius:999px;">AI 뉴스</span>
+            <span style="background:#fff;border:1px solid #D9E3EF;font-size:12.5px;font-weight:600;color:#3A4856;padding:7px 15px;border-radius:999px;">기술</span>
+            <span style="background:#fff;border:1px solid #D9E3EF;font-size:12.5px;font-weight:600;color:#3A4856;padding:7px 15px;border-radius:999px;">기업 AX</span>
+          </div>
+        </div>
+        <div style="flex:1;overflow:hidden;padding:16px 20px 0;display:flex;flex-direction:column;gap:14px;">
+          <div style="background:#fff;border:1px solid #E3EAF3;border-radius:16px;overflow:hidden;">
+            <div style="height:130px;background:linear-gradient(135deg,#1B2733 0%,#2C4A7A 100%);display:flex;align-items:flex-end;padding:14px 18px;">
+              <span style="background:rgba(255,255,255,.18);color:#fff;font-size:11px;font-weight:700;padding:4px 10px;border-radius:999px;">의사결정 브리프 · 동문 전용</span>
+            </div>
+            <div style="padding:16px 18px;">
+              <div style="font-size:16px;font-weight:700;line-height:1.4;">에이전트 상용화 원년 — CEO가 이번 주 결정할 질문 3개</div>
+              <div style="font-size:13px;color:#5E6E7E;line-height:1.55;margin-top:7px;">도입 부서를 어디부터, 데이터 개방은 어디까지, 성과 측정은 무엇으로. 바로 실험할 Build 아이디어 포함.</div>
+              <div style="display:flex;gap:6px;margin-top:11px;"><span style="background:#F2F6FB;border:1px solid #E3EAF3;font-size:11px;color:#3A4856;padding:3px 9px;border-radius:999px;">#에이전트</span><span style="background:#F2F6FB;border:1px solid #E3EAF3;font-size:11px;color:#3A4856;padding:3px 9px;border-radius:999px;">#거버넌스</span><span style="font-size:11.5px;color:#8A99A8;margin-left:auto;">7/16</span></div>
+            </div>
+          </div>
+          <div style="background:#fff;border:1px solid #E3EAF3;border-radius:16px;padding:16px 18px;">
+            <div style="display:flex;align-items:center;gap:8px;"><span style="background:#EAF2FA;color:#2C5CE6;font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;">기술</span><span style="font-size:11.5px;color:#8A99A8;">공개 · 7/14</span></div>
+            <div style="font-size:15px;font-weight:700;line-height:1.4;margin-top:8px;">Claude 신모델, 장시간 자율 작업 안정성이 달라졌다</div>
+            <div style="font-size:13px;color:#5E6E7E;line-height:1.5;margin-top:5px;">하네스 설계 관점에서 무엇이 바뀌는지 3가지 포인트 정리.</div>
+            <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:#2C5CE6;font-weight:600;margin-top:9px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"></path><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"></path></svg>외부 링크 · anthropic.com</div>
+          </div>
+          <div style="background:#fff;border:1px solid #E3EAF3;border-radius:16px;padding:16px 18px;position:relative;">
+            <div style="display:flex;align-items:center;gap:8px;"><span style="background:#EAF2FA;color:#2C5CE6;font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;">기업 AX</span><span style="font-size:11.5px;color:#8A99A8;">수강생 이상 · 7/11</span></div>
+            <div style="font-size:15px;font-weight:700;line-height:1.4;margin-top:8px;">제조 중견기업의 첫 PoC — 작게 시작한 3가지 사례</div>
+            <div style="display:flex;align-items:center;gap:8px;background:#F2F6FB;border:1px solid #E8EEF6;border-radius:10px;padding:10px 12px;margin-top:10px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5E6E7E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              <span style="font-size:12.5px;color:#5E6E7E;">수강생·수료생 공개 글입니다 — <a href="#1g">지원하고 열람하기</a></span>
+            </div>
+          </div>
+        </div>
+        <div style="background:rgba(255,255,255,.92);border-top:1px solid #E8EEF6;display:flex;padding:10px 8px 26px;">
+          <div style="flex:1;text-align:center;color:#8A99A8;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg><div style="font-size:10.5px;font-weight:600;margin-top:3px;">홈</div></div>
+          <div style="flex:1;text-align:center;color:#8A99A8;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg><div style="font-size:10.5px;font-weight:600;margin-top:3px;">세션</div></div>
+          <div style="flex:1;text-align:center;color:#8A99A8;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg><div style="font-size:10.5px;font-weight:600;margin-top:3px;">대화방</div></div>
+          <div style="flex:1;text-align:center;color:#2C5CE6;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.8L20 10.7l-5.9 1.9L12 18.4l-2.1-5.8L4 10.7l6.1-1.9z"></path></svg><div style="font-size:10.5px;font-weight:700;margin-top:3px;">AI 질문</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2h 멤버십 모바일 -->
+    <div id="2h" style="display:flex;flex-direction:column;gap:12px;">
+      <div style="display:flex;align-items:center;gap:10px;"><span style="background:#2C5CE6;color:#fff;font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;">2h</span><span style="font-size:14px;font-weight:600;color:#5E6E7E;">수료생 멤버십 · 모바일</span></div>
+      <div style="width:390px;height:844px;background:#F2F6FB;border-radius:44px;box-shadow:0 24px 60px rgba(27,39,51,.16),0 0 0 10px #1B2733;overflow:hidden;display:flex;flex-direction:column;">
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 26px 6px;font-size:14px;font-weight:600;"><span>9:41</span><span style="display:flex;gap:5px;align-items:center;"><svg width="16" height="12" viewBox="0 0 18 12" fill="#1B2733"><rect x="0" y="7" width="3" height="5" rx="1"></rect><rect x="5" y="5" width="3" height="7" rx="1"></rect><rect x="10" y="2" width="3" height="10" rx="1"></rect><rect x="15" y="0" width="3" height="12" rx="1" opacity=".3"></rect></svg><svg width="22" height="12" viewBox="0 0 25 12"><rect x="0.5" y="0.5" width="21" height="11" rx="3" fill="none" stroke="#1B2733" opacity=".4"></rect><rect x="2" y="2" width="15" height="8" rx="1.5" fill="#1B2733"></rect><rect x="23" y="4" width="2" height="4" rx="1" fill="#1B2733" opacity=".4"></rect></svg></span></div>
+        <div style="display:flex;align-items:center;gap:12px;padding:10px 20px 12px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1B2733" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          <div style="font-size:17px;font-weight:700;">멤버십</div>
+        </div>
+        <div style="flex:1;overflow:hidden;padding:8px 20px 0;display:flex;flex-direction:column;gap:14px;">
+          <div style="background:#1B2733;border-radius:18px;padding:22px;color:#fff;">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <span style="font-size:13px;font-weight:700;letter-spacing:.5px;">AI4CEO MEMBERSHIP</span>
+              <span style="display:inline-flex;align-items:center;gap:6px;font-size:11.5px;background:rgba(255,255,255,.12);padding:4px 11px;border-radius:999px;"><span style="width:6px;height:6px;border-radius:999px;background:#5BC98A;display:inline-block;"></span>이용 중</span>
+            </div>
+            <div style="font-size:22px;font-weight:800;margin-top:20px;">김성훈 <span style="font-size:13px;font-weight:600;color:#8A99A8;">17기 수료</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-top:18px;">
+              <div style="font-size:12px;color:#8A99A8;">2027년 3월 14일 만료 · D-238</div>
+              <div style="font-size:14px;font-weight:700;">연 550,000원 <span style="font-size:10.5px;color:#8A99A8;font-weight:500;">VAT 포함</span></div>
+            </div>
+          </div>
+          <div style="background:#fff;border:1px solid #E3EAF3;border-radius:16px;padding:6px 18px;">
+            <div style="display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid #EDF2F8;">
+              <div style="width:36px;height:36px;border-radius:10px;background:#EAF2FA;display:flex;align-items:center;justify-content:center;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#2C5CE6" stroke-width="2"><polygon points="7 4 20 12 7 20"></polygon></svg></div>
+              <div style="flex:1;"><div style="font-size:14px;font-weight:600;">전 기수 강의 녹화본</div><div style="font-size:12px;color:#5E6E7E;margin-top:2px;">진행 중 + 과거 기수 · 읽기 전용 · 종료 후 공개분</div></div>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8A99A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid #EDF2F8;">
+              <div style="width:36px;height:36px;border-radius:10px;background:#EAF2FA;display:flex;align-items:center;justify-content:center;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#2C5CE6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg></div>
+              <div style="flex:1;"><div style="font-size:14px;font-weight:600;">전 기수 교재 다운로드</div><div style="font-size:12px;color:#5E6E7E;margin-top:2px;">강의자료 아카이브 전체</div></div>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8A99A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid #EDF2F8;">
+              <div style="width:36px;height:36px;border-radius:10px;background:#EAF2FA;display:flex;align-items:center;justify-content:center;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#2C5CE6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h20v5a10 10 0 0 1-20 0z"></path><path d="M6 21h12"></path><path d="M12 17v4"></path></svg></div>
+              <div style="flex:1;"><div style="font-size:14px;font-weight:600;">AX 행사 무료초대권</div><div style="font-size:12px;color:#5E6E7E;margin-top:2px;">행사 정보 우선 안내 포함</div></div>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8A99A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;padding:14px 0;">
+              <div style="width:36px;height:36px;border-radius:10px;background:#EAF2FA;display:flex;align-items:center;justify-content:center;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#2C5CE6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5a2 2 0 0 1 2-2h13v14H6a2 2 0 0 0-2 2z"></path><path d="M4 19a2 2 0 0 0 2 2h13v-4"></path></svg></div>
+              <div style="flex:1;"><div style="font-size:14px;font-weight:600;">AI 뉴스 · 기술 · AX 전체 열람</div><div style="font-size:12px;color:#5E6E7E;margin-top:2px;">동문 전용 브리프 포함</div></div>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8A99A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;background:#F2F6FB;border:1px solid #E8EEF6;border-radius:12px;padding:12px 14px;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#5E6E7E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4M12 8h.01"></path></svg>
+            <div style="font-size:12px;color:#5E6E7E;line-height:1.5;">실시간 Zoom 세션·대화방·과제·AI 조교는 재학 수강생 전용입니다. 만료 시 열람 권한이 자동 회수됩니다.</div>
+          </div>
+        </div>
+        <div style="padding:14px 20px 32px;">
+          <span style="display:block;text-align:center;background:#2C5CE6;color:#fff;font-size:15px;font-weight:600;padding:15px 0;border-radius:999px;box-shadow:0 8px 20px rgba(44,92,230,.25);">멤버십 갱신하기</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section style="display:flex;flex-wrap:wrap;gap:56px;padding:56px;align-items:flex-start;">
+
+  <!-- 1a 랜딩 데스크톱 -->
+  <div id="1a" style="display:flex;flex-direction:column;gap:12px;">
+    <div style="display:flex;align-items:center;gap:10px;"><span style="background:#2C5CE6;color:#fff;font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;">1a</span><span style="font-size:14px;font-weight:600;color:#5E6E7E;">랜딩 · 데스크톱 1440</span></div>
+    <div style="width:1440px;background:#FBFCFE;border-radius:20px;box-shadow:0 24px 60px rgba(27,39,51,.12);overflow:hidden;border:1px solid #E3EAF3;">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:64px;background:rgba(255,255,255,.85);border-bottom:1px solid #EDF2F8;">
+        <div style="display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;letter-spacing:-0.3px;">AI4CEO<span style="font-weight:500;color:#5E6E7E;font-size:13px;">바이브코딩 스쿨</span></div>
+        <div style="display:flex;gap:32px;font-size:15px;color:#3A4856;font-weight:500;"><span>과정 안내</span><span>커리큘럼</span><span>쇼케이스</span><span>AI 브리프</span><span>FAQ</span></div>
+        <div style="display:flex;gap:10px;align-items:center;"><span style="font-size:14px;color:#5E6E7E;font-weight:500;">로그인</span><span style="background:#2C5CE6;color:#fff;font-size:14px;font-weight:600;padding:9px 18px;border-radius:999px;">지원하기</span></div>
+      </div>
+      <div style="padding:88px 48px 72px;text-align:center;background:linear-gradient(180deg,#FFFFFF 0%,#F2F6FB 100%);">
+        <div style="display:inline-flex;align-items:center;gap:8px;background:#EAF2FA;color:#2C5CE6;font-size:13px;font-weight:600;padding:7px 14px;border-radius:999px;margin-bottom:24px;"><span style="width:6px;height:6px;border-radius:999px;background:#2C5CE6;display:inline-block;"></span>18기 모집 중 · 2026년 9월 7일(월) 개강</div>
+        <div style="font-size:56px;font-weight:800;letter-spacing:-1.5px;line-height:1.15;">CEO가 직접 만드는<br>첫 번째 AI 결과물</div>
+        <div style="font-size:19px;color:#5E6E7E;margin-top:20px;line-height:1.6;">코딩 경험이 없어도 됩니다. 10주 동안 Claude와 함께<br>우리 회사에 바로 적용할 결과물 하나를 완성합니다.</div>
+        <div style="display:flex;gap:12px;justify-content:center;margin-top:36px;">
+          <span style="background:#2C5CE6;color:#fff;font-size:16px;font-weight:600;padding:14px 32px;border-radius:999px;box-shadow:0 8px 20px rgba(44,92,230,.25);">18기 지원하기</span>
+          <span style="background:#fff;color:#1B2733;border:1px solid #D9E3EF;font-size:16px;font-weight:600;padding:14px 32px;border-radius:999px;">커리큘럼 보기</span>
+        </div>
+        <div style="display:flex;justify-content:center;gap:56px;margin-top:56px;">
+          <div><div style="font-size:28px;font-weight:800;letter-spacing:-0.5px;">10회</div><div style="font-size:13px;color:#5E6E7E;margin-top:4px;">주 1회 · 월 18~21시 Zoom</div></div>
+          <div style="width:1px;background:#D9E3EF;"></div>
+          <div><div style="font-size:28px;font-weight:800;letter-spacing:-0.5px;">3회</div><div style="font-size:13px;color:#5E6E7E;margin-top:4px;">토요일 오프라인 보충수업</div></div>
+          <div style="width:1px;background:#D9E3EF;"></div>
+          <div><div style="font-size:28px;font-weight:800;letter-spacing:-0.5px;">17기</div><div style="font-size:13px;color:#5E6E7E;margin-top:4px;">누적 운영 기수</div></div>
+          <div style="width:1px;background:#D9E3EF;"></div>
+          <div><div style="font-size:28px;font-weight:800;letter-spacing:-0.5px;">1:1</div><div style="font-size:13px;color:#5E6E7E;margin-top:4px;">핸즈온 코칭</div></div>
+        </div>
+      </div>
+      <div style="padding:72px 48px;background:#FBFCFE;">
+        <div style="font-size:13px;font-weight:700;color:#2C5CE6;letter-spacing:1px;text-align:center;">CURRICULUM</div>
+        <div style="font-size:34px;font-weight:800;letter-spacing:-0.8px;text-align:center;margin-top:10px;">4대 핵심 트랙 + 기업 AX 모듈</div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:44px;">
+          <div style="background:#fff;border:1px solid #E3EAF3;border-radius:16px;padding:26px;">
+            <div style="width:40px;height:40px;border-radius:12px;background:#EAF2FA;display:flex;align-items:center;justify-content:center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2C5CE6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg></div>
+            <div style="font-size:17px;font-weight:700;margin-top:16px;">Claude Code</div>
+            <div style="font-size:14px;color:#5E6E7E;line-height:1.6;margin-top:8px;">터미널 기반 AI 코딩·디버깅. 회사 업무용 앱과 자동화 스크립트를 직접 만듭니다.</div>
+          </div>
+          <div style="background:#fff;border:1px solid #E3EAF3;border-radius:16px;padding:26px;">
+            <div style="width:40px;height:40px;border-radius:12px;background:#EAF2FA;display:flex;align-items:center;justify-content:center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2C5CE6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg></div>
+            <div style="font-size:17px;font-weight:700;margin-top:16px;">Claude Design</div>
+            <div style="font-size:14px;color:#5E6E7E;line-height:1.6;margin-top:8px;">프로토타입·랜딩페이지·슬라이드 제작. Vercel·Supabase 연동 웹 UI 챗봇까지.</div>
+          </div>
+          <div style="background:#fff;border:1px solid #E3EAF3;border-radius:16px;padding:26px;">
+            <div style="width:40px;height:40px;border-radius:12px;background:#EAF2FA;display:flex;align-items:center;justify-content:center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2C5CE6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
+            <div style="font-size:17px;font-weight:700;margin-top:16px;">Claude Cowork</div>
+            <div style="font-size:14px;color:#5E6E7E;line-height:1.6;margin-top:8px;">문서·리서치·분석 등 지식노동 위임. 부서 단위 반복 업무 자동화 워크플로.</div>
+          </div>
+          <div style="background:#fff;border:1px solid #E3EAF3;border-radius:16px;padding:26px;">
+            <div style="width:40px;height:40px;border-radius:12px;background:#EAF2FA;display:flex;align-items:center;justify-content:center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2C5CE6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M12 1v4M12 19v4M4.2 4.2l2.9 2.9M16.9 16.9l2.9 2.9M1 12h4M19 12h4M4.2 19.8l2.9-2.9M16.9 7.1l2.9-2.9"></path></svg></div>
+            <div style="font-size:17px;font-weight:700;margin-top:16px;">Harness Engineering</div>
+            <div style="font-size:14px;color:#5E6E7E;line-height:1.6;margin-top:8px;">도구·권한·가드레일과 평가 루프 설계. 회사 업무용 에이전트를 안정화합니다.</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;background:#EAF2FA;border:1px solid #D9E3EF;border-radius:16px;padding:20px 26px;margin-top:16px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2C5CE6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"></path><path d="M7 15l4-4 3 3 6-6"></path></svg>
+          <div style="font-size:14.5px;color:#1B2733;line-height:1.5;"><b>기업 AX 통합 모듈</b> — 1·3·5·7·10주차에 배치. 도구를 익힌 직후 우리 회사 적용 후보 도출, PoC 설계, 조직·거버넌스, AX 로드맵으로 이어집니다.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1b Cohort Home 데스크톱 -->
+  <div id="1b" style="display:flex;flex-direction:column;gap:12px;">
+    <div style="display:flex;align-items:center;gap:10px;"><span style="background:#2C5CE6;color:#fff;font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;">1b</span><span style="font-size:14px;font-weight:600;color:#5E6E7E;">Cohort Home · 데스크톱 1440</span></div>
+    <div style="width:1440px;height:900px;background:#F2F6FB;border-radius:20px;box-shadow:0 24px 60px rgba(27,39,51,.12);overflow:hidden;border:1px solid #E3EAF3;display:flex;">
+      <div style="width:248px;background:#FBFCFE;border-right:1px solid #E8EEF6;display:flex;flex-direction:column;padding:20px 14px;gap:2px;flex-shrink:0;">
+        <div style="font-weight:800;font-size:17px;padding:6px 12px 18px;letter-spacing:-0.3px;">AI4CEO</div>
+        <div style="display:flex;align-items:center;gap:11px;background:#EAF2FA;color:#2C5CE6;font-weight:600;font-size:14.5px;padding:10px 12px;border-radius:10px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>홈</div>
+        <div style="display:flex;align-items:center;gap:11px;color:#3A4856;font-weight:500;font-size:14.5px;padding:10px 12px;border-radius:10px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>세션 · 커리큘럼</div>
+        <div style="display:flex;align-items:center;gap:11px;color:#3A4856;font-weight:500;font-size:14.5px;padding:10px 12px;border-radius:10px;justify-content:space-between;"><span style="display:flex;align-items:center;gap:11px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>과제</span><span style="background:#2C5CE6;color:#fff;font-size:11px;font-weight:700;padding:2px 7px;border-radius:999px;">1</span></div>
+        <div style="display:flex;align-items:center;gap:11px;color:#3A4856;font-weight:500;font-size:14.5px;padding:10px 12px;border-radius:10px;justify-content:space-between;"><span style="display:flex;align-items:center;gap:11px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>대화방</span><span style="background:#2C5CE6;color:#fff;font-size:11px;font-weight:700;padding:2px 7px;border-radius:999px;">3</span></div>
+        <div style="display:flex;align-items:center;gap:11px;color:#3A4856;font-weight:500;font-size:14.5px;padding:10px 12px;border-radius:10px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.8L20 10.7l-5.9 1.9L12 18.4l-2.1-5.8L4 10.7l6.1-1.9z"></path></svg>AI 조교</div>
+        <div style="display:flex;align-items:center;gap:11px;color:#3A4856;font-weight:500;font-size:14.5px;padding:10px 12px;border-radius:10px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"></path></svg>내 결과물</div>
+        <div style="display:flex;align-items:center;gap:11px;color:#3A4856;font-weight:500;font-size:14.5px;padding:10px 12px;border-radius:10px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21v-1a7 7 0 0 1 14 0v1"></path></svg>1:1 코칭</div>
+        <div style="display:flex;align-items:center;gap:11px;color:#3A4856;font-weight:500;font-size:14.5px;padding:10px 12px;border-radius:10px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21a9 9 0 1 0-9-9"></path><path d="M3 12h9l3-8"></path></svg>보충수업</div>
+        <div style="flex:1;"></div>
+        <div style="display:flex;align-items:center;gap:11px;color:#3A4856;font-weight:500;font-size:14.5px;padding:10px 12px;border-radius:10px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>결제 · 인보이스</div>
+        <div style="display:flex;align-items:center;gap:10px;border-top:1px solid #E8EEF6;margin-top:8px;padding:14px 12px 4px;">
+          <div style="width:34px;height:34px;border-radius:999px;background:#2C5CE6;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;">김</div>
+          <div><div style="font-size:13.5px;font-weight:600;">김성훈</div><div style="font-size:11.5px;color:#5E6E7E;">(주)한빛물류 대표</div></div>
+        </div>
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;min-width:0;">
+        <div style="height:60px;background:rgba(255,255,255,.8);border-bottom:1px solid #E8EEF6;display:flex;align-items:center;justify-content:space-between;padding:0 32px;">
+          <div style="display:flex;align-items:center;gap:8px;background:#fff;border:1px solid #D9E3EF;border-radius:999px;padding:7px 14px;font-size:13.5px;font-weight:600;">18기 · 2026 가을<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5E6E7E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+          <div style="display:flex;align-items:center;gap:16px;">
+            <div style="display:flex;align-items:center;gap:6px;font-size:13px;color:#5E6E7E;"><span style="width:7px;height:7px;border-radius:999px;background:#2F7D4F;display:inline-block;"></span>교육 진행 중 · 3주차</div>
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#3A4856" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.7 21a2 2 0 0 1-3.4 0"></path></svg>
+          </div>
+        </div>
+        <div style="flex:1;overflow:hidden;padding:28px 32px;display:flex;flex-direction:column;gap:18px;">
+          <div><div style="font-size:24px;font-weight:800;letter-spacing:-0.5px;">안녕하세요, 김성훈 대표님</div><div style="font-size:14px;color:#5E6E7E;margin-top:4px;">이번 주에 결정하실 것 1개, 위임하실 수 있는 것 2개가 있습니다.</div></div>
+          <div style="display:grid;grid-template-columns:1.6fr 1fr;gap:18px;flex:1;min-height:0;">
+            <div style="display:flex;flex-direction:column;gap:18px;min-width:0;">
+              <div style="background:#fff;border:1px solid #E3EAF3;border-radius:16px;padding:24px;">
+                <div style="display:flex;justify-content:space-between;align-items:center;">
+                  <div style="font-size:16px;font-weight:700;">My Build — 배차 요청 자동 분류 봇</div>
+                  <span style="display:flex;align-items:center;gap:6px;font-size:12.5px;color:#5E6E7E;background:#F2F6FB;border:1px solid #E3EAF3;padding:4px 10px;border-radius:999px;"><span style="width:6px;height:6px;border-radius:999px;background:#2C5CE6;display:inline-block;"></span>초안 만들기 단계</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:0;margin-top:22px;">
+                  <div style="flex:1;text-align:center;"><div style="width:28px;height:28px;border-radius:999px;background:#2C5CE6;color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div><div style="font-size:12px;color:#5E6E7E;margin-top:8px;">문제 선택</div></div>
+                  <div style="flex:1;height:2px;background:#2C5CE6;margin-bottom:24px;"></div>
+                  <div style="flex:1;text-align:center;"><div style="width:28px;height:28px;border-radius:999px;background:#2C5CE6;color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div><div style="font-size:12px;color:#5E6E7E;margin-top:8px;">레퍼런스</div></div>
+                  <div style="flex:1;height:2px;background:#2C5CE6;margin-bottom:24px;"></div>
+                  <div style="flex:1;text-align:center;"><div style="width:28px;height:28px;border-radius:999px;background:#fff;border:2px solid #2C5CE6;color:#2C5CE6;display:flex;align-items:center;justify-content:center;margin:0 auto;font-size:13px;font-weight:700;box-sizing:border-box;">3</div><div style="font-size:12px;color:#2C5CE6;font-weight:600;margin-top:8px;">초안 만들기</div></div>
+                  <div style="flex:1;height:2px;background:#E3EAF3;margin-bottom:24px;"></div>
+                  <div style="flex:1;text-align:center;"><div style="width:28px;height:28px;border-radius:999px;background:#F2F6FB;border:1px solid #D9E3EF;color:#5E6E7E;display:flex;align-items:center;justify-content:center;margin:0 auto;font-size:13px;font-weight:600;box-sizing:border-box;">4</div><div style="font-size:12px;color:#5E6E7E;margin-top:8px;">코칭 받기</div></div>
+                  <div style="flex:1;height:2px;background:#E3EAF3;margin-bottom:24px;"></div>
+                  <div style="flex:1;text-align:center;"><div style="width:28px;height:28px;border-radius:999px;background:#F2F6FB;border:1px solid #D9E3EF;color:#5E6E7E;display:flex;align-items:center;justify-content:center;margin:0 auto;font-size:13px;font-weight:600;box-sizing:border-box;">5</div><div style="font-size:12px;color:#5E6E7E;margin-top:8px;">회사 적용</div></div>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;background:#F2F6FB;border-radius:12px;padding:14px 18px;margin-top:20px;">
+                  <div style="font-size:13.5px;color:#3A4856;">마지막 코칭 메모 — “엑셀 업로드부터 붙이면 이번 주 안에 초안 완성 가능”</div>
+                  <span style="background:#2C5CE6;color:#fff;font-size:13px;font-weight:600;padding:8px 16px;border-radius:999px;white-space:nowrap;">초안 이어서 만들기</span>
+                </div>
+              </div>
+              <div style="background:#fff;border:1px solid #E3EAF3;border-radius:16px;padding:24px;flex:1;">
+                <div style="font-size:16px;font-weight:700;">This Week — 3주차</div>
+                <div style="display:flex;gap:14px;margin-top:16px;">
+                  <div style="flex:1;border:1px solid #E3EAF3;border-radius:12px;padding:16px;">
+                    <div style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:#2C5CE6;"><span style="width:6px;height:6px;border-radius:999px;background:#2C5CE6;display:inline-block;"></span>정규 강의 · Zoom</div>
+                    <div style="font-size:15px;font-weight:700;margin-top:8px;">에이전트 코딩 심화 + AX 후보 도출</div>
+                    <div style="font-size:13px;color:#5E6E7E;margin-top:6px;">9월 21일(월) 18:00–21:00</div>
+                    <div style="display:flex;gap:8px;margin-top:12px;"><span style="border:1px solid #2C5CE6;color:#2C5CE6;font-size:12.5px;font-weight:600;padding:6px 12px;border-radius:999px;">Zoom 입장</span><span style="border:1px solid #D9E3EF;color:#3A4856;font-size:12.5px;font-weight:600;padding:6px 12px;border-radius:999px;">강의자료</span></div>
+                  </div>
+                  <div style="flex:1;border:1px solid #E3EAF3;border-radius:12px;padding:16px;">
+                    <div style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:#B84A45;"><span style="width:6px;height:6px;border-radius:999px;background:#B84A45;display:inline-block;"></span>과제 마감 D-1</div>
+                    <div style="font-size:15px;font-weight:700;margin-top:8px;">Build Brief — 우리 회사 자동화 후보</div>
+                    <div style="font-size:13px;color:#5E6E7E;margin-top:6px;">9월 20일(일) 23:59 마감 · 미제출</div>
+                    <div style="display:flex;gap:8px;margin-top:12px;"><span style="background:#2C5CE6;color:#fff;font-size:12.5px;font-weight:600;padding:6px 12px;border-radius:999px;">제출하기</span><span style="border:1px solid #D9E3EF;color:#3A4856;font-size:12.5px;font-weight:600;padding:6px 12px;border-radius:999px;">비서에게 위임</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:18px;min-width:0;">
+              <div style="background:#fff;border:1px solid #E3EAF3;border-radius:16px;padding:20px;">
+                <div style="display:flex;justify-content:space-between;align-items:center;"><div style="font-size:15px;font-weight:700;">대화방</div><span style="font-size:12.5px;color:#2C5CE6;font-weight:600;">새 메시지 3</span></div>
+                <div style="display:flex;flex-direction:column;gap:12px;margin-top:14px;">
+                  <div style="display:flex;gap:10px;"><div style="width:30px;height:30px;border-radius:999px;background:#EAF2FA;color:#2C5CE6;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;">장</div><div style="min-width:0;"><div style="font-size:13px;font-weight:600;">장동인 교수 <span style="color:#5E6E7E;font-weight:400;">· 10분 전</span></div><div style="font-size:13px;color:#3A4856;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">3주차 실습 파일 올렸습니다. 수업 전 설치 확인해주세요.</div></div></div>
+                  <div style="display:flex;gap:10px;"><div style="width:30px;height:30px;border-radius:999px;background:#F2F6FB;border:1px solid #E3EAF3;color:#5E6E7E;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;box-sizing:border-box;">박</div><div style="min-width:0;"><div style="font-size:13px;font-weight:600;">박은영 대표 <span style="color:#5E6E7E;font-weight:400;">· 1시간 전</span></div><div style="font-size:13px;color:#3A4856;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">CLAUDE.md 예시 공유드려요 (파일 1개)</div></div></div>
+                </div>
+              </div>
+              <div style="background:#fff;border:1px solid #E3EAF3;border-radius:16px;padding:20px;">
+                <div style="font-size:15px;font-weight:700;">새 강의 영상</div>
+                <div style="display:flex;gap:12px;margin-top:12px;align-items:center;">
+                  <div style="width:96px;height:58px;border-radius:8px;background:#1B2733;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><polygon points="7 4 20 12 7 20"></polygon></svg></div>
+                  <div style="min-width:0;"><div style="font-size:13.5px;font-weight:600;line-height:1.4;">2주차 — 개발 환경 구축과 첫 프로젝트</div><div style="font-size:12px;color:#5E6E7E;margin-top:4px;">Drive · 읽기 전용 · 2:47:12</div></div>
+                </div>
+                <div style="font-size:12.5px;color:#5E6E7E;margin-top:10px;">영상에 대해 바로 질문할 수 있어요 → <a href="#1f">AI 조교</a></div>
+              </div>
+              <div style="background:#EAF2FA;border:1px solid #D9E3EF;border-radius:16px;padding:20px;flex:1;">
+                <div style="display:flex;align-items:center;gap:8px;font-size:15px;font-weight:700;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#2C5CE6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.8L20 10.7l-5.9 1.9L12 18.4l-2.1-5.8L4 10.7l6.1-1.9z"></path></svg>막힌 곳이 있나요?</div>
+                <div style="font-size:13px;color:#3A4856;line-height:1.55;margin-top:8px;">AI 조교가 커리큘럼·자료·영상 맥락으로 즉시 답합니다. 사람이 필요하면 1:1 코칭을 예약하세요.</div>
+                <div style="display:flex;gap:8px;margin-top:14px;"><span style="background:#2C5CE6;color:#fff;font-size:12.5px;font-weight:600;padding:8px 14px;border-radius:999px;">AI에게 질문</span><span style="background:#fff;border:1px solid #D9E3EF;color:#1B2733;font-size:12.5px;font-weight:600;padding:8px 14px;border-radius:999px;">코칭 예약</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1c 세션 상세 데스크톱 -->
+  <div id="1c" style="display:flex;flex-direction:column;gap:12px;">
+    <div style="display:flex;align-items:center;gap:10px;"><span style="background:#2C5CE6;color:#fff;font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;">1c</span><span style="font-size:14px;font-weight:600;color:#5E6E7E;">세션 상세 · 데스크톱 1440</span></div>
+    <div style="width:1440px;background:#F2F6FB;border-radius:20px;box-shadow:0 24px 60px rgba(27,39,51,.12);overflow:hidden;border:1px solid #E3EAF3;">
+      <div style="height:60px;background:rgba(255,255,255,.8);border-bottom:1px solid #E8EEF6;display:flex;align-items:center;padding:0 32px;gap:8px;font-size:13.5px;color:#5E6E7E;">
+        <span>18기</span><span>›</span><span>세션</span><span>›</span><span style="color:#1B2733;font-weight:600;">2주차 — Claude Code</span>
+      </div>
+      <div style="display:flex;gap:24px;padding:28px 32px;">
+        <div style="flex:1.7;min-width:0;display:flex;flex-direction:column;gap:18px;">
+          <div>
+            <div style="display:flex;align-items:center;gap:10px;"><span style="background:#fff;border:1px solid #D9E3EF;font-size:12px;font-weight:600;color:#3A4856;padding:4px 10px;border-radius:999px;display:inline-flex;align-items:center;gap:6px;"><span style="width:6px;height:6px;border-radius:999px;background:#2F7D4F;display:inline-block;"></span>완료 · 출석</span><span style="font-size:12.5px;color:#5E6E7E;">2026년 9월 14일(월) 18:00–21:00 · Zoom</span></div>
+            <div style="font-size:26px;font-weight:800;letter-spacing:-0.5px;margin-top:10px;">2주차 — 개발 환경 구축과 첫 프로젝트</div>
+            <div style="font-size:14px;color:#5E6E7E;margin-top:6px;">터미널·Python·Node 세팅, Claude Code 실전 설정, 첫 프로젝트 생성·디버깅</div>
+          </div>
+          <div style="background:#1B2733;border-radius:16px;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;position:relative;">
+            <div style="width:72px;height:72px;border-radius:999px;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;"><svg width="30" height="30" viewBox="0 0 24 24" fill="#fff"><polygon points="7 4 20 12 7 20"></polygon></svg></div>
+            <div style="position:absolute;top:16px;left:16px;display:flex;align-items:center;gap:6px;background:rgba(0,0,0,.45);color:#fff;font-size:12px;font-weight:500;padding:5px 11px;border-radius:999px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>Google Drive · 읽기 전용</div>
+            <div style="position:absolute;bottom:0;left:0;right:0;padding:14px 18px;display:flex;align-items:center;gap:12px;">
+              <div style="flex:1;height:4px;border-radius:999px;background:rgba(255,255,255,.25);"><div style="width:38%;height:4px;border-radius:999px;background:#2C5CE6;"></div></div>
+              <span style="color:#fff;font-size:12px;">1:02:40 / 2:47:12</span>
+            </div>
+          </div>
+          <div style="background:#fff;border:1px solid #E3EAF3;border-radius:16px;padding:22px;">
+            <div style="font-size:15px;font-weight:700;">강의자료</div>
+            <div style="display:flex;flex-direction:column;gap:8px;margin-top:12px;">
+              <div style="display:flex;align-items:center;gap:12px;border:1px solid #E8EEF6;border-radius:10px;padding:11px 14px;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#2C5CE6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg><span style="font-size:13.5px;font-weight:600;flex:1;">2주차_개발환경_구축.pdf</span><span style="font-size:12px;color:#5E6E7E;">4.2MB</span><span style="font-size:12.5px;color:#2C5CE6;font-weight:600;">다운로드</span></div>
+              <div style="display:flex;align-items:center;gap:12px;border:1px solid #E8EEF6;border-radius:10px;padding:11px 14px;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#2C5CE6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg><span style="font-size:13.5px;font-weight:600;flex:1;">first-project-starter (예제 저장소)</span><span style="font-size:12.5px;color:#2C5CE6;font-weight:600;">링크 열기</span></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:7px;font-size:12px;color:#5E6E7E;margin-top:12px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4l2 2"></path></svg>9월 14일 17:20 자료 교체됨 — 변경 이력 보기</div>
+          </div>
+        </div>
+        <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:18px;">
+          <div style="background:#fff;border:1px solid #E3EAF3;border-radius:16px;padding:20px;flex:1;display:flex;flex-direction:column;">
+            <div style="display:flex;align-items:center;gap:8px;font-size:15px;font-weight:700;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#2C5CE6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.8L20 10.7l-5.9 1.9L12 18.4l-2.1-5.8L4 10.7l6.1-1.9z"></path></svg>이 영상에 질문하기</div>
+            <div style="display:flex;flex-direction:column;gap:12px;margin-top:16px;flex:1;">
+              <div style="align-self:flex-end;background:#2C5CE6;color:#fff;font-size:13.5px;line-height:1.5;padding:10px 14px;border-radius:16px 16px 4px 16px;max-width:85%;">터미널에서 claude 명령이 안 잡히는데 영상 어디를 보면 되나요?</div>
+              <div style="align-self:flex-start;background:#F2F6FB;border:1px solid #E8EEF6;font-size:13.5px;line-height:1.55;padding:12px 14px;border-radius:16px 16px 16px 4px;max-width:92%;">
+                PATH 설정 문제일 가능성이 높습니다. 영상 <b>41:20 “설치 확인과 PATH”</b> 구간에서 동일한 증상을 다룹니다. 터미널을 완전히 재시작한 뒤 <span style="font-family:ui-monospace,monospace;background:#fff;border:1px solid #E3EAF3;border-radius:4px;padding:1px 5px;font-size:12px;">claude --version</span>을 실행해 보세요.
+                <div style="display:flex;gap:6px;margin-top:10px;flex-wrap:wrap;">
+                  <span style="display:inline-flex;align-items:center;gap:5px;background:#fff;border:1px solid #D9E3EF;font-size:11.5px;color:#3A4856;padding:4px 9px;border-radius:999px;"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#2C5CE6" stroke-width="2"><polygon points="7 4 20 12 7 20"></polygon></svg>영상 41:20</span>
+                  <span style="display:inline-flex;align-items:center;gap:5px;background:#fff;border:1px solid #D9E3EF;font-size:11.5px;color:#3A4856;padding:4px 9px;border-radius:999px;">자료 p.12</span>
+                </div>
+                <div style="font-size:11.5px;color:#5E6E7E;margin-top:8px;">확실하지 않으면 1:1 코칭으로 연결해 드립니다.</div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;border:1px solid #D9E3EF;border-radius:999px;padding:9px 9px 9px 16px;margin-top:16px;background:#fff;">
+              <span style="flex:1;font-size:13.5px;color:#8A99A8;">영상 내용에 대해 질문하세요</span>
+              <span style="width:32px;height:32px;border-radius:999px;background:#2C5CE6;display:flex;align-items:center;justify-content:center;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg></span>
+            </div>
+          </div>
+          <div style="background:#fff;border:1px solid #E3EAF3;border-radius:16px;padding:20px;">
+            <div style="font-size:15px;font-weight:700;">연결된 과제</div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;">
+              <div><div style="font-size:13.5px;font-weight:600;">개발 환경 스크린샷 제출</div><div style="font-size:12px;color:#5E6E7E;margin-top:3px;">9월 20일 마감 · 제출 완료</div></div>
+              <span style="display:flex;align-items:center;gap:6px;font-size:12px;color:#5E6E7E;background:#F2F6FB;border:1px solid #E3EAF3;padding:4px 10px;border-radius:999px;"><span style="width:6px;height:6px;border-radius:999px;background:#2F7D4F;display:inline-block;"></span>통과</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 모바일 그룹 -->
+  <div style="display:flex;gap:56px;align-items:flex-start;flex-wrap:wrap;">
+
+    <!-- 1d Cohort Home 모바일 -->
+    <div id="1d" style="display:flex;flex-direction:column;gap:12px;">
+      <div style="display:flex;align-items:center;gap:10px;"><span style="background:#2C5CE6;color:#fff;font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;">1d</span><span style="font-size:14px;font-weight:600;color:#5E6E7E;">Cohort Home · 모바일</span></div>
+      <div style="width:390px;height:844px;background:#F2F6FB;border-radius:44px;box-shadow:0 24px 60px rgba(27,39,51,.16),0 0 0 10px #1B2733;overflow:hidden;display:flex;flex-direction:column;">
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 26px 6px;font-size:14px;font-weight:600;"><span>9:41</span><span style="display:flex;gap:5px;align-items:center;"><svg width="16" height="12" viewBox="0 0 18 12" fill="#1B2733"><rect x="0" y="7" width="3" height="5" rx="1"></rect><rect x="5" y="5" width="3" height="7" rx="1"></rect><rect x="10" y="2" width="3" height="10" rx="1"></rect><rect x="15" y="0" width="3" height="12" rx="1" opacity=".3"></rect></svg><svg width="22" height="12" viewBox="0 0 25 12"><rect x="0.5" y="0.5" width="21" height="11" rx="3" fill="none" stroke="#1B2733" opacity=".4"></rect><rect x="2" y="2" width="15" height="8" rx="1.5" fill="#1B2733"></rect><rect x="23" y="4" width="2" height="4" rx="1" fill="#1B2733" opacity=".4"></rect></svg></span></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 20px 4px;">
+          <div style="display:flex;align-items:center;gap:7px;background:#fff;border:1px solid #D9E3EF;border-radius:999px;padding:6px 13px;font-size:13px;font-weight:600;">18기<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#5E6E7E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+          <div style="display:flex;align-items:center;gap:12px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3A4856" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.7 21a2 2 0 0 1-3.4 0"></path></svg><div style="width:32px;height:32px;border-radius:999px;background:#2C5CE6;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;">김</div></div>
+        </div>
+        <div style="flex:1;overflow:hidden;padding:14px 20px 0;display:flex;flex-direction:column;gap:14px;">
+          <div><div style="font-size:24px;font-weight:800;letter-spacing:-0.5px;">홈</div><div style="font-size:13px;color:#5E6E7E;margin-top:3px;">3주차 · 이번 주 할 일 2개</div></div>
+          <div style="background:#fff;border:1px solid #E3EAF3;border-radius:16px;padding:18px;">
+            <div style="display:flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;color:#2C5CE6;"><span style="width:6px;height:6px;border-radius:999px;background:#2C5CE6;display:inline-block;"></span>다음 세션 · D-2</div>
+            <div style="font-size:16.5px;font-weight:700;margin-top:7px;line-height:1.35;">3주차 — 에이전트 코딩 심화 + AX</div>
+            <div style="font-size:13px;color:#5E6E7E;margin-top:5px;">9월 21일(월) 18:00 · Zoom</div>
+            <div style="display:flex;gap:8px;margin-top:13px;"><span style="flex:1;text-align:center;background:#2C5CE6;color:#fff;font-size:13.5px;font-weight:600;padding:11px 0;border-radius:999px;">Zoom 입장</span><span style="flex:1;text-align:center;border:1px solid #D9E3EF;color:#1B2733;font-size:13.5px;font-weight:600;padding:11px 0;border-radius:999px;box-sizing:border-box;">강의자료</span></div>
+          </div>
+          <div style="background:#fff;border:1px solid #E3EAF3;border-radius:16px;padding:18px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;"><div style="font-size:14.5px;font-weight:700;">My Build</div><span style="display:flex;align-items:center;gap:5px;font-size:11.5px;color:#5E6E7E;background:#F2F6FB;border:1px solid #E3EAF3;padding:3px 9px;border-radius:999px;"><span style="width:5px;height:5px;border-radius:999px;background:#2C5CE6;display:inline-block;"></span>3/5 단계</span></div>
+            <div style="font-size:13px;color:#3A4856;margin-top:6px;">배차 요청 자동 분류 봇 — 초안 만들기</div>
+            <div style="height:6px;border-radius:999px;background:#E8F0F8;margin-top:12px;"><div style="width:52%;height:6px;border-radius:999px;background:#2C5CE6;"></div></div>
+          </div>
+          <div style="background:#fff;border:1px solid #E3EAF3;border-radius:16px;padding:4px 18px;">
+            <div style="display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid #EDF2F8;">
+              <div style="width:34px;height:34px;border-radius:10px;background:#FBEDEC;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B84A45" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4l2 2"></path></svg></div>
+              <div style="flex:1;min-width:0;"><div style="font-size:13.5px;font-weight:600;">Build Brief 제출 — 마감 D-1</div><div style="font-size:12px;color:#5E6E7E;margin-top:1px;">9월 20일(일) 23:59</div></div>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8A99A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid #EDF2F8;">
+              <div style="width:34px;height:34px;border-radius:10px;background:#EAF2FA;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2C5CE6" stroke-width="2"><polygon points="7 4 20 12 7 20"></polygon></svg></div>
+              <div style="flex:1;min-width:0;"><div style="font-size:13.5px;font-weight:600;">2주차 강의 영상 업로드됨</div><div style="font-size:12px;color:#5E6E7E;margin-top:1px;">Drive · 읽기 전용 · 2:47:12</div></div>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8A99A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;padding:13px 0;">
+              <div style="width:34px;height:34px;border-radius:10px;background:#EAF2FA;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2C5CE6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div>
+              <div style="flex:1;min-width:0;"><div style="font-size:13.5px;font-weight:600;">대화방 새 메시지 3</div><div style="font-size:12px;color:#5E6E7E;margin-top:1px;">장동인 교수 외 2명</div></div>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8A99A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </div>
+          </div>
+          <div style="background:#EAF2FA;border:1px solid #D9E3EF;border-radius:16px;padding:16px 18px;display:flex;align-items:center;gap:12px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2C5CE6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.8L20 10.7l-5.9 1.9L12 18.4l-2.1-5.8L4 10.7l6.1-1.9z"></path></svg>
+            <div style="flex:1;font-size:13px;color:#1B2733;font-weight:500;">토요일 보충수업 10/17 — 설치·실행 막힘 해결</div>
+            <span style="font-size:12.5px;color:#2C5CE6;font-weight:700;">신청</span>
+          </div>
+        </div>
+        <div style="background:rgba(255,255,255,.92);border-top:1px solid #E8EEF6;display:flex;padding:10px 8px 26px;">
+          <div style="flex:1;text-align:center;color:#2C5CE6;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg><div style="font-size:10.5px;font-weight:700;margin-top:3px;">홈</div></div>
+          <div style="flex:1;text-align:center;color:#8A99A8;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg><div style="font-size:10.5px;font-weight:600;margin-top:3px;">세션</div></div>
+          <div style="flex:1;text-align:center;color:#8A99A8;position:relative;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg><div style="font-size:10.5px;font-weight:600;margin-top:3px;">대화방</div><span style="position:absolute;top:-3px;right:24px;background:#B84A45;color:#fff;font-size:9.5px;font-weight:700;padding:1px 5px;border-radius:999px;">3</span></div>
+          <div style="flex:1;text-align:center;color:#8A99A8;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.8L20 10.7l-5.9 1.9L12 18.4l-2.1-5.8L4 10.7l6.1-1.9z"></path></svg><div style="font-size:10.5px;font-weight:600;margin-top:3px;">AI 질문</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1e 대화방 모바일 -->
+    <div id="1e" style="display:flex;flex-direction:column;gap:12px;">
+      <div style="display:flex;align-items:center;gap:10px;"><span style="background:#2C5CE6;color:#fff;font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;">1e</span><span style="font-size:14px;font-weight:600;color:#5E6E7E;">기수 대화방 · 모바일</span></div>
+      <div style="width:390px;height:844px;background:#F2F6FB;border-radius:44px;box-shadow:0 24px 60px rgba(27,39,51,.16),0 0 0 10px #1B2733;overflow:hidden;display:flex;flex-direction:column;">
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 26px 6px;font-size:14px;font-weight:600;"><span>9:41</span><span style="display:flex;gap:5px;align-items:center;"><svg width="16" height="12" viewBox="0 0 18 12" fill="#1B2733"><rect x="0" y="7" width="3" height="5" rx="1"></rect><rect x="5" y="5" width="3" height="7" rx="1"></rect><rect x="10" y="2" width="3" height="10" rx="1"></rect><rect x="15" y="0" width="3" height="12" rx="1" opacity=".3"></rect></svg><svg width="22" height="12" viewBox="0 0 25 12"><rect x="0.5" y="0.5" width="21" height="11" rx="3" fill="none" stroke="#1B2733" opacity=".4"></rect><rect x="2" y="2" width="15" height="8" rx="1.5" fill="#1B2733"></rect><rect x="23" y="4" width="2" height="4" rx="1" fill="#1B2733" opacity=".4"></rect></svg></span></div>
+        <div style="display:flex;align-items:center;gap:12px;padding:10px 20px 12px;background:rgba(255,255,255,.9);border-bottom:1px solid #E8EEF6;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1B2733" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          <div style="flex:1;"><div style="font-size:16px;font-weight:700;">18기 대화방</div><div style="font-size:12px;color:#5E6E7E;">멤버 24 · 장동인 교수, 운영팀</div></div>
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#3A4856" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12a10 10 0 1 1-10-10"></path><path d="M22 2L12 12"></path><path d="M16 2h6v6"></path></svg>
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#3A4856" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.5" y2="16.5"></line></svg>
+        </div>
+        <div style="display:flex;align-items:center;gap:9px;background:#EAF2FA;border-bottom:1px solid #E3EAF3;padding:10px 20px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2C5CE6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="17" x2="12" y2="22"></line><path d="M5 17h14v-1.8a3.5 3.5 0 0 0-2-3.2V6a3 3 0 0 0-3-3h-4a3 3 0 0 0-3 3v6a3.5 3.5 0 0 0-2 3.2z"></path></svg>
+          <div style="flex:1;font-size:12.5px;color:#1B2733;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">고정 — 3주차부터 Zoom 링크가 변경됩니다. 세션 카드에서 입장해주세요.</div>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5E6E7E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </div>
+        <div style="flex:1;overflow:hidden;padding:16px 20px;display:flex;flex-direction:column;gap:14px;">
+          <div style="align-self:center;font-size:11.5px;color:#8A99A8;background:#E8F0F8;padding:4px 12px;border-radius:999px;">9월 18일 목요일</div>
+          <div style="display:flex;gap:9px;">
+            <div style="width:32px;height:32px;border-radius:999px;background:#EAF2FA;color:#2C5CE6;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;">장</div>
+            <div style="max-width:80%;">
+              <div style="font-size:12px;font-weight:600;color:#3A4856;">장동인 교수 <span style="background:#EAF2FA;color:#2C5CE6;font-size:10px;font-weight:700;padding:1px 6px;border-radius:999px;margin-left:2px;">강사</span></div>
+              <div style="background:#fff;border:1px solid #E8EEF6;border-radius:4px 16px 16px 16px;padding:10px 13px;font-size:14px;line-height:1.5;margin-top:4px;">3주차 실습 파일 올렸습니다. 수업 전에 설치까지 확인해주세요.</div>
+              <div style="background:#fff;border:1px solid #E8EEF6;border-radius:14px;padding:11px 13px;margin-top:6px;display:flex;align-items:center;gap:10px;">
+                <div style="width:36px;height:36px;border-radius:9px;background:#EAF2FA;display:flex;align-items:center;justify-content:center;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#2C5CE6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg></div>
+                <div style="min-width:0;"><div style="font-size:13px;font-weight:600;">week3_practice.zip</div><div style="font-size:11.5px;color:#5E6E7E;margin-top:1px;">Drive · 12.8MB · 참여자 읽기/쓰기</div></div>
+              </div>
+              <div style="font-size:10.5px;color:#8A99A8;margin-top:4px;">오후 2:14 · 읽음 21</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:9px;">
+            <div style="width:32px;height:32px;border-radius:999px;background:#F2F6FB;border:1px solid #E3EAF3;color:#5E6E7E;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;box-sizing:border-box;">박</div>
+            <div style="max-width:80%;">
+              <div style="font-size:12px;font-weight:600;color:#3A4856;">박은영 대표</div>
+              <div style="background:#fff;border:1px solid #E8EEF6;border-radius:4px 16px 16px 16px;padding:10px 13px;font-size:14px;line-height:1.5;margin-top:4px;">교수님, 설치 중에 “command not found”가 떠요. 보충수업 전에 해결할 방법이 있을까요?</div>
+              <div style="font-size:10.5px;color:#8A99A8;margin-top:4px;">오후 3:02</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:9px;">
+            <div style="width:32px;height:32px;border-radius:999px;background:#2C5CE6;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.8L20 10.7l-5.9 1.9L12 18.4l-2.1-5.8L4 10.7l6.1-1.9z"></path></svg></div>
+            <div style="max-width:82%;">
+              <div style="font-size:12px;font-weight:600;color:#3A4856;">AI 조교 <span style="background:#EAF2FA;color:#2C5CE6;font-size:10px;font-weight:700;padding:1px 6px;border-radius:999px;margin-left:2px;">AI</span></div>
+              <div style="background:#EAF2FA;border:1px solid #D9E3EF;border-radius:4px 16px 16px 16px;padding:11px 13px;font-size:13.5px;line-height:1.55;margin-top:4px;">PATH 설정 문제로 보입니다. 2주차 자료 p.12의 설치 확인 절차를 따라 터미널을 재시작해 보세요. 해결되지 않으면 10/17 보충수업에서 직접 봐드립니다.
+                <div style="display:flex;gap:6px;margin-top:8px;"><span style="background:#fff;border:1px solid #D9E3EF;font-size:11px;color:#3A4856;padding:3px 8px;border-radius:999px;">출처 · 2주차 자료</span><span style="background:#fff;border:1px solid #D9E3EF;font-size:11px;color:#3A4856;padding:3px 8px;border-radius:999px;">영상 41:20</span></div>
+              </div>
+              <div style="font-size:10.5px;color:#8A99A8;margin-top:4px;">오후 3:03 · 강사 검수 대기</div>
+            </div>
+          </div>
+          <div style="align-self:flex-end;max-width:80%;">
+            <div style="background:#2C5CE6;color:#fff;border-radius:16px 4px 16px 16px;padding:10px 13px;font-size:14px;line-height:1.5;">저도 같은 증상이었는데 재시작하니 됐습니다 👍</div>
+            <div style="font-size:10.5px;color:#8A99A8;margin-top:4px;text-align:right;">오후 3:10 · 읽음 8</div>
+          </div>
+        </div>
+        <div style="background:rgba(255,255,255,.92);border-top:1px solid #E8EEF6;padding:10px 16px 28px;display:flex;align-items:center;gap:10px;">
+          <span style="width:34px;height:34px;border-radius:999px;background:#F2F6FB;border:1px solid #E3EAF3;display:flex;align-items:center;justify-content:center;box-sizing:border-box;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3A4856" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></span>
+          <div style="flex:1;border:1px solid #D9E3EF;border-radius:999px;padding:9px 16px;font-size:14px;color:#8A99A8;background:#fff;">메시지 보내기</div>
+          <span style="width:34px;height:34px;border-radius:999px;background:#2C5CE6;display:flex;align-items:center;justify-content:center;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1f AI 조교 모바일 -->
+    <div id="1f" style="display:flex;flex-direction:column;gap:12px;">
+      <div style="display:flex;align-items:center;gap:10px;"><span style="background:#2C5CE6;color:#fff;font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;">1f</span><span style="font-size:14px;font-weight:600;color:#5E6E7E;">AI 조교 · 모바일</span></div>
+      <div style="width:390px;height:844px;background:#F2F6FB;border-radius:44px;box-shadow:0 24px 60px rgba(27,39,51,.16),0 0 0 10px #1B2733;overflow:hidden;display:flex;flex-direction:column;">
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 26px 6px;font-size:14px;font-weight:600;"><span>9:41</span><span style="display:flex;gap:5px;align-items:center;"><svg width="16" height="12" viewBox="0 0 18 12" fill="#1B2733"><rect x="0" y="7" width="3" height="5" rx="1"></rect><rect x="5" y="5" width="3" height="7" rx="1"></rect><rect x="10" y="2" width="3" height="10" rx="1"></rect><rect x="15" y="0" width="3" height="12" rx="1" opacity=".3"></rect></svg><svg width="22" height="12" viewBox="0 0 25 12"><rect x="0.5" y="0.5" width="21" height="11" rx="3" fill="none" stroke="#1B2733" opacity=".4"></rect><rect x="2" y="2" width="15" height="8" rx="1.5" fill="#1B2733"></rect><rect x="23" y="4" width="2" height="4" rx="1" fill="#1B2733" opacity=".4"></rect></svg></span></div>
+        <div style="padding:10px 20px 12px;background:rgba(255,255,255,.9);border-bottom:1px solid #E8EEF6;display:flex;align-items:center;gap:12px;">
+          <div style="width:36px;height:36px;border-radius:999px;background:#2C5CE6;display:flex;align-items:center;justify-content:center;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.8L20 10.7l-5.9 1.9L12 18.4l-2.1-5.8L4 10.7l6.1-1.9z"></path></svg></div>
+          <div style="flex:1;"><div style="font-size:16px;font-weight:700;">AI 조교</div><div style="display:flex;align-items:center;gap:5px;font-size:12px;color:#5E6E7E;"><span style="width:6px;height:6px;border-radius:999px;background:#2F7D4F;display:inline-block;"></span>18기 커리큘럼 · 자료 · 영상 최신 반영</div></div>
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#3A4856" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4M12 8h.01"></path></svg>
+        </div>
+        <div style="flex:1;overflow:hidden;padding:18px 20px;display:flex;flex-direction:column;gap:14px;">
+          <div style="text-align:center;padding:8px 0 2px;">
+            <div style="font-size:14px;font-weight:600;color:#3A4856;">무엇이 막히셨나요?</div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:12px;">
+              <span style="background:#fff;border:1px solid #D9E3EF;font-size:12.5px;font-weight:500;color:#3A4856;padding:7px 13px;border-radius:999px;">Claude Code 설치</span>
+              <span style="background:#fff;border:1px solid #D9E3EF;font-size:12.5px;font-weight:500;color:#3A4856;padding:7px 13px;border-radius:999px;">CLAUDE.md 작성법</span>
+              <span style="background:#fff;border:1px solid #D9E3EF;font-size:12.5px;font-weight:500;color:#3A4856;padding:7px 13px;border-radius:999px;">이번 주 과제</span>
+              <span style="background:#fff;border:1px solid #D9E3EF;font-size:12.5px;font-weight:500;color:#3A4856;padding:7px 13px;border-radius:999px;">AX 로드맵</span>
+            </div>
+          </div>
+          <div style="align-self:flex-end;background:#2C5CE6;color:#fff;font-size:14px;line-height:1.5;padding:11px 15px;border-radius:16px 4px 16px 16px;max-width:82%;">직원들 반복 업무를 에이전트로 바꾸려면 뭐부터 시작해야 하나요?</div>
+          <div style="align-self:flex-start;max-width:92%;">
+            <div style="background:#fff;border:1px solid #E8EEF6;border-radius:4px 16px 16px 16px;padding:13px 15px;font-size:14px;line-height:1.6;">
+              3주차에서 다룬 <b>자동화 후보 도출 프레임</b>부터 시작하세요. 순서는:
+              <div style="margin-top:8px;display:flex;flex-direction:column;gap:6px;">
+                <div style="display:flex;gap:8px;"><span style="color:#2C5CE6;font-weight:700;">1</span><span>주 3회 이상 반복되고 규칙이 있는 업무를 3개 고르기</span></div>
+                <div style="display:flex;gap:8px;"><span style="color:#2C5CE6;font-weight:700;">2</span><span>그중 데이터가 이미 파일로 존재하는 것 1개 선택</span></div>
+                <div style="display:flex;gap:8px;"><span style="color:#2C5CE6;font-weight:700;">3</span><span>Build Brief에 현재 방식 → 원하는 변화로 정리</span></div>
+              </div>
+              <div style="border-top:1px solid #EDF2F8;margin-top:12px;padding-top:10px;">
+                <div style="font-size:11px;font-weight:700;color:#8A99A8;letter-spacing:.5px;">출처</div>
+                <div style="display:flex;gap:6px;margin-top:6px;flex-wrap:wrap;">
+                  <span style="background:#F2F6FB;border:1px solid #E3EAF3;font-size:11.5px;color:#3A4856;padding:4px 9px;border-radius:999px;">3주차 세션 · AX 후보 도출</span>
+                  <span style="background:#F2F6FB;border:1px solid #E3EAF3;font-size:11.5px;color:#3A4856;padding:4px 9px;border-radius:999px;">Build Brief 템플릿</span>
+                </div>
+                <div style="font-size:11.5px;color:#5E6E7E;margin-top:8px;">업종별 사례는 확실하지 않아요 — 1:1 코칭에서 구체화하는 것을 권합니다.</div>
+              </div>
+            </div>
+            <div style="display:flex;gap:8px;margin-top:8px;">
+              <span style="border:1px solid #D9E3EF;background:#fff;font-size:12px;font-weight:600;color:#3A4856;padding:6px 12px;border-radius:999px;">대화방에 공유</span>
+              <span style="border:1px solid #D9E3EF;background:#fff;font-size:12px;font-weight:600;color:#3A4856;padding:6px 12px;border-radius:999px;">코칭 예약</span>
+              <span style="border:1px solid #D9E3EF;background:#fff;font-size:12px;font-weight:600;color:#8A99A8;padding:6px 12px;border-radius:999px;">신고</span>
+            </div>
+          </div>
+        </div>
+        <div style="background:rgba(255,255,255,.92);border-top:1px solid #E8EEF6;padding:10px 16px 28px;display:flex;align-items:center;gap:10px;">
+          <div style="flex:1;border:1px solid #D9E3EF;border-radius:999px;padding:9px 16px;font-size:14px;color:#8A99A8;background:#fff;">AI·바이브코딩·AX 무엇이든 질문</div>
+          <span style="width:34px;height:34px;border-radius:999px;background:#2C5CE6;display:flex;align-items:center;justify-content:center;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1g 지원서 모바일 -->
+    <div id="1g" style="display:flex;flex-direction:column;gap:12px;">
+      <div style="display:flex;align-items:center;gap:10px;"><span style="background:#2C5CE6;color:#fff;font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;">1g</span><span style="font-size:14px;font-weight:600;color:#5E6E7E;">지원서 (비로그인 단계형) · 모바일</span></div>
+      <div style="width:390px;height:844px;background:#fff;border-radius:44px;box-shadow:0 24px 60px rgba(27,39,51,.16),0 0 0 10px #1B2733;overflow:hidden;display:flex;flex-direction:column;">
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 26px 6px;font-size:14px;font-weight:600;"><span>9:41</span><span style="display:flex;gap:5px;align-items:center;"><svg width="16" height="12" viewBox="0 0 18 12" fill="#1B2733"><rect x="0" y="7" width="3" height="5" rx="1"></rect><rect x="5" y="5" width="3" height="7" rx="1"></rect><rect x="10" y="2" width="3" height="10" rx="1"></rect><rect x="15" y="0" width="3" height="12" rx="1" opacity=".3"></rect></svg><svg width="22" height="12" viewBox="0 0 25 12"><rect x="0.5" y="0.5" width="21" height="11" rx="3" fill="none" stroke="#1B2733" opacity=".4"></rect><rect x="2" y="2" width="15" height="8" rx="1.5" fill="#1B2733"></rect><rect x="23" y="4" width="2" height="4" rx="1" fill="#1B2733" opacity=".4"></rect></svg></span></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 20px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1B2733" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          <span style="font-size:13px;color:#5E6E7E;font-weight:500;">18기 지원서</span>
+          <span style="font-size:13px;color:#2C5CE6;font-weight:600;">임시저장</span>
+        </div>
+        <div style="padding:0 20px;"><div style="height:5px;border-radius:999px;background:#E8F0F8;"><div style="width:57%;height:5px;border-radius:999px;background:#2C5CE6;"></div></div><div style="font-size:12px;color:#5E6E7E;margin-top:8px;">4 / 7</div></div>
+        <div style="flex:1;padding:28px 20px 0;">
+          <div style="font-size:24px;font-weight:800;letter-spacing:-0.5px;line-height:1.3;">이 과정에 지원하시는<br>가장 큰 이유는 무엇인가요?</div>
+          <div style="font-size:14px;color:#5E6E7E;margin-top:10px;line-height:1.55;">회사에서 해결하고 싶은 문제를 적어주시면 커리큘럼과 코칭에 반영됩니다.</div>
+          <div style="border:1.5px solid #2C5CE6;border-radius:14px;padding:16px;margin-top:24px;min-height:140px;font-size:15px;line-height:1.6;color:#1B2733;box-shadow:0 0 0 4px rgba(44,92,230,.08);">영업팀 견적서 작성에 매주 20시간이 들어갑니다. 이걸 자동화해서<span style="display:inline-block;width:2px;height:18px;background:#2C5CE6;vertical-align:-3px;margin-left:1px;"></span></div>
+          <div style="display:flex;align-items:center;gap:10px;background:#F2F6FB;border:1px solid #E8EEF6;border-radius:12px;padding:12px 14px;margin-top:16px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2C5CE6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4M12 8h.01"></path></svg>
+            <div style="font-size:12.5px;color:#3A4856;line-height:1.45;">로그인 없이 제출됩니다. 제출 즉시 카카오 알림톡으로 접수번호를 보내드려요.</div>
+          </div>
+        </div>
+        <div style="padding:16px 20px 32px;display:flex;gap:10px;">
+          <span style="flex:1;text-align:center;border:1px solid #D9E3EF;color:#1B2733;font-size:15px;font-weight:600;padding:14px 0;border-radius:999px;box-sizing:border-box;">이전</span>
+          <span style="flex:2;text-align:center;background:#2C5CE6;color:#fff;font-size:15px;font-weight:600;padding:14px 0;border-radius:999px;box-shadow:0 8px 20px rgba(44,92,230,.25);">다음</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+</x-dc>
+</body>
+</html>
