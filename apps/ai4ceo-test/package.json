@@ -1,0 +1,37 @@
+{
+  "name": "ai4ceo-test",
+  "private": true,
+  "version": "0.1.0",
+  "description": "AI4CEO Portal 비즈니스 테스트 자동화 하네스 + QA 대시보드 (PRD-test-automation v0.3)",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "test:provision": "node tests/provision.mjs",
+    "test:e2e": "playwright test",
+    "test:api": "playwright test --project=api",
+    "test:lint-gates": "node tests/static/gate-lint.mjs",
+    "test:parse": "node tests/report/parse-cases.mjs",
+    "test:report": "node tests/report/generate.mjs",
+    "test:all": "npm run test:provision && npm run test:lint-gates && npm run test:e2e && npm run test:report"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.47.10",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.469.0",
+    "next": "^15.5.19",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwind-merge": "^2.6.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.49.1",
+    "@tailwindcss/postcss": "^4.0.0",
+    "@types/node": "^22.10.5",
+    "@types/react": "^19.0.7",
+    "@types/react-dom": "^19.0.3",
+    "dotenv": "^16.4.7",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^5.7.3"
+  }
+}

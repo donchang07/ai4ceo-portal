@@ -1,0 +1,30 @@
+{
+  "ok": true,
+  "runAt": "2026-07-19T16:05:13.070Z",
+  "portalPagesChecked": 11,
+  "apiRoutesChecked": 1,
+  "results": [
+    {
+      "check": "FR-11 portal/alumni 게이트",
+      "result": "pass",
+      "detail": "11개 페이지 검사"
+    },
+    {
+      "check": "FR-11 admin layout 게이트 상속",
+      "result": "pass",
+      "detail": "admin 페이지 4개 · layout 게이트 확인"
+    },
+    {
+      "check": "FR-12 api route 권한 검사",
+      "result": "pass",
+      "detail": "1개 route 검사"
+    },
+    {
+      "id": "SEC-11",
+      "check": "SEC-11 service_role 키 클라이언트 미노출",
+      "result": "pass",
+      "detail": "클라이언트 번들 노출 없음"
+    }
+  ],
+  "violations": []
+}

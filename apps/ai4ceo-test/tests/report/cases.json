@@ -1,0 +1,1378 @@
+[
+  {
+    "id": "AUTH-01",
+    "file": "01",
+    "section": "",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "비밀번호 로그인 성공"
+  },
+  {
+    "id": "AUTH-02",
+    "file": "01",
+    "section": "",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "비밀번호 오류"
+  },
+  {
+    "id": "AUTH-03",
+    "file": "01",
+    "section": "",
+    "priority": "P1",
+    "declaredStatus": "pass",
+    "scenario": "미가입 이메일 비밀번호 로그인"
+  },
+  {
+    "id": "AUTH-04",
+    "file": "01",
+    "section": "",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "매직링크 발송"
+  },
+  {
+    "id": "AUTH-05",
+    "file": "01",
+    "section": "",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "최초 매직링크 → 비밀번호 설정 강제"
+  },
+  {
+    "id": "AUTH-06",
+    "file": "01",
+    "section": "",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "비밀번호 설정 완료"
+  },
+  {
+    "id": "AUTH-07",
+    "file": "01",
+    "section": "",
+    "priority": "P1",
+    "declaredStatus": "pass",
+    "scenario": "비밀번호 8자 미만"
+  },
+  {
+    "id": "AUTH-08",
+    "file": "01",
+    "section": "",
+    "priority": "P1",
+    "declaredStatus": "pass",
+    "scenario": "비밀번호 불일치"
+  },
+  {
+    "id": "AUTH-09",
+    "file": "01",
+    "section": "",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "기설정자 매직링크 재사용"
+  },
+  {
+    "id": "AUTH-10",
+    "file": "01",
+    "section": "",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "첫 로그인 시 profiles 자동 생성"
+  },
+  {
+    "id": "AUTH-11",
+    "file": "01",
+    "section": "",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "admin 계정 role 비강등"
+  },
+  {
+    "id": "AUTH-12",
+    "file": "01",
+    "section": "",
+    "priority": "P1",
+    "declaredStatus": "pass",
+    "scenario": "만료/재사용 매직링크"
+  },
+  {
+    "id": "AUTH-13",
+    "file": "01",
+    "section": "",
+    "priority": "P2",
+    "declaredStatus": "pass",
+    "scenario": "이메일 rate limit"
+  },
+  {
+    "id": "AUTH-14",
+    "file": "01",
+    "section": "",
+    "priority": "P1",
+    "declaredStatus": "mock",
+    "scenario": "로그아웃"
+  },
+  {
+    "id": "AC-01",
+    "file": "02",
+    "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "위 13개 라우트 전부 접근"
+  },
+  {
+    "id": "AC-02",
+    "file": "02",
+    "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "위 13개 라우트 전부 접근"
+  },
+  {
+    "id": "AC-03",
+    "file": "02",
+    "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "위 13개 라우트 전부 접근"
+  },
+  {
+    "id": "AC-04",
+    "file": "02",
+    "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "위 13개 라우트 전부 접근"
+  },
+  {
+    "id": "AC-05",
+    "file": "02",
+    "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "위 13개 라우트 전부 접근"
+  },
+  {
+    "id": "AC-06",
+    "file": "02",
+    "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "위 13개 라우트 전부 접근"
+  },
+  {
+    "id": "AC-07",
+    "file": "02",
+    "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "위 13개 라우트 전부 접근"
+  },
+  {
+    "id": "AC-08",
+    "file": "02",
+    "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "위 13개 라우트 전부 접근"
+  },
+  {
+    "id": "AC-09",
+    "file": "02",
+    "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "위 13개 라우트 전부 접근"
+  },
+  {
+    "id": "AC-10",
+    "file": "02",
+    "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "위 13개 라우트 전부 접근"
+  },
+  {
+    "id": "AC-11",
+    "file": "02",
+    "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "위 13개 라우트 전부 접근"
+  },
+  {
+    "id": "AC-12",
+    "file": "02",
+    "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "위 13개 라우트 전부 접근"
+  },
+  {
+    "id": "AC-13",
+    "file": "02",
+    "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "위 13개 라우트 전부 접근"
+  },
+  {
+    "id": "AC-14",
+    "file": "02",
+    "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "`/portal/cohort` 접근"
+  },
+  {
+    "id": "AC-15",
+    "file": "02",
+    "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+    "priority": "P0",
+    "declaredStatus": "mock",
+    "scenario": "`/portal/chat`에 메시지 입력"
+  },
+  {
+    "id": "AC-16",
+    "file": "02",
+    "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "`/alumni` 접근"
+  },
+  {
+    "id": "AC-17",
+    "file": "02",
+    "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "`/admin` 접근"
+  },
+  {
+    "id": "AC-18",
+    "file": "02",
+    "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+    "priority": "P1",
+    "declaredStatus": "pass",
+    "scenario": "사이드바에 \"관리자\" 메뉴 노출 여부"
+  },
+  {
+    "id": "AC-19",
+    "file": "02",
+    "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "`/portal/sessions` 접근"
+  },
+  {
+    "id": "AC-20",
+    "file": "02",
+    "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "`/portal/chat` 접근"
+  },
+  {
+    "id": "AC-21",
+    "file": "02",
+    "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "`/portal/ai` 접근"
+  },
+  {
+    "id": "AC-22",
+    "file": "02",
+    "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "`/alumni/membership` 표시"
+  },
+  {
+    "id": "AC-23",
+    "file": "02",
+    "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "`/portal/sessions` 접근"
+  },
+  {
+    "id": "AC-24",
+    "file": "02",
+    "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "`/alumni/membership` 표시"
+  },
+  {
+    "id": "AC-25",
+    "file": "02",
+    "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "`/portal/files` 접근"
+  },
+  {
+    "id": "AC-26",
+    "file": "02",
+    "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+    "priority": "P1",
+    "declaredStatus": "pass",
+    "scenario": "`/alumni` 접근"
+  },
+  {
+    "id": "AC-27",
+    "file": "02",
+    "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "`/portal/cohort` 접근"
+  },
+  {
+    "id": "AC-28",
+    "file": "02",
+    "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "`/portal/billing` 접근"
+  },
+  {
+    "id": "AC-29",
+    "file": "02",
+    "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+    "priority": "P1",
+    "declaredStatus": "pass",
+    "scenario": "`/trends` 열람"
+  },
+  {
+    "id": "AC-30",
+    "file": "02",
+    "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "`/admin` 직접 URL 입력"
+  },
+  {
+    "id": "AC-31",
+    "file": "02",
+    "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "`/portal/sessions/s1` 직접 URL"
+  },
+  {
+    "id": "AC-32",
+    "file": "02",
+    "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "naver 계정으로 `/portal/sessions` 재접근"
+  },
+  {
+    "id": "AC-33",
+    "file": "02",
+    "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "hanmail 계정으로 `/portal/cohort` 재접근"
+  },
+  {
+    "id": "AC-34",
+    "file": "02",
+    "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "`/alumni` 접근 O, `/portal/chat` R"
+  },
+  {
+    "id": "AC-35",
+    "file": "02",
+    "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+    "priority": "P1",
+    "declaredStatus": "pass",
+    "scenario": "로그인 직후 자동 이동 목적지"
+  },
+  {
+    "id": "AC-36",
+    "file": "02",
+    "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+    "priority": "P1",
+    "declaredStatus": "pass",
+    "scenario": "`/portal/cohort?_rsc=...` 직접 fetch"
+  },
+  {
+    "id": "AC-37",
+    "file": "02",
+    "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+    "priority": "P2",
+    "declaredStatus": "mock",
+    "scenario": "assistant 계정 생성 후 LMS 접근"
+  },
+  {
+    "id": "AC-38",
+    "file": "02",
+    "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+    "priority": "P1",
+    "declaredStatus": "pass",
+    "scenario": "쿠키 삭제 후 `/portal/chat` 새로고침"
+  },
+  {
+    "id": "AC-39",
+    "file": "02",
+    "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+    "priority": "P2",
+    "declaredStatus": "mock",
+    "scenario": "재학생이 `/login` 방문"
+  },
+  {
+    "id": "AC-40",
+    "file": "02",
+    "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+    "priority": "P1",
+    "declaredStatus": "pass",
+    "scenario": "재학생 모바일 뷰(390px)"
+  },
+  {
+    "id": "AC-41",
+    "file": "02",
+    "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+    "priority": "P2",
+    "declaredStatus": "mock",
+    "scenario": "졸업생 모바일 뷰"
+  },
+  {
+    "id": "AC-42",
+    "file": "02",
+    "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+    "priority": "P1",
+    "declaredStatus": "pass",
+    "scenario": "admin으로 `/portal/cohort` 접근"
+  },
+  {
+    "id": "AI-01",
+    "file": "03",
+    "section": "",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "수강생만 질의 가능 (핵심 룰)"
+  },
+  {
+    "id": "AI-02",
+    "file": "03",
+    "section": "",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "강의자료 기반 답변"
+  },
+  {
+    "id": "AI-03",
+    "file": "03",
+    "section": "",
+    "priority": "P0",
+    "declaredStatus": "unknown",
+    "scenario": "PPT 내용 검색"
+  },
+  {
+    "id": "AI-04",
+    "file": "03",
+    "section": "",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "자료에 없는 내용의 정직성"
+  },
+  {
+    "id": "AI-05",
+    "file": "03",
+    "section": "",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "커리큘럼 질문"
+  },
+  {
+    "id": "AI-06",
+    "file": "03",
+    "section": "",
+    "priority": "P1",
+    "declaredStatus": "pass",
+    "scenario": "스트리밍 렌더"
+  },
+  {
+    "id": "AI-07",
+    "file": "03",
+    "section": "",
+    "priority": "P1",
+    "declaredStatus": "unknown",
+    "scenario": "멀티턴 문맥 유지"
+  },
+  {
+    "id": "AI-08",
+    "file": "03",
+    "section": "",
+    "priority": "P1",
+    "declaredStatus": "pass",
+    "scenario": "질문 로그 기록"
+  },
+  {
+    "id": "AI-09",
+    "file": "03",
+    "section": "",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "파일 변동 반영 (증분 동기화)"
+  },
+  {
+    "id": "AI-10",
+    "file": "03",
+    "section": "",
+    "priority": "P1",
+    "declaredStatus": "pass",
+    "scenario": "파일 삭제 반영"
+  },
+  {
+    "id": "AI-11",
+    "file": "03",
+    "section": "",
+    "priority": "P1",
+    "declaredStatus": "pass",
+    "scenario": "파일 수정 반영"
+  },
+  {
+    "id": "AI-12",
+    "file": "03",
+    "section": "",
+    "priority": "P1",
+    "declaredStatus": "pass",
+    "scenario": "임베딩 장애 시 열화 동작"
+  },
+  {
+    "id": "AI-13",
+    "file": "03",
+    "section": "",
+    "priority": "P2",
+    "declaredStatus": "unknown",
+    "scenario": "Fable 5 안전 거절 폴백"
+  },
+  {
+    "id": "AI-14",
+    "file": "03",
+    "section": "",
+    "priority": "P1",
+    "declaredStatus": "unknown",
+    "scenario": "프롬프트 인젝션 저항"
+  },
+  {
+    "id": "AI-15",
+    "file": "03",
+    "section": "",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "비회원 벡터DB 직접 접근 차단"
+  },
+  {
+    "id": "AI-16",
+    "file": "03",
+    "section": "",
+    "priority": "P2",
+    "declaredStatus": "unknown",
+    "scenario": "부하: 동시 질문"
+  },
+  {
+    "id": "ADM-01",
+    "file": "04",
+    "section": "4.1 운영 대시보드 `/admin`",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "지원자 수 KPI"
+  },
+  {
+    "id": "ADM-02",
+    "file": "04",
+    "section": "4.1 운영 대시보드 `/admin`",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "입금 완료 KPI"
+  },
+  {
+    "id": "ADM-03",
+    "file": "04",
+    "section": "4.1 운영 대시보드 `/admin`",
+    "priority": "P1",
+    "declaredStatus": "mock",
+    "scenario": "추천 유입 64% KPI"
+  },
+  {
+    "id": "ADM-04",
+    "file": "04",
+    "section": "4.1 운영 대시보드 `/admin`",
+    "priority": "P1",
+    "declaredStatus": "mock",
+    "scenario": "결과물 완성률 78%"
+  },
+  {
+    "id": "ADM-05",
+    "file": "04",
+    "section": "4.1 운영 대시보드 `/admin`",
+    "priority": "P1",
+    "declaredStatus": "mock",
+    "scenario": "전형 퍼널 (38→30→24→21→20)"
+  },
+  {
+    "id": "ADM-06",
+    "file": "04",
+    "section": "4.1 운영 대시보드 `/admin`",
+    "priority": "P1",
+    "declaredStatus": "mock",
+    "scenario": "\"오늘 처리할 것\" 리스트"
+  },
+  {
+    "id": "ADM-07",
+    "file": "04",
+    "section": "4.1 운영 대시보드 `/admin`",
+    "priority": "P1",
+    "declaredStatus": "mock",
+    "scenario": "알림 발송 현황 (42/3/93%)"
+  },
+  {
+    "id": "ADM-08",
+    "file": "04",
+    "section": "4.2 선발 관리 `/admin/applications`",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "지원서 목록 표시"
+  },
+  {
+    "id": "ADM-09",
+    "file": "04",
+    "section": "4.2 선발 관리 `/admin/applications`",
+    "priority": "P1",
+    "declaredStatus": "pass",
+    "scenario": "상태 필터·검색"
+  },
+  {
+    "id": "ADM-10",
+    "file": "04",
+    "section": "4.2 선발 관리 `/admin/applications`",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "합격 처리"
+  },
+  {
+    "id": "ADM-11",
+    "file": "04",
+    "section": "4.2 선발 관리 `/admin/applications`",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "대기/불합격 처리"
+  },
+  {
+    "id": "ADM-12",
+    "file": "04",
+    "section": "4.2 선발 관리 `/admin/applications`",
+    "priority": "P0",
+    "declaredStatus": "mock",
+    "scenario": "합격 시 자동 후속 (알림톡 T-02·초대링크·인보이스)"
+  },
+  {
+    "id": "ADM-13",
+    "file": "04",
+    "section": "4.3 커리큘럼 편집 `/admin/curriculum`",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "세션 목록 (날짜 라벨)"
+  },
+  {
+    "id": "ADM-14",
+    "file": "04",
+    "section": "4.3 커리큘럼 편집 `/admin/curriculum`",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "세션 삽입"
+  },
+  {
+    "id": "ADM-15",
+    "file": "04",
+    "section": "4.3 커리큘럼 편집 `/admin/curriculum`",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "인라인 편집 저장"
+  },
+  {
+    "id": "ADM-16",
+    "file": "04",
+    "section": "4.3 커리큘럼 편집 `/admin/curriculum`",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "저장 즉시 수강생 반영"
+  },
+  {
+    "id": "ADM-17",
+    "file": "04",
+    "section": "4.3 커리큘럼 편집 `/admin/curriculum`",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "AI 조교 인덱스 자동 갱신"
+  },
+  {
+    "id": "ADM-18",
+    "file": "04",
+    "section": "4.3 커리큘럼 편집 `/admin/curriculum`",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "드래그 순서 변경"
+  },
+  {
+    "id": "ADM-19",
+    "file": "04",
+    "section": "4.3 커리큘럼 편집 `/admin/curriculum`",
+    "priority": "P1",
+    "declaredStatus": "pass",
+    "scenario": "미리보기"
+  },
+  {
+    "id": "ADM-20",
+    "file": "04",
+    "section": "4.3 커리큘럼 편집 `/admin/curriculum`",
+    "priority": "P1",
+    "declaredStatus": "mock",
+    "scenario": "첨부 자료 교체·공개 예약"
+  },
+  {
+    "id": "BIL-01",
+    "file": "05",
+    "section": "테스트 케이스",
+    "priority": "P0",
+    "declaredStatus": "mock",
+    "scenario": "수강생 인보이스 화면"
+  },
+  {
+    "id": "BIL-02",
+    "file": "05",
+    "section": "테스트 케이스",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "계좌 복사"
+  },
+  {
+    "id": "BIL-03",
+    "file": "05",
+    "section": "테스트 케이스",
+    "priority": "P1",
+    "declaredStatus": "mock",
+    "scenario": "스마트스토어 이동"
+  },
+  {
+    "id": "BIL-04",
+    "file": "05",
+    "section": "테스트 케이스",
+    "priority": "P0",
+    "declaredStatus": "mock",
+    "scenario": "세금계산서 요청 제출"
+  },
+  {
+    "id": "BIL-05",
+    "file": "05",
+    "section": "테스트 케이스",
+    "priority": "P0",
+    "declaredStatus": "mock",
+    "scenario": "관리자 입금확인 → paid"
+  },
+  {
+    "id": "BIL-06",
+    "file": "05",
+    "section": "테스트 케이스",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "인보이스 목록 (관리자)"
+  },
+  {
+    "id": "BIL-07",
+    "file": "05",
+    "section": "테스트 케이스",
+    "priority": "P1",
+    "declaredStatus": "pass",
+    "scenario": "팝빌 mock 모드 표기"
+  },
+  {
+    "id": "BIL-08",
+    "file": "05",
+    "section": "테스트 케이스",
+    "priority": "P1",
+    "declaredStatus": "mock",
+    "scenario": "결제 경로별 증빙 분기 (v2.3 룰)"
+  },
+  {
+    "id": "BIL-09",
+    "file": "05",
+    "section": "테스트 케이스",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "타인 인보이스 열람 차단"
+  },
+  {
+    "id": "BIL-10",
+    "file": "05",
+    "section": "테스트 케이스",
+    "priority": "P0",
+    "declaredStatus": "mock",
+    "scenario": "paid 전환 시 화면 전환"
+  },
+  {
+    "id": "BIL-11",
+    "file": "05",
+    "section": "테스트 케이스",
+    "priority": "P0",
+    "declaredStatus": "mock",
+    "scenario": "멤버십 결제"
+  },
+  {
+    "id": "BIL-12",
+    "file": "05",
+    "section": "테스트 케이스",
+    "priority": "P1",
+    "declaredStatus": "pass",
+    "scenario": "멤버십 만료 D-day 정확성"
+  },
+  {
+    "id": "BIL-13",
+    "file": "05",
+    "section": "테스트 케이스",
+    "priority": "P0",
+    "declaredStatus": "unknown",
+    "scenario": "Toss webhook 위조 방어 (구현 시)"
+  },
+  {
+    "id": "BIL-14",
+    "file": "05",
+    "section": "테스트 케이스",
+    "priority": "P1",
+    "declaredStatus": "unknown",
+    "scenario": "이중 입금확인 방지"
+  },
+  {
+    "id": "BIL-15",
+    "file": "05",
+    "section": "테스트 케이스",
+    "priority": "P1",
+    "declaredStatus": "pass",
+    "scenario": "금액 표기 일관성"
+  },
+  {
+    "id": "PUB-01",
+    "file": "06",
+    "section": "",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "랜딩 핵심 정보"
+  },
+  {
+    "id": "PUB-02",
+    "file": "06",
+    "section": "",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "과정 안내 전문"
+  },
+  {
+    "id": "PUB-03",
+    "file": "06",
+    "section": "",
+    "priority": "P1",
+    "declaredStatus": "pass",
+    "scenario": "헤더 내비게이션"
+  },
+  {
+    "id": "PUB-04",
+    "file": "06",
+    "section": "",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "지원서 7단계 진행"
+  },
+  {
+    "id": "PUB-05",
+    "file": "06",
+    "section": "",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "지원서 실제 저장"
+  },
+  {
+    "id": "PUB-06",
+    "file": "06",
+    "section": "",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "제출 건 관리자 노출"
+  },
+  {
+    "id": "PUB-07",
+    "file": "06",
+    "section": "",
+    "priority": "P1",
+    "declaredStatus": "unknown",
+    "scenario": "필수값 검증"
+  },
+  {
+    "id": "PUB-08",
+    "file": "06",
+    "section": "",
+    "priority": "P1",
+    "declaredStatus": "pass",
+    "scenario": "추천 코드 입력"
+  },
+  {
+    "id": "PUB-09",
+    "file": "06",
+    "section": "",
+    "priority": "P0",
+    "declaredStatus": "mock",
+    "scenario": "접수 알림톡/이메일 (T-01)"
+  },
+  {
+    "id": "PUB-10",
+    "file": "06",
+    "section": "",
+    "priority": "P1",
+    "declaredStatus": "mock",
+    "scenario": "지원번호 부여"
+  },
+  {
+    "id": "PUB-11",
+    "file": "06",
+    "section": "",
+    "priority": "P1",
+    "declaredStatus": "pass",
+    "scenario": "트렌드 피드 잠금"
+  },
+  {
+    "id": "PUB-12",
+    "file": "06",
+    "section": "",
+    "priority": "P2",
+    "declaredStatus": "mock",
+    "scenario": "SEO/OG 기본"
+  },
+  {
+    "id": "SEC-01",
+    "file": "07",
+    "section": "",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "타 수강생 인보이스 조회"
+  },
+  {
+    "id": "SEC-02",
+    "file": "07",
+    "section": "",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "타인 profiles 조회"
+  },
+  {
+    "id": "SEC-03",
+    "file": "07",
+    "section": "",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "비admin의 applications 조회"
+  },
+  {
+    "id": "SEC-04",
+    "file": "07",
+    "section": "",
+    "priority": "P1",
+    "declaredStatus": "mock",
+    "scenario": "공개 지원서 insert 남용"
+  },
+  {
+    "id": "SEC-05",
+    "file": "07",
+    "section": "",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "벡터DB 직접 조회"
+  },
+  {
+    "id": "SEC-06",
+    "file": "07",
+    "section": "",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "rag_chunks 직접 select"
+  },
+  {
+    "id": "SEC-07",
+    "file": "07",
+    "section": "",
+    "priority": "P1",
+    "declaredStatus": "pass",
+    "scenario": "세션/자료 무단 조회"
+  },
+  {
+    "id": "SEC-08",
+    "file": "07",
+    "section": "",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "관리자 전용 쓰기"
+  },
+  {
+    "id": "SEC-09",
+    "file": "07",
+    "section": "",
+    "priority": "P1",
+    "declaredStatus": "pass",
+    "scenario": "curriculum_change_logs 위조"
+  },
+  {
+    "id": "SEC-10",
+    "file": "07",
+    "section": "",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "AI 튜터 우회 호출"
+  },
+  {
+    "id": "SEC-11",
+    "file": "07",
+    "section": "",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "service_role 키 노출 여부"
+  },
+  {
+    "id": "SEC-12",
+    "file": "07",
+    "section": "",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "memberships 위조"
+  },
+  {
+    "id": "SEC-13",
+    "file": "07",
+    "section": "",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "만료 멤버십으로 아카이브 접근"
+  },
+  {
+    "id": "LMS-V01",
+    "file": "08",
+    "section": "8.1 강의 영상 재생·이동 (LMS-V)",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "YouTube 영상 재생"
+  },
+  {
+    "id": "LMS-V02",
+    "file": "08",
+    "section": "8.1 강의 영상 재생·이동 (LMS-V)",
+    "priority": "P1",
+    "declaredStatus": "pass",
+    "scenario": "영상 없는 세션"
+  },
+  {
+    "id": "LMS-V03",
+    "file": "08",
+    "section": "8.1 강의 영상 재생·이동 (LMS-V)",
+    "priority": "P1",
+    "declaredStatus": "unknown",
+    "scenario": "mp4 직링크 재생"
+  },
+  {
+    "id": "LMS-V04",
+    "file": "08",
+    "section": "8.1 강의 영상 재생·이동 (LMS-V)",
+    "priority": "P1",
+    "declaredStatus": "unknown",
+    "scenario": "Google Drive 영상"
+  },
+  {
+    "id": "LMS-V05",
+    "file": "08",
+    "section": "8.1 강의 영상 재생·이동 (LMS-V)",
+    "priority": "P0",
+    "declaredStatus": "unknown",
+    "scenario": "특정 지점 이동 (seek) — 핵심"
+  },
+  {
+    "id": "LMS-V06",
+    "file": "08",
+    "section": "8.1 강의 영상 재생·이동 (LMS-V)",
+    "priority": "P1",
+    "declaredStatus": "unknown",
+    "scenario": "mp4 seek"
+  },
+  {
+    "id": "LMS-V07",
+    "file": "08",
+    "section": "8.1 강의 영상 재생·이동 (LMS-V)",
+    "priority": "P2",
+    "declaredStatus": "pass",
+    "scenario": "Drive seek 무시"
+  },
+  {
+    "id": "LMS-V08",
+    "file": "08",
+    "section": "8.1 강의 영상 재생·이동 (LMS-V)",
+    "priority": "P2",
+    "declaredStatus": "unknown",
+    "scenario": "잘못된 URL"
+  },
+  {
+    "id": "LMS-V09",
+    "file": "08",
+    "section": "8.1 강의 영상 재생·이동 (LMS-V)",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "영상 열람 권한"
+  },
+  {
+    "id": "LMS-V10",
+    "file": "08",
+    "section": "8.1 강의 영상 재생·이동 (LMS-V)",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "졸업 미가입자 영상 차단"
+  },
+  {
+    "id": "LMS-M01",
+    "file": "08",
+    "section": "8.2 강의자료 (LMS-M)",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "자료 목록 표시"
+  },
+  {
+    "id": "LMS-M02",
+    "file": "08",
+    "section": "8.2 강의자료 (LMS-M)",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "자료 열기"
+  },
+  {
+    "id": "LMS-M03",
+    "file": "08",
+    "section": "8.2 강의자료 (LMS-M)",
+    "priority": "P1",
+    "declaredStatus": "pass",
+    "scenario": "자료 없는 세션"
+  },
+  {
+    "id": "LMS-M04",
+    "file": "08",
+    "section": "8.2 강의자료 (LMS-M)",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "자료 권한"
+  },
+  {
+    "id": "LMS-Q01",
+    "file": "08",
+    "section": "8.3 질의응답 — 수강생 질문 (LMS-Q)",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "질문 등록"
+  },
+  {
+    "id": "LMS-Q02",
+    "file": "08",
+    "section": "8.3 질의응답 — 수강생 질문 (LMS-Q)",
+    "priority": "P1",
+    "declaredStatus": "pass",
+    "scenario": "빈 질문 방어"
+  },
+  {
+    "id": "LMS-Q03",
+    "file": "08",
+    "section": "8.3 질의응답 — 수강생 질문 (LMS-Q)",
+    "priority": "P2",
+    "declaredStatus": "pass",
+    "scenario": "질문 카운트"
+  },
+  {
+    "id": "LMS-Q04",
+    "file": "08",
+    "section": "8.3 질의응답 — 수강생 질문 (LMS-Q)",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "작성자명 표시"
+  },
+  {
+    "id": "LMS-Q05",
+    "file": "08",
+    "section": "8.3 질의응답 — 수강생 질문 (LMS-Q)",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "비수강생 질문 차단"
+  },
+  {
+    "id": "LMS-Q06",
+    "file": "08",
+    "section": "8.3 질의응답 — 수강생 질문 (LMS-Q)",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "타 기수 질문 열람 차단"
+  },
+  {
+    "id": "LMS-A01",
+    "file": "08",
+    "section": "8.4 질의응답 — 답변 (강사·동료·AI) (LMS-A)",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "동료 수강생 답변"
+  },
+  {
+    "id": "LMS-A02",
+    "file": "08",
+    "section": "8.4 질의응답 — 답변 (강사·동료·AI) (LMS-A)",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "강사 답변"
+  },
+  {
+    "id": "LMS-A03",
+    "file": "08",
+    "section": "8.4 질의응답 — 답변 (강사·동료·AI) (LMS-A)",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "AI 조교 답변 저장 — 핵심"
+  },
+  {
+    "id": "LMS-A04",
+    "file": "08",
+    "section": "8.4 질의응답 — 답변 (강사·동료·AI) (LMS-A)",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "AI 답변의 근거 표기"
+  },
+  {
+    "id": "LMS-A05",
+    "file": "08",
+    "section": "8.4 질의응답 — 답변 (강사·동료·AI) (LMS-A)",
+    "priority": "P1",
+    "declaredStatus": "pass",
+    "scenario": "답변 순서"
+  },
+  {
+    "id": "LMS-A06",
+    "file": "08",
+    "section": "8.4 질의응답 — 답변 (강사·동료·AI) (LMS-A)",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "비수강생 답변 차단"
+  },
+  {
+    "id": "LMS-A07",
+    "file": "08",
+    "section": "8.4 질의응답 — 답변 (강사·동료·AI) (LMS-A)",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "AI 답변 권한"
+  },
+  {
+    "id": "LMS-A08",
+    "file": "08",
+    "section": "8.4 질의응답 — 답변 (강사·동료·AI) (LMS-A)",
+    "priority": "P1",
+    "declaredStatus": "pass",
+    "scenario": "답변 후 즉시 반영"
+  },
+  {
+    "id": "LMS-AI01",
+    "file": "08",
+    "section": "8.5 인라인 AI 조교 패널 (LMS-AI)",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "스트리밍 답변"
+  },
+  {
+    "id": "LMS-AI02",
+    "file": "08",
+    "section": "8.5 인라인 AI 조교 패널 (LMS-AI)",
+    "priority": "P0",
+    "declaredStatus": "unknown",
+    "scenario": "출처 타임스탬프 칩"
+  },
+  {
+    "id": "LMS-AI03",
+    "file": "08",
+    "section": "8.5 인라인 AI 조교 패널 (LMS-AI)",
+    "priority": "P1",
+    "declaredStatus": "pass",
+    "scenario": "비타임스탬프 출처"
+  },
+  {
+    "id": "LMS-AI04",
+    "file": "08",
+    "section": "8.5 인라인 AI 조교 패널 (LMS-AI)",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "패널 권한"
+  },
+  {
+    "id": "LMS-ADM01",
+    "file": "08",
+    "section": "8.6 관리자 — 영상·자료 연결 (\"영상 올리는 과정\") (LMS-ADM)",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "영상 연결"
+  },
+  {
+    "id": "LMS-ADM02",
+    "file": "08",
+    "section": "8.6 관리자 — 영상·자료 연결 (\"영상 올리는 과정\") (LMS-ADM)",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "영상 교체"
+  },
+  {
+    "id": "LMS-ADM03",
+    "file": "08",
+    "section": "8.6 관리자 — 영상·자료 연결 (\"영상 올리는 과정\") (LMS-ADM)",
+    "priority": "P1",
+    "declaredStatus": "pass",
+    "scenario": "영상 제거"
+  },
+  {
+    "id": "LMS-ADM04",
+    "file": "08",
+    "section": "8.6 관리자 — 영상·자료 연결 (\"영상 올리는 과정\") (LMS-ADM)",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "자료 추가"
+  },
+  {
+    "id": "LMS-ADM05",
+    "file": "08",
+    "section": "8.6 관리자 — 영상·자료 연결 (\"영상 올리는 과정\") (LMS-ADM)",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "자료 삭제"
+  },
+  {
+    "id": "LMS-ADM06",
+    "file": "08",
+    "section": "8.6 관리자 — 영상·자료 연결 (\"영상 올리는 과정\") (LMS-ADM)",
+    "priority": "P1",
+    "declaredStatus": "pass",
+    "scenario": "세션 전환 시 상태 로드"
+  },
+  {
+    "id": "LMS-ADM07",
+    "file": "08",
+    "section": "8.6 관리자 — 영상·자료 연결 (\"영상 올리는 과정\") (LMS-ADM)",
+    "priority": "P0",
+    "declaredStatus": "pass",
+    "scenario": "비관리자 쓰기 차단"
+  },
+  {
+    "id": "LMS-ADM08",
+    "file": "08",
+    "section": "8.6 관리자 — 영상·자료 연결 (\"영상 올리는 과정\") (LMS-ADM)",
+    "priority": "P1",
+    "declaredStatus": "mock",
+    "scenario": "저장 즉시 AI 반영"
+  }
+]

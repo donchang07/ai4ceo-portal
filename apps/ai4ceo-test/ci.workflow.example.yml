@@ -1,0 +1,43 @@
+# FR-6 / M4 예시 — PR마다 게이트 실행 + P0 회귀 시 배포 차단.
+# 활성화하려면 저장소 루트 .github/workflows/ 로 옮기고 secrets 를 설정한다(메인 세션 담당).
+# 이 파일은 문서용이며 자동 실행되지 않는다.
+name: ai4ceo-test qa gate
+
+on:
+  pull_request:
+    paths:
+      - "apps/ai4ceo/**"
+      - "apps/ai4ceo-test/**"
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/ai4ceo-test
+    env:
+      NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+      SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      AI_MODEL: claude-fable-5
+      TEST_ACCOUNT_PASSWORD: ${{ secrets.TEST_ACCOUNT_PASSWORD }}
+      TEST_BASE_URL: ${{ secrets.TEST_BASE_URL }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install
+      - run: npx playwright install --with-deps chromium
+      - run: node tests/static/gate-lint.mjs
+      - run: node tests/provision.mjs
+      - run: npx playwright test
+        continue-on-error: true
+      - run: node tests/report/generate.mjs # 🔴 회귀 시 exit 1 → PR 차단
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: qa-report
+          path: apps/ai4ceo-test/tests/report/latest.md

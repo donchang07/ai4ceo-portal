@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+/* docs/DESIGN.md 토큰 재현 (독립 구현 — 메인 앱 컴포넌트 미참조) */
+@theme {
+  --font-sans: "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
+
+  --color-canvas: #f2f6fb;
+  --color-surface: #ffffff;
+  --color-surface-muted: #e8f0f8;
+  --color-ink: #1b2733;
+  --color-muted: #5e6e7e;
+  --color-faint: #8a9bad;
+  --color-border: #b6c6d9;
+  --color-hairline: #dde6f0;
+  --color-primary: #2c5ce6;
+  --color-primary-hover: #2247b8;
+  --color-accent: #2e90d0;
+  --color-success: #2f7d4f;
+  --color-warning: #5c7da3;
+  --color-danger: #b84a45;
+  --color-info: #3e7bae;
+  --color-info-surface: #eaf2fa;
+
+  --radius-card: 8px;
+  --radius-control: 6px;
+}
+
+html,
+body {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+/* 상태 점(dot) — 중립 배경 + 컬러 점 관례 */
+.dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+}

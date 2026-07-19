@@ -1,0 +1,2266 @@
+{
+  "runAt": "2026-07-19T16:38:17.603Z",
+  "commit": "3cb71fe",
+  "env": "production",
+  "baseUrl": "https://ai4ceo-portal.vercel.app",
+  "summary": {
+    "total": 172,
+    "automated": 59,
+    "passed": 59,
+    "failed": 0,
+    "regressions": 0,
+    "newlyPassing": 0,
+    "xfail": 0,
+    "manual": 113,
+    "verified": 0
+  },
+  "cases": [
+    {
+      "id": "AUTH-01",
+      "file": "01",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AUTH-02",
+      "file": "01",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AUTH-03",
+      "file": "01",
+      "section": "",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AUTH-04",
+      "file": "01",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AUTH-05",
+      "file": "01",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AUTH-06",
+      "file": "01",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AUTH-07",
+      "file": "01",
+      "section": "",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AUTH-08",
+      "file": "01",
+      "section": "",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AUTH-09",
+      "file": "01",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AUTH-10",
+      "file": "01",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AUTH-11",
+      "file": "01",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AUTH-12",
+      "file": "01",
+      "section": "",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AUTH-13",
+      "file": "01",
+      "section": "",
+      "priority": "P2",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AUTH-14",
+      "file": "01",
+      "section": "",
+      "priority": "P1",
+      "declared": "mock",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AC-01",
+      "file": "02",
+      "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 3604,
+      "error": null
+    },
+    {
+      "id": "AC-02",
+      "file": "02",
+      "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 2542,
+      "error": null
+    },
+    {
+      "id": "AC-03",
+      "file": "02",
+      "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 2703,
+      "error": null
+    },
+    {
+      "id": "AC-04",
+      "file": "02",
+      "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 2912,
+      "error": null
+    },
+    {
+      "id": "AC-05",
+      "file": "02",
+      "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 3309,
+      "error": null
+    },
+    {
+      "id": "AC-06",
+      "file": "02",
+      "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 4447,
+      "error": null
+    },
+    {
+      "id": "AC-07",
+      "file": "02",
+      "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 2741,
+      "error": null
+    },
+    {
+      "id": "AC-08",
+      "file": "02",
+      "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 2785,
+      "error": null
+    },
+    {
+      "id": "AC-09",
+      "file": "02",
+      "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 2737,
+      "error": null
+    },
+    {
+      "id": "AC-10",
+      "file": "02",
+      "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 2497,
+      "error": null
+    },
+    {
+      "id": "AC-11",
+      "file": "02",
+      "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 2025,
+      "error": null
+    },
+    {
+      "id": "AC-12",
+      "file": "02",
+      "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 3125,
+      "error": null
+    },
+    {
+      "id": "AC-13",
+      "file": "02",
+      "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 2760,
+      "error": null
+    },
+    {
+      "id": "AC-14",
+      "file": "02",
+      "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 3226,
+      "error": null
+    },
+    {
+      "id": "AC-15",
+      "file": "02",
+      "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+      "priority": "P0",
+      "declared": "mock",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AC-16",
+      "file": "02",
+      "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 3641,
+      "error": null
+    },
+    {
+      "id": "AC-17",
+      "file": "02",
+      "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 3659,
+      "error": null
+    },
+    {
+      "id": "AC-18",
+      "file": "02",
+      "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AC-19",
+      "file": "02",
+      "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 3327,
+      "error": null
+    },
+    {
+      "id": "AC-20",
+      "file": "02",
+      "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 3726,
+      "error": null
+    },
+    {
+      "id": "AC-21",
+      "file": "02",
+      "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 3656,
+      "error": null
+    },
+    {
+      "id": "AC-22",
+      "file": "02",
+      "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AC-23",
+      "file": "02",
+      "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 3785,
+      "error": null
+    },
+    {
+      "id": "AC-24",
+      "file": "02",
+      "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AC-25",
+      "file": "02",
+      "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 3840,
+      "error": null
+    },
+    {
+      "id": "AC-26",
+      "file": "02",
+      "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 3008,
+      "error": null
+    },
+    {
+      "id": "AC-27",
+      "file": "02",
+      "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 2547,
+      "error": null
+    },
+    {
+      "id": "AC-28",
+      "file": "02",
+      "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 2514,
+      "error": null
+    },
+    {
+      "id": "AC-29",
+      "file": "02",
+      "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AC-30",
+      "file": "02",
+      "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 1096,
+      "error": null
+    },
+    {
+      "id": "AC-31",
+      "file": "02",
+      "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 1075,
+      "error": null
+    },
+    {
+      "id": "AC-32",
+      "file": "02",
+      "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 5778,
+      "error": null
+    },
+    {
+      "id": "AC-33",
+      "file": "02",
+      "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 4371,
+      "error": null
+    },
+    {
+      "id": "AC-34",
+      "file": "02",
+      "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 8630,
+      "error": null
+    },
+    {
+      "id": "AC-35",
+      "file": "02",
+      "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AC-36",
+      "file": "02",
+      "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AC-37",
+      "file": "02",
+      "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+      "priority": "P2",
+      "declared": "mock",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AC-38",
+      "file": "02",
+      "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AC-39",
+      "file": "02",
+      "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+      "priority": "P2",
+      "declared": "mock",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AC-40",
+      "file": "02",
+      "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AC-41",
+      "file": "02",
+      "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+      "priority": "P2",
+      "declared": "mock",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AC-42",
+      "file": "02",
+      "section": "개별 케이스 (매트릭스에서 파생 — 회귀 시 개별 추적용)",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AI-01",
+      "file": "03",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 1496,
+      "error": null
+    },
+    {
+      "id": "AI-02",
+      "file": "03",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 10173,
+      "error": null
+    },
+    {
+      "id": "AI-03",
+      "file": "03",
+      "section": "",
+      "priority": "P0",
+      "declared": "unknown",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AI-04",
+      "file": "03",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AI-05",
+      "file": "03",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AI-06",
+      "file": "03",
+      "section": "",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AI-07",
+      "file": "03",
+      "section": "",
+      "priority": "P1",
+      "declared": "unknown",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AI-08",
+      "file": "03",
+      "section": "",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AI-09",
+      "file": "03",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AI-10",
+      "file": "03",
+      "section": "",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AI-11",
+      "file": "03",
+      "section": "",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AI-12",
+      "file": "03",
+      "section": "",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AI-13",
+      "file": "03",
+      "section": "",
+      "priority": "P2",
+      "declared": "unknown",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AI-14",
+      "file": "03",
+      "section": "",
+      "priority": "P1",
+      "declared": "unknown",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AI-15",
+      "file": "03",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 56,
+      "error": null
+    },
+    {
+      "id": "AI-16",
+      "file": "03",
+      "section": "",
+      "priority": "P2",
+      "declared": "unknown",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ADM-01",
+      "file": "04",
+      "section": "4.1 운영 대시보드 `/admin`",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ADM-02",
+      "file": "04",
+      "section": "4.1 운영 대시보드 `/admin`",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ADM-03",
+      "file": "04",
+      "section": "4.1 운영 대시보드 `/admin`",
+      "priority": "P1",
+      "declared": "mock",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ADM-04",
+      "file": "04",
+      "section": "4.1 운영 대시보드 `/admin`",
+      "priority": "P1",
+      "declared": "mock",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ADM-05",
+      "file": "04",
+      "section": "4.1 운영 대시보드 `/admin`",
+      "priority": "P1",
+      "declared": "mock",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ADM-06",
+      "file": "04",
+      "section": "4.1 운영 대시보드 `/admin`",
+      "priority": "P1",
+      "declared": "mock",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ADM-07",
+      "file": "04",
+      "section": "4.1 운영 대시보드 `/admin`",
+      "priority": "P1",
+      "declared": "mock",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ADM-08",
+      "file": "04",
+      "section": "4.2 선발 관리 `/admin/applications`",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ADM-09",
+      "file": "04",
+      "section": "4.2 선발 관리 `/admin/applications`",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ADM-10",
+      "file": "04",
+      "section": "4.2 선발 관리 `/admin/applications`",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 130,
+      "error": null
+    },
+    {
+      "id": "ADM-11",
+      "file": "04",
+      "section": "4.2 선발 관리 `/admin/applications`",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ADM-12",
+      "file": "04",
+      "section": "4.2 선발 관리 `/admin/applications`",
+      "priority": "P0",
+      "declared": "mock",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ADM-13",
+      "file": "04",
+      "section": "4.3 커리큘럼 편집 `/admin/curriculum`",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ADM-14",
+      "file": "04",
+      "section": "4.3 커리큘럼 편집 `/admin/curriculum`",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 127,
+      "error": null
+    },
+    {
+      "id": "ADM-15",
+      "file": "04",
+      "section": "4.3 커리큘럼 편집 `/admin/curriculum`",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 127,
+      "error": null
+    },
+    {
+      "id": "ADM-16",
+      "file": "04",
+      "section": "4.3 커리큘럼 편집 `/admin/curriculum`",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 310,
+      "error": null
+    },
+    {
+      "id": "ADM-17",
+      "file": "04",
+      "section": "4.3 커리큘럼 편집 `/admin/curriculum`",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ADM-18",
+      "file": "04",
+      "section": "4.3 커리큘럼 편집 `/admin/curriculum`",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ADM-19",
+      "file": "04",
+      "section": "4.3 커리큘럼 편집 `/admin/curriculum`",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ADM-20",
+      "file": "04",
+      "section": "4.3 커리큘럼 편집 `/admin/curriculum`",
+      "priority": "P1",
+      "declared": "mock",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "BIL-01",
+      "file": "05",
+      "section": "테스트 케이스",
+      "priority": "P0",
+      "declared": "mock",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "BIL-02",
+      "file": "05",
+      "section": "테스트 케이스",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "BIL-03",
+      "file": "05",
+      "section": "테스트 케이스",
+      "priority": "P1",
+      "declared": "mock",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "BIL-04",
+      "file": "05",
+      "section": "테스트 케이스",
+      "priority": "P0",
+      "declared": "mock",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "BIL-05",
+      "file": "05",
+      "section": "테스트 케이스",
+      "priority": "P0",
+      "declared": "mock",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "BIL-06",
+      "file": "05",
+      "section": "테스트 케이스",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "BIL-07",
+      "file": "05",
+      "section": "테스트 케이스",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "BIL-08",
+      "file": "05",
+      "section": "테스트 케이스",
+      "priority": "P1",
+      "declared": "mock",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "BIL-09",
+      "file": "05",
+      "section": "테스트 케이스",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "BIL-10",
+      "file": "05",
+      "section": "테스트 케이스",
+      "priority": "P0",
+      "declared": "mock",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "BIL-11",
+      "file": "05",
+      "section": "테스트 케이스",
+      "priority": "P0",
+      "declared": "mock",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "BIL-12",
+      "file": "05",
+      "section": "테스트 케이스",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "BIL-13",
+      "file": "05",
+      "section": "테스트 케이스",
+      "priority": "P0",
+      "declared": "unknown",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "BIL-14",
+      "file": "05",
+      "section": "테스트 케이스",
+      "priority": "P1",
+      "declared": "unknown",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "BIL-15",
+      "file": "05",
+      "section": "테스트 케이스",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "PUB-01",
+      "file": "06",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "PUB-02",
+      "file": "06",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "PUB-03",
+      "file": "06",
+      "section": "",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "PUB-04",
+      "file": "06",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "PUB-05",
+      "file": "06",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "PUB-06",
+      "file": "06",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "PUB-07",
+      "file": "06",
+      "section": "",
+      "priority": "P1",
+      "declared": "unknown",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "PUB-08",
+      "file": "06",
+      "section": "",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "PUB-09",
+      "file": "06",
+      "section": "",
+      "priority": "P0",
+      "declared": "mock",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "PUB-10",
+      "file": "06",
+      "section": "",
+      "priority": "P1",
+      "declared": "mock",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "PUB-11",
+      "file": "06",
+      "section": "",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "PUB-12",
+      "file": "06",
+      "section": "",
+      "priority": "P2",
+      "declared": "mock",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "SEC-01",
+      "file": "07",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 156,
+      "error": null
+    },
+    {
+      "id": "SEC-02",
+      "file": "07",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 124,
+      "error": null
+    },
+    {
+      "id": "SEC-03",
+      "file": "07",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 150,
+      "error": null
+    },
+    {
+      "id": "SEC-04",
+      "file": "07",
+      "section": "",
+      "priority": "P1",
+      "declared": "mock",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "SEC-05",
+      "file": "07",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 88,
+      "error": null
+    },
+    {
+      "id": "SEC-06",
+      "file": "07",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 121,
+      "error": null
+    },
+    {
+      "id": "SEC-07",
+      "file": "07",
+      "section": "",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "SEC-08",
+      "file": "07",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 71,
+      "error": null
+    },
+    {
+      "id": "SEC-09",
+      "file": "07",
+      "section": "",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 62,
+      "error": null
+    },
+    {
+      "id": "SEC-10",
+      "file": "07",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 1365,
+      "error": null
+    },
+    {
+      "id": "SEC-11",
+      "file": "07",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "SEC-12",
+      "file": "07",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 222,
+      "error": null
+    },
+    {
+      "id": "SEC-13",
+      "file": "07",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "LMS-V01",
+      "file": "08",
+      "section": "8.1 강의 영상 재생·이동 (LMS-V)",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "LMS-V02",
+      "file": "08",
+      "section": "8.1 강의 영상 재생·이동 (LMS-V)",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "LMS-V03",
+      "file": "08",
+      "section": "8.1 강의 영상 재생·이동 (LMS-V)",
+      "priority": "P1",
+      "declared": "unknown",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "LMS-V04",
+      "file": "08",
+      "section": "8.1 강의 영상 재생·이동 (LMS-V)",
+      "priority": "P1",
+      "declared": "unknown",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "LMS-V05",
+      "file": "08",
+      "section": "8.1 강의 영상 재생·이동 (LMS-V)",
+      "priority": "P0",
+      "declared": "unknown",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "LMS-V06",
+      "file": "08",
+      "section": "8.1 강의 영상 재생·이동 (LMS-V)",
+      "priority": "P1",
+      "declared": "unknown",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "LMS-V07",
+      "file": "08",
+      "section": "8.1 강의 영상 재생·이동 (LMS-V)",
+      "priority": "P2",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "LMS-V08",
+      "file": "08",
+      "section": "8.1 강의 영상 재생·이동 (LMS-V)",
+      "priority": "P2",
+      "declared": "unknown",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "LMS-V09",
+      "file": "08",
+      "section": "8.1 강의 영상 재생·이동 (LMS-V)",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 4808,
+      "error": null
+    },
+    {
+      "id": "LMS-V10",
+      "file": "08",
+      "section": "8.1 강의 영상 재생·이동 (LMS-V)",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 3952,
+      "error": null
+    },
+    {
+      "id": "LMS-M01",
+      "file": "08",
+      "section": "8.2 강의자료 (LMS-M)",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "LMS-M02",
+      "file": "08",
+      "section": "8.2 강의자료 (LMS-M)",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "LMS-M03",
+      "file": "08",
+      "section": "8.2 강의자료 (LMS-M)",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "LMS-M04",
+      "file": "08",
+      "section": "8.2 강의자료 (LMS-M)",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 4808,
+      "error": null
+    },
+    {
+      "id": "LMS-Q01",
+      "file": "08",
+      "section": "8.3 질의응답 — 수강생 질문 (LMS-Q)",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 448,
+      "error": null
+    },
+    {
+      "id": "LMS-Q02",
+      "file": "08",
+      "section": "8.3 질의응답 — 수강생 질문 (LMS-Q)",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "LMS-Q03",
+      "file": "08",
+      "section": "8.3 질의응답 — 수강생 질문 (LMS-Q)",
+      "priority": "P2",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "LMS-Q04",
+      "file": "08",
+      "section": "8.3 질의응답 — 수강생 질문 (LMS-Q)",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 448,
+      "error": null
+    },
+    {
+      "id": "LMS-Q05",
+      "file": "08",
+      "section": "8.3 질의응답 — 수강생 질문 (LMS-Q)",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 221,
+      "error": null
+    },
+    {
+      "id": "LMS-Q06",
+      "file": "08",
+      "section": "8.3 질의응답 — 수강생 질문 (LMS-Q)",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "LMS-A01",
+      "file": "08",
+      "section": "8.4 질의응답 — 답변 (강사·동료·AI) (LMS-A)",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "LMS-A02",
+      "file": "08",
+      "section": "8.4 질의응답 — 답변 (강사·동료·AI) (LMS-A)",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 388,
+      "error": null
+    },
+    {
+      "id": "LMS-A03",
+      "file": "08",
+      "section": "8.4 질의응답 — 답변 (강사·동료·AI) (LMS-A)",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 184,
+      "error": null
+    },
+    {
+      "id": "LMS-A04",
+      "file": "08",
+      "section": "8.4 질의응답 — 답변 (강사·동료·AI) (LMS-A)",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "LMS-A05",
+      "file": "08",
+      "section": "8.4 질의응답 — 답변 (강사·동료·AI) (LMS-A)",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "LMS-A06",
+      "file": "08",
+      "section": "8.4 질의응답 — 답변 (강사·동료·AI) (LMS-A)",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 151,
+      "error": null
+    },
+    {
+      "id": "LMS-A07",
+      "file": "08",
+      "section": "8.4 질의응답 — 답변 (강사·동료·AI) (LMS-A)",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "LMS-A08",
+      "file": "08",
+      "section": "8.4 질의응답 — 답변 (강사·동료·AI) (LMS-A)",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "LMS-AI01",
+      "file": "08",
+      "section": "8.5 인라인 AI 조교 패널 (LMS-AI)",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "LMS-AI02",
+      "file": "08",
+      "section": "8.5 인라인 AI 조교 패널 (LMS-AI)",
+      "priority": "P0",
+      "declared": "unknown",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "LMS-AI03",
+      "file": "08",
+      "section": "8.5 인라인 AI 조교 패널 (LMS-AI)",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "LMS-AI04",
+      "file": "08",
+      "section": "8.5 인라인 AI 조교 패널 (LMS-AI)",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 1535,
+      "error": null
+    },
+    {
+      "id": "LMS-ADM01",
+      "file": "08",
+      "section": "8.6 관리자 — 영상·자료 연결 (\"영상 올리는 과정\") (LMS-ADM)",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 187,
+      "error": null
+    },
+    {
+      "id": "LMS-ADM02",
+      "file": "08",
+      "section": "8.6 관리자 — 영상·자료 연결 (\"영상 올리는 과정\") (LMS-ADM)",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "LMS-ADM03",
+      "file": "08",
+      "section": "8.6 관리자 — 영상·자료 연결 (\"영상 올리는 과정\") (LMS-ADM)",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "LMS-ADM04",
+      "file": "08",
+      "section": "8.6 관리자 — 영상·자료 연결 (\"영상 올리는 과정\") (LMS-ADM)",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 187,
+      "error": null
+    },
+    {
+      "id": "LMS-ADM05",
+      "file": "08",
+      "section": "8.6 관리자 — 영상·자료 연결 (\"영상 올리는 과정\") (LMS-ADM)",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 233,
+      "error": null
+    },
+    {
+      "id": "LMS-ADM06",
+      "file": "08",
+      "section": "8.6 관리자 — 영상·자료 연결 (\"영상 올리는 과정\") (LMS-ADM)",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "LMS-ADM07",
+      "file": "08",
+      "section": "8.6 관리자 — 영상·자료 연결 (\"영상 올리는 과정\") (LMS-ADM)",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 66,
+      "error": null
+    },
+    {
+      "id": "LMS-ADM08",
+      "file": "08",
+      "section": "8.6 관리자 — 영상·자료 연결 (\"영상 올리는 과정\") (LMS-ADM)",
+      "priority": "P1",
+      "declared": "mock",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    }
+  ],
+  "matrix": {
+    "rows": [
+      "admin",
+      "student",
+      "alumniMember",
+      "alumniNoMember",
+      "applicant",
+      "guest"
+    ],
+    "cols": [
+      "/portal/cohort",
+      "/portal/chat",
+      "/portal/ai",
+      "/portal/assignments",
+      "/portal/sessions",
+      "/portal/sessions/ed04829b-148e-4ae8-8462-cf80b41666db",
+      "/portal/files",
+      "/portal/billing",
+      "/alumni",
+      "/alumni/membership",
+      "/admin"
+    ],
+    "cells": {
+      "admin|/portal/cohort": {
+        "expect": "O",
+        "actual": "unknown",
+        "ok": false
+      },
+      "admin|/portal/chat": {
+        "expect": "O",
+        "actual": "unknown",
+        "ok": false
+      },
+      "admin|/portal/ai": {
+        "expect": "O",
+        "actual": "unknown",
+        "ok": false
+      },
+      "admin|/portal/assignments": {
+        "expect": "O",
+        "actual": "unknown",
+        "ok": false
+      },
+      "admin|/portal/sessions": {
+        "expect": "O",
+        "actual": "unknown",
+        "ok": false
+      },
+      "admin|/portal/sessions/ed04829b-148e-4ae8-8462-cf80b41666db": {
+        "expect": "O",
+        "actual": "unknown",
+        "ok": false
+      },
+      "admin|/portal/files": {
+        "expect": "O",
+        "actual": "unknown",
+        "ok": false
+      },
+      "admin|/portal/billing": {
+        "expect": "O",
+        "actual": "unknown",
+        "ok": false
+      },
+      "admin|/alumni": {
+        "expect": "O",
+        "actual": "unknown",
+        "ok": false
+      },
+      "admin|/alumni/membership": {
+        "expect": "O",
+        "actual": "unknown",
+        "ok": false
+      },
+      "admin|/admin": {
+        "expect": "O",
+        "actual": "ok",
+        "ok": true
+      },
+      "student|/portal/cohort": {
+        "expect": "O",
+        "actual": "ok",
+        "ok": true
+      },
+      "student|/portal/chat": {
+        "expect": "O",
+        "actual": "ok",
+        "ok": true
+      },
+      "student|/portal/ai": {
+        "expect": "O",
+        "actual": "ok",
+        "ok": true
+      },
+      "student|/portal/assignments": {
+        "expect": "O",
+        "actual": "ok",
+        "ok": true
+      },
+      "student|/portal/sessions": {
+        "expect": "O",
+        "actual": "ok",
+        "ok": true
+      },
+      "student|/portal/sessions/ed04829b-148e-4ae8-8462-cf80b41666db": {
+        "expect": "O",
+        "actual": "ok",
+        "ok": true
+      },
+      "student|/portal/files": {
+        "expect": "O",
+        "actual": "ok",
+        "ok": true
+      },
+      "student|/portal/billing": {
+        "expect": "O",
+        "actual": "ok",
+        "ok": true
+      },
+      "student|/alumni": {
+        "expect": "/portal/billing",
+        "actual": "ok",
+        "ok": true
+      },
+      "student|/alumni/membership": {
+        "expect": "/portal/billing",
+        "actual": "ok",
+        "ok": true
+      },
+      "student|/admin": {
+        "expect": "/portal/cohort",
+        "actual": "ok",
+        "ok": true
+      },
+      "alumniMember|/portal/cohort": {
+        "expect": "/portal/billing",
+        "actual": "ok",
+        "ok": true
+      },
+      "alumniMember|/portal/chat": {
+        "expect": "/portal/billing",
+        "actual": "ok",
+        "ok": true
+      },
+      "alumniMember|/portal/ai": {
+        "expect": "/portal/billing",
+        "actual": "ok",
+        "ok": true
+      },
+      "alumniMember|/portal/assignments": {
+        "expect": "/portal/billing",
+        "actual": "ok",
+        "ok": true
+      },
+      "alumniMember|/portal/sessions": {
+        "expect": "O",
+        "actual": "ok",
+        "ok": true
+      },
+      "alumniMember|/portal/sessions/ed04829b-148e-4ae8-8462-cf80b41666db": {
+        "expect": "O",
+        "actual": "ok",
+        "ok": true
+      },
+      "alumniMember|/portal/files": {
+        "expect": "O",
+        "actual": "ok",
+        "ok": true
+      },
+      "alumniMember|/portal/billing": {
+        "expect": "O",
+        "actual": "ok",
+        "ok": true
+      },
+      "alumniMember|/alumni": {
+        "expect": "O",
+        "actual": "ok",
+        "ok": true
+      },
+      "alumniMember|/alumni/membership": {
+        "expect": "O",
+        "actual": "ok",
+        "ok": true
+      },
+      "alumniMember|/admin": {
+        "expect": "/portal/billing",
+        "actual": "ok",
+        "ok": true
+      },
+      "alumniNoMember|/portal/cohort": {
+        "expect": "/portal/billing",
+        "actual": "ok",
+        "ok": true
+      },
+      "alumniNoMember|/portal/chat": {
+        "expect": "/portal/billing",
+        "actual": "ok",
+        "ok": true
+      },
+      "alumniNoMember|/portal/ai": {
+        "expect": "/portal/billing",
+        "actual": "ok",
+        "ok": true
+      },
+      "alumniNoMember|/portal/assignments": {
+        "expect": "/portal/billing",
+        "actual": "ok",
+        "ok": true
+      },
+      "alumniNoMember|/portal/sessions": {
+        "expect": "/alumni/membership",
+        "actual": "ok",
+        "ok": true
+      },
+      "alumniNoMember|/portal/sessions/ed04829b-148e-4ae8-8462-cf80b41666db": {
+        "expect": "/alumni/membership",
+        "actual": "ok",
+        "ok": true
+      },
+      "alumniNoMember|/portal/files": {
+        "expect": "/alumni/membership",
+        "actual": "ok",
+        "ok": true
+      },
+      "alumniNoMember|/portal/billing": {
+        "expect": "O",
+        "actual": "ok",
+        "ok": true
+      },
+      "alumniNoMember|/alumni": {
+        "expect": "O",
+        "actual": "ok",
+        "ok": true
+      },
+      "alumniNoMember|/alumni/membership": {
+        "expect": "O",
+        "actual": "ok",
+        "ok": true
+      },
+      "alumniNoMember|/admin": {
+        "expect": "/portal/billing",
+        "actual": "ok",
+        "ok": true
+      },
+      "applicant|/portal/cohort": {
+        "expect": "/",
+        "actual": "ok",
+        "ok": true
+      },
+      "applicant|/portal/chat": {
+        "expect": "/",
+        "actual": "ok",
+        "ok": true
+      },
+      "applicant|/portal/ai": {
+        "expect": "/",
+        "actual": "ok",
+        "ok": true
+      },
+      "applicant|/portal/assignments": {
+        "expect": "/",
+        "actual": "ok",
+        "ok": true
+      },
+      "applicant|/portal/sessions": {
+        "expect": "/",
+        "actual": "ok",
+        "ok": true
+      },
+      "applicant|/portal/sessions/ed04829b-148e-4ae8-8462-cf80b41666db": {
+        "expect": "/",
+        "actual": "ok",
+        "ok": true
+      },
+      "applicant|/portal/files": {
+        "expect": "/",
+        "actual": "ok",
+        "ok": true
+      },
+      "applicant|/portal/billing": {
+        "expect": "/apply",
+        "actual": "ok",
+        "ok": true
+      },
+      "applicant|/alumni": {
+        "expect": "/",
+        "actual": "ok",
+        "ok": true
+      },
+      "applicant|/alumni/membership": {
+        "expect": "/",
+        "actual": "ok",
+        "ok": true
+      },
+      "applicant|/admin": {
+        "expect": "/",
+        "actual": "ok",
+        "ok": true
+      },
+      "guest|/portal/cohort": {
+        "expect": "/login",
+        "actual": "ok",
+        "ok": true
+      },
+      "guest|/portal/chat": {
+        "expect": "/login",
+        "actual": "ok",
+        "ok": true
+      },
+      "guest|/portal/ai": {
+        "expect": "/login",
+        "actual": "ok",
+        "ok": true
+      },
+      "guest|/portal/assignments": {
+        "expect": "/login",
+        "actual": "ok",
+        "ok": true
+      },
+      "guest|/portal/sessions": {
+        "expect": "/login",
+        "actual": "ok",
+        "ok": true
+      },
+      "guest|/portal/sessions/ed04829b-148e-4ae8-8462-cf80b41666db": {
+        "expect": "/login",
+        "actual": "ok",
+        "ok": true
+      },
+      "guest|/portal/files": {
+        "expect": "/login",
+        "actual": "ok",
+        "ok": true
+      },
+      "guest|/portal/billing": {
+        "expect": "/login",
+        "actual": "ok",
+        "ok": true
+      },
+      "guest|/alumni": {
+        "expect": "/login",
+        "actual": "ok",
+        "ok": true
+      },
+      "guest|/alumni/membership": {
+        "expect": "/login",
+        "actual": "ok",
+        "ok": true
+      },
+      "guest|/admin": {
+        "expect": "/login",
+        "actual": "ok",
+        "ok": true
+      }
+    }
+  }
+}
