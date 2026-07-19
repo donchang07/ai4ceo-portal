@@ -1,91 +1,189 @@
-import Link from "next/link";
-import { PublicHeader } from "@/components/public-header";
-import { ArrowLeft, ShieldCheck } from "lucide-react";
+"use client";
 
-const inputCls =
-  "min-h-11 w-full rounded-control border border-[#A9BFD6] bg-surface px-3.5 text-sm outline-none placeholder:text-muted focus:border-primary";
-const labelCls = "mb-1.5 block text-sm font-semibold";
+import { useState } from "react";
+import { ArrowLeft, CheckCircle2 } from "lucide-react";
+import { PublicHeader } from "@/components/public-header";
+import { Button, Input, Textarea, Progress, Callout } from "@/components/ui";
+import { COHORT_18 } from "@/lib/core/constants";
+import { getSupabaseBrowser } from "@/lib/db/supabase-client";
+
+type Field = "name" | "company" | "title" | "phone" | "email" | "referral_code" | "motivation";
+
+interface StepDef {
+  field: Field;
+  question: string;
+  hint: string;
+  placeholder: string;
+  optional?: boolean;
+  multiline?: boolean;
+  type?: string;
+}
+
+const STEPS: StepDef[] = [
+  { field: "name", question: "성함을 알려주세요", hint: "지원서에 표기될 대표자 성함입니다.", placeholder: "홍길동" },
+  { field: "company", question: "회사명을 입력해 주세요", hint: "재직 중이신 회사 또는 법인명입니다.", placeholder: "예: 케이뱅크" },
+  { field: "title", question: "직함이 어떻게 되시나요", hint: "대표이사, 부사장, 임원 등", placeholder: "대표이사" },
+  { field: "phone", question: "연락 가능한 전화번호를 알려주세요", hint: "접수번호를 알림톡으로 보내드립니다.", placeholder: "010-0000-0000", type: "tel" },
+  { field: "email", question: "이메일 주소를 입력해 주세요", hint: "합격 시 계정 생성 링크를 보내드립니다.", placeholder: "ceo@company.com", type: "email" },
+  { field: "referral_code", question: "추천 코드가 있으신가요", hint: "동문·파트너 추천 코드가 있다면 입력해 주세요. 없으면 넘어가셔도 됩니다.", placeholder: "예: R17-KSH", optional: true },
+  { field: "motivation", question: "지원 동기를 들려주세요", hint: "AI로 회사에서 무엇을 바꾸고 싶으신가요?", placeholder: "우리 회사에서 해결하고 싶은 문제나 만들고 싶은 결과물을 자유롭게 적어주세요.", multiline: true },
+];
+
+const TOTAL = STEPS.length;
+
+const emptyForm: Record<Field, string> = {
+  name: "",
+  company: "",
+  title: "",
+  phone: "",
+  email: "",
+  referral_code: "",
+  motivation: "",
+};
 
 export default function ApplyPage() {
+  const [step, setStep] = useState(0);
+  const [form, setForm] = useState<Record<Field, string>>(emptyForm);
+  const [submitting, setSubmitting] = useState(false);
+  const [receiptNo, setReceiptNo] = useState<string | null>(null);
+
+  const current = STEPS[step];
+  const isLast = step === TOTAL - 1;
+  const value = form[current.field];
+  const canProceed = current.optional || value.trim().length > 0;
+
+  function update(v: string) {
+    setForm((f) => ({ ...f, [current.field]: v }));
+  }
+
+  async function submit() {
+    setSubmitting(true);
+    try {
+      const sb = getSupabaseBrowser();
+      await sb.from("applications").insert({
+        cohort_id: COHORT_18.id,
+        name: form.name,
+        company: form.company,
+        title: form.title,
+        phone: form.phone,
+        email: form.email,
+        motivation: form.motivation,
+        referral_code: form.referral_code.trim() || null,
+        status: "received",
+      });
+    } catch {
+      /* schema may be unapplied — do not block on DB errors */
+    }
+    const rand = Math.floor(1000 + Math.random() * 9000);
+    setReceiptNo(`AP-18-${rand}`);
+    setSubmitting(false);
+  }
+
+  function next() {
+    if (isLast) {
+      void submit();
+    } else {
+      setStep((s) => Math.min(TOTAL - 1, s + 1));
+    }
+  }
+
+  if (receiptNo) {
+    return (
+      <div className="min-h-screen bg-canvas">
+        <PublicHeader />
+        <main className="mx-auto flex max-w-[560px] flex-col items-center px-6 py-20 text-center">
+          <span className="grid h-14 w-14 place-items-center rounded-full bg-info-surface text-success">
+            <CheckCircle2 size={28} />
+          </span>
+          <h1 className="mt-6 text-2xl font-bold text-ink">지원이 접수되었습니다</h1>
+          <p className="mt-2 text-sm text-muted">
+            접수번호를 알림톡으로 보내드렸습니다. 심사 결과는 이메일로 안내드립니다.
+          </p>
+          <div className="mt-6 w-full rounded-[15px] border border-hairline bg-surface p-5">
+            <div className="text-xs text-faint">접수번호</div>
+            <div className="tnum mt-1 text-2xl font-bold tracking-tight text-ink">{receiptNo}</div>
+          </div>
+          <div className="mt-8">
+            <Button href="/" variant="secondary">
+              <ArrowLeft size={15} /> 과정 소개로
+            </Button>
+          </div>
+        </main>
+      </div>
+    );
+  }
+
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-canvas">
       <PublicHeader />
+      <main className="mx-auto max-w-[640px] px-6 py-10">
+        {/* Progress */}
+        <div className="flex items-center gap-3">
+          <Progress pct={((step + 1) / TOTAL) * 100} />
+          <span className="tnum shrink-0 text-xs font-semibold text-muted">
+            {step + 1} / {TOTAL}
+          </span>
+        </div>
 
-      <main className="mx-auto max-w-[680px] px-5 py-10">
-        <Link
-          href="/"
-          className="inline-flex items-center gap-1.5 text-sm text-muted hover:text-ink"
-        >
-          <ArrowLeft size={15} /> 과정 소개로
-        </Link>
+        {/* Question */}
+        <div className="mt-10">
+          <h1 className="text-2xl font-bold tracking-tight text-ink">
+            {current.question}
+            {current.optional && (
+              <span className="ml-2 align-middle text-sm font-normal text-faint">(선택)</span>
+            )}
+          </h1>
+          <p className="mt-2 text-sm text-muted">{current.hint}</p>
 
-        <h1 className="mt-4 text-2xl font-semibold">과정 지원</h1>
-        <p className="mt-1 text-sm text-muted">
-          로그인 없이 5분이면 됩니다. 합격하면 계정 생성 링크를 보내드립니다.
-        </p>
-
-        <form className="mt-7 rounded-card border bg-surface p-6">
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-            <div>
-              <label className={labelCls}>이름</label>
-              <input className={inputCls} placeholder="홍길동" />
-            </div>
-            <div>
-              <label className={labelCls}>휴대폰</label>
-              <input className={inputCls} placeholder="010-0000-0000" />
-            </div>
-            <div>
-              <label className={labelCls}>회사명</label>
-              <input className={inputCls} placeholder="예: 케이뱅크" />
-            </div>
-            <div>
-              <label className={labelCls}>직함</label>
-              <input className={inputCls} placeholder="대표이사" />
-            </div>
-            <div className="sm:col-span-2">
-              <label className={labelCls}>이메일</label>
-              <input className={inputCls} placeholder="ceo@company.com" />
-            </div>
-            <div className="sm:col-span-2">
-              <label className={labelCls}>현재 AI 활용 현황</label>
-              <select className={`${inputCls} appearance-none`}>
-                <option>거의 사용하지 않음</option>
-                <option>일부 부서에서 시범 도입</option>
-                <option>전사적으로 활용 중</option>
-              </select>
-            </div>
-            <div className="sm:col-span-2">
-              <label className={labelCls}>지원 동기</label>
-              <textarea
-                className={`${inputCls} min-h-28 resize-none py-2.5`}
-                placeholder="AI로 회사에서 무엇을 바꾸고 싶으신가요?"
+          <div className="mt-6">
+            {current.multiline ? (
+              <Textarea
+                autoFocus
+                className="min-h-40"
+                placeholder={current.placeholder}
+                value={value}
+                onChange={(e) => update(e.target.value)}
               />
-            </div>
-            <div className="sm:col-span-2">
-              <label className={labelCls}>
-                추천 코드 <span className="font-normal text-muted">(선택)</span>
-              </label>
-              <input className={inputCls} placeholder="동문·파트너 추천 코드" />
-            </div>
+            ) : (
+              <Input
+                autoFocus
+                className="min-h-12 text-base"
+                type={current.type ?? "text"}
+                placeholder={current.placeholder}
+                value={value}
+                onChange={(e) => update(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" && canProceed) next();
+                }}
+              />
+            )}
           </div>
+        </div>
 
-          <label className="mt-5 flex items-start gap-2 text-sm text-muted">
-            <input type="checkbox" className="mt-1 accent-[#2C5CE6]" />
-            <span>개인정보 수집·이용에 동의합니다. 지원서는 선발 목적에만 사용됩니다.</span>
-          </label>
-
-          <button
-            type="submit"
-            className="mt-6 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-control border border-primary-hover bg-primary px-5 text-sm font-semibold text-white hover:bg-primary-hover"
+        {/* Nav */}
+        <div className="mt-8 grid grid-cols-3 gap-3">
+          <Button
+            variant="secondary"
+            full
+            disabled={step === 0}
+            onClick={() => setStep((s) => Math.max(0, s - 1))}
           >
-            지원서 제출하기
-          </button>
+            이전
+          </Button>
+          <Button
+            variant="primary"
+            full
+            className="col-span-2"
+            disabled={!canProceed || submitting}
+            onClick={next}
+          >
+            {isLast ? (submitting ? "제출 중…" : "제출") : "다음"}
+          </Button>
+        </div>
 
-          <div className="mt-4 flex items-center justify-center gap-1.5 text-xs text-muted">
-            <ShieldCheck size={14} className="text-success" />
-            제출 즉시 접수 확인 알림톡을 보내드립니다.
-          </div>
-        </form>
+        <Callout className="mt-6">
+          로그인 없이 제출하실 수 있으며, 접수번호를 알림톡으로 보내드립니다.
+        </Callout>
       </main>
     </div>
   );

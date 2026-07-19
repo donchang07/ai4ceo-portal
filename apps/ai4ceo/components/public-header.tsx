@@ -1,39 +1,23 @@
 import Link from "next/link";
-import { Command } from "lucide-react";
+import { Sparkles } from "lucide-react";
+import { Button } from "@/components/ui";
 
 export function PublicHeader() {
   return (
-    <header className="sticky top-0 z-10 border-b bg-surface/90 backdrop-blur">
-      <div className="mx-auto flex h-14 max-w-[1100px] items-center justify-between px-5">
-        <Link href="/" className="flex items-center gap-2 text-base font-bold">
-          <Command size={20} className="text-primary" /> AI4CEO Portal
+    <header className="sticky top-0 z-30 border-b border-hairline bg-surface/90 backdrop-blur">
+      <div className="mx-auto flex h-15 max-w-[1200px] items-center justify-between px-6 py-3">
+        <Link href="/" className="flex items-center gap-2 font-bold text-ink">
+          <span className="grid h-8 w-8 place-items-center rounded-[10px] bg-primary text-white">
+            <Sparkles size={18} />
+          </span>
+          AI4CEO
         </Link>
-        <nav className="flex items-center gap-1 text-sm">
-          <Link
-            href="/#course"
-            className="rounded-control px-3 py-2 text-ink hover:bg-surface-muted"
-          >
-            과정 소개
-          </Link>
-          <Link
-            href="/#faq"
-            className="rounded-control px-3 py-2 text-ink hover:bg-surface-muted"
-          >
-            질의응답
-          </Link>
-          <Link
-            href="/portal"
-            className="rounded-control px-3 py-2 text-ink hover:bg-surface-muted"
-          >
-            로그인
-          </Link>
-          <Link
-            href="/apply"
-            className="ml-1 inline-flex min-h-9 items-center rounded-control border border-primary-hover bg-primary px-4 font-semibold text-white hover:bg-primary-hover"
-          >
-            지원하기
-          </Link>
+        <nav className="hidden items-center gap-6 text-sm text-muted md:flex">
+          <Link href="/#curriculum" className="hover:text-ink">커리큘럼</Link>
+          <Link href="/trends" className="hover:text-ink">AI 브리프</Link>
+          <Link href="/login" className="hover:text-ink">로그인</Link>
         </nav>
+        <Button href="/apply" variant="primary">지원하기</Button>
       </div>
     </header>
   );

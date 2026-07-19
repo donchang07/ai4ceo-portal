@@ -9,7 +9,11 @@
   --color-surface-muted: #e8f0f8;
   --color-ink: #1b2733;
   --color-muted: #5e6e7e;
+  --color-faint: #8a99a8;
   --color-border: #b6c6d9;
+  --color-hairline: #e3eaf3;
+  --color-hairline-soft: #edf2f8;
+  --color-cardline: #d9e3ef;
   --color-primary: #2c5ce6;
   --color-primary-hover: #2247b8;
   --color-accent: #2e90d0;
@@ -18,21 +22,28 @@
   --color-danger: #b84a45;
   --color-info: #3e7bae;
   --color-info-surface: #eaf2fa;
+  --color-dark: #1b2733;
 
-  --radius-card: 8px;
-  --radius-control: 6px;
+  --radius-card: 15px;
+  --radius-control: 12px;
+  --radius-frame: 20px;
 }
 
 @layer base {
   *,
   ::after,
   ::before {
-    border-color: var(--color-border);
+    border-color: var(--color-hairline);
   }
 
   body {
     background-color: var(--color-canvas);
     color: var(--color-ink);
     -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+  }
+
+  .tnum {
+    font-variant-numeric: tabular-nums;
   }
 }

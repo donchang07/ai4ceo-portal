@@ -1,137 +1,181 @@
-import { AppShell } from "@/components/app-shell";
-import { Badge } from "@/components/ui";
-import {
-  Pin,
-  FileText,
-  Download,
-  Sparkles,
-  ChevronDown,
-  Megaphone,
-  Send,
-  Plus,
-} from "lucide-react";
+"use client";
+
+import { useState } from "react";
+import { Pin, Plus, Send, FileText, Sparkles } from "lucide-react";
+import { PortalShell } from "@/components/portal-shell";
+import { Badge, RoleBadge, Input } from "@/components/ui";
+import { MOCK_CHAT } from "@/lib/db/mock";
+import type { ChatMessage } from "@/lib/db/types";
+
+function timeLabel(iso: string): string {
+  const d = new Date(iso);
+  return `${String(d.getHours()).padStart(2, "0")}:${String(d.getMinutes()).padStart(2, "0")}`;
+}
 
 export default function ChatRoom() {
+  const [messages, setMessages] = useState<ChatMessage[]>(MOCK_CHAT);
+  const [input, setInput] = useState("");
+
+  const pinned = messages.find((m) => m.message_type === "notice" && m.pinned);
+  const stream = messages.filter((m) => m.message_type !== "notice");
+
+  function send() {
+    const body = input.trim();
+    if (!body) return;
+    setInput("");
+    setMessages((prev) => [
+      ...prev,
+      {
+        id: `local-${Date.now()}`,
+        author: "나",
+        role: "student",
+        body,
+        message_type: "text",
+        mine: true,
+        readCount: 0,
+        created_at: new Date().toISOString(),
+      },
+    ]);
+  }
+
   return (
-    <AppShell>
-      <div className="flex h-[calc(100vh-3rem)] flex-col">
+    <PortalShell title="18기 대화방">
+      <div className="flex h-[calc(100vh-9rem)] flex-col md:h-[calc(100vh-7rem)]">
         {/* Header */}
-        <div className="flex items-center justify-between pb-3">
-          <div>
-            <h1 className="text-xl font-semibold">3기 대화방</h1>
-            <p className="text-sm text-muted">수강생 12 · 운영자 2 · 강사 1</p>
-          </div>
+        <div className="pb-3">
+          <h1 className="text-lg font-bold text-ink">18기 대화방</h1>
+          <p className="text-xs text-muted">멤버 24명</p>
         </div>
 
-        {/* Pinned bar */}
-        <div className="mb-3 flex items-center gap-2 rounded-control border bg-info-surface px-3 py-2 text-[13px] text-ink">
-          <Pin size={15} className="text-primary" />
-          <span className="font-medium">고정</span>
-          토요일 보충 세션 사전 과제는 금요일 자정까지 제출해 주세요.
-        </div>
+        {/* Pinned notice */}
+        {pinned ? (
+          <div className="mb-3 flex items-start gap-2 rounded-control bg-info-surface px-3.5 py-2.5 text-[13px] text-info">
+            <Pin size={15} className="mt-0.5 shrink-0 text-primary" />
+            <span>{pinned.body}</span>
+          </div>
+        ) : null}
 
         {/* Message stream */}
-        <div className="flex-1 space-y-4 overflow-y-auto rounded-card border bg-surface p-5">
-          {/* System notice */}
-          <div className="flex justify-center">
-            <div className="flex items-center gap-2 rounded-full bg-surface-muted px-3 py-1 text-xs text-muted">
-              <Megaphone size={14} /> 5주차 강의 영상이 업로드되었습니다.
-            </div>
-          </div>
-
-          {/* Incoming message */}
-          <div className="flex gap-3">
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-surface-muted text-xs font-semibold text-primary">
-              운영
-            </div>
-            <div className="max-w-[80%]">
-              <div className="mb-1 flex items-center gap-2 text-xs text-muted">
-                <span className="font-semibold text-ink">운영팀</span> 오후 1:12
-              </div>
-              <div className="rounded-card rounded-tl-none border bg-surface-muted px-3.5 py-2.5 text-sm">
-                이번 주 실습은 회사 보고서 자동화입니다. 샘플 1개 준비 부탁드려요.
-              </div>
-            </div>
-          </div>
-
-          {/* File message */}
-          <div className="flex gap-3">
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-surface-muted text-xs font-semibold text-primary">
-              운영
-            </div>
-            <div className="max-w-[80%]">
-              <div className="mb-1 flex items-center gap-2 text-xs text-muted">
-                <span className="font-semibold text-ink">운영팀</span> 오후 1:13
-              </div>
-              <div className="flex items-center gap-3 rounded-card border bg-surface px-3.5 py-3">
-                <FileText size={22} className="shrink-0 text-info" />
-                <div className="min-w-0">
-                  <div className="truncate text-sm font-medium">
-                    5주차_보고서_자동화_실습.pdf
-                  </div>
-                  <div className="mt-0.5 flex items-center gap-2 text-xs text-muted">
-                    <Badge tone="read">읽기 전용</Badge>
-                    <span>· 5주차 세션</span>
-                  </div>
-                </div>
-                <button className="ml-auto rounded-control border border-[#A9BFD6] p-2 text-ink hover:bg-surface-muted">
-                  <Download size={16} />
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* My message */}
-          <div className="flex justify-end">
-            <div className="max-w-[80%]">
-              <div className="rounded-card rounded-tr-none bg-primary px-3.5 py-2.5 text-sm text-white">
-                4주차 과제는 어떤 영상을 기준으로 하면 되나요?
-              </div>
-            </div>
-          </div>
-
-          {/* AI answer */}
-          <div className="flex gap-3">
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-info-surface text-info">
-              <Sparkles size={18} />
-            </div>
-            <div className="max-w-[80%]">
-              <div className="mb-1 flex items-center gap-2 text-xs text-muted">
-                <span className="font-semibold text-ink">AI 튜터</span>
-                <Badge tone="review">강사 검수 필요</Badge>
-              </div>
-              <div className="rounded-card rounded-tl-none border border-[#C6D8EA] bg-info-surface px-3.5 py-3 text-sm">
-                4주차 과제는 <strong>3주차 강의 영상</strong>의 실습 구간(데이터
-                연결)을 기준으로 진행됩니다. 영상 32분 부분의 예제를 그대로
-                따라 하시면 됩니다.
-                <details className="mt-2.5 border-t pt-2.5 text-xs text-muted">
-                  <summary className="flex cursor-pointer list-none items-center gap-1 font-medium text-info">
-                    <ChevronDown size={14} /> 출처 2개
-                  </summary>
-                  <ul className="mt-2 space-y-1">
-                    <li>· 3주차 강의 영상 — 자막 28:00~35:00</li>
-                    <li>· 4주차 과제 안내 (대화방 고정)</li>
-                  </ul>
-                </details>
-              </div>
-            </div>
-          </div>
+        <div className="flex-1 space-y-4 overflow-y-auto rounded-[15px] border border-hairline bg-surface p-4">
+          {stream.map((m) => (
+            <Message key={m.id} m={m} />
+          ))}
         </div>
 
         {/* Composer */}
         <div className="mt-3 flex items-center gap-2">
-          <button className="rounded-control border border-[#A9BFD6] p-2.5 text-ink hover:bg-surface-muted">
+          <button
+            className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-cardline text-muted hover:bg-surface-muted"
+            aria-label="첨부"
+          >
             <Plus size={18} />
           </button>
-          <input
-            className="min-h-11 flex-1 rounded-control border border-[#A9BFD6] bg-surface px-3.5 text-sm outline-none placeholder:text-muted focus:border-primary"
+          <Input
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") send();
+            }}
             placeholder="메시지를 입력하세요"
           />
-          <button className="flex min-h-11 items-center gap-2 rounded-control border border-primary-hover bg-primary px-4 text-sm font-semibold text-white hover:bg-primary-hover">
-            <Send size={16} /> 보내기
+          <button
+            onClick={send}
+            className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-primary text-white"
+            aria-label="보내기"
+          >
+            <Send size={16} />
           </button>
         </div>
       </div>
-    </AppShell>
+    </PortalShell>
+  );
+}
+
+function Message({ m }: { m: ChatMessage }) {
+  // My message — right aligned
+  if (m.mine) {
+    return (
+      <div className="flex flex-col items-end">
+        <div className="max-w-[80%] rounded-2xl rounded-tr-sm bg-primary px-3.5 py-2 text-sm text-white">{m.body}</div>
+        <span className="mt-1 text-[11px] text-faint">
+          {m.readCount ? `읽음 ${m.readCount}` : ""} · {timeLabel(m.created_at)}
+        </span>
+      </div>
+    );
+  }
+
+  // AI answer
+  if (m.message_type === "ai_answer") {
+    return (
+      <div className="flex gap-2.5">
+        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-info-surface text-info">
+          <Sparkles size={16} />
+        </span>
+        <div className="max-w-[80%]">
+          <div className="mb-1 flex items-center gap-2 text-xs text-muted">
+            <RoleBadge>AI</RoleBadge>
+          </div>
+          <div className="rounded-2xl rounded-tl-sm bg-info-surface px-3.5 py-2.5 text-sm text-ink">{m.body}</div>
+          {m.sources && m.sources.length > 0 ? (
+            <div className="mt-1.5 flex flex-wrap gap-1.5">
+              {m.sources.map((s) => (
+                <span
+                  key={s.label}
+                  className="rounded-full border border-cardline bg-surface px-2 py-0.5 text-[11px] text-muted"
+                >
+                  {s.label}
+                </span>
+              ))}
+            </div>
+          ) : null}
+          <p className="mt-1 text-[11px] text-faint">강사 검수 대기</p>
+        </div>
+      </div>
+    );
+  }
+
+  // File message
+  if (m.message_type === "file" && m.fileMeta) {
+    return (
+      <div className="flex gap-2.5">
+        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-surface-muted text-sm font-semibold text-primary">
+          {m.author.slice(0, 1)}
+        </span>
+        <div className="max-w-[80%]">
+          <div className="mb-1 flex items-center gap-2 text-xs text-muted">
+            <span className="font-semibold text-ink">{m.author}</span>
+            {m.role === "instructor" ? <RoleBadge>강사</RoleBadge> : null}
+          </div>
+          <div className="flex items-center gap-3 rounded-2xl border border-hairline bg-surface px-3.5 py-3">
+            <FileText size={22} className="shrink-0 text-info" />
+            <div className="min-w-0">
+              <div className="truncate text-sm font-medium text-ink">{m.fileMeta.name}</div>
+              <div className="mt-0.5 text-xs text-muted">
+                {m.fileMeta.size} · {m.fileMeta.permission}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Instructor / default text
+  return (
+    <div className="flex gap-2.5">
+      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-surface-muted text-sm font-semibold text-primary">
+        {m.author.slice(0, 1)}
+      </span>
+      <div className="max-w-[80%]">
+        <div className="mb-1 flex items-center gap-2 text-xs text-muted">
+          <span className="font-semibold text-ink">{m.author}</span>
+          {m.role === "instructor" ? <RoleBadge>강사</RoleBadge> : null}
+          <span>{timeLabel(m.created_at)}</span>
+        </div>
+        <div className="rounded-2xl rounded-tl-sm border border-hairline bg-surface px-3.5 py-2.5 text-sm text-ink">
+          {m.body}
+        </div>
+      </div>
+    </div>
   );
 }
