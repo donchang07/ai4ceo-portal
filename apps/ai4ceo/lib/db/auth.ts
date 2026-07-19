@@ -1,7 +1,14 @@
 import { redirect } from "next/navigation";
 import { getSupabaseServer } from "./supabase-server";
 import { ADMIN_EMAIL } from "../core/constants";
-import { canAccessAlumni, canAccessLms, isAdmin, type EnrollmentStatus, type Role } from "../core/access";
+import {
+  canAccessAlumni,
+  canAccessArchive,
+  canAccessLms,
+  isAdmin,
+  type EnrollmentStatus,
+  type Role,
+} from "../core/access";
 
 export interface CurrentUser {
   id: string;
@@ -10,6 +17,7 @@ export interface CurrentUser {
   role: Role;
   enrollmentStatus: EnrollmentStatus | null;
   cohortId: string | null;
+  hasActiveMembership: boolean;
 }
 
 // Design Ref: §5 — resolve current user (profile.role + enrollment.status)
@@ -35,6 +43,14 @@ export async function getCurrentUser(): Promise<CurrentUser | null> {
       .limit(1)
       .maybeSingle();
 
+    const { data: membership } = await supabase
+      .from("memberships")
+      .select("status")
+      .eq("user_id", user.id)
+      .eq("status", "active")
+      .limit(1)
+      .maybeSingle();
+
     const email = user.email ?? "";
     const role: Role =
       (profile?.role as Role) ?? (email === ADMIN_EMAIL ? "admin" : "applicant");
@@ -46,6 +62,7 @@ export async function getCurrentUser(): Promise<CurrentUser | null> {
       role,
       enrollmentStatus: (enrollment?.status as EnrollmentStatus) ?? null,
       cohortId: enrollment?.cohort_id ?? null,
+      hasActiveMembership: !!membership,
     };
   } catch {
     return null;
@@ -67,12 +84,14 @@ export async function requireLmsAccess(): Promise<CurrentUser> {
   return user;
 }
 
-// 재학생 + 수료생/동문(읽기 전용 아카이브) — 세션·자료 열람
+// 재학생, 또는 졸업생 중 멤버십 가입자만 — 세션·강의영상·자료 열람 (졸업만으로는 접근 불가)
 export async function requireArchiveAccess(): Promise<CurrentUser> {
   const user = await getCurrentUser();
   if (!user) redirect("/login");
   if (isAdmin(user.role)) return user;
-  if (!canAccessLms(user.role, user.enrollmentStatus) && !canAccessAlumni(user.role, user.enrollmentStatus)) {
+  if (!canAccessArchive(user.role, user.enrollmentStatus, user.hasActiveMembership)) {
+    // 졸업생인데 멤버십이 없는 경우 멤버십 안내 화면으로, 그 외는 기존 fallback
+    if (canAccessAlumni(user.role, user.enrollmentStatus)) redirect("/alumni/membership");
     redirect(fallbackPath(user));
   }
   return user;

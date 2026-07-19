@@ -1,7 +1,7 @@
 import { FileText, Download, ShieldCheck, Video, ClipboardList, MessageSquare, Lock } from "lucide-react";
 import { PortalShell } from "@/components/portal-shell";
 import { Badge, Button, Card, Callout } from "@/components/ui";
-import { requireLmsAccess } from "@/lib/db/auth";
+import { requireArchiveAccess } from "@/lib/db/auth";
 
 const folders = [
   { name: "대화방 공유", purpose: "chat_shared", icon: MessageSquare, count: 12, badge: "참여자 읽기/쓰기", tone: "progress" as const },
@@ -17,7 +17,7 @@ const files = [
 ];
 
 export default async function FilesPage() {
-  await requireLmsAccess();
+  await requireArchiveAccess();
   return (
     <PortalShell title="자료">
       <div className="mb-5 flex items-end justify-between">

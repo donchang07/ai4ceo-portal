@@ -22,6 +22,17 @@ export function canAccessAlumni(role: Role, status?: EnrollmentStatus | null): b
   return role === "alumni" || status === "completed";
 }
 
+// 세션·강의영상·자료 열람: 재학 중이거나, 졸업생 중 멤버십 가입자만 (졸업만으로는 접근 불가)
+export function canAccessArchive(
+  role: Role,
+  status: EnrollmentStatus | null | undefined,
+  hasActiveMembership: boolean,
+): boolean {
+  if (role === "admin" || role === "assistant") return true;
+  if (canAccessLms(role, status)) return true;
+  return canAccessAlumni(role, status) && hasActiveMembership;
+}
+
 export function isAdmin(role?: Role | null): boolean {
   return role === "admin";
 }
