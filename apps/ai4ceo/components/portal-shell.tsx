@@ -2,11 +2,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Calendar, MessageSquare, Sparkles, FileText, Bell, CreditCard } from "lucide-react";
+import { Home, Calendar, MessageSquare, Sparkles, FileText, Bell, CreditCard, ShieldCheck } from "lucide-react";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/core/cn";
 import { Badge } from "@/components/ui";
 import { MobileTabbar } from "@/components/mobile-tabbar";
+import { useIsAdmin } from "@/lib/core/admin-context";
 
 const nav = [
   { href: "/portal/cohort", label: "홈", icon: Home },
@@ -17,8 +18,18 @@ const nav = [
   { href: "/trends", label: "AI 브리프", icon: FileText },
 ];
 
-export function PortalShell({ children, title }: { children: ReactNode; title?: string }) {
+export function PortalShell({
+  children,
+  title,
+}: {
+  children: ReactNode;
+  title?: string;
+}) {
   const pathname = usePathname();
+  const isAdmin = useIsAdmin();
+  const items = isAdmin
+    ? [...nav, { href: "/admin", label: "관리자", icon: ShieldCheck, match: "/admin" }]
+    : nav;
   return (
     <div className="min-h-screen bg-canvas">
       {/* Desktop sidebar */}
@@ -30,7 +41,7 @@ export function PortalShell({ children, title }: { children: ReactNode; title?: 
           AI4CEO
         </Link>
         <nav className="flex flex-col gap-1">
-          {nav.map((n) => {
+          {items.map((n) => {
             const active = pathname === n.href || (n.match && pathname.startsWith(n.match));
             const Icon = n.icon;
             return (
