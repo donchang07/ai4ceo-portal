@@ -1,10 +1,11 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { ArrowRight, Search } from "lucide-react";
+import { useMemo, useState, useTransition } from "react";
+import { Search } from "lucide-react";
 import { Badge, Callout, Chip, Input } from "@/components/ui";
 import type { Application } from "@/lib/db/types";
 import { cn } from "@/lib/core/cn";
+import { updateApplicationStatus } from "./actions";
 
 type Status = Application["status"];
 
@@ -42,6 +43,19 @@ export function ApplicationsTable({ applications }: { applications: Application[
   const [filter, setFilter] = useState<Status | "all">("all");
   const [query, setQuery] = useState("");
   const [selected, setSelected] = useState<Set<string>>(new Set());
+  const [pendingId, setPendingId] = useState<string | null>(null);
+  const [isPending, startTransition] = useTransition();
+  const [error, setError] = useState<string | null>(null);
+
+  function setStatus(id: string, status: Status) {
+    setError(null);
+    setPendingId(id);
+    startTransition(async () => {
+      const result = await updateApplicationStatus(id, status);
+      if (!result.ok) setError(result.message);
+      setPendingId(null);
+    });
+  }
 
   const counts = useMemo(() => {
     const c: Record<string, number> = { all: applications.length };
@@ -141,10 +155,30 @@ export function ApplicationsTable({ applications }: { applications: Application[
                     <Badge tone={STATUS_TONE[a.status]}>{STATUS_LABEL[a.status]}</Badge>
                   </td>
                   <td className="px-4 py-3 tnum text-muted">{formatDate(a.created_at)}</td>
-                  <td className="px-4 py-3 text-right">
-                    <button className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:text-primary-hover">
-                      검토 <ArrowRight size={14} />
-                    </button>
+                  <td className="px-4 py-3">
+                    <div className="flex justify-end gap-2">
+                      <button
+                        disabled={isPending && pendingId === a.id}
+                        onClick={() => setStatus(a.id, "accepted")}
+                        className="rounded-full bg-primary px-3 py-1 text-xs font-semibold text-white hover:bg-primary-hover disabled:opacity-50"
+                      >
+                        합격
+                      </button>
+                      <button
+                        disabled={isPending && pendingId === a.id}
+                        onClick={() => setStatus(a.id, "waitlist")}
+                        className="rounded-full border border-hairline px-3 py-1 text-xs font-semibold text-ink hover:bg-surface-muted disabled:opacity-50"
+                      >
+                        대기
+                      </button>
+                      <button
+                        disabled={isPending && pendingId === a.id}
+                        onClick={() => setStatus(a.id, "rejected")}
+                        className="rounded-full border border-hairline px-3 py-1 text-xs font-semibold text-danger hover:bg-surface-muted disabled:opacity-50"
+                      >
+                        불합격
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}
@@ -160,6 +194,11 @@ export function ApplicationsTable({ applications }: { applications: Application[
         </div>
       </div>
 
+      {error && (
+        <div className="mt-4 rounded-control border border-danger/30 bg-danger/10 px-4 py-3 text-[13px] text-danger">
+          상태 변경 실패: {error}
+        </div>
+      )}
       <Callout className="mt-4">
         합격으로 변경 시 알림톡 T-02와 초대 링크, 인보이스가 자동 발송됩니다.
       </Callout>
