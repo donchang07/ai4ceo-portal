@@ -12,6 +12,7 @@ import {
 import { PortalShell } from "@/components/portal-shell";
 import { Badge, Button, Card, CardTitle, SectionTitle } from "@/components/ui";
 import { getSessions, getAssignments } from "@/lib/db/queries";
+import { requireLmsAccess } from "@/lib/db/auth";
 import { MOCK_BUILD_STEPS, MOCK_CHAT } from "@/lib/db/mock";
 import { cn } from "@/lib/core/cn";
 
@@ -30,6 +31,7 @@ function fmtDateTime(iso: string): string {
 }
 
 export default async function CohortHome() {
+  await requireLmsAccess();
   const [sessions, assignments] = await Promise.all([getSessions(), getAssignments()]);
   const nextSession =
     sessions.find((s) => s.type === "regular_zoom" && new Date(s.starts_at).getTime() >= Date.now()) ??

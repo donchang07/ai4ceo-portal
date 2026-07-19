@@ -2,6 +2,7 @@ import { CalendarDays } from "lucide-react";
 import { PortalShell } from "@/components/portal-shell";
 import { Badge, Button, Card } from "@/components/ui";
 import { getAssignments } from "@/lib/db/queries";
+import { requireLmsAccess } from "@/lib/db/auth";
 
 function fmtDue(iso: string) {
   const d = new Date(iso);
@@ -9,6 +10,7 @@ function fmtDue(iso: string) {
 }
 
 export default async function AssignmentsPage() {
+  await requireLmsAccess();
   const assignments = await getAssignments();
   return (
     <PortalShell title="과제">

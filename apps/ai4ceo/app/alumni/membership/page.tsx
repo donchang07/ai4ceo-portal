@@ -2,6 +2,7 @@ import { FileDown, Newspaper, Ticket, Video, Lock } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { AlumniShell } from "@/components/alumni-shell";
 import { Button, Callout } from "@/components/ui";
+import { requireAlumniAccess } from "@/lib/db/auth";
 import { MEMBERSHIP_KRW, formatKRW } from "@/lib/core/constants";
 
 const BENEFITS: { icon: LucideIcon; title: string; desc: string }[] = [
@@ -11,7 +12,8 @@ const BENEFITS: { icon: LucideIcon; title: string; desc: string }[] = [
   { icon: Newspaper, title: "AI 피드 전체 열람", desc: "동문 전용 브리프와 AI 트렌드 피드를 모두 봅니다." },
 ];
 
-export default function AlumniMembershipPage() {
+export default async function AlumniMembershipPage() {
+  await requireAlumniAccess();
   return (
     <AlumniShell>
       <div className="mx-auto w-full max-w-md pb-24">

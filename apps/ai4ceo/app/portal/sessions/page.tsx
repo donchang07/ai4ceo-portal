@@ -3,6 +3,7 @@ import { Clock, Video, MapPin, ChevronRight } from "lucide-react";
 import { PortalShell } from "@/components/portal-shell";
 import { Badge, Card } from "@/components/ui";
 import { getSessions } from "@/lib/db/queries";
+import { requireArchiveAccess } from "@/lib/db/auth";
 
 function fmt(iso: string) {
   const d = new Date(iso);
@@ -10,6 +11,7 @@ function fmt(iso: string) {
 }
 
 export default async function SessionsPage() {
+  await requireArchiveAccess();
   const sessions = await getSessions();
   return (
     <PortalShell title="세션">

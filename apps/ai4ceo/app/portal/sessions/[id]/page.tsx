@@ -3,6 +3,7 @@ import { Play, Lock, FileText, Download, ClipboardList, ChevronRight } from "luc
 import { PortalShell } from "@/components/portal-shell";
 import { Badge, Button, Card, CardTitle } from "@/components/ui";
 import { getSession, getMaterials, getAssignments } from "@/lib/db/queries";
+import { requireArchiveAccess } from "@/lib/db/auth";
 import { QaPanel } from "./qa-panel";
 
 function fmtRange(startIso: string, endIso: string): string {
@@ -14,6 +15,7 @@ function fmtRange(startIso: string, endIso: string): string {
 }
 
 export default async function SessionDetail({ params }: { params: Promise<{ id: string }> }) {
+  await requireArchiveAccess();
   const { id } = await params;
   const session = await getSession(id);
   if (!session) {

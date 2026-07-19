@@ -2,6 +2,7 @@ import { ArrowRight, MessageCircleQuestion } from "lucide-react";
 import { AlumniShell } from "@/components/alumni-shell";
 import { Badge, Button, Card, CardTitle, Callout, Chip, SectionTitle } from "@/components/ui";
 import { getPosts } from "@/lib/db/queries";
+import { requireAlumniAccess } from "@/lib/db/auth";
 import { MEMBERSHIP_KRW, formatKRW } from "@/lib/core/constants";
 
 const AS_QUESTIONS: { title: string; status: "done" | "wait" }[] = [
@@ -29,6 +30,7 @@ function formatDate(iso: string): string {
 }
 
 export default async function AlumniHomePage() {
+  await requireAlumniAccess();
   const posts = await getPosts();
   const briefs = posts.filter((p) => p.board === "brief").slice(0, 2);
 
