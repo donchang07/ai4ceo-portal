@@ -1,7 +1,10 @@
 import Anthropic from "@anthropic-ai/sdk";
 
-// Design Ref: PRD 6.7 — Claude streaming tutor call.
-export const AI_MODEL = process.env.AI_MODEL || "claude-sonnet-4-5";
+// Design Ref: PRD 6.7 — Claude streaming tutor call (Claude Fable 5).
+// Fable 5 API notes: thinking is always on (omit the param), no temperature/top_p,
+// and safety refusals are possible — we opt into server-side fallback to Opus 4.8
+// so a declined request is transparently re-served instead of failing.
+export const AI_MODEL = process.env.AI_MODEL || "claude-fable-5";
 
 export function getAnthropic(): Anthropic | null {
   const apiKey = process.env.ANTHROPIC_API_KEY;
@@ -35,18 +38,26 @@ export async function streamTutor(opts: {
     });
   }
 
-  const stream = client.messages.stream({
+  const stream = client.beta.messages.stream({
     model: AI_MODEL,
-    max_tokens: 1024,
+    max_tokens: 4096,
     system: opts.system,
     messages: opts.messages.map((m) => ({ role: m.role, content: m.content })),
-  });
+    output_config: { effort: "medium" },
+    betas: ["server-side-fallback-2026-06-01"],
+    fallbacks: [{ model: "claude-opus-4-8" }],
+  } as Parameters<typeof client.beta.messages.stream>[0]);
 
   return new ReadableStream({
     async start(controller) {
       try {
         stream.on("text", (text) => controller.enqueue(encoder.encode(text)));
-        await stream.finalMessage();
+        const final = await stream.finalMessage();
+        if (final.stop_reason === "refusal") {
+          controller.enqueue(
+            encoder.encode("\n\n죄송합니다. 이 질문에는 답변드릴 수 없습니다. 다른 질문을 해주세요."),
+          );
+        }
         controller.close();
       } catch (e) {
         controller.enqueue(encoder.encode(`\n\n[오류] 답변 생성 중 문제가 발생했습니다: ${String(e)}`));

@@ -1,12 +1,22 @@
 import { NextRequest } from "next/server";
-import { buildTutorContext, buildSystemPrompt } from "@/lib/ai/context";
-import { streamTutor, type TutorMessage } from "@/lib/ai/tutor";
+import { buildTutorContext, buildSystemPrompt, ragChunksToSources } from "@/lib/ai/context";
+import { retrieveRagChunks } from "@/lib/ai/retrieval";
+import { streamTutor, AI_MODEL, type TutorMessage } from "@/lib/ai/tutor";
 import { getSupabaseServer } from "@/lib/db/supabase-server";
+import { getCurrentUser } from "@/lib/db/auth";
+import { canAccessLms, isAdmin } from "@/lib/core/access";
 
 export const runtime = "nodejs";
+export const maxDuration = 300;
 
-// Design Ref: PRD 6.7 — AI 조교 streaming route + ai_question_logs recording
+// Design Ref: PRD 6.7 — AI 조교 streaming route: RAG(pgvector) retrieval + Claude Fable 5
 export async function POST(req: NextRequest) {
+  // AI 조교는 재학생/조교/관리자 전용 (PRD 1.7 status-gated)
+  const user = await getCurrentUser();
+  if (!user || (!isAdmin(user.role) && !canAccessLms(user.role, user.enrollmentStatus))) {
+    return new Response("AI 조교는 재학생 전용입니다.", { status: 403 });
+  }
+
   const body = (await req.json().catch(() => ({}))) as {
     messages?: TutorMessage[];
     question?: string;
@@ -20,11 +30,16 @@ export async function POST(req: NextRequest) {
     return new Response("질문이 없습니다.", { status: 400 });
   }
 
-  const sources = await buildTutorContext();
+  const lastQuestion = messages[messages.length - 1]?.content ?? "";
+  const [curriculumSources, ragChunks] = await Promise.all([
+    buildTutorContext(),
+    retrieveRagChunks(lastQuestion),
+  ]);
+  const sources = [...ragChunksToSources(ragChunks), ...curriculumSources];
   const system = buildSystemPrompt(sources);
 
   // best-effort log (schema may be unapplied)
-  void logQuestion(messages[messages.length - 1]?.content ?? "", sources.slice(0, 3));
+  void logQuestion(lastQuestion, sources.slice(0, 3));
 
   const stream = await streamTutor({ system, messages });
   return new Response(stream, {
@@ -48,7 +63,7 @@ async function logQuestion(question: string, sources: { type: string; id: string
         question,
         answer: "",
         topic: "other",
-        model: process.env.AI_MODEL || "claude-sonnet-4-5",
+        model: AI_MODEL,
         context_refs: sources.map((s) => ({ type: s.type, id: s.id, title: s.title })),
         status: "answered",
       })
