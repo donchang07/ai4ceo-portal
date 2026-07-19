@@ -7,7 +7,17 @@ import {
   MOCK_POSTS,
   MOCK_SESSIONS,
 } from "./mock";
-import type { Application, Assignment, Invoice, Material, Post, Session } from "./types";
+import type {
+  Application,
+  Assignment,
+  Invoice,
+  Material,
+  Post,
+  Session,
+  VideoRec,
+  QuestionWithAnswers,
+  SessionAnswer,
+} from "./types";
 
 // Each query attempts Supabase (RLS enforced). When the schema is not yet
 // applied or returns nothing, it falls back to representative 18기 data so the
@@ -77,4 +87,51 @@ export async function getPosts(): Promise<Post[]> {
     async (sb) => (await sb.from("posts").select("*").order("published_at", { ascending: false })).data as Post[] | null,
     MOCK_POSTS,
   );
+}
+
+export async function getSessionVideo(sessionId: string): Promise<VideoRec | null> {
+  try {
+    const sb = await getSupabaseServer();
+    const { data } = await sb
+      .from("videos")
+      .select("*")
+      .eq("session_id", sessionId)
+      .eq("visibility", "cohort_readonly")
+      .order("published_at", { ascending: false })
+      .limit(1)
+      .maybeSingle();
+    return (data as VideoRec) ?? null;
+  } catch {
+    return null;
+  }
+}
+
+// Session Q&A (D-10/D-22) — real questions + threaded answers.
+export async function getSessionQuestions(sessionId: string): Promise<QuestionWithAnswers[]> {
+  try {
+    const sb = await getSupabaseServer();
+    const { data: questions } = await sb
+      .from("session_questions")
+      .select("*")
+      .eq("session_id", sessionId)
+      .order("created_at", { ascending: false });
+    if (!questions || questions.length === 0) return [];
+
+    const ids = questions.map((q) => q.id as string);
+    const { data: answers } = await sb
+      .from("session_answers")
+      .select("*")
+      .in("question_id", ids)
+      .order("created_at", { ascending: true });
+
+    const byQuestion = new Map<string, SessionAnswer[]>();
+    for (const a of (answers as SessionAnswer[]) ?? []) {
+      const arr = byQuestion.get(a.question_id) ?? [];
+      arr.push(a);
+      byQuestion.set(a.question_id, arr);
+    }
+    return (questions as QuestionWithAnswers[]).map((q) => ({ ...q, answers: byQuestion.get(q.id) ?? [] }));
+  } catch {
+    return [];
+  }
 }

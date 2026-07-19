@@ -1,11 +1,11 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { Eye, GripVertical, RefreshCw, Save, X } from "lucide-react";
+import { Eye, GripVertical, Save, X, Video, FileText, Trash2, Plus } from "lucide-react";
 import { Badge, Button, Card, CardTitle, Input, Textarea } from "@/components/ui";
-import type { Session } from "@/lib/db/types";
+import type { Session, Material, VideoRec } from "@/lib/db/types";
 import { cn } from "@/lib/core/cn";
-import { saveSession, reorderSessions } from "./actions";
+import { saveSession, reorderSessions, setSessionVideo, addMaterial, deleteMaterial } from "./actions";
 
 function hour12(h: number): number {
   const r = h % 12;
@@ -40,10 +40,23 @@ function subtitleOf(s: Session): string {
   return s.track ? `${time} · ${s.track}` : time;
 }
 
-export function CurriculumEditor({ sessions }: { sessions: Session[] }) {
+export function CurriculumEditor({
+  sessions,
+  videoBySession,
+  materialsBySession,
+}: {
+  sessions: Session[];
+  videoBySession: Record<string, VideoRec>;
+  materialsBySession: Record<string, Material[]>;
+}) {
   const first = sessions[0];
   const [localSessions, setLocalSessions] = useState(sessions);
   const [selectedId, setSelectedId] = useState(first.id);
+  const [videoUrl, setVideoUrl] = useState(videoBySession[first.id]?.google_drive_url ?? "");
+  const [videoTitle, setVideoTitle] = useState(videoBySession[first.id]?.title ?? "");
+  const [videoMsg, setVideoMsg] = useState<string | null>(null);
+  const [matTitle, setMatTitle] = useState("");
+  const [matUrl, setMatUrl] = useState("");
   const [title, setTitle] = useState(first.title);
   const [subtitle, setSubtitle] = useState(subtitleOf(first));
   const [body, setBody] = useState(first.description ?? "");
@@ -58,8 +71,39 @@ export function CurriculumEditor({ sessions }: { sessions: Session[] }) {
     setTitle(s.title);
     setSubtitle(subtitleOf(s));
     setBody(s.description ?? "");
+    setVideoUrl(videoBySession[s.id]?.google_drive_url ?? "");
+    setVideoTitle(videoBySession[s.id]?.title ?? "");
+    setVideoMsg(null);
+    setMatTitle("");
+    setMatUrl("");
     setSaved(false);
     setError(null);
+  }
+
+  function handleSaveVideo() {
+    setVideoMsg(null);
+    startTransition(async () => {
+      const r = await setSessionVideo(selectedId, videoUrl, videoTitle);
+      setVideoMsg(r.ok ? "저장됨" : `실패: ${r.message}`);
+    });
+  }
+
+  function handleAddMaterial() {
+    startTransition(async () => {
+      const r = await addMaterial(selectedId, matTitle, matUrl);
+      if (r.ok) {
+        setMatTitle("");
+        setMatUrl("");
+      } else {
+        setError(r.message);
+      }
+    });
+  }
+
+  function handleDeleteMaterial(id: string) {
+    startTransition(async () => {
+      await deleteMaterial(id, selectedId);
+    });
   }
 
   function handleSave() {
@@ -184,16 +228,66 @@ export function CurriculumEditor({ sessions }: { sessions: Session[] }) {
           {error && <span className="text-sm font-semibold text-danger">저장 실패: {error}</span>}
         </div>
 
+        {/* 강의 영상 */}
+        <div className="mt-5 border-t border-hairline pt-4">
+          <div className="flex items-center gap-1.5 text-xs font-semibold text-muted">
+            <Video size={13} /> 강의 영상 (YouTube · Google Drive · mp4 URL)
+          </div>
+          <div className="mt-2 space-y-2">
+            <Input
+              value={videoTitle}
+              onChange={(e) => setVideoTitle(e.target.value)}
+              placeholder="영상 제목 (예: 1주차 강의 녹화본)"
+            />
+            <div className="flex items-center gap-2">
+              <Input
+                value={videoUrl}
+                onChange={(e) => setVideoUrl(e.target.value)}
+                placeholder="https://youtu.be/... 또는 https://drive.google.com/file/d/.../view"
+              />
+              <Button variant="primary" onClick={handleSaveVideo} disabled={isPending} className="min-h-9 shrink-0 px-3 text-xs">
+                연결
+              </Button>
+            </div>
+            <p className="text-[11px] text-muted">
+              Zoom 녹화본을 Drive/YouTube에 올린 뒤 공유 URL을 붙여넣으세요. 비우고 &quot;연결&quot;하면 영상이 제거됩니다.
+              {videoMsg && <span className="ml-1 font-semibold text-success">{videoMsg}</span>}
+            </p>
+          </div>
+        </div>
+
         {/* 첨부 자료 */}
         <div className="mt-5 border-t border-hairline pt-4">
-          <div className="text-xs font-semibold text-muted">첨부 자료</div>
-          <div className="mt-2 flex flex-wrap items-center gap-2 rounded-control border border-hairline bg-surface-muted px-3 py-2.5">
-            <span className="text-sm font-medium text-ink">3주차_실습.pdf</span>
-            <Badge tone="progress">v2 · 오늘 교체됨</Badge>
-            <Badge tone="wait">공개 예약 9/21 17:00</Badge>
-            <Button variant="secondary" className="ml-auto min-h-8 px-3 text-xs">
-              <RefreshCw size={13} /> 교체
-            </Button>
+          <div className="flex items-center gap-1.5 text-xs font-semibold text-muted">
+            <FileText size={13} /> 강의자료
+          </div>
+          <ul className="mt-2 space-y-1.5">
+            {(materialsBySession[selectedId] ?? []).map((m) => (
+              <li key={m.id} className="flex items-center gap-2 rounded-control border border-hairline bg-surface-muted px-3 py-2">
+                <FileText size={14} className="shrink-0 text-info" />
+                <span className="min-w-0 flex-1 truncate text-sm text-ink">{m.title}</span>
+                <button
+                  onClick={() => handleDeleteMaterial(m.id)}
+                  disabled={isPending}
+                  aria-label="삭제"
+                  className="shrink-0 rounded p-1 text-faint hover:bg-surface hover:text-danger"
+                >
+                  <Trash2 size={14} />
+                </button>
+              </li>
+            ))}
+            {(materialsBySession[selectedId] ?? []).length === 0 && (
+              <li className="text-xs text-muted">등록된 자료가 없습니다.</li>
+            )}
+          </ul>
+          <div className="mt-2 space-y-2">
+            <Input value={matTitle} onChange={(e) => setMatTitle(e.target.value)} placeholder="자료 제목 (예: 3주차 실습 가이드.pdf)" />
+            <div className="flex items-center gap-2">
+              <Input value={matUrl} onChange={(e) => setMatUrl(e.target.value)} placeholder="다운로드/링크 URL" />
+              <Button variant="secondary" onClick={handleAddMaterial} disabled={isPending} className="min-h-9 shrink-0 px-3 text-xs">
+                <Plus size={13} /> 추가
+              </Button>
+            </div>
           </div>
         </div>
       </Card>

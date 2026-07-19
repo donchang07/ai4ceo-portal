@@ -41,6 +41,32 @@ export interface VideoRec {
   visibility: "cohort_readonly" | "hidden";
 }
 
+export interface SessionQuestion {
+  id: string;
+  session_id: string;
+  cohort_id: string;
+  author_id: string | null;
+  author_name: string | null;
+  body: string;
+  video_position_sec: number | null;
+  created_at: string;
+}
+
+export interface SessionAnswer {
+  id: string;
+  question_id: string;
+  author_id: string | null;
+  author_name: string | null;
+  body: string;
+  is_instructor: boolean;
+  is_ai: boolean;
+  created_at: string;
+}
+
+export interface QuestionWithAnswers extends SessionQuestion {
+  answers: SessionAnswer[];
+}
+
 export interface Assignment {
   id: string;
   cohort_id: string;

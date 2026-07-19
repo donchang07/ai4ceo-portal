@@ -17,6 +17,31 @@ export interface TutorMessage {
   content: string;
 }
 
+// Non-streaming variant — used when an AI answer is stored (e.g. session Q&A).
+export async function answerTutorOnce(opts: { system: string; question: string }): Promise<string> {
+  const client = getAnthropic();
+  if (!client) return "AI 조교 API 키가 설정되지 않아 답변을 생성할 수 없습니다.";
+  try {
+    const res = await client.beta.messages.create({
+      model: AI_MODEL,
+      max_tokens: 2048,
+      system: opts.system,
+      messages: [{ role: "user", content: opts.question }],
+      output_config: { effort: "medium" },
+      betas: ["server-side-fallback-2026-06-01"],
+      fallbacks: [{ model: "claude-opus-4-8" }],
+    } as Parameters<typeof client.beta.messages.create>[0]);
+    const msg = res as { content?: Array<{ type: string; text?: string }> };
+    return (msg.content ?? [])
+      .filter((b) => b.type === "text")
+      .map((b) => b.text ?? "")
+      .join("")
+      .trim() || "답변을 생성하지 못했습니다.";
+  } catch (e) {
+    return `답변 생성 중 문제가 발생했습니다: ${String(e)}`;
+  }
+}
+
 export async function streamTutor(opts: {
   system: string;
   messages: TutorMessage[];
