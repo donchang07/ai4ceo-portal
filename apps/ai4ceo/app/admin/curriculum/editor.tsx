@@ -1,27 +1,11 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { Clock, Eye, GripVertical, RefreshCw, Save } from "lucide-react";
+import { Eye, GripVertical, RefreshCw, Save, X } from "lucide-react";
 import { Badge, Button, Card, CardTitle, Input, Textarea } from "@/components/ui";
 import type { Session } from "@/lib/db/types";
 import { cn } from "@/lib/core/cn";
-import { saveSession } from "./actions";
-
-type LogEntry = {
-  id: string;
-  author: string;
-  time: string;
-  action: string;
-  published: boolean;
-  notified: boolean;
-};
-
-const INITIAL_LOG: LogEntry[] = [
-  { id: "l1", author: "장동인 교수", time: "오늘 14:20", action: "본문 수정", published: true, notified: true },
-  { id: "l2", author: "장동인 교수", time: "오늘 11:05", action: "첨부 자료 v2 교체", published: true, notified: false },
-  { id: "l3", author: "운영팀", time: "어제 17:40", action: "공개 예약 설정", published: false, notified: false },
-  { id: "l4", author: "장동인 교수", time: "2일 전 09:12", action: "세션 제목 변경", published: true, notified: true },
-];
+import { saveSession, reorderSessions } from "./actions";
 
 function hour12(h: number): number {
   const r = h % 12;
@@ -58,14 +42,16 @@ function subtitleOf(s: Session): string {
 
 export function CurriculumEditor({ sessions }: { sessions: Session[] }) {
   const first = sessions[0];
+  const [localSessions, setLocalSessions] = useState(sessions);
   const [selectedId, setSelectedId] = useState(first.id);
   const [title, setTitle] = useState(first.title);
   const [subtitle, setSubtitle] = useState(subtitleOf(first));
   const [body, setBody] = useState(first.description ?? "");
-  const [log, setLog] = useState<LogEntry[]>(INITIAL_LOG);
   const [saved, setSaved] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
+  const [dragId, setDragId] = useState<string | null>(null);
+  const [showPreview, setShowPreview] = useState(false);
 
   function selectSession(s: Session) {
     setSelectedId(s.id);
@@ -84,13 +70,33 @@ export function CurriculumEditor({ sessions }: { sessions: Session[] }) {
         setError(result.message);
         return;
       }
-      setLog((prev) => [
-        { id: `l${Date.now()}`, author: "장동인 교수", time: "방금 전", action: "본문 수정", published: true, notified: false },
-        ...prev,
-      ]);
       setSaved(true);
       window.setTimeout(() => setSaved(false), 2200);
     });
+  }
+
+  function handleDragOver(e: React.DragEvent, overId: string) {
+    e.preventDefault();
+    if (!dragId || dragId === overId) return;
+    setLocalSessions((prev) => {
+      const from = prev.findIndex((s) => s.id === dragId);
+      const to = prev.findIndex((s) => s.id === overId);
+      if (from === -1 || to === -1) return prev;
+      const next = [...prev];
+      const [moved] = next.splice(from, 1);
+      next.splice(to, 0, moved);
+      return next;
+    });
+  }
+
+  function handleDragEnd() {
+    if (dragId) {
+      const ids = localSessions.map((s) => s.id);
+      startTransition(async () => {
+        await reorderSessions(ids);
+      });
+    }
+    setDragId(null);
   }
 
   return (
@@ -99,12 +105,19 @@ export function CurriculumEditor({ sessions }: { sessions: Session[] }) {
       <Card className="p-3">
         <div className="px-2 pb-2 pt-1 text-xs font-semibold text-muted">세션 목록</div>
         <ul className="space-y-1.5">
-          {sessions.map((s) => {
+          {localSessions.map((s) => {
             const active = s.id === selectedId;
             const isSpecial = s.type === "special";
             const isOffline = s.type === "offline_supplement";
             return (
-              <li key={s.id}>
+              <li
+                key={s.id}
+                draggable
+                onDragStart={() => setDragId(s.id)}
+                onDragOver={(e) => handleDragOver(e, s.id)}
+                onDragEnd={handleDragEnd}
+                className={cn(dragId === s.id && "opacity-50")}
+              >
                 <button
                   onClick={() => selectSession(s)}
                   className={cn(
@@ -161,7 +174,7 @@ export function CurriculumEditor({ sessions }: { sessions: Session[] }) {
         </div>
 
         <div className="mt-4 flex items-center gap-2">
-          <Button variant="outline">
+          <Button variant="outline" onClick={() => setShowPreview(true)}>
             <Eye size={15} /> 미리보기
           </Button>
           <Button variant="primary" onClick={handleSave} disabled={isPending}>
@@ -185,37 +198,8 @@ export function CurriculumEditor({ sessions }: { sessions: Session[] }) {
         </div>
       </Card>
 
-      {/* 우: 변경 이력 + 정책 */}
+      {/* 우: 정책 */}
       <div className="space-y-4">
-        <Card>
-          <div className="flex items-center justify-between">
-            <CardTitle>변경 이력</CardTitle>
-            <Badge tone="neutral">D-15</Badge>
-          </div>
-          <ol className="mt-4 space-y-4">
-            {log.map((e, i) => (
-              <li key={e.id} className="relative flex gap-3">
-                <div className="flex flex-col items-center">
-                  <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-primary" />
-                  {i < log.length - 1 && <span className="mt-1 w-px flex-1 bg-hairline" />}
-                </div>
-                <div className="pb-1">
-                  <div className="text-sm font-medium text-ink">{e.action}</div>
-                  <div className="mt-0.5 flex items-center gap-1.5 text-xs text-muted">
-                    <span>{e.author}</span>
-                    <span className="text-faint">·</span>
-                    <Clock size={11} /> {e.time}
-                  </div>
-                  <div className="mt-1.5 flex gap-1.5">
-                    {e.published && <Badge tone="done" className="px-1.5 py-0">공개</Badge>}
-                    {e.notified && <Badge tone="info" className="bg-info-surface px-1.5 py-0">알림 발송</Badge>}
-                  </div>
-                </div>
-              </li>
-            ))}
-          </ol>
-        </Card>
-
         <Card className="bg-info-surface">
           <CardTitle>Version Pack 정책</CardTitle>
           <p className="mt-2 text-[13px] leading-relaxed text-info">
@@ -223,6 +207,36 @@ export function CurriculumEditor({ sessions }: { sessions: Session[] }) {
           </p>
         </Card>
       </div>
+
+      {showPreview && (
+        <div
+          className="fixed inset-0 z-50 grid place-items-center bg-ink/40 px-5"
+          onClick={() => setShowPreview(false)}
+        >
+          <div
+            className="max-h-[80vh] w-full max-w-2xl overflow-y-auto rounded-[15px] border border-hairline bg-surface p-6"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-start justify-between gap-3">
+              <div>
+                <div className="text-xs font-semibold text-muted">수강생 화면 미리보기</div>
+                <h2 className="mt-1 text-xl font-bold text-ink">{title}</h2>
+                <p className="mt-1 text-sm text-muted">{subtitle}</p>
+              </div>
+              <button
+                onClick={() => setShowPreview(false)}
+                className="shrink-0 rounded-full p-1.5 text-faint hover:bg-surface-muted hover:text-ink"
+                aria-label="닫기"
+              >
+                <X size={18} />
+              </button>
+            </div>
+            <div className="mt-5 whitespace-pre-wrap rounded-control border border-hairline bg-[#FBFCFE] p-4 text-sm leading-relaxed text-ink">
+              {body || "본문이 비어 있습니다."}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

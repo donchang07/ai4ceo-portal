@@ -20,6 +20,7 @@ export interface Session {
   content_version: number;
   is_published: boolean;
   track?: string;
+  sort_order?: number | null;
 }
 
 export interface Material {

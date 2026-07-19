@@ -27,7 +27,13 @@ async function tryQuery<T>(fn: (sb: Awaited<ReturnType<typeof getSupabaseServer>
 export async function getSessions(): Promise<Session[]> {
   return tryQuery(
     async (sb) =>
-      (await sb.from("sessions").select("*").order("week_no", { ascending: true })).data as Session[] | null,
+      (
+        await sb
+          .from("sessions")
+          .select("*")
+          .order("sort_order", { ascending: true, nullsFirst: false })
+          .order("week_no", { ascending: true })
+      ).data as Session[] | null,
     MOCK_SESSIONS,
   );
 }

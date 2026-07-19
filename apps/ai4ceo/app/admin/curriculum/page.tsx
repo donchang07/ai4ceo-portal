@@ -21,10 +21,10 @@ export default async function CurriculumPage() {
           <Button type="submit" variant="primary">+ 세션 삽입</Button>
         </form>
       </div>
-      <p className="mt-1 text-sm text-muted">세션을 선택해 본문을 편집합니다. 저장 시 즉시 반영되고 변경 이력이 자동 기록됩니다.</p>
+      <p className="mt-1 text-sm text-muted">세션을 선택해 본문을 편집합니다. 저장 시 즉시 반영되고, 목록의 점 6개를 잡고 드래그하면 순서를 바꿀 수 있습니다.</p>
 
       <div className="mt-6">
-        <CurriculumEditor sessions={sessions} />
+        <CurriculumEditor key={sessions.map((s) => s.id).join(",")} sessions={sessions} />
       </div>
     </AdminShell>
   );
