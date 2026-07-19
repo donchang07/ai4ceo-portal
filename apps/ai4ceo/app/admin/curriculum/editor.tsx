@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useTransition } from "react";
 import { Clock, Eye, GripVertical, RefreshCw, Save } from "lucide-react";
 import { Badge, Button, Card, CardTitle, Input, Textarea } from "@/components/ui";
 import type { Session } from "@/lib/db/types";
 import { cn } from "@/lib/core/cn";
+import { saveSession } from "./actions";
 
 type LogEntry = {
   id: string;
@@ -63,6 +64,8 @@ export function CurriculumEditor({ sessions }: { sessions: Session[] }) {
   const [body, setBody] = useState(first.description ?? "");
   const [log, setLog] = useState<LogEntry[]>(INITIAL_LOG);
   const [saved, setSaved] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [isPending, startTransition] = useTransition();
 
   function selectSession(s: Session) {
     setSelectedId(s.id);
@@ -70,15 +73,24 @@ export function CurriculumEditor({ sessions }: { sessions: Session[] }) {
     setSubtitle(subtitleOf(s));
     setBody(s.description ?? "");
     setSaved(false);
+    setError(null);
   }
 
   function handleSave() {
-    setLog((prev) => [
-      { id: `l${Date.now()}`, author: "장동인 교수", time: "방금 전", action: "본문 수정", published: true, notified: false },
-      ...prev,
-    ]);
-    setSaved(true);
-    window.setTimeout(() => setSaved(false), 2200);
+    setError(null);
+    startTransition(async () => {
+      const result = await saveSession(selectedId, title, body);
+      if (!result.ok) {
+        setError(result.message);
+        return;
+      }
+      setLog((prev) => [
+        { id: `l${Date.now()}`, author: "장동인 교수", time: "방금 전", action: "본문 수정", published: true, notified: false },
+        ...prev,
+      ]);
+      setSaved(true);
+      window.setTimeout(() => setSaved(false), 2200);
+    });
   }
 
   return (
@@ -152,10 +164,11 @@ export function CurriculumEditor({ sessions }: { sessions: Session[] }) {
           <Button variant="outline">
             <Eye size={15} /> 미리보기
           </Button>
-          <Button variant="primary" onClick={handleSave}>
-            <Save size={15} /> 저장
+          <Button variant="primary" onClick={handleSave} disabled={isPending}>
+            <Save size={15} /> {isPending ? "저장 중…" : "저장"}
           </Button>
           {saved && <span className="text-sm font-semibold text-success">저장됨</span>}
+          {error && <span className="text-sm font-semibold text-danger">저장 실패: {error}</span>}
         </div>
 
         {/* 첨부 자료 */}
