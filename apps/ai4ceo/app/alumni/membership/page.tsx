@@ -3,7 +3,14 @@ import type { LucideIcon } from "lucide-react";
 import { AlumniShell } from "@/components/alumni-shell";
 import { Button, Callout } from "@/components/ui";
 import { requireAlumniAccess } from "@/lib/db/auth";
+import { getSupabaseServer } from "@/lib/db/supabase-server";
 import { MEMBERSHIP_KRW, formatKRW } from "@/lib/core/constants";
+
+function dDay(expiresAt: string): string {
+  const diff = Math.ceil((new Date(expiresAt).getTime() - Date.now()) / 86_400_000);
+  if (diff <= 0) return "만료됨";
+  return `만료까지 D-${diff}`;
+}
 
 const BENEFITS: { icon: LucideIcon; title: string; desc: string }[] = [
   { icon: Video, title: "전 기수 녹화본", desc: "모든 기수 세션 녹화본을 read-only로 열람합니다." },
@@ -13,7 +20,19 @@ const BENEFITS: { icon: LucideIcon; title: string; desc: string }[] = [
 ];
 
 export default async function AlumniMembershipPage() {
-  await requireAlumniAccess();
+  const user = await requireAlumniAccess();
+
+  const supabase = await getSupabaseServer();
+  const { data: membership } = await supabase
+    .from("memberships")
+    .select("status, expires_at")
+    .eq("user_id", user.id)
+    .eq("status", "active")
+    .order("expires_at", { ascending: false })
+    .limit(1)
+    .maybeSingle();
+  const isActive = !!membership;
+
   return (
     <AlumniShell>
       <div className="mx-auto w-full max-w-md pb-24">
@@ -22,12 +41,14 @@ export default async function AlumniMembershipPage() {
           <div className="flex items-center justify-between gap-2">
             <p className="text-xs font-semibold tracking-wide text-white/60">AI4CEO MEMBERSHIP</p>
             <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-2.5 py-0.5 text-xs font-medium text-white">
-              <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-success" />
-              이용 중
+              <span className={`h-1.5 w-1.5 shrink-0 rounded-full ${isActive ? "bg-success" : "bg-faint"}`} />
+              {isActive ? "이용 중" : "미가입"}
             </span>
           </div>
-          <p className="mt-4 text-lg font-bold">대표님 · 17기 수료</p>
-          <p className="text-sm text-white/60">만료까지 D-238</p>
+          <p className="mt-4 text-lg font-bold">{user.name}님</p>
+          <p className="text-sm text-white/60">
+            {isActive && membership?.expires_at ? dDay(membership.expires_at) : "가입하시면 아래 혜택을 바로 이용하실 수 있습니다."}
+          </p>
           <div className="mt-5 border-t border-white/10 pt-4">
             <p className="text-2xl font-bold tnum">{formatKRW(MEMBERSHIP_KRW)}</p>
             <p className="text-xs text-white/50">연간 · VAT 포함</p>
@@ -60,7 +81,9 @@ export default async function AlumniMembershipPage() {
           <Callout>
             <Lock size={16} className="mt-0.5 shrink-0" />
             <span>
-              Zoom·대화방·과제·AI 조교는 재학생 전용입니다. 멤버십 만료 시 접근이 자동 회수됩니다.
+              {isActive
+                ? "Zoom·대화방·과제·AI 조교는 재학생 전용입니다. 멤버십 만료 시 세션·영상·자료 접근이 자동 회수됩니다."
+                : "멤버십 미가입 상태에서는 세션·강의 영상·자료를 열람할 수 없습니다. 가입 시 바로 열립니다."}
             </span>
           </Callout>
         </div>
@@ -70,7 +93,7 @@ export default async function AlumniMembershipPage() {
       <div className="fixed inset-x-0 bottom-0 z-30 border-t border-hairline bg-surface/95 px-5 py-3 backdrop-blur">
         <div className="mx-auto w-full max-w-md">
           <Button variant="primary" full href="/alumni/membership#renew">
-            멤버십 갱신하기
+            {isActive ? "멤버십 갱신하기" : "멤버십 가입하기"}
           </Button>
         </div>
       </div>
