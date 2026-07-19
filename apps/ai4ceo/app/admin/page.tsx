@@ -20,7 +20,7 @@ export default async function AdminDashboardPage() {
   const kpis: Kpi[] = [
     { label: "지원자", value: String(applications.length), caption: "최근 7일 +12" },
     { label: "추천 유입", value: "64%", caption: "지난 기수 대비 +9%p" },
-    { label: "입금 완료", value: `${paidCount} / ${COHORT_18.capacity}`, caption: "정원 24명 기준" },
+    { label: "입금 완료", value: String(paidCount), caption: "Zoom 강의 — 정원 제한 없음" },
     { label: "결과물 완성률", value: "78%", caption: "9주차 종합 프로젝트 기준" },
   ];
 

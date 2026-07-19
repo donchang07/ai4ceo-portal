@@ -12,10 +12,10 @@ const trackIcons: Record<string, LucideIcon> = {
 };
 
 const stats = [
-  { value: `${COHORT_18.capacity}석`, label: "지원 정원" },
+  { value: "무제한", label: "모집 정원 (Zoom)" },
   { value: "10회", label: "정규 과정" },
   { value: "4대", label: "핵심 트랙" },
-  { value: "2026-09-07", label: "개강" },
+  { value: "9/9(수)", label: "개강" },
 ];
 
 export default function Landing() {
@@ -39,8 +39,8 @@ export default function Landing() {
             <Button href="/apply" variant="primary">
               지원하기 <ArrowRight size={16} />
             </Button>
-            <Button href="#curriculum" variant="secondary">
-              커리큘럼 보기
+            <Button href="/program" variant="secondary">
+              과정 안내 보기
             </Button>
           </div>
 
@@ -93,8 +93,8 @@ export default function Landing() {
           <div>
             <div className="text-xl font-bold text-ink">18기 모집이 진행 중입니다</div>
             <p className="mt-1 text-sm text-muted">
-              개강 {COHORT_18.eduStartLabel} · 정원 {COHORT_18.capacity}석. 로그인 없이 5분이면
-              지원할 수 있습니다.
+              개강 {COHORT_18.eduStartLabel} · Zoom 온라인 강의라 정원 제한 없이 모집합니다.
+              로그인 없이 5분이면 지원할 수 있습니다.
             </p>
           </div>
           <Button href="/apply" variant="primary" className="shrink-0">

@@ -13,7 +13,7 @@ export function PublicHeader() {
           AI4CEO
         </Link>
         <nav className="hidden items-center gap-6 text-sm text-muted md:flex">
-          <Link href="/#curriculum" className="hover:text-ink">커리큘럼</Link>
+          <Link href="/program" className="hover:text-ink">과정 안내</Link>
           <Link href="/trends" className="hover:text-ink">AI 브리프</Link>
           <Link href="/login" className="hover:text-ink">로그인</Link>
         </nav>
