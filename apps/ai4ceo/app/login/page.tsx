@@ -1,18 +1,41 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Sparkles, Mail } from "lucide-react";
 import { getSupabaseBrowser } from "@/lib/db/supabase-client";
 import { Button, Input, Callout } from "@/components/ui";
 
+type Mode = "password" | "magic-link";
+
 export default function LoginPage() {
+  const router = useRouter();
+  const [mode, setMode] = useState<Mode>("password");
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  async function submit(e: React.FormEvent) {
+  async function submitPassword(e: React.FormEvent) {
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
+    try {
+      const supabase = getSupabaseBrowser();
+      const { error } = await supabase.auth.signInWithPassword({ email, password });
+      if (error) throw error;
+      router.push("/portal/cohort");
+      router.refresh();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "로그인에 실패했습니다.");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function submitMagicLink(e: React.FormEvent) {
     e.preventDefault();
     setLoading(true);
     setError(null);
@@ -48,29 +71,85 @@ export default function LoginPage() {
           </span>
           AI4CEO
         </Link>
-        <h1 className="text-xl font-bold text-ink">로그인</h1>
-        <p className="mt-1 text-sm text-muted">이메일로 매직링크를 보내드립니다.</p>
 
-        {sent ? (
-          <Callout className="mt-5">
-            <Mail size={16} className="mt-0.5 shrink-0" />
-            <span>{email}로 로그인 링크를 보냈습니다. 메일함을 확인해 주세요.</span>
-          </Callout>
+        {mode === "password" ? (
+          <>
+            <h1 className="text-xl font-bold text-ink">로그인</h1>
+            <p className="mt-1 text-sm text-muted">이메일과 비밀번호로 로그인하세요.</p>
+
+            <form onSubmit={submitPassword} className="mt-5 space-y-3">
+              <Input
+                type="email"
+                required
+                placeholder="name@company.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <Input
+                type="password"
+                required
+                placeholder="비밀번호"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              {error ? <p className="text-xs text-danger">{error}</p> : null}
+              <Button type="submit" variant="primary" full disabled={loading}>
+                {loading ? "로그인 중…" : "로그인"}
+              </Button>
+            </form>
+
+            <button
+              onClick={() => {
+                setMode("magic-link");
+                setError(null);
+              }}
+              className="mt-4 w-full text-center text-xs font-medium text-primary hover:underline"
+            >
+              처음 로그인이거나 비밀번호를 잊으셨나요? 매직링크로 로그인
+            </button>
+          </>
         ) : (
-          <form onSubmit={submit} className="mt-5 space-y-3">
-            <Input
-              type="email"
-              required
-              placeholder="name@company.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            {error ? <p className="text-xs text-danger">{error}</p> : null}
-            <Button type="submit" variant="primary" full disabled={loading}>
-              {loading ? "발송 중…" : "매직링크 받기"}
-            </Button>
-          </form>
+          <>
+            <h1 className="text-xl font-bold text-ink">매직링크 로그인</h1>
+            <p className="mt-1 text-sm text-muted">
+              이메일로 로그인 링크를 보내드립니다. 최초 로그인 시에는 이후 비밀번호를 설정하게
+              됩니다.
+            </p>
+
+            {sent ? (
+              <Callout className="mt-5">
+                <Mail size={16} className="mt-0.5 shrink-0" />
+                <span>{email}로 로그인 링크를 보냈습니다. 메일함을 확인해 주세요.</span>
+              </Callout>
+            ) : (
+              <form onSubmit={submitMagicLink} className="mt-5 space-y-3">
+                <Input
+                  type="email"
+                  required
+                  placeholder="name@company.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                {error ? <p className="text-xs text-danger">{error}</p> : null}
+                <Button type="submit" variant="primary" full disabled={loading}>
+                  {loading ? "발송 중…" : "매직링크 받기"}
+                </Button>
+              </form>
+            )}
+
+            <button
+              onClick={() => {
+                setMode("password");
+                setSent(false);
+                setError(null);
+              }}
+              className="mt-4 w-full text-center text-xs font-medium text-primary hover:underline"
+            >
+              비밀번호로 로그인
+            </button>
+          </>
         )}
+
         <p className="mt-5 text-center text-xs text-faint">
           아직 지원 전이신가요?{" "}
           <Link href="/apply" className="font-semibold text-primary">

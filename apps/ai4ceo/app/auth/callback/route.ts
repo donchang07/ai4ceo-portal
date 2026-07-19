@@ -23,6 +23,16 @@ export async function GET(request: NextRequest) {
             { id: user.id, name: user.user_metadata?.name ?? null },
             { onConflict: "id", ignoreDuplicates: true }
           );
+
+        // Design Ref: 매직링크는 최초 1회만 — 비밀번호 미설정 시 설정 화면으로.
+        const { data: profile } = await supabase
+          .from("profiles")
+          .select("has_password")
+          .eq("id", user.id)
+          .maybeSingle();
+        if (!profile?.has_password) {
+          return NextResponse.redirect(`${origin}/set-password?next=${encodeURIComponent(next)}`);
+        }
       }
       return NextResponse.redirect(`${origin}${next}`);
     }
