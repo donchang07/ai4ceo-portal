@@ -25,7 +25,15 @@ export default function LoginPage() {
       if (error) throw error;
       setSent(true);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "메일 발송에 실패했습니다.");
+      console.error("[login] signInWithOtp failed", err);
+      const rawMessage = err instanceof Error ? err.message : "";
+      // supabase-js sometimes surfaces "{}" or another non-descriptive body for 5xx
+      // responses (e.g. an SMTP failure on the server) — show a helpful fallback instead.
+      const message =
+        rawMessage && rawMessage !== "{}"
+          ? rawMessage
+          : "메일 발송에 실패했습니다. 잠시 후 다시 시도해 주세요. (서버에서 메일 발송 설정에 문제가 있을 수 있습니다)";
+      setError(message);
     } finally {
       setLoading(false);
     }
