@@ -22,8 +22,31 @@ const INITIAL_LOG: LogEntry[] = [
   { id: "l4", author: "장동인 교수", time: "2일 전 09:12", action: "세션 제목 변경", published: true, notified: true },
 ];
 
+function hour12(h: number): number {
+  const r = h % 12;
+  return r === 0 ? 12 : r;
+}
+
+function period(h: number): string {
+  return h < 12 ? "오전" : "오후";
+}
+
+function dateTimeRange(s: Session): string {
+  const start = new Date(s.starts_at);
+  const end = new Date(s.ends_at);
+  const sh = start.getHours();
+  const eh = end.getHours();
+  const sMin = start.getMinutes();
+  const eMin = end.getMinutes();
+  const sLabel = `${hour12(sh)}${sMin ? `:${String(sMin).padStart(2, "0")}` : ""}시`;
+  const eLabel = `${hour12(eh)}${eMin ? `:${String(eMin).padStart(2, "0")}` : ""}시`;
+  const range =
+    period(sh) === period(eh) ? `${period(sh)}${sLabel}-${eLabel}` : `${period(sh)}${sLabel}-${period(eh)}${eLabel}`;
+  return `${start.getMonth() + 1}월${start.getDate()}일 ${range}`;
+}
+
 function weekLabel(s: Session): string {
-  return s.week_no > 0 ? `${s.week_no}주차` : "보충";
+  return s.week_no > 0 ? `${s.week_no}주차 (${dateTimeRange(s)})` : `보충(${dateTimeRange(s)})`;
 }
 
 function subtitleOf(s: Session): string {
