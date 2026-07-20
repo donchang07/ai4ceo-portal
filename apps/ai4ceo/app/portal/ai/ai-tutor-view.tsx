@@ -1,16 +1,18 @@
 "use client";
 
 import { useState } from "react";
-import { Sparkles, Send, Share2, CalendarPlus, Flag } from "lucide-react";
+import { Sparkles, Send, Share2, CalendarPlus, Flag, LifeBuoy } from "lucide-react";
 import { PortalShell } from "@/components/portal-shell";
-import { Badge, Chip, Input } from "@/components/ui";
+import { Badge, Callout, Chip, Input } from "@/components/ui";
 import { RECOMMENDED_QUESTIONS } from "@/lib/db/mock";
+import { getSupabaseBrowser } from "@/lib/db/supabase-client";
 
 interface Turn {
   role: "user" | "assistant";
   body: string;
   sources?: string[];
   streaming?: boolean;
+  escalated?: boolean;
 }
 
 function parseSources(text: string): { body: string; sources?: string[] } {
@@ -80,6 +82,31 @@ export function AiTutorView() {
       });
     } finally {
       setBusy(false);
+    }
+  }
+
+  // Design Ref: §5.4 — US-05 막힘 에스컬레이션. escalated 로그를 신규 insert(스키마 무변경)
+  async function escalate(index: number) {
+    const answerTurn = turns[index];
+    const questionTurn = turns[index - 1];
+    if (!answerTurn || answerTurn.escalated) return;
+    try {
+      const sb = getSupabaseBrowser();
+      const {
+        data: { user },
+      } = await sb.auth.getUser();
+      if (!user) return;
+      const { error } = await sb.from("ai_question_logs").insert({
+        user_id: user.id,
+        question: questionTurn?.role === "user" ? questionTurn.body : "(질문 미확인)",
+        answer: answerTurn.body.slice(0, 2000),
+        topic: "escalation",
+        status: "escalated",
+      });
+      if (error) throw error;
+      setTurns((prev) => prev.map((t, i) => (i === index ? { ...t, escalated: true } : t)));
+    } catch {
+      // 전달 실패는 조용히 무시하지 않고 사용자에게 재시도 여지를 남긴다 (버튼 유지)
     }
   }
 
@@ -158,7 +185,21 @@ export function AiTutorView() {
                           <Chip>
                             <Flag size={13} /> 신고
                           </Chip>
+                          {!t.escalated ? (
+                            <Chip onClick={() => escalate(i)}>
+                              <LifeBuoy size={13} /> 이 답변으로 해결되지 않았어요
+                            </Chip>
+                          ) : null}
                         </div>
+                        {t.escalated ? (
+                          <Callout className="mt-2">
+                            <LifeBuoy size={15} className="mt-0.5 shrink-0" />
+                            <span>
+                              교수 검수 큐에 전달되었습니다. 다음 세션에서 우선 다루며, 급하면 코칭 예약이나 오프라인
+                              보충 세션을 이용해 주세요.
+                            </span>
+                          </Callout>
+                        ) : null}
                       </>
                     ) : null}
                   </div>
