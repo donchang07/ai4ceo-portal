@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, Users, FileText, CreditCard, Sparkles } from "lucide-react";
+import { LayoutDashboard, Users, FileText, CreditCard, Sparkles, Newspaper } from "lucide-react";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/core/cn";
 
@@ -10,6 +10,7 @@ const nav = [
   { href: "/admin", label: "운영 대시보드", icon: LayoutDashboard },
   { href: "/admin/applications", label: "선발 관리", icon: Users },
   { href: "/admin/curriculum", label: "커리큘럼 편집", icon: FileText },
+  { href: "/admin/contents", label: "AI 뉴스·브리프", icon: Newspaper },
   { href: "/admin/billing", label: "결제·세금계산서", icon: CreditCard },
 ];
 
