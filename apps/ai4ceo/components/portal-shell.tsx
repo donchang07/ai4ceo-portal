@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Calendar, MessageSquare, Sparkles, FileText, Bell, CreditCard, ShieldCheck, ListTodo } from "lucide-react";
+import { Home, Calendar, MessageSquare, Sparkles, FileText, Bell, CreditCard, ShieldCheck, ListTodo, Hammer, Map } from "lucide-react";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/core/cn";
 import { Badge } from "@/components/ui";
@@ -14,6 +14,8 @@ const nav = [
   { href: "/portal/sessions/s1", label: "세션", icon: Calendar, match: "/portal/sessions" },
   { href: "/portal/chat", label: "대화방", icon: MessageSquare, count: 3 },
   { href: "/portal/ai", label: "AI 조교", icon: Sparkles },
+  { href: "/portal/builds", label: "내 결과물", icon: Hammer },
+  { href: "/portal/roadmap", label: "AX 로드맵", icon: Map },
   { href: "/portal/tasks", label: "위임 할 일", icon: ListTodo },
   { href: "/portal/billing", label: "내 결제", icon: CreditCard },
   { href: "/trends", label: "AI 브리프", icon: FileText },

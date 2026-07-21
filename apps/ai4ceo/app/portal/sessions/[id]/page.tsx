@@ -10,9 +10,27 @@ import {
   getSessionQuestions,
 } from "@/lib/db/queries";
 import { requireArchiveAccess } from "@/lib/db/auth";
+import { getSupabaseServer } from "@/lib/db/supabase-server";
 import { isAdmin } from "@/lib/core/access";
 import { SessionInteractive } from "./session-interactive";
 import { SessionQa } from "./session-qa";
+import { CatchupChecklist, type CatchupState } from "./catchup-checklist";
+
+// Design Ref: prd-v30-remaining.design.md §4 F4 — SCR-07 따라잡기 진행 상태
+async function getCatchup(userId: string, sessionId: string): Promise<CatchupState | null> {
+  try {
+    const sb = await getSupabaseServer();
+    const { data } = await sb
+      .from("session_catchups")
+      .select("watched, materials_done, assignment_done, asked_ai, completed_at")
+      .eq("user_id", userId)
+      .eq("session_id", sessionId)
+      .maybeSingle();
+    return (data as CatchupState) ?? null;
+  } catch {
+    return null;
+  }
+}
 
 function fmtRange(startIso: string, endIso: string): string {
   const s = new Date(startIso);
@@ -33,13 +51,15 @@ export default async function SessionDetail({ params }: { params: Promise<{ id: 
       </PortalShell>
     );
   }
-  const [materials, assignments, video, questions] = await Promise.all([
+  const [materials, assignments, video, questions, catchup] = await Promise.all([
     getMaterials(session.id),
     getAssignments(),
     getSessionVideo(session.id),
     getSessionQuestions(session.id),
+    getCatchup(user.id, session.id),
   ]);
   const linkedAssignment = assignments[0];
+  const isPast = new Date(session.starts_at).getTime() < Date.now();
 
   return (
     <PortalShell title="세션 상세">
@@ -67,6 +87,9 @@ export default async function SessionDetail({ params }: { params: Promise<{ id: 
 
       {/* 영상 + AI 조교 */}
       <SessionInteractive videoUrl={video?.google_drive_url ?? null} />
+
+      {/* 따라잡기 체크리스트 (SCR-07) — 지난 세션에만 노출 */}
+      {isPast ? <CatchupChecklist userId={user.id} sessionId={session.id} initial={catchup} /> : null}
 
       {/* 강의자료 + 연결 과제 */}
       <div className="mt-5 grid gap-5 lg:grid-cols-[1.7fr_1fr]">

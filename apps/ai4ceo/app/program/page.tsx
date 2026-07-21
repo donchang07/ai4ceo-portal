@@ -1,7 +1,9 @@
-import { CheckCircle2, GraduationCap, Laptop, MapPin, MessageCircleQuestion, Sparkles } from "lucide-react";
+import { Check, CheckCircle2, GraduationCap, Hammer, Laptop, MapPin, MessageCircleQuestion, Minus, Sparkles } from "lucide-react";
 import { PublicHeader } from "@/components/public-header";
 import { Badge, Button, Card, CardTitle, Callout, SectionTitle } from "@/components/ui";
 import { COHORT_18, TUITION_KRW, BANK_ACCOUNT, formatKRW } from "@/lib/core/constants";
+import { getSupabaseServer } from "@/lib/db/supabase-server";
+import { SelfCheck } from "./self-check";
 
 export const metadata = {
   title: "과정 안내 | AI4CEO Portal",
@@ -53,7 +55,44 @@ const FAQ = [
   { q: "개별 지도나 컨설팅도 가능한가요?", a: "가능합니다. 강의 내용에 대한 질문사항이나 기업의 AI 도입에 따른 다양한 이슈에 대한 1:1 질의응답도 지원합니다." },
 ];
 
-export default function ProgramPage() {
+// Design Ref: prd-v30-remaining.design.md §4 F1 — SCR-01 비교 3축 (정적)
+const COMPARE_AXES: { axis: string; ours: string; exec: 0 | 1; platform: 0 | 1; youtube: 0 | 1 }[] = [
+  { axis: "직접 만드는 실습", ours: "매주 누적 실습 — 수료 기준이 결과물", exec: 0, platform: 1, youtube: 0 },
+  { axis: "CEO의 의사결정 관점", ours: "견적 검증·조직 적용·ROI 판단 중심 설계", exec: 1, platform: 0, youtube: 0 },
+  { axis: "수료 후 지속", ours: "포털·AI 조교·동문 멤버십으로 계속 연결", exec: 0, platform: 0, youtube: 0 },
+];
+
+interface PublicBuild {
+  id: string;
+  title: string | null;
+  description: string | null;
+  apply_status?: string | null;
+}
+
+const APPLY_LABEL: Record<string, { label: string; tone: "progress" | "done" | "wait" | "neutral" }> = {
+  review: { label: "회사 적용 검토 중", tone: "wait" },
+  pilot: { label: "파일럿 진행 중", tone: "progress" },
+  applied: { label: "회사 적용 완료", tone: "done" },
+};
+
+// SCR-01 ② — 공개 동의(visibility='public')된 수료생 결과물 최대 3건. 없으면 섹션 숨김.
+async function getPublicBuilds(): Promise<PublicBuild[]> {
+  try {
+    const sb = await getSupabaseServer();
+    const { data } = await sb
+      .from("builds")
+      .select("id, title, description, apply_status")
+      .eq("visibility", "public")
+      .order("created_at", { ascending: false })
+      .limit(3);
+    return (data as PublicBuild[]) ?? [];
+  } catch {
+    return [];
+  }
+}
+
+export default async function ProgramPage() {
+  const publicBuilds = await getPublicBuilds();
   return (
     <div className="min-h-screen bg-canvas">
       <PublicHeader />
@@ -99,6 +138,11 @@ export default function ProgramPage() {
             </div>
           ))}
         </div>
+      </section>
+
+      {/* Self check (SCR-01 ①) */}
+      <section className="mx-auto max-w-[900px] px-6 pb-14">
+        <SelfCheck />
       </section>
 
       {/* Purpose */}
@@ -168,6 +212,79 @@ export default function ProgramPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Graduate builds preview (SCR-01 ②) */}
+      {publicBuilds.length > 0 ? (
+        <section className="mx-auto max-w-[900px] px-6 py-14">
+          <SectionTitle>수료생이 직접 만든 것들</SectionTitle>
+          <p className="mt-2 text-sm text-muted">
+            공개에 동의한 수료생 결과물입니다. 코딩 경험 없이 시작한 CEO들이 과정 중에 직접
+            만들었습니다.
+          </p>
+          <div className="mt-6 grid gap-4 sm:grid-cols-3">
+            {publicBuilds.map((b) => (
+              <Card key={b.id}>
+                <div className="flex items-center gap-2 text-primary">
+                  <Hammer size={16} />
+                  <span className="text-xs font-semibold">수료생 Build</span>
+                </div>
+                <div className="mt-2 text-sm font-semibold text-ink">{b.title ?? "무제"}</div>
+                {b.description ? (
+                  <p className="mt-1.5 line-clamp-3 text-[13px] text-muted">{b.description}</p>
+                ) : null}
+                {b.apply_status && APPLY_LABEL[b.apply_status] ? (
+                  <Badge tone={APPLY_LABEL[b.apply_status].tone} className="mt-3">
+                    {APPLY_LABEL[b.apply_status].label}
+                  </Badge>
+                ) : null}
+              </Card>
+            ))}
+          </div>
+        </section>
+      ) : null}
+
+      {/* Comparison (SCR-01 ⑤) */}
+      <section className="mx-auto max-w-[900px] px-6 py-14">
+        <SectionTitle>다른 과정과 무엇이 다른가</SectionTitle>
+        <p className="mt-2 text-sm text-muted">
+          최고위과정·실무자 플랫폼 강의·유튜브와 세 가지 축에서 비교했습니다.
+        </p>
+        <div className="mt-6 overflow-x-auto rounded-[15px] border border-hairline bg-surface">
+          <table className="w-full min-w-[640px] text-sm">
+            <thead>
+              <tr className="border-b border-hairline text-left text-xs text-muted">
+                <th className="px-5 py-3 font-semibold">비교 축</th>
+                <th className="px-5 py-3 font-semibold text-primary">본 과정</th>
+                <th className="px-5 py-3 font-semibold">대학·언론사 최고위과정</th>
+                <th className="px-5 py-3 font-semibold">플랫폼 실무 강의</th>
+                <th className="px-5 py-3 font-semibold">유튜브·서적</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-hairline">
+              {COMPARE_AXES.map((row) => (
+                <tr key={row.axis}>
+                  <td className="px-5 py-4 font-semibold text-ink">{row.axis}</td>
+                  <td className="px-5 py-4 text-[13px] text-ink">
+                    <span className="flex items-start gap-1.5">
+                      <Check size={15} className="mt-0.5 shrink-0 text-success" />
+                      {row.ours}
+                    </span>
+                  </td>
+                  {[row.exec, row.platform, row.youtube].map((v, i) => (
+                    <td key={i} className="px-5 py-4">
+                      {v ? (
+                        <Check size={15} className="text-muted" />
+                      ) : (
+                        <Minus size={15} className="text-faint" />
+                      )}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </section>
 
