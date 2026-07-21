@@ -43,7 +43,7 @@ export interface VideoRec {
 
 export interface SessionQuestion {
   id: string;
-  session_id: string;
+  session_id: string | null; // null = /portal/qna 일반 게시판 질문 (D-10)
   cohort_id: string;
   author_id: string | null;
   author_name: string | null;
@@ -113,6 +113,7 @@ export interface Post {
   tags: string[];
   thumbnail: boolean;
   published_at: string;
+  body_mdx?: string | null; // 상세(/trends/[slug])에서만 사용 — 목록 페치는 select 안 함
 }
 
 export interface ChatMessage {

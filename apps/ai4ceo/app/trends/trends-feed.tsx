@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Lock, ExternalLink } from "lucide-react";
 import { Badge, Button, Card, Chip } from "@/components/ui";
 import type { Post } from "@/lib/db/types";
@@ -87,7 +88,9 @@ function PostCard({ post }: { post: Post }) {
           </div>
         </div>
         <div className="p-5">
-          <h3 className="text-base font-semibold text-ink">{post.title}</h3>
+          <Link href={`/trends/${post.id}`} className="hover:underline">
+            <h3 className="text-base font-semibold text-ink">{post.title}</h3>
+          </Link>
           <p className="mt-1.5 text-sm text-muted">{post.excerpt}</p>
           <TagChips tags={post.tags} />
         </div>
@@ -99,7 +102,9 @@ function PostCard({ post }: { post: Post }) {
   return (
     <Card>
       <Badge tone="neutral">{CATEGORY_LABEL[post.category]}</Badge>
-      <h3 className="mt-3 text-base font-semibold text-ink">{post.title}</h3>
+      <Link href={`/trends/${post.id}`} className="hover:underline">
+        <h3 className="mt-3 text-base font-semibold text-ink">{post.title}</h3>
+      </Link>
       <p className="mt-1.5 text-sm text-muted">{post.excerpt}</p>
       {post.external_url && (
         <a
