@@ -11,7 +11,7 @@ const nav = [
   { href: "/alumni", label: "동문 홈" },
   { href: "/alumni#as", label: "AS Q&A" },
   { href: "/alumni#directory", label: "디렉토리" },
-  { href: "/alumni#archive", label: "아카이브" },
+  { href: "/alumni/archive", label: "아카이브" },
   { href: "/trends", label: "AI 브리프" },
   { href: "/alumni/membership", label: "멤버십" },
 ];

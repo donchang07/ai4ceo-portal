@@ -13,6 +13,7 @@ import { requireArchiveAccess } from "@/lib/db/auth";
 import { isAdmin } from "@/lib/core/access";
 import { SessionInteractive } from "./session-interactive";
 import { SessionQa } from "./session-qa";
+import { SessionCatchup } from "./session-catchup";
 
 function fmtRange(startIso: string, endIso: string): string {
   const s = new Date(startIso);
@@ -114,6 +115,9 @@ export default async function SessionDetail({ params }: { params: Promise<{ id: 
           </Card>
         ) : null}
       </div>
+
+      {/* 결석 따라잡기 체크리스트 (SCR-07) */}
+      <SessionCatchup userId={user.id} sessionId={session.id} />
 
       {/* 질의응답 */}
       <div className="mt-5">
