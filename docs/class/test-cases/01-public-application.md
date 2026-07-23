@@ -8,8 +8,8 @@
 | PUB-002 | A-2 | P0 | e2e | guest | PRD 일정 `2026-09-07`, 10회, 18:00~21:00 | `/program` 접속 | 18기 개강일, 총 10회, Zoom, 4대 트랙 문구가 PRD 값과 일치 | 과거 값 `9/9(수)` 노출 | 없음 | must_pass |
 | PUB-003 | A-3 | P0 | e2e | guest | FAQ 키워드 `지원 자격`, `결제`, `환불` | `/program` 하단 FAQ 열기 | 3개 카테고리/답변 visible; 키보드 Enter로 열림 | `/faq` 필수 의존 | 없음 | must_pass |
 | PUB-004 | A-5 | P0 | static/e2e | production build | — | `/`, `/program`, `/apply`, `/trends` 접속 후 head 검사 | 각 페이지 title과 description non-empty; canonical 동일 origin; OG title/image 존재; sitemap에서 공개 경로 확인 | `noindex`, 깨진 OG URL | 없음 | known_gap |
-| PUB-005 | US-01 | P1 | e2e | guest | 자가진단 5개 응답 fixture | `/program`에서 자가진단 시작→5문항 응답 | 결과 영역과 비개발자 적합도 문구; 지원 CTA `/apply` | 5문항 미만, 결과 없는 종료 | 없음 | known_gap |
-| PUB-006 | US-02 | P1 | e2e | guest | 비교 축 `실습`, `CEO 의사결정`, `수료 후 지속` | `/program` 비교 섹션 확인 | 세 축과 비교 대상 3종 모두 visible | 단순 마케팅 문구만 표시 | 없음 | known_gap |
+| PUB-005 | US-01 | P1 | e2e | guest | 자가진단 5개 응답 fixture | `/program`에서 자가진단 시작→5문항 응답 | 결과 영역과 적합도 문구; 지원 CTA `/apply` | 5문항 미만, 결과 없는 종료 | 없음 | automated |
+| PUB-006 | US-02 | P1 | e2e | guest | 비교 축 `직접 만드는 실습`, `CEO의 의사결정 관점`, `수료 후 지속` | `/program` 비교 섹션 확인 | 세 축과 비교 대상 3종 모두 visible | 단순 마케팅 문구만 표시 | 없음 | automated |
 | APP-001 | B-2 | P0 | e2e | guest | `application.*` | `/apply`에서 7단계를 순서대로 입력하고 이전/다음 사용 | 진행표시 `1 / 7`→`7 / 7`; 이전 후 입력 유지; 추천코드는 선택; 제출 버튼 visible | 필수값 없이 다음 활성화 | 생성 전이므로 없음 | must_pass |
 | APP-002 | B-2 | P0 | e2e | guest | 각 필수 필드 `"   "` | 이름·회사·직함·전화·이메일·동기 단계별 공백 입력 | 각 단계에서 다음/제출 disabled | 공백값 DB 전송 | 없음 | must_pass |
 | APP-003 | B-2 | P0 | e2e/api | guest | email=`not-an-email`, phone=`123` | 해당 단계에서 값 입력 | 정확한 validation 문구; insert 요청 0건 | 완료 화면 표시 | 없음 | known_gap |

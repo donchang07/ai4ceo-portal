@@ -45,7 +45,7 @@ test.describe("공개 사이트 P0 acceptance", () => {
       await expect.soft(page.getByText(new RegExp(keyword)).first(), `${keyword} FAQ가 보여야 한다`).toBeVisible();
     }
 
-    const faqControls = page.getByRole("button").filter({ hasText: /CEO|언어|노트북|수업|지도/ });
+    const faqControls = page.locator('button[aria-expanded][aria-controls^="program-faq-"]');
     expect.soft(await faqControls.count(), "키보드로 열 수 있는 FAQ 버튼이 3개 이상이어야 한다").toBeGreaterThanOrEqual(3);
     if ((await faqControls.count()) > 0) {
       const firstFaq = faqControls.first();
@@ -74,22 +74,27 @@ test.describe("공개 사이트 P0 acceptance", () => {
   });
 
   test("PUB-005 비개발자 자가진단 5문항과 결과 CTA", async ({ page }) => {
-    test.fail(true, "현재 문서에 등록된 known_gap: 자가진단 미구현");
     await page.goto("/program", { waitUntil: "domcontentloaded" });
     await expect(page.getByText(/자가진단|진단 시작/).first()).toBeVisible();
-    const answers = page.getByRole("button").filter({ hasText: /예|아니오|그렇|보통/ });
-    for (let i = 0; i < 5; i += 1) await answers.first().click();
-    await expect(page.getByText(/비개발자.*적합|적합도/).first()).toBeVisible();
-    await expect(page.getByRole("link", { name: /지원/ }).first()).toHaveAttribute("href", "/apply");
+    for (const answer of [
+      "전혀 없다",
+      "3시간 이상",
+      "논의만 있고 실행 전",
+      "명확히 있다",
+      "CEO·임원 (의사결정권자)",
+    ]) {
+      await page.getByRole("button", { name: answer, exact: true }).click();
+    }
+    await expect(page.getByText(/적극 추천|추천|상담 권장/).first()).toBeVisible();
+    await expect(page.getByRole("link", { name: "18기 지원하기" })).toHaveAttribute("href", "/apply");
   });
 
   test("PUB-006 과정 비교 세 축과 비교 대상 3종", async ({ page }) => {
-    test.fail(true, "현재 문서에 등록된 known_gap: 비교 섹션 미구현");
     await page.goto("/program", { waitUntil: "domcontentloaded" });
-    for (const axis of ["실습", "CEO 의사결정", "수료 후 지속"]) {
+    for (const axis of ["직접 만드는 실습", "CEO의 의사결정 관점", "수료 후 지속"]) {
       await expect.soft(page.getByText(new RegExp(axis)).first()).toBeVisible();
     }
-    const comparison = page.locator("table").filter({ hasText: /AI4CEO/ });
+    const comparison = page.locator("table").filter({ hasText: /본 과정/ });
     await expect(comparison).toBeVisible();
     expect(await comparison.locator("thead th").count()).toBeGreaterThanOrEqual(4);
   });

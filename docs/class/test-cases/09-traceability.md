@@ -98,8 +98,8 @@
 | I-3 | BUILD-004,SEC-014 | covered | opt-in public visibility |
 | I-4 | BUILD-002~003 | partial | 수료 기준/KPI 집계 연결 gap |
 | J-1~J-3 | APP-007~008 | partial | 발급·귀속·성과 대시보드 중 귀속만 covered |
-| US-01 | PUB-005 | gap | 자가진단/Build preview |
-| US-02 | PUB-006 | gap | 비교 섹션 |
+| US-01 | PUB-005 | covered | 자가진단 5문항·결과 CTA |
+| US-02 | PUB-006 | covered | 과정 비교 3축·비교 대상 3종 |
 | US-03 | APP-009~014,ADM-003~004 | covered | 상태조회/전환, 알림은 known gap |
 | US-04 | BILL-011~012 | covered | billing delegation/RLS |
 | US-05 | AI-003,AI-012~013 | covered | contextual/escalation/admin queue |
