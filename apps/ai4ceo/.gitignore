@@ -7,3 +7,7 @@ next-env.d.ts
 .env.local
 .env*.local
 *.tsbuildinfo
+
+.vercel
+.env*
+/supabase/.temp/

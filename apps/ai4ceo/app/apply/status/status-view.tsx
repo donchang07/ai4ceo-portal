@@ -1,21 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { type FormEvent, useState } from "react";
 import Link from "next/link";
 import { Search } from "lucide-react";
-import { z } from "zod";
 import { PublicHeader } from "@/components/public-header";
 import { Badge, Button, Card, CardTitle, Input, SectionTitle } from "@/components/ui";
-import { getSupabaseBrowser } from "@/lib/db/supabase-client";
 import { cn } from "@/lib/core/cn";
-
-const lookupSchema = z.object({
-  email: z.string().trim().email("올바른 이메일을 입력해 주세요."),
-  phone: z
-    .string()
-    .trim()
-    .refine((v) => v.replace(/\D/g, "").length >= 10, "전화번호를 숫자 10자리 이상으로 입력해 주세요."),
-});
 
 interface StatusRow {
   app_status: string;
@@ -40,37 +30,28 @@ function stepIndex(status: string): number {
   return 2;
 }
 
-export function ApplyStatusView() {
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [error, setError] = useState<string | null>(null);
-  const [busy, setBusy] = useState(false);
-  const [searched, setSearched] = useState(false);
-  const [rows, setRows] = useState<StatusRow[]>([]);
+export function ApplyStatusView({ initialEmail, initialPhone, initialRows, submitted, initialValidationError }: {
+  initialEmail: string;
+  initialPhone: string;
+  initialRows: StatusRow[];
+  submitted: boolean;
+  initialValidationError?: string;
+}) {
+  const [email, setEmail] = useState(initialEmail);
+  const [phone, setPhone] = useState(initialPhone);
+  const [validationError, setValidationError] = useState(initialValidationError ?? "");
+  const rows = initialRows;
 
-  async function lookup() {
-    const parsed = lookupSchema.safeParse({ email, phone });
-    if (!parsed.success) {
-      setError(parsed.error.issues[0]?.message ?? "입력을 확인해 주세요.");
-      return;
-    }
-    setError(null);
-    setBusy(true);
-    try {
-      const sb = getSupabaseBrowser();
-      const { data, error: rpcError } = await sb.rpc("lookup_application_status", {
-        p_email: parsed.data.email,
-        p_phone: parsed.data.phone,
-      });
-      if (rpcError) throw rpcError;
-      setRows((data as StatusRow[]) ?? []);
-    } catch {
-      setError("조회 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.");
-      setRows([]);
-    } finally {
-      setSearched(true);
-      setBusy(false);
-    }
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
+    const validPhone = phone.replace(/\D/g, "").length >= 10;
+    if (validEmail && validPhone) return;
+    event.preventDefault();
+    setValidationError(
+      !validEmail
+        ? "올바른 이메일을 입력해 주세요."
+        : "전화번호를 숫자 10자리 이상 입력해 주세요.",
+    );
   }
 
   return (
@@ -83,11 +64,19 @@ export function ApplyStatusView() {
         </p>
 
         <Card className="mt-6">
-          <div className="flex flex-col gap-3">
+          <form
+            method="get"
+            action="/apply/status"
+            noValidate
+            onSubmit={handleSubmit}
+            className="flex flex-col gap-3"
+          >
             <label className="text-sm font-medium text-ink">
               이메일
               <Input
                 type="email"
+                name="email"
+                required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@company.com"
@@ -98,23 +87,27 @@ export function ApplyStatusView() {
               전화번호
               <Input
                 type="tel"
+                name="phone"
+                required
+                pattern="[0-9() +.-]{10,}"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") lookup();
-                }}
                 placeholder="010-0000-0000"
                 className="mt-1"
               />
             </label>
-            {error ? <p className="text-sm text-danger">{error}</p> : null}
-            <Button variant="primary" full onClick={lookup} disabled={busy}>
-              <Search size={16} /> {busy ? "조회 중…" : "상태 조회"}
+            <Button type="submit" variant="primary" full>
+              <Search size={16} /> 상태 조회
             </Button>
-          </div>
+            {validationError ? (
+              <p role="alert" className="text-sm font-medium text-danger">
+                {validationError}
+              </p>
+            ) : null}
+          </form>
         </Card>
 
-        {searched && rows.length === 0 && !error ? (
+        {submitted && rows.length === 0 ? (
           <Card className="mt-4">
             <p className="text-sm text-muted">
               일치하는 지원 내역이 없습니다. 입력 정보를 다시 확인하시거나, 아직 지원 전이라면{" "}

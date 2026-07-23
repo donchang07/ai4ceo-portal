@@ -26,7 +26,7 @@ async function landing(context: BrowserContext, routePath: string): Promise<stri
 test.describe.serial("상태 전이 · setup 변형 → 접근 → 원복", () => {
   const svc = admin();
 
-  test("AC-32 멤버십 expired → /portal/sessions 접근 회수(/alumni/membership) → 원복", async ({ browser }) => {
+  test("ACC-012 AC-32 멤버십 expired → /portal/sessions 접근 회수(/alumni/membership) → 원복", async ({ browser }) => {
     const uid = await userId("alumniMember");
     const { data: mem } = await svc
       .from("memberships")
@@ -54,7 +54,7 @@ test.describe.serial("상태 전이 · setup 변형 → 접근 → 원복", () =
     expect(restored?.status, "AC-32 원복 실패").toBe(original);
   });
 
-  test("AC-33 재학생 dropped → /portal/cohort 회수(/portal/billing) → 원복", async ({ browser }) => {
+  test("ACC-010 AC-33 재학생 dropped → /portal/cohort 회수(/portal/billing) → 원복", async ({ browser }) => {
     const uid = await userId("student");
     const { data: en } = await svc
       .from("enrollments")
@@ -81,7 +81,7 @@ test.describe.serial("상태 전이 · setup 변형 → 접근 → 원복", () =
     expect(restored?.status, "AC-33 원복 실패").toBe(original);
   });
 
-  test("AC-34 재학생 completed → /alumni 접근 O + /portal/chat 회수 → 원복", async ({ browser }) => {
+  test("ACC-011 AC-34 재학생 completed → /alumni 접근 O + /portal/chat 회수 → 원복", async ({ browser }) => {
     const uid = await userId("student");
     const { data: en } = await svc
       .from("enrollments")

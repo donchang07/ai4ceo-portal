@@ -1,19 +1,20 @@
-// FR-15: 케이스 파서. docs/class/test-cases/0[1-8]-*.md 의 표를 읽어
-// [{ id, file, section, priority, declaredStatus, scenario }] 추출. 이모지 인식(✅→pass, ⚠→mock, ❓→unknown).
+// PRD v3 acceptance case parser. docs/class/test-cases/0[1-8]-*.md 의
+// 11-column tables를 읽어 report generator가 사용하는 필드와 상세 명세를 추출한다.
 // 단독 실행 시 tests/report/cases.json 저장. generate.mjs 는 parseAllCases() 를 import.
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const DOCS_DIR = path.resolve(__dirname, "../../../../docs/class/test-cases");
+const DOCS_DIR = process.env.TEST_CASES_DOCS_DIR
+  ? path.resolve(process.env.TEST_CASES_DOCS_DIR)
+  : path.resolve(__dirname, "../../../../docs/class/test-cases");
 const OUT = path.resolve(__dirname, "cases.json");
 
-function statusFromText(text) {
-  if (text.includes("✅")) return "pass";
-  if (text.includes("⚠")) return "mock";
-  if (text.includes("❓")) return "unknown";
-  return null;
+function statusFromGate(gate) {
+  if (gate === "must_pass") return "pass";
+  if (gate === "known_gap") return "mock";
+  return "unknown";
 }
 
 function priorityFromText(text) {
@@ -45,7 +46,7 @@ function parseFile(filePath) {
   const lines = fs.readFileSync(filePath, "utf8").split(/\r?\n/);
   const cases = [];
   let section = "";
-  let header = null; // { idIdx, scenarioIdx }
+  let header = null;
 
   for (const line of lines) {
     const heading = line.match(/^#{2,3}\s+(.*)/);
@@ -65,8 +66,20 @@ function parseFile(filePath) {
     if (header === null) {
       const idIdx = cells.findIndex((c) => c === "ID" || c.toUpperCase() === "ID");
       if (idIdx !== -1) {
-        const scenarioIdx = cells.findIndex((c) => /시나리오|행동/.test(c));
-        header = { idIdx, scenarioIdx };
+        const indexOf = (name) => cells.findIndex((c) => c.toLowerCase() === name.toLowerCase());
+        header = {
+          idIdx,
+          prdIdx: indexOf("PRD"),
+          priorityIdx: indexOf("Pri"),
+          layerIdx: indexOf("Layer"),
+          preconditionsIdx: indexOf("Preconditions"),
+          testDataIdx: indexOf("Test data"),
+          stepsIdx: indexOf("Steps"),
+          assertionsIdx: indexOf("Assertions"),
+          forbiddenIdx: indexOf("Forbidden"),
+          cleanupIdx: indexOf("Cleanup"),
+          gateIdx: indexOf("Gate"),
+        };
         continue;
       }
       // ID 헤더 없는 표(매트릭스 등)는 건너뜀
@@ -76,16 +89,32 @@ function parseFile(filePath) {
     const idCell = cells[header.idIdx] ?? "";
     const ids = expandIds(idCell);
     if (ids.length === 0) continue;
-    const rowText = cells.join(" ");
-    const scenario = header.scenarioIdx >= 0 ? cells[header.scenarioIdx] ?? "" : "";
-    const priority = priorityFromText(rowText) ?? "P1";
-    let declaredStatus = statusFromText(rowText);
-    if (declaredStatus === null) {
-      // 상태 기호가 없는 표: 02(수동 검증 완료) → pass, 그 외 → unknown
-      declaredStatus = fileLabel === "02" ? "pass" : "unknown";
-    }
+    const get = (idx) => (idx >= 0 ? cells[idx] ?? "" : "");
+    const prd = get(header.prdIdx);
+    const steps = get(header.stepsIdx);
+    const assertions = get(header.assertionsIdx);
+    const gate = get(header.gateIdx);
+    const scenario = `${prd} · ${steps}`;
+    const priority = priorityFromText(get(header.priorityIdx)) ?? "P1";
+    const declaredStatus = statusFromGate(gate);
     for (const id of ids) {
-      cases.push({ id, file: fileLabel, section, priority, declaredStatus, scenario });
+      cases.push({
+        id,
+        file: fileLabel,
+        section,
+        priority,
+        declaredStatus,
+        scenario,
+        prd,
+        layer: get(header.layerIdx),
+        preconditions: get(header.preconditionsIdx),
+        testData: get(header.testDataIdx),
+        steps,
+        assertions,
+        forbidden: get(header.forbiddenIdx),
+        cleanup: get(header.cleanupIdx),
+        gate,
+      });
     }
   }
   return cases;

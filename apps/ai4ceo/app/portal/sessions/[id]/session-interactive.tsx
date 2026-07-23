@@ -33,7 +33,7 @@ function parseSources(text: string): { body: string; sources?: string[] } {
   return { body, sources: sources.length ? sources : undefined };
 }
 
-export function SessionInteractive({ videoUrl }: { videoUrl: string | null }) {
+export function SessionInteractive({ videoUrl, sessionId }: { videoUrl: string | null; sessionId: string }) {
   const playerRef = useRef<VideoPlayerHandle>(null);
   const [messages, setMessages] = useState<QaMessage[]>([]);
   const [input, setInput] = useState("");
@@ -49,7 +49,7 @@ export function SessionInteractive({ videoUrl }: { videoUrl: string | null }) {
       const res = await fetch("/api/ai/tutor", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ question }),
+        body: JSON.stringify({ question, sessionId }),
       });
       const reader = res.body?.getReader();
       if (!reader) throw new Error("no stream");

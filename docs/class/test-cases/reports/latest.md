@@ -1,199 +1,220 @@
-# 테스트 리포트 — 2026-07-19T16:39:01.523Z
+# 테스트 리포트 — 2026-07-22T18:44:04.273Z
 
-대상 커밋: 3cb71fe · 환경: production · baseUrl: https://ai4ceo-portal.vercel.app
+대상 커밋: 786df73 · 환경: staging · baseUrl: https://ai4ceo-portal-9ah9bq3hb-don-changs-projects.vercel.app
 
 ## 요약
 | 구분 | 수 |
 |---|---:|
-| 전체 케이스(문서) | 172 |
-| 자동화 실행 | 59 |
-| ✅ 정상 통과 | 59 |
-| 🔴 회귀(문서 ✅ ↔ 실패) | 0 |
+| 전체 케이스(문서) | 163 |
+| 자동화 실행 | 160 |
+| ✅ 정상 통과 | 94 |
+| 🔴 회귀(문서 ✅ ↔ 실패) | 30 |
 | 🟢 신규 통과(문서 ⚠ ↔ 통과) | 0 |
-| ⚪ 예상 미구현(xfail) | 0 |
+| ⚪ 예상 미구현(xfail) | 36 |
 | 🟡 미검증→검증됨 | 0 |
-| ⚪ 미자동화/미실행(manual) | 113 |
+| ⚪ 미자동화/미실행(manual) | 3 |
 
 ## 정적 게이트 린트
-- ✅ FR-11 portal/alumni 게이트 — 11개 페이지 검사
-- ✅ FR-11 admin layout 게이트 상속 — admin 페이지 4개 · layout 게이트 확인
+- ✅ FR-11 portal/alumni 게이트 — 15개 페이지 검사
+- ✅ FR-11 admin layout 게이트 상속 — admin 페이지 6개 · layout 게이트 확인
 - ✅ FR-12 api route 권한 검사 — 1개 route 검사
 - ✅ SEC-11 service_role 키 클라이언트 미노출 — 클라이언트 번들 노출 없음
 
-## 🔴 회귀 (배포 차단) — 없음
+## 🔴 회귀 (배포 차단) — 30건
+- PUB-002 (01, P0) — Error: expect(locator).toBeVisible() failed
+- PUB-003 (01, P0) — Error: 지원 자격 FAQ가 보여야 한다
+- APP-010 (01, P0) — Error: expect(locator).toBeVisible() failed
+- AUTH-004 (02, P0) — Error: expect(locator).toBeVisible() failed
+- AUTH-005 (02, P0) — Error: page.goto: net::ERR_CONNECTION_REFUSED at https://hfuzeddcthgelloufkji.supabase.co/auth/v1/verify?token=[REDACTED]&type=magiclink&redirect_to=http://localhost:3000
+- AUTH-006 (02, P0) — Error: page.goto: net::ERR_CONNECTION_REFUSED at https://hfuzeddcthgelloufkji.supabase.co/auth/v1/verify?token=[REDACTED]&type=magiclink&redirect_to=http://localhost:3000
+- AUTH-007 (02, P1) — Error: page.goto: net::ERR_CONNECTION_REFUSED at https://hfuzeddcthgelloufkji.supabase.co/auth/v1/verify?token=[REDACTED]&type=magiclink&redirect_to=http://localhost:3000
+- AUTH-008 (02, P1) — Error: page.goto: net::ERR_CONNECTION_REFUSED at https://hfuzeddcthgelloufkji.supabase.co/auth/v1/verify?token=[REDACTED]&type=magiclink&redirect_to=http://localhost:3000
+- AUTH-009 (02, P0) — Error: page.goto: net::ERR_CONNECTION_REFUSED at https://hfuzeddcthgelloufkji.supabase.co/auth/v1/verify?token=[REDACTED]&type=magiclink&redirect_to=http://localhost:3000
+- AUTH-010 (02, P0) — Error: page.goto: net::ERR_CONNECTION_REFUSED at https://hfuzeddcthgelloufkji.supabase.co/auth/v1/verify?token=[REDACTED]&type=magiclink&redirect_to=http://localhost:3000
+- AUTH-011 (02, P1) — Error: page.goto: net::ERR_CONNECTION_REFUSED at https://hfuzeddcthgelloufkji.supabase.co/auth/v1/verify?token=[REDACTED]&type=magiclink&redirect_to=http://localhost:3000
+- ACC-007 (02, P0) — Error: assistant_links 계약과 RLS가 존재해야 한다
+- BILL-005 (03, P0) — Error: expect(received).toBe(expected) // Object.is equality
+- BILL-006 (03, P0) — Error: expect(received).toBeNull()
+- BILL-012 (03, P0) — Error: expect(received).toHaveLength(expected)
+- LMS-009 (04, P0) — Error: expect(received).toEqual(expected) // deep equality
+- LMS-018 (04, P0) — Error: expect(locator).toBeVisible() failed
+- AI-001 (05, P0) — Error: expect(received).not.toBe(expected) // Object.is equality
+- AI-003 (05, P0) — Error: expect(received).toBe(expected) // Object.is equality
+- AI-006 (05, P1) — Error: expect(received).toBeGreaterThanOrEqual(expected)
+- AI-008 (05, P1) — Error: expect(received).not.toMatch(expected)
+- ARCH-004 (06, P0) — Error: expect(received).toEqual(expected) // deep equality
+- ADM-001 (07, P0) — Error: expect(locator).toHaveCount(expected) failed
+- ADM-003 (07, P0) — Test timeout of 60000ms exceeded.
+- ADM-010 (07, P0) — Error: expect(received).toBe(expected) // Object.is equality
+- SEC-010 (08, P0) — Error: expect(received).toEqual(expected) // deep equality
+- NFR-001 (08, P0) — Error: expect(received).toEqual(expected) // deep equality
+- NFR-002 (08, P1) — Error: expect(received).toBeLessThan(expected)
+- NFR-004 (08, P0) — Error: expect(received).toBeGreaterThanOrEqual(expected)
+- NFR-005 (08, P1) — Error: browserType.launch: Executable doesn't exist at C:\Users\donch\AppData\Local\ms-playwright\webkit-2311\Playwright.exe
 
 ## 케이스별 결과
 | ID | 파일 | 우선순위 | 선언 | 실제 | 판정 |
 |---|---|---|---|---|---|
-| AUTH-01 | 01 | P0 | ✅ | manual | ⚪ |
-| AUTH-02 | 01 | P0 | ✅ | manual | ⚪ |
-| AUTH-03 | 01 | P1 | ✅ | manual | ⚪ |
-| AUTH-04 | 01 | P0 | ✅ | manual | ⚪ |
-| AUTH-05 | 01 | P0 | ✅ | manual | ⚪ |
-| AUTH-06 | 01 | P0 | ✅ | manual | ⚪ |
-| AUTH-07 | 01 | P1 | ✅ | manual | ⚪ |
-| AUTH-08 | 01 | P1 | ✅ | manual | ⚪ |
-| AUTH-09 | 01 | P0 | ✅ | manual | ⚪ |
-| AUTH-10 | 01 | P0 | ✅ | manual | ⚪ |
-| AUTH-11 | 01 | P0 | ✅ | manual | ⚪ |
-| AUTH-12 | 01 | P1 | ✅ | manual | ⚪ |
-| AUTH-13 | 01 | P2 | ✅ | manual | ⚪ |
-| AUTH-14 | 01 | P1 | ⚠ | manual | ⚪ |
-| AC-01 | 02 | P0 | ✅ | pass | ✅ |
-| AC-02 | 02 | P0 | ✅ | pass | ✅ |
-| AC-03 | 02 | P0 | ✅ | pass | ✅ |
-| AC-04 | 02 | P0 | ✅ | pass | ✅ |
-| AC-05 | 02 | P0 | ✅ | pass | ✅ |
-| AC-06 | 02 | P0 | ✅ | pass | ✅ |
-| AC-07 | 02 | P0 | ✅ | pass | ✅ |
-| AC-08 | 02 | P0 | ✅ | pass | ✅ |
-| AC-09 | 02 | P0 | ✅ | pass | ✅ |
-| AC-10 | 02 | P0 | ✅ | pass | ✅ |
-| AC-11 | 02 | P0 | ✅ | pass | ✅ |
-| AC-12 | 02 | P0 | ✅ | pass | ✅ |
-| AC-13 | 02 | P0 | ✅ | pass | ✅ |
-| AC-14 | 02 | P0 | ✅ | pass | ✅ |
-| AC-15 | 02 | P0 | ⚠ | manual | ⚪ |
-| AC-16 | 02 | P0 | ✅ | pass | ✅ |
-| AC-17 | 02 | P0 | ✅ | pass | ✅ |
-| AC-18 | 02 | P1 | ✅ | manual | ⚪ |
-| AC-19 | 02 | P0 | ✅ | pass | ✅ |
-| AC-20 | 02 | P0 | ✅ | pass | ✅ |
-| AC-21 | 02 | P0 | ✅ | pass | ✅ |
-| AC-22 | 02 | P0 | ✅ | manual | ⚪ |
-| AC-23 | 02 | P0 | ✅ | pass | ✅ |
-| AC-24 | 02 | P0 | ✅ | manual | ⚪ |
-| AC-25 | 02 | P0 | ✅ | pass | ✅ |
-| AC-26 | 02 | P1 | ✅ | pass | ✅ |
-| AC-27 | 02 | P0 | ✅ | pass | ✅ |
-| AC-28 | 02 | P0 | ✅ | pass | ✅ |
-| AC-29 | 02 | P1 | ✅ | manual | ⚪ |
-| AC-30 | 02 | P0 | ✅ | pass | ✅ |
-| AC-31 | 02 | P0 | ✅ | pass | ✅ |
-| AC-32 | 02 | P0 | ✅ | pass | ✅ |
-| AC-33 | 02 | P0 | ✅ | pass | ✅ |
-| AC-34 | 02 | P0 | ✅ | pass | ✅ |
-| AC-35 | 02 | P1 | ✅ | manual | ⚪ |
-| AC-36 | 02 | P1 | ✅ | manual | ⚪ |
-| AC-37 | 02 | P2 | ⚠ | manual | ⚪ |
-| AC-38 | 02 | P1 | ✅ | manual | ⚪ |
-| AC-39 | 02 | P2 | ⚠ | manual | ⚪ |
-| AC-40 | 02 | P1 | ✅ | manual | ⚪ |
-| AC-41 | 02 | P2 | ⚠ | manual | ⚪ |
-| AC-42 | 02 | P1 | ✅ | manual | ⚪ |
-| AI-01 | 03 | P0 | ✅ | pass | ✅ |
-| AI-02 | 03 | P0 | ✅ | pass | ✅ |
-| AI-03 | 03 | P0 | ❓ | manual | ⚪ |
-| AI-04 | 03 | P0 | ✅ | manual | ⚪ |
-| AI-05 | 03 | P0 | ✅ | manual | ⚪ |
-| AI-06 | 03 | P1 | ✅ | manual | ⚪ |
-| AI-07 | 03 | P1 | ❓ | manual | ⚪ |
-| AI-08 | 03 | P1 | ✅ | manual | ⚪ |
-| AI-09 | 03 | P0 | ✅ | manual | ⚪ |
-| AI-10 | 03 | P1 | ✅ | manual | ⚪ |
-| AI-11 | 03 | P1 | ✅ | manual | ⚪ |
-| AI-12 | 03 | P1 | ✅ | manual | ⚪ |
-| AI-13 | 03 | P2 | ❓ | manual | ⚪ |
-| AI-14 | 03 | P1 | ❓ | manual | ⚪ |
-| AI-15 | 03 | P0 | ✅ | pass | ✅ |
-| AI-16 | 03 | P2 | ❓ | manual | ⚪ |
-| ADM-01 | 04 | P0 | ✅ | manual | ⚪ |
-| ADM-02 | 04 | P0 | ✅ | manual | ⚪ |
-| ADM-03 | 04 | P1 | ⚠ | manual | ⚪ |
-| ADM-04 | 04 | P1 | ⚠ | manual | ⚪ |
-| ADM-05 | 04 | P1 | ⚠ | manual | ⚪ |
-| ADM-06 | 04 | P1 | ⚠ | manual | ⚪ |
-| ADM-07 | 04 | P1 | ⚠ | manual | ⚪ |
-| ADM-08 | 04 | P0 | ✅ | manual | ⚪ |
-| ADM-09 | 04 | P1 | ✅ | manual | ⚪ |
-| ADM-10 | 04 | P0 | ✅ | pass | ✅ |
-| ADM-11 | 04 | P0 | ✅ | manual | ⚪ |
-| ADM-12 | 04 | P0 | ⚠ | manual | ⚪ |
-| ADM-13 | 04 | P0 | ✅ | manual | ⚪ |
-| ADM-14 | 04 | P0 | ✅ | pass | ✅ |
-| ADM-15 | 04 | P0 | ✅ | pass | ✅ |
-| ADM-16 | 04 | P0 | ✅ | pass | ✅ |
-| ADM-17 | 04 | P0 | ✅ | manual | ⚪ |
-| ADM-18 | 04 | P0 | ✅ | manual | ⚪ |
-| ADM-19 | 04 | P1 | ✅ | manual | ⚪ |
-| ADM-20 | 04 | P1 | ⚠ | manual | ⚪ |
-| BIL-01 | 05 | P0 | ⚠ | manual | ⚪ |
-| BIL-02 | 05 | P0 | ✅ | manual | ⚪ |
-| BIL-03 | 05 | P1 | ⚠ | manual | ⚪ |
-| BIL-04 | 05 | P0 | ⚠ | manual | ⚪ |
-| BIL-05 | 05 | P0 | ⚠ | manual | ⚪ |
-| BIL-06 | 05 | P0 | ✅ | manual | ⚪ |
-| BIL-07 | 05 | P1 | ✅ | manual | ⚪ |
-| BIL-08 | 05 | P1 | ⚠ | manual | ⚪ |
-| BIL-09 | 05 | P0 | ✅ | manual | ⚪ |
-| BIL-10 | 05 | P0 | ⚠ | manual | ⚪ |
-| BIL-11 | 05 | P0 | ⚠ | manual | ⚪ |
-| BIL-12 | 05 | P1 | ✅ | manual | ⚪ |
-| BIL-13 | 05 | P0 | ❓ | manual | ⚪ |
-| BIL-14 | 05 | P1 | ❓ | manual | ⚪ |
-| BIL-15 | 05 | P1 | ✅ | manual | ⚪ |
-| PUB-01 | 06 | P0 | ✅ | manual | ⚪ |
-| PUB-02 | 06 | P0 | ✅ | manual | ⚪ |
-| PUB-03 | 06 | P1 | ✅ | manual | ⚪ |
-| PUB-04 | 06 | P0 | ✅ | manual | ⚪ |
-| PUB-05 | 06 | P0 | ✅ | manual | ⚪ |
-| PUB-06 | 06 | P0 | ✅ | manual | ⚪ |
-| PUB-07 | 06 | P1 | ❓ | manual | ⚪ |
-| PUB-08 | 06 | P1 | ✅ | manual | ⚪ |
-| PUB-09 | 06 | P0 | ⚠ | manual | ⚪ |
-| PUB-10 | 06 | P1 | ⚠ | manual | ⚪ |
-| PUB-11 | 06 | P1 | ✅ | manual | ⚪ |
-| PUB-12 | 06 | P2 | ⚠ | manual | ⚪ |
-| SEC-01 | 07 | P0 | ✅ | skip | ⚪ |
-| SEC-02 | 07 | P0 | ✅ | pass | ✅ |
-| SEC-03 | 07 | P0 | ✅ | pass | ✅ |
-| SEC-04 | 07 | P1 | ⚠ | manual | ⚪ |
-| SEC-05 | 07 | P0 | ✅ | pass | ✅ |
-| SEC-06 | 07 | P0 | ✅ | pass | ✅ |
-| SEC-07 | 07 | P1 | ✅ | manual | ⚪ |
-| SEC-08 | 07 | P0 | ✅ | pass | ✅ |
-| SEC-09 | 07 | P1 | ✅ | pass | ✅ |
-| SEC-10 | 07 | P0 | ✅ | pass | ✅ |
-| SEC-11 | 07 | P0 | ✅ | pass | ✅ |
-| SEC-12 | 07 | P0 | ✅ | pass | ✅ |
-| SEC-13 | 07 | P0 | ✅ | manual | ⚪ |
-| LMS-V01 | 08 | P0 | ✅ | manual | ⚪ |
-| LMS-V02 | 08 | P1 | ✅ | manual | ⚪ |
-| LMS-V03 | 08 | P1 | ❓ | manual | ⚪ |
-| LMS-V04 | 08 | P1 | ❓ | manual | ⚪ |
-| LMS-V05 | 08 | P0 | ❓ | manual | ⚪ |
-| LMS-V06 | 08 | P1 | ❓ | manual | ⚪ |
-| LMS-V07 | 08 | P2 | ✅ | manual | ⚪ |
-| LMS-V08 | 08 | P2 | ❓ | manual | ⚪ |
-| LMS-V09 | 08 | P0 | ✅ | pass | ✅ |
-| LMS-V10 | 08 | P0 | ✅ | pass | ✅ |
-| LMS-M01 | 08 | P0 | ✅ | manual | ⚪ |
-| LMS-M02 | 08 | P0 | ✅ | manual | ⚪ |
-| LMS-M03 | 08 | P1 | ✅ | manual | ⚪ |
-| LMS-M04 | 08 | P0 | ✅ | pass | ✅ |
-| LMS-Q01 | 08 | P0 | ✅ | pass | ✅ |
-| LMS-Q02 | 08 | P1 | ✅ | manual | ⚪ |
-| LMS-Q03 | 08 | P2 | ✅ | manual | ⚪ |
-| LMS-Q04 | 08 | P0 | ✅ | pass | ✅ |
-| LMS-Q05 | 08 | P0 | ✅ | pass | ✅ |
-| LMS-Q06 | 08 | P0 | ✅ | manual | ⚪ |
-| LMS-A01 | 08 | P0 | ✅ | manual | ⚪ |
-| LMS-A02 | 08 | P0 | ✅ | pass | ✅ |
-| LMS-A03 | 08 | P0 | ✅ | pass | ✅ |
-| LMS-A04 | 08 | P0 | ✅ | manual | ⚪ |
-| LMS-A05 | 08 | P1 | ✅ | manual | ⚪ |
-| LMS-A06 | 08 | P0 | ✅ | pass | ✅ |
-| LMS-A07 | 08 | P0 | ✅ | manual | ⚪ |
-| LMS-A08 | 08 | P1 | ✅ | manual | ⚪ |
-| LMS-AI01 | 08 | P0 | ✅ | manual | ⚪ |
-| LMS-AI02 | 08 | P0 | ❓ | manual | ⚪ |
-| LMS-AI03 | 08 | P1 | ✅ | manual | ⚪ |
-| LMS-AI04 | 08 | P0 | ✅ | pass | ✅ |
-| LMS-ADM01 | 08 | P0 | ✅ | pass | ✅ |
-| LMS-ADM02 | 08 | P0 | ✅ | manual | ⚪ |
-| LMS-ADM03 | 08 | P1 | ✅ | manual | ⚪ |
-| LMS-ADM04 | 08 | P0 | ✅ | pass | ✅ |
-| LMS-ADM05 | 08 | P0 | ✅ | pass | ✅ |
-| LMS-ADM06 | 08 | P1 | ✅ | manual | ⚪ |
-| LMS-ADM07 | 08 | P0 | ✅ | pass | ✅ |
-| LMS-ADM08 | 08 | P1 | ⚠ | manual | ⚪ |
+| PUB-001 | 01 | P0 | ✅ | pass | ✅ |
+| PUB-002 | 01 | P0 | ✅ | fail | 🔴 |
+| PUB-003 | 01 | P0 | ✅ | fail | 🔴 |
+| PUB-004 | 01 | P0 | ⚠ | fail | ⚪ |
+| PUB-005 | 01 | P1 | ⚠ | fail | ⚪ |
+| PUB-006 | 01 | P1 | ⚠ | fail | ⚪ |
+| APP-001 | 01 | P0 | ✅ | pass | ✅ |
+| APP-002 | 01 | P0 | ✅ | pass | ✅ |
+| APP-003 | 01 | P0 | ⚠ | fail | ⚪ |
+| APP-004 | 01 | P0 | ✅ | pass | ✅ |
+| APP-005 | 01 | P0 | ✅ | pass | ✅ |
+| APP-006 | 01 | P0 | ⚠ | fail | ⚪ |
+| APP-007 | 01 | P0 | ✅ | pass | ✅ |
+| APP-008 | 01 | P0 | ⚠ | fail | ⚪ |
+| APP-009 | 01 | P0 | ✅ | pass | ✅ |
+| APP-010 | 01 | P0 | ✅ | fail | 🔴 |
+| APP-011 | 01 | P0 | ✅ | pass | ✅ |
+| APP-012 | 01 | P0 | ✅ | pass | ✅ |
+| APP-013 | 01 | P0 | ✅ | pass | ✅ |
+| APP-014 | 01 | P0 | ✅ | pass | ✅ |
+| AUTH-001 | 02 | P0 | ✅ | pass | ✅ |
+| AUTH-002 | 02 | P0 | ✅ | pass | ✅ |
+| AUTH-003 | 02 | P1 | ✅ | pass | ✅ |
+| AUTH-004 | 02 | P0 | ✅ | fail | 🔴 |
+| AUTH-005 | 02 | P0 | ✅ | fail | 🔴 |
+| AUTH-006 | 02 | P0 | ✅ | fail | 🔴 |
+| AUTH-007 | 02 | P1 | ✅ | fail | 🔴 |
+| AUTH-008 | 02 | P1 | ✅ | fail | 🔴 |
+| AUTH-009 | 02 | P0 | ✅ | fail | 🔴 |
+| AUTH-010 | 02 | P0 | ✅ | fail | 🔴 |
+| AUTH-011 | 02 | P1 | ✅ | fail | 🔴 |
+| AUTH-012 | 02 | P2 | ✅ | pass | ✅ |
+| AUTH-013 | 02 | P1 | ⚠ | fail | ⚪ |
+| AUTH-014 | 02 | P0 | ⚠ | fail | ⚪ |
+| ACC-001 | 02 | P0 | ✅ | pass | ✅ |
+| ACC-002 | 02 | P0 | ✅ | pass | ✅ |
+| ACC-003 | 02 | P0 | ✅ | pass | ✅ |
+| ACC-004 | 02 | P0 | ✅ | pass | ✅ |
+| ACC-005 | 02 | P0 | ✅ | pass | ✅ |
+| ACC-006 | 02 | P0 | ✅ | pass | ✅ |
+| ACC-007 | 02 | P0 | ✅ | fail | 🔴 |
+| ACC-008 | 02 | P0 | ✅ | pass | ✅ |
+| ACC-009 | 02 | P0 | ✅ | pass | ✅ |
+| ACC-010 | 02 | P0 | ✅ | pass | ✅ |
+| ACC-011 | 02 | P0 | ✅ | pass | ✅ |
+| ACC-012 | 02 | P0 | ✅ | pass | ✅ |
+| ACC-013 | 02 | P1 | ✅ | pass | ✅ |
+| ACC-014 | 02 | P1 | ⚠ | fail | ⚪ |
+| ENR-001 | 03 | P0 | ⚠ | fail | ⚪ |
+| ENR-002 | 03 | P0 | ⚠ | fail | ⚪ |
+| ENR-003 | 03 | P0 | ⚠ | fail | ⚪ |
+| ENR-004 | 03 | P0 | ⚠ | fail | ⚪ |
+| BILL-001 | 03 | P0 | ✅ | pass | ✅ |
+| BILL-002 | 03 | P0 | ✅ | pass | ✅ |
+| BILL-003 | 03 | P0 | ⚠ | fail | ⚪ |
+| BILL-004 | 03 | P0 | ⚠ | fail | ⚪ |
+| BILL-005 | 03 | P0 | ✅ | fail | 🔴 |
+| BILL-006 | 03 | P0 | ✅ | fail | 🔴 |
+| BILL-007 | 03 | P1 | ⚠ | fail | ⚪ |
+| BILL-008 | 03 | P0 | ⚠ | fail | ⚪ |
+| BILL-009 | 03 | P1 | ⚠ | fail | ⚪ |
+| BILL-010 | 03 | P1 | ⚠ | fail | ⚪ |
+| BILL-011 | 03 | P1 | ✅ | pass | ✅ |
+| BILL-012 | 03 | P0 | ✅ | fail | 🔴 |
+| BILL-013 | 03 | P0 | ✅ | pass | ✅ |
+| MEM-001 | 03 | P0 | ✅ | pass | ✅ |
+| MEM-002 | 03 | P0 | ✅ | pass | ✅ |
+| MEM-003 | 03 | P0 | ✅ | pass | ✅ |
+| LMS-001 | 04 | P0 | ✅ | pass | ✅ |
+| LMS-002 | 04 | P0 | ✅ | pass | ✅ |
+| LMS-003 | 04 | P0 | ✅ | pass | ✅ |
+| LMS-004 | 04 | P1 | ✅ | pass | ✅ |
+| LMS-005 | 04 | P1 | ✅ | pass | ✅ |
+| LMS-006 | 04 | P1 | ✅ | pass | ✅ |
+| LMS-007 | 04 | P0 | ✅ | pass | ✅ |
+| LMS-008 | 04 | P0 | ✅ | pass | ✅ |
+| LMS-009 | 04 | P0 | ✅ | fail | 🔴 |
+| LMS-010 | 04 | P0 | ⚠ | fail | ⚪ |
+| LMS-011 | 04 | P0 | ⚠ | fail | ⚪ |
+| LMS-012 | 04 | P0 | ⚠ | fail | ⚪ |
+| LMS-013 | 04 | P0 | ⚠ | fail | ⚪ |
+| LMS-014 | 04 | P0 | ⚠ | fail | ⚪ |
+| LMS-015 | 04 | P0 | ✅ | pass | ✅ |
+| LMS-016 | 04 | P0 | ✅ | pass | ✅ |
+| LMS-017 | 04 | P0 | ✅ | pass | ✅ |
+| LMS-018 | 04 | P0 | ✅ | fail | 🔴 |
+| LMS-019 | 04 | P1 | ✅ | pass | ✅ |
+| LMS-020 | 04 | P1 | ✅ | pass | ✅ |
+| LMS-021 | 04 | P0 | ✅ | pass | ✅ |
+| LMS-022 | 04 | P0 | ✅ | pass | ✅ |
+| LMS-023 | 04 | P0 | ✅ | pass | ✅ |
+| LMS-024 | 04 | P0 | ⚠ | fail | ⚪ |
+| AI-001 | 05 | P0 | ✅ | fail | 🔴 |
+| AI-002 | 05 | P0 | ✅ | skip | ⚪ |
+| AI-003 | 05 | P0 | ✅ | fail | 🔴 |
+| AI-004 | 05 | P0 | ✅ | pass | ✅ |
+| AI-005 | 05 | P1 | ✅ | pass | ✅ |
+| AI-006 | 05 | P1 | ✅ | fail | 🔴 |
+| AI-007 | 05 | P1 | ✅ | pass | ✅ |
+| AI-008 | 05 | P1 | ✅ | fail | 🔴 |
+| AI-009 | 05 | P2 | ✅ | pass | ✅ |
+| AI-010 | 05 | P1 | ⚠ | fail | ⚪ |
+| AI-011 | 05 | P1 | ⚠ | fail | ⚪ |
+| AI-012 | 05 | P0 | ✅ | pass | ✅ |
+| AI-013 | 05 | P0 | ✅ | pass | ✅ |
+| AI-014 | 05 | P0 | ✅ | pass | ✅ |
+| TASK-001 | 06 | P1 | ✅ | pass | ✅ |
+| TASK-002 | 06 | P1 | ✅ | pass | ✅ |
+| TASK-003 | 06 | P0 | ✅ | pass | ✅ |
+| TASK-004 | 06 | P1 | ✅ | pass | ✅ |
+| BUILD-001 | 06 | P0 | ✅ | pass | ✅ |
+| BUILD-002 | 06 | P1 | ✅ | pass | ✅ |
+| BUILD-003 | 06 | P1 | ✅ | pass | ✅ |
+| BUILD-004 | 06 | P1 | ✅ | pass | ✅ |
+| BUILD-005 | 06 | P0 | ✅ | pass | ✅ |
+| ROAD-001 | 06 | P1 | ✅ | pass | ✅ |
+| ROAD-002 | 06 | P1 | ✅ | pass | ✅ |
+| ROAD-003 | 06 | P1 | ✅ | pass | ✅ |
+| ROAD-004 | 06 | P0 | ✅ | pass | ✅ |
+| ARCH-001 | 06 | P2 | ✅ | pass | ✅ |
+| ARCH-002 | 06 | P0 | ✅ | pass | ✅ |
+| ARCH-003 | 06 | P1 | ✅ | pass | ✅ |
+| ARCH-004 | 06 | P0 | ✅ | fail | 🔴 |
+| ADM-001 | 07 | P0 | ✅ | fail | 🔴 |
+| ADM-002 | 07 | P0 | ✅ | pass | ✅ |
+| ADM-003 | 07 | P0 | ✅ | fail | 🔴 |
+| ADM-004 | 07 | P0 | ⚠ | fail | ⚪ |
+| ADM-005 | 07 | P0 | ✅ | pass | ✅ |
+| ADM-006 | 07 | P0 | ✅ | pass | ✅ |
+| ADM-007 | 07 | P0 | ✅ | pass | ✅ |
+| ADM-008 | 07 | P1 | ✅ | pass | ✅ |
+| ADM-009 | 07 | P0 | ✅ | pass | ✅ |
+| ADM-010 | 07 | P0 | ✅ | fail | 🔴 |
+| ADM-011 | 07 | P0 | ✅ | pass | ✅ |
+| ADM-012 | 07 | P0 | ✅ | pass | ✅ |
+| ADM-013 | 07 | P0 | ⚠ | fail | ⚪ |
+| ADM-014 | 07 | P0 | ⚠ | fail | ⚪ |
+| ADM-015 | 07 | P0 | ⚠ | fail | ⚪ |
+| ADM-016 | 07 | P0 | ⚠ | fail | ⚪ |
+| SEC-001 | 08 | P0 | ✅ | pass | ✅ |
+| SEC-002 | 08 | P0 | ✅ | pass | ✅ |
+| SEC-003 | 08 | P0 | ✅ | pass | ✅ |
+| SEC-004 | 08 | P0 | ✅ | pass | ✅ |
+| SEC-005 | 08 | P0 | ✅ | pass | ✅ |
+| SEC-006 | 08 | P0 | ✅ | pass | ✅ |
+| SEC-007 | 08 | P0 | ✅ | pass | ✅ |
+| SEC-008 | 08 | P0 | ✅ | pass | ✅ |
+| SEC-009 | 08 | P0 | ✅ | pass | ✅ |
+| SEC-010 | 08 | P0 | ✅ | fail | 🔴 |
+| SEC-011 | 08 | P0 | ✅ | pass | ✅ |
+| SEC-012 | 08 | P0 | ✅ | pass | ✅ |
+| SEC-013 | 08 | P1 | ⚠ | fail | ⚪ |
+| SEC-014 | 08 | P0 | ✅ | pass | ✅ |
+| NFR-001 | 08 | P0 | ✅ | fail | 🔴 |
+| NFR-002 | 08 | P1 | ✅ | fail | 🔴 |
+| NFR-003 | 08 | P0 | ✅ | pass | ✅ |
+| NFR-004 | 08 | P0 | ✅ | fail | 🔴 |
+| NFR-005 | 08 | P1 | ✅ | fail | 🔴 |
+| NFR-006 | 08 | P1 | ⚠ | fail | ⚪ |
+| NFR-007 | 08 | P0 | ⚠ | fail | ⚪ |
+| NFR-008 | 08 | P2 | ⚠ | fail | ⚪ |
+| NFR-009 | 08 | P1 | ❓ | manual | ⚪ |
+| NFR-010 | 08 | P1 | ❓ | manual | ⚪ |

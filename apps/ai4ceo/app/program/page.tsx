@@ -4,6 +4,7 @@ import { Badge, Button, Card, CardTitle, Callout, SectionTitle } from "@/compone
 import { COHORT_18, TUITION_KRW, BANK_ACCOUNT, formatKRW } from "@/lib/core/constants";
 import { getSupabaseServer } from "@/lib/db/supabase-server";
 import { SelfCheck } from "./self-check";
+import { FaqAccordion } from "./faq-accordion";
 
 export const metadata = {
   title: "과정 안내 | AI4CEO Portal",
@@ -35,7 +36,7 @@ const TECH_TOPICS = [
 ];
 
 const SCHEDULE: { week: string; date: string; content: string }[] = [
-  { week: "1주차", date: "9/9 (수)", content: "AI·LLM의 핵심 이해와 바이브코딩 시작 · 주요 LLM(Claude·GPT·Gemini) 비교 · Claude Code 설치 및 첫 코딩 실습" },
+  { week: "1주차", date: "9/7", content: "AI·LLM의 핵심 이해와 바이브코딩 시작 · 주요 LLM(Claude·GPT·Gemini) 비교 · Claude Code 설치 및 첫 코딩 실습" },
   { week: "2주차", date: "9/16 (수)", content: "개발 환경 구축(터미널·Python·Node) · Claude Code 실전 세팅 · 첫 프로젝트 생성·디버깅" },
   { week: "3주차", date: "9/23 (수)", content: "Claude Code로 터미널에서 AI 에이전트 코딩 · 파일 자동 생성·수정과 자동 디버깅 · 효과적인 프롬프트 작성법" },
   { week: "4주차", date: "9/30 (수)", content: "LLM 애플리케이션 구현 7가지 아키텍처 · 우리 회사 적용 사례 살펴보기" },
@@ -48,6 +49,9 @@ const SCHEDULE: { week: string; date: string; content: string }[] = [
 ];
 
 const FAQ = [
+  { q: "지원 자격은 어떻게 되나요?", a: "CEO·임원뿐 아니라 AI를 업무에 적용하려는 실무자도 지원할 수 있습니다." },
+  { q: "결제는 어떻게 하나요?", a: "계좌이체와 안내된 온라인 결제 수단을 이용할 수 있습니다." },
+  { q: "환불 규정은 어떻게 되나요?", a: "개강 전후 시점과 수강 진행률에 따라 관련 규정에 맞춰 안내합니다." },
   { q: "꼭 기업의 CEO나 임원들만 들어야 하나요?", a: "가장 많은 효과를 얻는 분들은 CEO·임원이지만, 실무자가 들어도 얼마든지 좋은 내용입니다. 임원들과 함께 들으면 앞서 나가는 리더들의 시각을 접할 수 있는 좋은 기회가 됩니다." },
   { q: "컴퓨터 언어에 기본 지식이 필요한가요?", a: "전혀 필요 없습니다. Python을 알면 매우 좋지만 몰라도 Claude Code로 AI 코딩하는 방법을 처음부터 알려드립니다." },
   { q: "노트북 사양은 어떻게 준비해야 하나요?", a: "16GB RAM 이상 개인 노트북이 필요합니다. 오픈소스 LLM(Qwen·Llama4·Exaone·Gemma·Deepseek 등)을 직접 다운로드해 사용하기 때문입니다. GPU가 있는 노트북이면 더 좋습니다." },
@@ -178,6 +182,9 @@ export default async function ProgramPage() {
 
       {/* Technical content */}
       <section className="mx-auto max-w-[900px] px-6 py-14">
+        <SectionTitle>4대 핵심 트랙</SectionTitle>
+        <p className="mt-2 text-sm text-muted">Claude Code · Claude Design · Claude Cowork · Harness Engineering을 중심으로 학습합니다.</p>
+        <div className="h-8" />
         <SectionTitle>본 과정의 기술적 내용</SectionTitle>
         <p className="mt-2 text-sm text-muted">
           이번 코스를 들으면 현재 AI를 구현하는 데 필요한 기술에 대한 해박한 이해를 갖게
@@ -354,14 +361,7 @@ export default async function ProgramPage() {
           <MessageCircleQuestion size={18} className="text-primary" />
           <SectionTitle className="!mt-0">자주 묻는 질문</SectionTitle>
         </div>
-        <div className="mt-4 divide-y divide-hairline rounded-[15px] border border-hairline bg-surface">
-          {FAQ.map((f) => (
-            <div key={f.q} className="px-5 py-4">
-              <div className="text-sm font-semibold text-ink">{f.q}</div>
-              <p className="mt-1.5 text-sm text-muted">{f.a}</p>
-            </div>
-          ))}
-        </div>
+        <FaqAccordion items={FAQ} />
       </section>
 
       {/* Tuition */}

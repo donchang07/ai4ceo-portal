@@ -56,10 +56,12 @@ type TypeFilter = (typeof TYPE_FILTERS)[number];
 
 export function ArchiveView({
   hasActiveMembership,
+  canReadArchive,
   cohorts = [],
   sessions = [],
 }: {
   hasActiveMembership: boolean;
+  canReadArchive: boolean;
   cohorts?: ArchiveCohort[];
   sessions?: ArchiveSession[];
 }) {
@@ -81,19 +83,35 @@ export function ArchiveView({
   const load = useCallback(async () => {
     try {
       const sb = getSupabaseBrowser();
-      const { data, error } = await sb
-        .from("posts")
-        .select("*")
-        .in("board", ["brief", "ai_trend"])
-        .order("published_at", { ascending: false });
+      const { data, error } = canReadArchive
+        ? await sb
+            .from("posts")
+            .select("id,board,cohort_id,title,external_url,category,tags,audience,published_at")
+            .in("board", ["brief", "ai_trend"])
+            .order("published_at", { ascending: false })
+        : await sb.rpc("list_locked_archive_metadata");
       if (error) throw error;
-      setPosts((data as ArchivePost[]) ?? []);
+      setPosts(
+        ((data ?? []) as Partial<ArchivePost>[]).map((post) => ({
+          id: post.id!,
+          board: post.board ?? "brief",
+          cohort_id: post.cohort_id ?? null,
+          title: post.title!,
+          excerpt: null,
+          thumbnail_path: null,
+          external_url: canReadArchive ? post.external_url ?? null : null,
+          category: post.category ?? null,
+          tags: post.tags ?? null,
+          audience: post.audience ?? "alumni",
+          published_at: post.published_at!,
+        })),
+      );
     } catch {
       setPosts([]);
     } finally {
       setLoaded(true);
     }
-  }, []);
+  }, [canReadArchive]);
 
   useEffect(() => {
     void load();
@@ -114,14 +132,14 @@ export function ArchiveView({
     <AlumniShell>
       <div className="flex items-center justify-between gap-2">
         <SectionTitle>동문 아카이브</SectionTitle>
-        {hasActiveMembership ? (
-          <Badge tone="info">멤버십 이용 중</Badge>
+        {canReadArchive ? (
+          <Badge tone="info">{hasActiveMembership ? "멤버십 이용 중" : "관리자 열람"}</Badge>
         ) : (
           <Badge tone="neutral">멤버십 만료</Badge>
         )}
       </div>
 
-      {!hasActiveMembership ? (
+      {!canReadArchive ? (
         <Card className="mt-4 bg-ink text-white">
           <p className="text-sm">
             멤버십이 만료되었습니다 — 목록은 보이지만 재생·다운로드는 잠깁니다. 연 {formatKRW(MEMBERSHIP_KRW)}.
@@ -162,7 +180,7 @@ export function ArchiveView({
               {item.category ? ` · ${item.category}` : ""}
             </p>
             <div className="mt-3">
-              {hasActiveMembership ? (
+              {canReadArchive ? (
                 <Button variant="outline" href={item.external_url ?? "#"}>
                   읽기
                 </Button>

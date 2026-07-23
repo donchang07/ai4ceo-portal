@@ -1,18 +1,18 @@
 {
   "ok": true,
-  "runAt": "2026-07-19T16:05:13.070Z",
-  "portalPagesChecked": 11,
+  "runAt": "2026-07-22T12:02:07.829Z",
+  "portalPagesChecked": 15,
   "apiRoutesChecked": 1,
   "results": [
     {
       "check": "FR-11 portal/alumni 게이트",
       "result": "pass",
-      "detail": "11개 페이지 검사"
+      "detail": "15개 페이지 검사"
     },
     {
       "check": "FR-11 admin layout 게이트 상속",
       "result": "pass",
-      "detail": "admin 페이지 4개 · layout 게이트 확인"
+      "detail": "admin 페이지 6개 · layout 게이트 확인"
     },
     {
       "check": "FR-12 api route 권한 검사",

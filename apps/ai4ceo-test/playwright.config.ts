@@ -4,7 +4,12 @@ import path from "node:path";
 
 loadEnv({ path: path.resolve(__dirname, ".env.local") });
 
-const BASE_URL = process.env.TEST_BASE_URL || "https://ai4ceo-portal.vercel.app";
+const BASE_URL = process.env.TEST_BASE_URL;
+const BYPASS_SECRET = process.env.VERCEL_AUTOMATION_BYPASS_SECRET;
+
+if (!BASE_URL) {
+  throw new Error("TEST_BASE_URL is required. Refusing to default to production.");
+}
 
 // json reporter → tests/report/results.json (리포트 생성기 입력)
 export default defineConfig({
@@ -15,14 +20,26 @@ export default defineConfig({
   timeout: 60_000,
   reporter: [
     ["list"],
-    ["json", { outputFile: "tests/report/results.json" }],
+    ["json", { outputFile: process.env.PLAYWRIGHT_JSON_OUTPUT_NAME || "tests/report/results.json" }],
   ],
   use: {
     baseURL: BASE_URL,
     trace: "retain-on-failure",
     screenshot: "only-on-failure",
+    video: "retain-on-failure",
+    extraHTTPHeaders: BYPASS_SECRET
+      ? {
+          "x-vercel-protection-bypass": BYPASS_SECRET,
+          "x-vercel-set-bypass-cookie": "true",
+        }
+      : undefined,
   },
   projects: [
+    {
+      name: "public",
+      testMatch: ["public/**/*.spec.ts"],
+      use: { ...devices["Desktop Chrome"] },
+    },
     // 비브라우저 프로젝트: API 계약 / RLS / RAG / 서버액션 DB 단언 — 브라우저 불필요.
     // chromium 설치 실패 환경에서도 `npm run test:api` 로 실행 가능.
     {

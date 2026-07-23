@@ -11,15 +11,17 @@ loadEnv({ path: path.resolve(process.cwd(), ".env.local") });
 export const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
 export const ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
 export const SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || "";
-export const TEST_PASSWORD = process.env.TEST_ACCOUNT_PASSWORD || "uscdon00";
-export const BASE_URL = process.env.TEST_BASE_URL || "https://ai4ceo-portal.vercel.app";
+export const TEST_PASSWORD = process.env.TEST_ACCOUNT_PASSWORD || "";
+export const BASE_URL = process.env.TEST_BASE_URL || "";
 
 export const ACCOUNT_EMAILS = {
-  admin: "donchang0725@gmail.com",
-  student: "donchang@hanmail.net",
-  alumniMember: "donchang0725@naver.com",
-  alumniNoMember: "donchang@kaist.ac.kr",
-  applicant: "donchang0725@kakao.com",
+  admin: process.env.TEST_ADMIN_EMAIL || "donchang0725@gmail.com",
+  student: process.env.TEST_STUDENT_EMAIL || "donchang@hanmail.net",
+  assistant: process.env.TEST_ASSISTANT_EMAIL || "qa.assistant@example.com",
+  alumniMember: process.env.TEST_ALUMNI_MEMBER_EMAIL || "donchang0725@naver.com",
+  alumniExpired: process.env.TEST_ALUMNI_EXPIRED_EMAIL || "qa.alumni.expired@example.com",
+  alumniNoMember: process.env.TEST_ALUMNI_NO_MEMBER_EMAIL || "donchang@kaist.ac.kr",
+  applicant: process.env.TEST_APPLICANT_EMAIL || "donchang0725@kakao.com",
 };
 
 export function assertEnv() {
@@ -27,7 +29,21 @@ export function assertEnv() {
   if (!SUPABASE_URL) missing.push("NEXT_PUBLIC_SUPABASE_URL");
   if (!ANON_KEY) missing.push("NEXT_PUBLIC_SUPABASE_ANON_KEY");
   if (!SERVICE_ROLE_KEY) missing.push("SUPABASE_SERVICE_ROLE_KEY");
+  if (!TEST_PASSWORD) missing.push("TEST_ACCOUNT_PASSWORD");
+  if (!BASE_URL) missing.push("TEST_BASE_URL");
   if (missing.length) throw new Error(`환경변수 누락: ${missing.join(", ")}`);
+}
+
+export function assertMutationTarget() {
+  assertEnv();
+  const baseHost = new URL(BASE_URL).host;
+  const supabaseHost = new URL(SUPABASE_URL).host;
+  if (baseHost === "ai4ceo-portal.vercel.app") {
+    throw new Error("운영 TEST_BASE_URL에서는 mutation을 실행할 수 없습니다.");
+  }
+  if (supabaseHost === "olofwxsavfthsmmwjwzk.supabase.co") {
+    throw new Error("운영 Supabase에서는 mutation을 실행할 수 없습니다.");
+  }
 }
 
 // service role 클라이언트 — RLS 우회(시드/티어다운/프로비저닝 전용)

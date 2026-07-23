@@ -16,23 +16,24 @@ export default async function AdminDashboardPage() {
   const [applications, invoices] = await Promise.all([getApplications(), getInvoices()]);
 
   const paidCount = invoices.filter((i) => i.status === "paid").length;
+  const reviewingCount = applications.filter((a) => a.status === "reviewing").length;
+  const acceptedCount = applications.filter((a) => a.status === "accepted").length;
 
   const kpis: Kpi[] = [
-    { label: "지원자", value: String(applications.length), caption: "최근 7일 +12" },
-    { label: "추천 유입", value: "64%", caption: "지난 기수 대비 +9%p" },
-    { label: "입금 완료", value: String(paidCount), caption: "Zoom 강의 — 정원 제한 없음" },
-    { label: "결과물 완성률", value: "78%", caption: "9주차 종합 프로젝트 기준" },
+    { label: "지원자", value: String(applications.length), caption: "전체 지원서 기준" },
+    { label: "검토 중", value: String(reviewingCount), caption: "현재 심사 진행 건" },
+    { label: "입금 완료", value: String(paidCount), caption: "실제 인보이스 상태 기준" },
+    { label: "합격", value: String(acceptedCount), caption: "현재 합격 처리 건" },
   ];
 
   // 전형 퍼널 (대표 운영 수치) — 뒤 단계일수록 옅게
   const funnel: FunnelStep[] = [
-    { label: "접수", count: 38, opacity: "opacity-100" },
-    { label: "검토", count: 30, opacity: "opacity-[0.85]" },
-    { label: "합격", count: 24, opacity: "opacity-70" },
-    { label: "입금", count: 21, opacity: "opacity-[0.55]" },
-    { label: "등록", count: 20, opacity: "opacity-40" },
+    { label: "접수", count: applications.length, opacity: "opacity-100" },
+    { label: "검토", count: reviewingCount, opacity: "opacity-[0.85]" },
+    { label: "합격", count: acceptedCount, opacity: "opacity-70" },
+    { label: "입금", count: paidCount, opacity: "opacity-[0.55]" },
   ];
-  const funnelMax = funnel[0].count;
+  const funnelMax = Math.max(1, applications.length);
 
   const todos: TodoItem[] = [
     { tone: "danger", text: "합격 처리 대기 3건", href: "/admin/applications" },
@@ -115,7 +116,7 @@ export default async function AdminDashboardPage() {
               <div className="flex items-center justify-center gap-1.5 text-xs text-muted">
                 <MessageSquare size={13} /> 성공
               </div>
-              <div className="mt-1 text-2xl font-bold tnum text-ink">42</div>
+              <div className="mt-1 text-2xl font-bold tnum text-ink">{paidCount}</div>
             </div>
             <div className="rounded-control bg-surface-muted px-3 py-4 text-center">
               <div className="flex items-center justify-center gap-1.5 text-xs text-muted">

@@ -1,4 +1,5 @@
 import { requireAlumniAccess } from "@/lib/db/auth";
+import { isAdmin } from "@/lib/core/access";
 import { getSupabaseServer } from "@/lib/db/supabase-server";
 import { ArchiveView, type ArchiveCohort, type ArchiveSession } from "./archive-view";
 
@@ -10,6 +11,7 @@ import { ArchiveView, type ArchiveCohort, type ArchiveSession } from "./archive-
 // 여기서는 추가 조회만 한다 — DB 변경 없음.
 export default async function ArchivePage() {
   const user = await requireAlumniAccess();
+  const canReadArchive = isAdmin(user.role) || user.hasActiveMembership;
 
   let cohorts: ArchiveCohort[] = [];
   let sessions: ArchiveSession[] = [];
@@ -56,5 +58,12 @@ export default async function ArchivePage() {
     /* 스키마 미적용 환경 — 빈 배열로 렌더 */
   }
 
-  return <ArchiveView hasActiveMembership={user.hasActiveMembership} cohorts={cohorts} sessions={sessions} />;
+  return (
+    <ArchiveView
+      hasActiveMembership={user.hasActiveMembership}
+      canReadArchive={canReadArchive}
+      cohorts={cohorts}
+      sessions={sessions}
+    />
+  );
 }
