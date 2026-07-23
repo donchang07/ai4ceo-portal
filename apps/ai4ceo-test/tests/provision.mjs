@@ -3,15 +3,18 @@
 // enrollment/membership 베이스라인은 best-effort(스키마 차이에 견고하게 try/catch).
 //
 // 실행: node tests/provision.mjs
-import { admin, assertEnv, TEST_PASSWORD, ACCOUNT_EMAILS } from "./lib/supa.mjs";
+import { admin, assertMutationTarget, TEST_PASSWORD, ACCOUNT_EMAILS } from "./lib/supa.mjs";
 
 const COHORT_18_ID = "00000000-0000-0000-0000-0000000000c1";
+const DEMO_SESSION_ID = "ed04829b-148e-4ae8-8462-cf80b41666db";
 
 // README 표 기준 각 계정 베이스라인
 const SPEC = {
   admin: { email: ACCOUNT_EMAILS.admin, role: "admin", name: "관리자", enrollment: null, membership: null },
   student: { email: ACCOUNT_EMAILS.student, role: "student", name: "재학 수강생", enrollment: "in_training", membership: null },
-  alumniMember: { email: ACCOUNT_EMAILS.alumniMember, role: "alumni", name: "졸업 멤버", enrollment: "completed", membership: "active" },
+  assistant: { email: ACCOUNT_EMAILS.assistant, role: "assistant", name: "QA 비서", enrollment: null, membership: null },
+  alumniMember: { email: ACCOUNT_EMAILS.alumniMember, role: "alumni", name: "졸업 멤버", enrollment: "completed", membership: "active", expiresAt: "2027-12-31T23:59:59Z" },
+  alumniExpired: { email: ACCOUNT_EMAILS.alumniExpired, role: "alumni", name: "QA 만료 동문", enrollment: "completed", membership: "expired", expiresAt: "2025-12-31T23:59:59Z" },
   alumniNoMember: { email: ACCOUNT_EMAILS.alumniNoMember, role: "alumni", name: "졸업 미가입", enrollment: "completed", membership: null },
   applicant: { email: ACCOUNT_EMAILS.applicant, role: "applicant", name: "관심자", enrollment: null, membership: null },
 };
@@ -53,7 +56,8 @@ async function ensureEnrollment(sb, userId, status) {
       .maybeSingle();
     if (existing) {
       if (existing.status !== status) {
-        await sb.from("enrollments").update({ status }).eq("id", existing.id);
+        const { error } = await sb.from("enrollments").update({ status }).eq("id", existing.id);
+        if (error) return `enrollments update 경고: ${error.message}`;
       }
       return null;
     }
@@ -65,7 +69,7 @@ async function ensureEnrollment(sb, userId, status) {
   return null;
 }
 
-async function ensureMembership(sb, userId, status) {
+async function ensureMembership(sb, userId, status, expiresAt = null) {
   try {
     const { data: existing } = await sb
       .from("memberships")
@@ -81,12 +85,13 @@ async function ensureMembership(sb, userId, status) {
       return null;
     }
     if (existing) {
-      if (existing.status !== status) {
-        await sb.from("memberships").update({ status }).eq("id", existing.id);
+      if (existing.status !== status || expiresAt) {
+        const { error } = await sb.from("memberships").update({ status, expires_at: expiresAt }).eq("id", existing.id);
+        if (error) return `memberships update 경고: ${error.message}`;
       }
       return null;
     }
-    const { error } = await sb.from("memberships").insert({ user_id: userId, status });
+    const { error } = await sb.from("memberships").insert({ user_id: userId, status, expires_at: expiresAt });
     if (error) return `memberships insert 경고: ${error.message}`;
   } catch (e) {
     return `memberships 예외: ${e.message}`;
@@ -95,10 +100,11 @@ async function ensureMembership(sb, userId, status) {
 }
 
 async function main() {
-  assertEnv();
+  assertMutationTarget();
   const sb = admin();
   const warnings = [];
   const summary = [];
+  const userIds = {};
 
   for (const [key, spec] of Object.entries(SPEC)) {
     let user = await findUserByEmail(sb, spec.email);
@@ -123,17 +129,39 @@ async function main() {
 
     const w1 = await ensureProfile(sb, user.id, spec.role, spec.name);
     const w2 = await ensureEnrollment(sb, user.id, spec.enrollment);
-    const w3 = await ensureMembership(sb, user.id, spec.membership);
+    const w3 = await ensureMembership(sb, user.id, spec.membership, spec.expiresAt);
     for (const w of [w1, w2, w3]) if (w) warnings.push(w);
+    userIds[key] = user.id;
 
     summary.push(`  ${action.padEnd(7)} ${key.padEnd(15)} ${spec.email}`);
   }
 
+  const demoSession = await sb.from("sessions").upsert({
+    id: DEMO_SESSION_ID,
+    cohort_id: COHORT_18_ID,
+    week_no: 1,
+    title: "[QA] 18기 데모 세션",
+    type: "regular_zoom",
+    description: "Playwright LMS 테스트용 staging fixture",
+    is_published: true,
+    sort_order: 1,
+  }, { onConflict: "id" });
+  if (demoSession.error) warnings.push(`demo session upsert 경고: ${demoSession.error.message}`);
+
+  // Keep one positive delegation fixture while leaving the SEC-010 student unlinked.
+  const clearLinks = await sb.from("assistant_links").delete().eq("assistant_id", userIds.assistant);
+  if (clearLinks.error) warnings.push(`assistant_links delete 경고: ${clearLinks.error.message}`);
+  const assistantLink = await sb.from("assistant_links").insert({
+    assistant_id: userIds.assistant,
+    student_id: userIds.alumniMember,
+    cohort_id: COHORT_18_ID,
+  });
+  if (assistantLink.error) warnings.push(`assistant_links insert 경고: ${assistantLink.error.message}`);
+
   console.log("[provision] 계정 프로비저닝 완료:");
   summary.forEach((s) => console.log(s));
   if (warnings.length) {
-    console.log("[provision] 경고(비치명적):");
-    warnings.forEach((w) => console.log("  - " + w));
+    throw new Error(`fixture 준비 실패:\n${warnings.map((w) => `  - ${w}`).join("\n")}`);
   }
 }
 

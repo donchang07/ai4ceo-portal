@@ -6,7 +6,7 @@ import path from "node:path";
 loadEnv({ path: path.resolve(__dirname, ".env.local") });
 
 // @ts-expect-error — .mjs 헬퍼(타입 없음)
-import { clientAs, anon, admin, userId } from "./lib/supa.mjs";
+import { clientAs, anon, admin, assertMutationTarget, userId } from "./lib/supa.mjs";
 import { seedQuestion, cleanupTestQa, DEMO_SESSION_ID } from "./fixtures/lms";
 
 const COHORT_18_ID = "00000000-0000-0000-0000-0000000000c1";
@@ -22,12 +22,14 @@ function denied(res: { error: unknown; data: unknown }): boolean {
 test.describe("RLS · 직접 공격 방어", () => {
   const seededQuestions: string[] = [];
 
+  test.beforeAll(() => assertMutationTarget());
+
   test.afterAll(async () => {
     await cleanupTestQa(seededQuestions).catch(() => {});
   });
 
   // --- 벡터 DB ---
-  test("SEC-05 재학생 match_rag_chunks RPC 거부(EXECUTE revoke)", async () => {
+  test("AI-014 SEC-05 재학생 match_rag_chunks RPC 거부(EXECUTE revoke)", async () => {
     const sb = await clientAs("student");
     const res = await sb.rpc("match_rag_chunks", {
       query_embedding: Array(1536).fill(0),
@@ -36,7 +38,7 @@ test.describe("RLS · 직접 공격 방어", () => {
     expect(res.error, "RPC 는 권한 오류여야 함").not.toBeNull();
   });
 
-  test("AI-15 anon match_rag_chunks RPC 거부", async () => {
+  test("AI-014 AI-15 anon match_rag_chunks RPC 거부", async () => {
     const sb = anon();
     const res = await sb.rpc("match_rag_chunks", {
       query_embedding: Array(1536).fill(0),
@@ -45,14 +47,14 @@ test.describe("RLS · 직접 공격 방어", () => {
     expect(res.error).not.toBeNull();
   });
 
-  test("SEC-06 anon rag_chunks 직접 select 빈 결과", async () => {
+  test("AI-014 SEC-06 anon rag_chunks 직접 select 빈 결과", async () => {
     const sb = anon();
     const { data } = await sb.from("rag_chunks").select("id").limit(5);
     expect(data ?? []).toHaveLength(0);
   });
 
   // --- 조회 격리 ---
-  test("SEC-03 재학생 applications 전체 조회 차단(admin only)", async () => {
+  test("SEC-003 SEC-03 재학생 applications 전체 조회 차단(admin only)", async () => {
     const stu = await clientAs("student");
     const { data: seen } = await stu.from("applications").select("id").limit(50);
     const svc = admin();
@@ -61,7 +63,7 @@ test.describe("RLS · 직접 공격 방어", () => {
     expect((seen ?? []).length).toBe(0);
   });
 
-  test("SEC-02 재학생이 타인(admin) profiles 조회 차단", async () => {
+  test("SEC-004 SEC-02 재학생이 타인(admin) profiles 조회 차단", async () => {
     const adminId = await userId("admin");
     test.skip(!adminId, "admin user id 조회 실패");
     const stu = await clientAs("student");
@@ -70,16 +72,40 @@ test.describe("RLS · 직접 공격 방어", () => {
   });
 
   test("SEC-01 재학생 invoices 격리(전체 열람 불가)", async () => {
-    const stu = await clientAs("student");
-    const { data: seen } = await stu.from("invoices").select("id").limit(100);
     const svc = admin();
-    const { count } = await svc.from("invoices").select("id", { count: "exact", head: true });
-    if ((count ?? 0) === 0) test.skip(true, "invoices 데이터 없음");
-    expect((seen ?? []).length).toBeLessThan(count ?? 0);
+    const foreignUserId = await userId("alumniMember");
+    const enrollment = await svc
+      .from("enrollments")
+      .select("id")
+      .eq("user_id", foreignUserId)
+      .order("created_at", { ascending: false })
+      .limit(1)
+      .single();
+    if (enrollment.error) throw enrollment.error;
+    const invoice = await svc
+      .from("invoices")
+      .insert({
+        enrollment_id: enrollment.data.id,
+        number: `INV-QA-SEC01-${Date.now()}`,
+        amount: 2_200_000,
+        biz_name: "QA foreign invoice",
+        method: "bank_transfer",
+        status: "issued",
+      })
+      .select("id")
+      .single();
+    if (invoice.error) throw invoice.error;
+    try {
+      const stu = await clientAs("student");
+      const { data: seen } = await stu.from("invoices").select("id").eq("id", invoice.data.id);
+      expect(seen).toEqual([]);
+    } finally {
+      await svc.from("invoices").delete().eq("id", invoice.data.id);
+    }
   });
 
   // --- 관리자 전용 쓰기 ---
-  test("SEC-08 재학생 sessions update 거부", async () => {
+  test("SEC-005 SEC-08 재학생 sessions update 거부", async () => {
     const stu = await clientAs("student");
     const res = await stu.from("sessions").update({ title: "[해킹시도]" }).eq("id", DEMO_SESSION_ID).select();
     expect(denied(res as any)).toBe(true);
@@ -96,7 +122,7 @@ test.describe("RLS · 직접 공격 방어", () => {
     expect(denied(res as any)).toBe(true);
   });
 
-  test("SEC-12 졸업생 본인 membership status=active 위조 거부", async () => {
+  test("MEM-003 SEC-009 SEC-12 졸업생 본인 membership status=active 위조 거부", async () => {
     const mem = await clientAs("alumniMember");
     const res = await mem.from("memberships").update({ status: "active" }).eq("status", "active").select();
     // self-update 는 거부(정책상 select 만) → 에러 또는 0행
@@ -126,7 +152,7 @@ test.describe("RLS · 직접 공격 방어", () => {
   });
 
   // --- Q&A 권한 ---
-  test("LMS-Q05 비수강생(관심자) session_questions insert 거부", async () => {
+  test("LMS-016 LMS-Q05 비수강생(관심자) session_questions insert 거부", async () => {
     const app = await clientAs("applicant");
     const res = await app.from("session_questions").insert({
       session_id: DEMO_SESSION_ID,

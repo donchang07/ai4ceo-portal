@@ -1,0 +1,589 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\donch\\ai4ceo-portal\\apps\\ai4ceo-test\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/public/access.spec.ts",
+      "--project=public",
+      "--headed",
+      "--workers=1"
+    ],
+    "configFile": "C:\\Users\\donch\\ai4ceo-portal\\apps\\ai4ceo-test\\playwright.config.ts",
+    "rootDir": "C:/Users/donch/ai4ceo-portal/apps/ai4ceo-test/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/donch/ai4ceo-portal/apps/ai4ceo-test/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "public",
+        "name": "public",
+        "testDir": "C:/Users/donch/ai4ceo-portal/apps/ai4ceo-test/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "public/**/*.spec.ts"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/donch/ai4ceo-portal/apps/ai4ceo-test/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "api",
+        "name": "api",
+        "testDir": "C:/Users/donch/ai4ceo-portal/apps/ai4ceo-test/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "api.authz.spec.ts",
+          "rls.security.spec.ts",
+          "rag.smoke.spec.ts",
+          "actions.lms.spec.ts"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/donch/ai4ceo-portal/apps/ai4ceo-test/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "C:/Users/donch/ai4ceo-portal/apps/ai4ceo-test/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "matrix.access.spec.ts"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/donch/ai4ceo-portal/apps/ai4ceo-test/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile",
+        "name": "mobile",
+        "testDir": "C:/Users/donch/ai4ceo-portal/apps/ai4ceo-test/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "matrix.access.spec.ts"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/donch/ai4ceo-portal/apps/ai4ceo-test/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "transitions",
+        "name": "transitions",
+        "testDir": "C:/Users/donch/ai4ceo-portal/apps/ai4ceo-test/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "transitions.spec.ts"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "tests/report/results-access-final.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.61.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "public\\access.spec.ts",
+      "file": "public/access.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "새 문서 접근제어 acceptance",
+          "file": "public/access.spec.ts",
+          "line": 21,
+          "column": 6,
+          "specs": [
+            {
+              "title": "ACC-001 guest 공개 경로 6개 접근",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "public",
+                  "projectName": "public",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 11494,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-23T08:21:27.789Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "8de3813d918cc95ac362-630460ef4c6ef467c59b",
+              "file": "public/access.spec.ts",
+              "line": 22,
+              "column": 7
+            },
+            {
+              "title": "ACC-002 guest 보호 경로는 로그인으로 이동",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "public",
+                  "projectName": "public",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 11661,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-23T08:21:40.152Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "8de3813d918cc95ac362-fed7f0940f47c5f90f9f",
+              "file": "public/access.spec.ts",
+              "line": 34,
+              "column": 7
+            },
+            {
+              "title": "ACC-003 재학생 LMS 9개 경로 접근",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "public",
+                  "projectName": "public",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 38329,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-23T08:21:51.831Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "8de3813d918cc95ac362-3f1a05137dd29c6cf005",
+              "file": "public/access.spec.ts",
+              "line": 47,
+              "column": 7
+            },
+            {
+              "title": "ACC-004 멤버십 졸업생 archive 경로만 허용",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "public",
+                  "projectName": "public",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 15114,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-23T08:22:30.177Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "8de3813d918cc95ac362-46d68de1ac8cf1d80ab9",
+              "file": "public/access.spec.ts",
+              "line": 59,
+              "column": 7
+            },
+            {
+              "title": "ACC-005 만료 졸업생 archive 콘텐츠 잠금",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "public",
+                  "projectName": "public",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 7917,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-23T08:22:45.306Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "8de3813d918cc95ac362-3a618b6954d62648b323",
+              "file": "public/access.spec.ts",
+              "line": 74,
+              "column": 7
+            },
+            {
+              "title": "ACC-006 applicant 보호 경로 차단",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "public",
+                  "projectName": "public",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 11896,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-23T08:22:53.236Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "8de3813d918cc95ac362-7e9eb550f03e7fab6283",
+              "file": "public/access.spec.ts",
+              "line": 87,
+              "column": 7
+            },
+            {
+              "title": "ACC-007 assistant는 연결된 cohort만 접근",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "public",
+                  "projectName": "public",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 121,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-23T08:23:05.147Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "8de3813d918cc95ac362-ec319dc43404d1aff614",
+              "file": "public/access.spec.ts",
+              "line": 99,
+              "column": 7
+            },
+            {
+              "title": "ACC-008 non-admin은 모든 admin 화면 차단",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 120000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "public",
+                  "projectName": "public",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 66858,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-23T08:23:05.279Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "8de3813d918cc95ac362-4405a91e14dd4ed7cdf4",
+              "file": "public/access.spec.ts",
+              "line": 108,
+              "column": 7
+            },
+            {
+              "title": "ACC-009 admin 화면 4개 직접 접근",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "public",
+                  "projectName": "public",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 13261,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-23T08:24:12.154Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "8de3813d918cc95ac362-844d1c5e4b5dda728354",
+              "file": "public/access.spec.ts",
+              "line": 123,
+              "column": 7
+            },
+            {
+              "title": "ACC-013 재학생 모바일 탭과 overflow",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "public",
+                  "projectName": "public",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3865,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-23T08:24:25.427Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "8de3813d918cc95ac362-456792272c24b5cab522",
+              "file": "public/access.spec.ts",
+              "line": 135,
+              "column": 7
+            },
+            {
+              "title": "ACC-014 졸업생 모바일 메뉴에 chat·AI 없음",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "fail",
+                      "description": "현재 문서에 등록된 known_gap: 졸업생 전용 모바일 탭 UX 미구현",
+                      "location": {
+                        "file": "C:\\Users\\donch\\ai4ceo-portal\\apps\\ai4ceo-test\\tests\\public\\access.spec.ts",
+                        "line": 146,
+                        "column": 10
+                      }
+                    }
+                  ],
+                  "expectedStatus": "failed",
+                  "projectId": "public",
+                  "projectName": "public",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 8497,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('nav:visible').last()\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('nav:visible').last()\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('nav:visible').last()\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('nav:visible').last()\u001b[22m\n\n    at C:\\Users\\donch\\ai4ceo-portal\\apps\\ai4ceo-test\\tests\\public\\access.spec.ts:151:31",
+                        "location": {
+                          "file": "C:\\Users\\donch\\ai4ceo-portal\\apps\\ai4ceo-test\\tests\\public\\access.spec.ts",
+                          "column": 31,
+                          "line": 151
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 149 |\u001b[39m     \u001b[36mtry\u001b[39m {\n \u001b[90m 150 |\u001b[39m       \u001b[36mconst\u001b[39m mobileNav \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m\"nav:visible\"\u001b[39m)\u001b[33m.\u001b[39mlast()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 151 |\u001b[39m       \u001b[36mawait\u001b[39m expect(mobileNav)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 152 |\u001b[39m       \u001b[36mawait\u001b[39m expect(mobileNav\u001b[33m.\u001b[39mgetByRole(\u001b[32m\"link\"\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[35m/채팅|AI/\u001b[39m }))\u001b[33m.\u001b[39mtoHaveCount(\u001b[35m0\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 153 |\u001b[39m       \u001b[36mawait\u001b[39m expect(mobileNav\u001b[33m.\u001b[39mgetByRole(\u001b[32m\"link\"\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[35m/아카이브|멤버십/\u001b[39m })\u001b[33m.\u001b[39mfirst())\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 154 |\u001b[39m     } \u001b[36mfinally\u001b[39m { \u001b[36mawait\u001b[39m close(page)\u001b[33m;\u001b[39m }\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\donch\\ai4ceo-portal\\apps\\ai4ceo-test\\tests\\public\\access.spec.ts",
+                            "column": 31,
+                            "line": 151
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('nav:visible').last()\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('nav:visible').last()\u001b[22m\n\n\n  149 |     try {\n  150 |       const mobileNav = page.locator(\"nav:visible\").last();\n> 151 |       await expect(mobileNav).toBeVisible();\n      |                               ^\n  152 |       await expect(mobileNav.getByRole(\"link\", { name: /채팅|AI/ })).toHaveCount(0);\n  153 |       await expect(mobileNav.getByRole(\"link\", { name: /아카이브|멤버십/ }).first()).toBeVisible();\n  154 |     } finally { await close(page); }\n    at C:\\Users\\donch\\ai4ceo-portal\\apps\\ai4ceo-test\\tests\\public\\access.spec.ts:151:31"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-23T08:24:29.305Z",
+                      "annotations": [
+                        {
+                          "type": "fail",
+                          "description": "현재 문서에 등록된 known_gap: 졸업생 전용 모바일 탭 UX 미구현",
+                          "location": {
+                            "file": "C:\\Users\\donch\\ai4ceo-portal\\apps\\ai4ceo-test\\tests\\public\\access.spec.ts",
+                            "line": 146,
+                            "column": 10
+                          }
+                        }
+                      ],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\donch\\ai4ceo-portal\\apps\\ai4ceo-test\\test-results\\public-access-새-문서-접근제어-ac-708bf--014-졸업생-모바일-메뉴에-chat·AI-없음-public\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\donch\\ai4ceo-portal\\apps\\ai4ceo-test\\tests\\public\\access.spec.ts",
+                        "column": 31,
+                        "line": 151
+                      }
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "8de3813d918cc95ac362-7626c7951849fa583aee",
+              "file": "public/access.spec.ts",
+              "line": 145,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-07-23T08:21:27.011Z",
+    "duration": 191382.307,
+    "expected": 11,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

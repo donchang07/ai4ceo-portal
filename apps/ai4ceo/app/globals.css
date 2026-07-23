@@ -46,4 +46,12 @@
   .tnum {
     font-variant-numeric: tabular-nums;
   }
+
+  @media (max-width: 480px) {
+    button,
+    a {
+      min-width: 44px !important;
+      min-height: 44px !important;
+    }
+  }
 }

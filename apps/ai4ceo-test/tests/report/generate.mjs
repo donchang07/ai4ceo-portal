@@ -6,18 +6,26 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { execSync } from "node:child_process";
+import { config as loadEnv } from "dotenv";
 
 import { parseAllCases } from "./parse-cases.mjs";
 import { AUTOMATED, MANUAL, extractCaseIds } from "../registry.mjs";
 import { MATRIX, ROUTES, ROUTE_ORDER, ROLE_ORDER, ACCOUNTS } from "../lib/matrix.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+loadEnv({ path: path.resolve(__dirname, "../../.env.local") });
 const RESULTS = path.resolve(__dirname, "results.json");
 const GATE = path.resolve(__dirname, "gate-lint.json");
 const REPORT_DIR = __dirname; // tests/report
 const DOCS_REPORTS = path.resolve(__dirname, "../../../../docs/class/test-cases/reports");
 
 const STATUS_RANK = { fail: 3, pass: 2, skip: 1 };
+function sanitizeError(value) {
+  return String(value ?? "")
+    .replace(/\u001b\[[0-9;]*m/g, "")
+    .replace(/([?&]token=)[^&\s]+/gi, "$1[REDACTED]")
+    .replace(/([?&](?:token_hash|access_token|refresh_token)=)[^&\s]+/gi, "$1[REDACTED]");
+}
 function worse(a, b) {
   if (!a) return b;
   if (!b) return a;
@@ -39,7 +47,7 @@ function collectSpecs(node, acc = []) {
           statuses.push(s);
           duration = Math.max(duration, r.duration ?? 0);
           if (s === "fail" && !error) {
-            error = (r.error?.message ?? r.errors?.[0]?.message ?? "실패").split("\n")[0].slice(0, 300);
+            error = sanitizeError(r.error?.message ?? r.errors?.[0]?.message ?? "실패").split("\n")[0].slice(0, 300);
           }
         }
         if ((t.results ?? []).length === 0) statuses.push("skip");
@@ -188,11 +196,13 @@ function main() {
     verified: count((c) => c.verdict === "verified"),
   };
 
+  const baseUrl = process.env.TEST_BASE_URL || "";
+  const inferredEnv = baseUrl === "https://ai4ceo-portal.vercel.app" ? "production" : "staging";
   const report = {
     runAt: new Date().toISOString(),
     commit: gitCommit(),
-    env: process.env.TEST_ENV || "production",
-    baseUrl: process.env.TEST_BASE_URL || "https://ai4ceo-portal.vercel.app",
+    env: process.env.TEST_ENV || inferredEnv,
+    baseUrl,
     summary,
     cases,
     matrix: buildMatrix(specs),

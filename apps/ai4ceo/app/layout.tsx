@@ -18,13 +18,6 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="ko">
-      <head>
-        <link
-          rel="stylesheet"
-          // eslint-disable-next-line @next/next/no-page-custom-font
-          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css"
-        />
-      </head>
       <body className="font-sans">
         {children}
         <AgentationDev />

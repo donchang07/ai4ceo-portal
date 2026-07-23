@@ -157,13 +157,24 @@ export function ApplicationsTable({ applications }: { applications: Application[
                   <td className="px-4 py-3 tnum text-muted">{formatDate(a.created_at)}</td>
                   <td className="px-4 py-3">
                     <div className="flex justify-end gap-2">
-                      <button
-                        disabled={isPending && pendingId === a.id}
-                        onClick={() => setStatus(a.id, "accepted")}
-                        className="rounded-full bg-primary px-3 py-1 text-xs font-semibold text-white hover:bg-primary-hover disabled:opacity-50"
-                      >
-                        합격
-                      </button>
+                      {a.status === "received" && (
+                        <button
+                          disabled={isPending && pendingId === a.id}
+                          onClick={() => setStatus(a.id, "reviewing")}
+                          className="rounded-full border border-primary px-3 py-1 text-xs font-semibold text-primary hover:bg-info-surface disabled:opacity-50"
+                        >
+                          검토
+                        </button>
+                      )}
+                      {a.status !== "accepted" && (
+                        <button
+                          disabled={isPending && pendingId === a.id}
+                          onClick={() => setStatus(a.id, "accepted")}
+                          className="rounded-full bg-primary px-3 py-1 text-xs font-semibold text-white hover:bg-primary-hover disabled:opacity-50"
+                        >
+                          합격
+                        </button>
+                      )}
                       <button
                         disabled={isPending && pendingId === a.id}
                         onClick={() => setStatus(a.id, "waitlist")}
@@ -172,6 +183,7 @@ export function ApplicationsTable({ applications }: { applications: Application[
                         대기
                       </button>
                       <button
+                        aria-label="지원 거절"
                         disabled={isPending && pendingId === a.id}
                         onClick={() => setStatus(a.id, "rejected")}
                         className="rounded-full border border-hairline px-3 py-1 text-xs font-semibold text-danger hover:bg-surface-muted disabled:opacity-50"

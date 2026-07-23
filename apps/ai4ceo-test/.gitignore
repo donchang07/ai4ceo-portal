@@ -8,5 +8,9 @@
 /playwright-report
 /test-results
 /tests/.auth
+/supabase/.temp/
 next-env.d.ts
 *.tsbuildinfo
+
+.vercel
+.env*

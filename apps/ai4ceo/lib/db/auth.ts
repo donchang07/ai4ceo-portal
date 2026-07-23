@@ -1,4 +1,6 @@
 import { redirect } from "next/navigation";
+import { cache } from "react";
+import { headers } from "next/headers";
 import { getSupabaseServer } from "./supabase-server";
 import { ADMIN_EMAIL } from "../core/constants";
 import {
@@ -21,53 +23,46 @@ export interface CurrentUser {
 }
 
 // Design Ref: §5 — resolve current user (profile.role + enrollment.status)
-export async function getCurrentUser(): Promise<CurrentUser | null> {
+export const getCurrentUser = cache(async (): Promise<CurrentUser | null> => {
   try {
     const supabase = await getSupabaseServer();
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
-    if (!user) return null;
+    const requestHeaders = await headers();
+    let id = requestHeaders.get("x-ai4ceo-user-id") ?? "";
+    let email = requestHeaders.get("x-ai4ceo-user-email") ?? "";
+    if (!id) {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      if (!user) return null;
+      id = user.id;
+      email = user.email ?? "";
+    }
 
-    const { data: profile } = await supabase
-      .from("profiles")
-      .select("name, role")
-      .eq("id", user.id)
-      .maybeSingle();
-
-    const { data: enrollment } = await supabase
-      .from("enrollments")
-      .select("status, cohort_id")
-      .eq("user_id", user.id)
-      .order("created_at", { ascending: false })
-      .limit(1)
-      .maybeSingle();
-
-    const { data: membership } = await supabase
-      .from("memberships")
-      .select("status")
-      .eq("user_id", user.id)
-      .eq("status", "active")
-      .limit(1)
-      .maybeSingle();
-
-    const email = user.email ?? "";
+    const { data } = await supabase.rpc("current_user_context").maybeSingle();
+    const context = data as {
+      name: string | null;
+      role: string | null;
+      enrollment_status: string | null;
+      cohort_id: string | null;
+      has_active_membership: boolean;
+    } | null;
+    if (!context) return null;
     const role: Role =
-      (profile?.role as Role) ?? (email === ADMIN_EMAIL ? "admin" : "applicant");
+      (context.role as Role) ?? (email === ADMIN_EMAIL ? "admin" : "applicant");
 
     return {
-      id: user.id,
+      id,
       email,
-      name: profile?.name ?? email.split("@")[0] ?? "회원",
+      name: context.name ?? email.split("@")[0] ?? "회원",
       role,
-      enrollmentStatus: (enrollment?.status as EnrollmentStatus) ?? null,
-      cohortId: enrollment?.cohort_id ?? null,
-      hasActiveMembership: !!membership,
+      enrollmentStatus: (context.enrollment_status as EnrollmentStatus) ?? null,
+      cohortId: context.cohort_id ?? null,
+      hasActiveMembership: !!context.has_active_membership,
     };
   } catch {
     return null;
   }
-}
+});
 
 // Design Ref: PRD 1.7 — 상태 기반 화면 개방. 결제/수강 단계별로 접근 가능한 화면이 달라야 한다
 // (돈이 걸린 게이팅이므로 모든 /portal, /alumni 페이지는 아래 requireXxx 중 하나를 반드시 호출해야 한다).

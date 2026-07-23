@@ -1,0 +1,2167 @@
+{
+  "runAt": "2026-07-22T12:52:55.951Z",
+  "commit": "786df73",
+  "env": "staging",
+  "baseUrl": "https://ai4ceo-portal-9ah9bq3hb-don-changs-projects.vercel.app",
+  "summary": {
+    "total": 163,
+    "automated": 0,
+    "passed": 0,
+    "failed": 0,
+    "regressions": 0,
+    "newlyPassing": 0,
+    "xfail": 0,
+    "manual": 163,
+    "verified": 0
+  },
+  "cases": [
+    {
+      "id": "PUB-001",
+      "file": "01",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "PUB-002",
+      "file": "01",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "PUB-003",
+      "file": "01",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "PUB-004",
+      "file": "01",
+      "section": "",
+      "priority": "P0",
+      "declared": "mock",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "PUB-005",
+      "file": "01",
+      "section": "",
+      "priority": "P1",
+      "declared": "mock",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "PUB-006",
+      "file": "01",
+      "section": "",
+      "priority": "P1",
+      "declared": "mock",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "APP-001",
+      "file": "01",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "APP-002",
+      "file": "01",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "APP-003",
+      "file": "01",
+      "section": "",
+      "priority": "P0",
+      "declared": "mock",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "APP-004",
+      "file": "01",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "APP-005",
+      "file": "01",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "APP-006",
+      "file": "01",
+      "section": "",
+      "priority": "P0",
+      "declared": "mock",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "APP-007",
+      "file": "01",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "APP-008",
+      "file": "01",
+      "section": "",
+      "priority": "P0",
+      "declared": "mock",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "APP-009",
+      "file": "01",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "APP-010",
+      "file": "01",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "APP-011",
+      "file": "01",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "APP-012",
+      "file": "01",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "APP-013",
+      "file": "01",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "APP-014",
+      "file": "01",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AUTH-001",
+      "file": "02",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AUTH-002",
+      "file": "02",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AUTH-003",
+      "file": "02",
+      "section": "",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AUTH-004",
+      "file": "02",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AUTH-005",
+      "file": "02",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AUTH-006",
+      "file": "02",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AUTH-007",
+      "file": "02",
+      "section": "",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AUTH-008",
+      "file": "02",
+      "section": "",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AUTH-009",
+      "file": "02",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AUTH-010",
+      "file": "02",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AUTH-011",
+      "file": "02",
+      "section": "",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AUTH-012",
+      "file": "02",
+      "section": "",
+      "priority": "P2",
+      "declared": "pass",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AUTH-013",
+      "file": "02",
+      "section": "",
+      "priority": "P1",
+      "declared": "mock",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AUTH-014",
+      "file": "02",
+      "section": "",
+      "priority": "P0",
+      "declared": "mock",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ACC-001",
+      "file": "02",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ACC-002",
+      "file": "02",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ACC-003",
+      "file": "02",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ACC-004",
+      "file": "02",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ACC-005",
+      "file": "02",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ACC-006",
+      "file": "02",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ACC-007",
+      "file": "02",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ACC-008",
+      "file": "02",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ACC-009",
+      "file": "02",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ACC-010",
+      "file": "02",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ACC-011",
+      "file": "02",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ACC-012",
+      "file": "02",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ACC-013",
+      "file": "02",
+      "section": "",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ACC-014",
+      "file": "02",
+      "section": "",
+      "priority": "P1",
+      "declared": "mock",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ENR-001",
+      "file": "03",
+      "section": "",
+      "priority": "P0",
+      "declared": "mock",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ENR-002",
+      "file": "03",
+      "section": "",
+      "priority": "P0",
+      "declared": "mock",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ENR-003",
+      "file": "03",
+      "section": "",
+      "priority": "P0",
+      "declared": "mock",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ENR-004",
+      "file": "03",
+      "section": "",
+      "priority": "P0",
+      "declared": "mock",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "BILL-001",
+      "file": "03",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "BILL-002",
+      "file": "03",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "BILL-003",
+      "file": "03",
+      "section": "",
+      "priority": "P0",
+      "declared": "mock",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "BILL-004",
+      "file": "03",
+      "section": "",
+      "priority": "P0",
+      "declared": "mock",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "BILL-005",
+      "file": "03",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "BILL-006",
+      "file": "03",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "BILL-007",
+      "file": "03",
+      "section": "",
+      "priority": "P1",
+      "declared": "mock",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "BILL-008",
+      "file": "03",
+      "section": "",
+      "priority": "P0",
+      "declared": "mock",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "BILL-009",
+      "file": "03",
+      "section": "",
+      "priority": "P1",
+      "declared": "mock",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "BILL-010",
+      "file": "03",
+      "section": "",
+      "priority": "P1",
+      "declared": "mock",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "BILL-011",
+      "file": "03",
+      "section": "",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "BILL-012",
+      "file": "03",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "BILL-013",
+      "file": "03",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "MEM-001",
+      "file": "03",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "MEM-002",
+      "file": "03",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "MEM-003",
+      "file": "03",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "LMS-001",
+      "file": "04",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "LMS-002",
+      "file": "04",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "LMS-003",
+      "file": "04",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "LMS-004",
+      "file": "04",
+      "section": "",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "LMS-005",
+      "file": "04",
+      "section": "",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "LMS-006",
+      "file": "04",
+      "section": "",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "LMS-007",
+      "file": "04",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "LMS-008",
+      "file": "04",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "LMS-009",
+      "file": "04",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "LMS-010",
+      "file": "04",
+      "section": "",
+      "priority": "P0",
+      "declared": "mock",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "LMS-011",
+      "file": "04",
+      "section": "",
+      "priority": "P0",
+      "declared": "mock",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "LMS-012",
+      "file": "04",
+      "section": "",
+      "priority": "P0",
+      "declared": "mock",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "LMS-013",
+      "file": "04",
+      "section": "",
+      "priority": "P0",
+      "declared": "mock",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "LMS-014",
+      "file": "04",
+      "section": "",
+      "priority": "P0",
+      "declared": "mock",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "LMS-015",
+      "file": "04",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "LMS-016",
+      "file": "04",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "LMS-017",
+      "file": "04",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "LMS-018",
+      "file": "04",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "LMS-019",
+      "file": "04",
+      "section": "",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "LMS-020",
+      "file": "04",
+      "section": "",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "LMS-021",
+      "file": "04",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "LMS-022",
+      "file": "04",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "LMS-023",
+      "file": "04",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "LMS-024",
+      "file": "04",
+      "section": "",
+      "priority": "P0",
+      "declared": "mock",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AI-001",
+      "file": "05",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AI-002",
+      "file": "05",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AI-003",
+      "file": "05",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AI-004",
+      "file": "05",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AI-005",
+      "file": "05",
+      "section": "",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AI-006",
+      "file": "05",
+      "section": "",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AI-007",
+      "file": "05",
+      "section": "",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AI-008",
+      "file": "05",
+      "section": "",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AI-009",
+      "file": "05",
+      "section": "",
+      "priority": "P2",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AI-010",
+      "file": "05",
+      "section": "",
+      "priority": "P1",
+      "declared": "mock",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AI-011",
+      "file": "05",
+      "section": "",
+      "priority": "P1",
+      "declared": "mock",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AI-012",
+      "file": "05",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AI-013",
+      "file": "05",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "AI-014",
+      "file": "05",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "TASK-001",
+      "file": "06",
+      "section": "",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "TASK-002",
+      "file": "06",
+      "section": "",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "TASK-003",
+      "file": "06",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "TASK-004",
+      "file": "06",
+      "section": "",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "BUILD-001",
+      "file": "06",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "BUILD-002",
+      "file": "06",
+      "section": "",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "BUILD-003",
+      "file": "06",
+      "section": "",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "BUILD-004",
+      "file": "06",
+      "section": "",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "BUILD-005",
+      "file": "06",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ROAD-001",
+      "file": "06",
+      "section": "",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ROAD-002",
+      "file": "06",
+      "section": "",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ROAD-003",
+      "file": "06",
+      "section": "",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ROAD-004",
+      "file": "06",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ARCH-001",
+      "file": "06",
+      "section": "",
+      "priority": "P2",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ARCH-002",
+      "file": "06",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ARCH-003",
+      "file": "06",
+      "section": "",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ARCH-004",
+      "file": "06",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ADM-001",
+      "file": "07",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ADM-002",
+      "file": "07",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ADM-003",
+      "file": "07",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ADM-004",
+      "file": "07",
+      "section": "",
+      "priority": "P0",
+      "declared": "mock",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ADM-005",
+      "file": "07",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ADM-006",
+      "file": "07",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ADM-007",
+      "file": "07",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ADM-008",
+      "file": "07",
+      "section": "",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ADM-009",
+      "file": "07",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ADM-010",
+      "file": "07",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ADM-011",
+      "file": "07",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ADM-012",
+      "file": "07",
+      "section": "",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ADM-013",
+      "file": "07",
+      "section": "",
+      "priority": "P0",
+      "declared": "mock",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ADM-014",
+      "file": "07",
+      "section": "",
+      "priority": "P0",
+      "declared": "mock",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ADM-015",
+      "file": "07",
+      "section": "",
+      "priority": "P0",
+      "declared": "mock",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "ADM-016",
+      "file": "07",
+      "section": "",
+      "priority": "P0",
+      "declared": "mock",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "SEC-001",
+      "file": "08",
+      "section": "Security and RLS",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "SEC-002",
+      "file": "08",
+      "section": "Security and RLS",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "SEC-003",
+      "file": "08",
+      "section": "Security and RLS",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "SEC-004",
+      "file": "08",
+      "section": "Security and RLS",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "SEC-005",
+      "file": "08",
+      "section": "Security and RLS",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "SEC-006",
+      "file": "08",
+      "section": "Security and RLS",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "SEC-007",
+      "file": "08",
+      "section": "Security and RLS",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "SEC-008",
+      "file": "08",
+      "section": "Security and RLS",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "SEC-009",
+      "file": "08",
+      "section": "Security and RLS",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "skip",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "SEC-010",
+      "file": "08",
+      "section": "Security and RLS",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "SEC-011",
+      "file": "08",
+      "section": "Security and RLS",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "SEC-012",
+      "file": "08",
+      "section": "Security and RLS",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "SEC-013",
+      "file": "08",
+      "section": "Security and RLS",
+      "priority": "P1",
+      "declared": "mock",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "SEC-014",
+      "file": "08",
+      "section": "Security and RLS",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "NFR-001",
+      "file": "08",
+      "section": "Non-functional",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "NFR-002",
+      "file": "08",
+      "section": "Non-functional",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "NFR-003",
+      "file": "08",
+      "section": "Non-functional",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "NFR-004",
+      "file": "08",
+      "section": "Non-functional",
+      "priority": "P0",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "NFR-005",
+      "file": "08",
+      "section": "Non-functional",
+      "priority": "P1",
+      "declared": "pass",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "NFR-006",
+      "file": "08",
+      "section": "Non-functional",
+      "priority": "P1",
+      "declared": "mock",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "NFR-007",
+      "file": "08",
+      "section": "Non-functional",
+      "priority": "P0",
+      "declared": "mock",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "NFR-008",
+      "file": "08",
+      "section": "Non-functional",
+      "priority": "P2",
+      "declared": "mock",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "NFR-009",
+      "file": "08",
+      "section": "Non-functional",
+      "priority": "P1",
+      "declared": "unknown",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    },
+    {
+      "id": "NFR-010",
+      "file": "08",
+      "section": "Non-functional",
+      "priority": "P1",
+      "declared": "unknown",
+      "result": "manual",
+      "verdict": "manual",
+      "durationMs": 0,
+      "error": null
+    }
+  ],
+  "matrix": {
+    "rows": [
+      "admin",
+      "student",
+      "alumniMember",
+      "alumniNoMember",
+      "applicant",
+      "guest"
+    ],
+    "cols": [
+      "/portal/cohort",
+      "/portal/chat",
+      "/portal/ai",
+      "/portal/assignments",
+      "/portal/sessions",
+      "/portal/sessions/ed04829b-148e-4ae8-8462-cf80b41666db",
+      "/portal/files",
+      "/portal/billing",
+      "/alumni",
+      "/alumni/membership",
+      "/admin"
+    ],
+    "cells": {
+      "admin|/portal/cohort": {
+        "expect": "O",
+        "actual": "unknown",
+        "ok": false
+      },
+      "admin|/portal/chat": {
+        "expect": "O",
+        "actual": "unknown",
+        "ok": false
+      },
+      "admin|/portal/ai": {
+        "expect": "O",
+        "actual": "unknown",
+        "ok": false
+      },
+      "admin|/portal/assignments": {
+        "expect": "O",
+        "actual": "unknown",
+        "ok": false
+      },
+      "admin|/portal/sessions": {
+        "expect": "O",
+        "actual": "unknown",
+        "ok": false
+      },
+      "admin|/portal/sessions/ed04829b-148e-4ae8-8462-cf80b41666db": {
+        "expect": "O",
+        "actual": "unknown",
+        "ok": false
+      },
+      "admin|/portal/files": {
+        "expect": "O",
+        "actual": "unknown",
+        "ok": false
+      },
+      "admin|/portal/billing": {
+        "expect": "O",
+        "actual": "unknown",
+        "ok": false
+      },
+      "admin|/alumni": {
+        "expect": "O",
+        "actual": "unknown",
+        "ok": false
+      },
+      "admin|/alumni/membership": {
+        "expect": "O",
+        "actual": "unknown",
+        "ok": false
+      },
+      "admin|/admin": {
+        "expect": "O",
+        "actual": "unknown",
+        "ok": false
+      },
+      "student|/portal/cohort": {
+        "expect": "O",
+        "actual": "unknown",
+        "ok": false
+      },
+      "student|/portal/chat": {
+        "expect": "O",
+        "actual": "unknown",
+        "ok": false
+      },
+      "student|/portal/ai": {
+        "expect": "O",
+        "actual": "unknown",
+        "ok": false
+      },
+      "student|/portal/assignments": {
+        "expect": "O",
+        "actual": "unknown",
+        "ok": false
+      },
+      "student|/portal/sessions": {
+        "expect": "O",
+        "actual": "unknown",
+        "ok": false
+      },
+      "student|/portal/sessions/ed04829b-148e-4ae8-8462-cf80b41666db": {
+        "expect": "O",
+        "actual": "unknown",
+        "ok": false
+      },
+      "student|/portal/files": {
+        "expect": "O",
+        "actual": "unknown",
+        "ok": false
+      },
+      "student|/portal/billing": {
+        "expect": "O",
+        "actual": "unknown",
+        "ok": false
+      },
+      "student|/alumni": {
+        "expect": "/portal/billing",
+        "actual": "unknown",
+        "ok": false
+      },
+      "student|/alumni/membership": {
+        "expect": "/portal/billing",
+        "actual": "unknown",
+        "ok": false
+      },
+      "student|/admin": {
+        "expect": "/portal/cohort",
+        "actual": "unknown",
+        "ok": false
+      },
+      "alumniMember|/portal/cohort": {
+        "expect": "/portal/billing",
+        "actual": "unknown",
+        "ok": false
+      },
+      "alumniMember|/portal/chat": {
+        "expect": "/portal/billing",
+        "actual": "unknown",
+        "ok": false
+      },
+      "alumniMember|/portal/ai": {
+        "expect": "/portal/billing",
+        "actual": "unknown",
+        "ok": false
+      },
+      "alumniMember|/portal/assignments": {
+        "expect": "/portal/billing",
+        "actual": "unknown",
+        "ok": false
+      },
+      "alumniMember|/portal/sessions": {
+        "expect": "O",
+        "actual": "unknown",
+        "ok": false
+      },
+      "alumniMember|/portal/sessions/ed04829b-148e-4ae8-8462-cf80b41666db": {
+        "expect": "O",
+        "actual": "unknown",
+        "ok": false
+      },
+      "alumniMember|/portal/files": {
+        "expect": "O",
+        "actual": "unknown",
+        "ok": false
+      },
+      "alumniMember|/portal/billing": {
+        "expect": "O",
+        "actual": "unknown",
+        "ok": false
+      },
+      "alumniMember|/alumni": {
+        "expect": "O",
+        "actual": "unknown",
+        "ok": false
+      },
+      "alumniMember|/alumni/membership": {
+        "expect": "O",
+        "actual": "unknown",
+        "ok": false
+      },
+      "alumniMember|/admin": {
+        "expect": "/portal/billing",
+        "actual": "unknown",
+        "ok": false
+      },
+      "alumniNoMember|/portal/cohort": {
+        "expect": "/portal/billing",
+        "actual": "unknown",
+        "ok": false
+      },
+      "alumniNoMember|/portal/chat": {
+        "expect": "/portal/billing",
+        "actual": "unknown",
+        "ok": false
+      },
+      "alumniNoMember|/portal/ai": {
+        "expect": "/portal/billing",
+        "actual": "unknown",
+        "ok": false
+      },
+      "alumniNoMember|/portal/assignments": {
+        "expect": "/portal/billing",
+        "actual": "unknown",
+        "ok": false
+      },
+      "alumniNoMember|/portal/sessions": {
+        "expect": "/alumni/membership",
+        "actual": "unknown",
+        "ok": false
+      },
+      "alumniNoMember|/portal/sessions/ed04829b-148e-4ae8-8462-cf80b41666db": {
+        "expect": "/alumni/membership",
+        "actual": "unknown",
+        "ok": false
+      },
+      "alumniNoMember|/portal/files": {
+        "expect": "/alumni/membership",
+        "actual": "unknown",
+        "ok": false
+      },
+      "alumniNoMember|/portal/billing": {
+        "expect": "O",
+        "actual": "unknown",
+        "ok": false
+      },
+      "alumniNoMember|/alumni": {
+        "expect": "O",
+        "actual": "unknown",
+        "ok": false
+      },
+      "alumniNoMember|/alumni/membership": {
+        "expect": "O",
+        "actual": "unknown",
+        "ok": false
+      },
+      "alumniNoMember|/admin": {
+        "expect": "/portal/billing",
+        "actual": "unknown",
+        "ok": false
+      },
+      "applicant|/portal/cohort": {
+        "expect": "/",
+        "actual": "unknown",
+        "ok": false
+      },
+      "applicant|/portal/chat": {
+        "expect": "/",
+        "actual": "unknown",
+        "ok": false
+      },
+      "applicant|/portal/ai": {
+        "expect": "/",
+        "actual": "unknown",
+        "ok": false
+      },
+      "applicant|/portal/assignments": {
+        "expect": "/",
+        "actual": "unknown",
+        "ok": false
+      },
+      "applicant|/portal/sessions": {
+        "expect": "/",
+        "actual": "unknown",
+        "ok": false
+      },
+      "applicant|/portal/sessions/ed04829b-148e-4ae8-8462-cf80b41666db": {
+        "expect": "/",
+        "actual": "unknown",
+        "ok": false
+      },
+      "applicant|/portal/files": {
+        "expect": "/",
+        "actual": "unknown",
+        "ok": false
+      },
+      "applicant|/portal/billing": {
+        "expect": "/apply",
+        "actual": "unknown",
+        "ok": false
+      },
+      "applicant|/alumni": {
+        "expect": "/",
+        "actual": "unknown",
+        "ok": false
+      },
+      "applicant|/alumni/membership": {
+        "expect": "/",
+        "actual": "unknown",
+        "ok": false
+      },
+      "applicant|/admin": {
+        "expect": "/",
+        "actual": "unknown",
+        "ok": false
+      },
+      "guest|/portal/cohort": {
+        "expect": "/login",
+        "actual": "unknown",
+        "ok": false
+      },
+      "guest|/portal/chat": {
+        "expect": "/login",
+        "actual": "unknown",
+        "ok": false
+      },
+      "guest|/portal/ai": {
+        "expect": "/login",
+        "actual": "unknown",
+        "ok": false
+      },
+      "guest|/portal/assignments": {
+        "expect": "/login",
+        "actual": "unknown",
+        "ok": false
+      },
+      "guest|/portal/sessions": {
+        "expect": "/login",
+        "actual": "unknown",
+        "ok": false
+      },
+      "guest|/portal/sessions/ed04829b-148e-4ae8-8462-cf80b41666db": {
+        "expect": "/login",
+        "actual": "unknown",
+        "ok": false
+      },
+      "guest|/portal/files": {
+        "expect": "/login",
+        "actual": "unknown",
+        "ok": false
+      },
+      "guest|/portal/billing": {
+        "expect": "/login",
+        "actual": "unknown",
+        "ok": false
+      },
+      "guest|/alumni": {
+        "expect": "/login",
+        "actual": "unknown",
+        "ok": false
+      },
+      "guest|/alumni/membership": {
+        "expect": "/login",
+        "actual": "unknown",
+        "ok": false
+      },
+      "guest|/admin": {
+        "expect": "/login",
+        "actual": "unknown",
+        "ok": false
+      }
+    }
+  }
+}

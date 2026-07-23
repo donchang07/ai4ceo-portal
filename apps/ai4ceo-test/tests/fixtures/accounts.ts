@@ -9,22 +9,26 @@ import { buildAuthCookies } from "../lib/ssr-cookie.mjs";
 export type AccountKey =
   | "admin"
   | "student"
+  | "assistant"
   | "alumniMember"
+  | "alumniExpired"
   | "alumniNoMember"
   | "applicant";
 
 export const ACCOUNT_EMAILS: Record<AccountKey, string> = {
-  admin: "donchang0725@gmail.com",
-  student: "donchang@hanmail.net",
-  alumniMember: "donchang0725@naver.com",
-  alumniNoMember: "donchang@kaist.ac.kr",
-  applicant: "donchang0725@kakao.com",
+  admin: process.env.TEST_ADMIN_EMAIL || "donchang0725@gmail.com",
+  student: process.env.TEST_STUDENT_EMAIL || "donchang@hanmail.net",
+  assistant: process.env.TEST_ASSISTANT_EMAIL || "qa.assistant@example.com",
+  alumniMember: process.env.TEST_ALUMNI_MEMBER_EMAIL || "donchang0725@naver.com",
+  alumniExpired: process.env.TEST_ALUMNI_EXPIRED_EMAIL || "qa.alumni.expired@example.com",
+  alumniNoMember: process.env.TEST_ALUMNI_NO_MEMBER_EMAIL || "donchang@kaist.ac.kr",
+  applicant: process.env.TEST_APPLICANT_EMAIL || "donchang0725@kakao.com",
 };
 
-export const TEST_PASSWORD = process.env.TEST_ACCOUNT_PASSWORD || "uscdon00";
+export const TEST_PASSWORD = process.env.TEST_ACCOUNT_PASSWORD || "";
 export const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
 export const ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
-export const BASE_URL = process.env.TEST_BASE_URL || "https://ai4ceo-portal.vercel.app";
+export const BASE_URL = process.env.TEST_BASE_URL || "";
 
 const AUTH_DIR = path.resolve(process.cwd(), "tests/.auth");
 

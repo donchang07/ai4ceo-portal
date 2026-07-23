@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Sparkles, Mail } from "lucide-react";
@@ -17,6 +17,45 @@ export default function LoginPage() {
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [hydrated, setHydrated] = useState(false);
+
+  useEffect(() => {
+    setHydrated(true);
+    const hash = new URLSearchParams(window.location.hash.slice(1));
+    const accessToken = hash.get("access_token");
+    const refreshToken = hash.get("refresh_token");
+    if (!accessToken || !refreshToken) return;
+
+    const requestedNext = new URLSearchParams(window.location.search).get("next") ?? "/portal/cohort";
+    const next = requestedNext.startsWith("/") && !requestedNext.startsWith("//")
+      ? requestedNext
+      : "/portal/cohort";
+    window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}`);
+
+    void (async () => {
+      setLoading(true);
+      const supabase = getSupabaseBrowser();
+      const { error: sessionError } = await supabase.auth.setSession({
+        access_token: accessToken,
+        refresh_token: refreshToken,
+      });
+      if (sessionError) {
+        setError("로그인 링크가 만료되었거나 이미 사용되었습니다.");
+        setLoading(false);
+        return;
+      }
+
+      const response = await fetch("/api/auth/finalize", { method: "POST" });
+      if (!response.ok) {
+        setError("로그인 정보를 확인하지 못했습니다. 다시 시도해 주세요.");
+        setLoading(false);
+        return;
+      }
+      const { hasPassword } = (await response.json()) as { hasPassword: boolean };
+      router.replace(hasPassword ? next : `/set-password?next=${encodeURIComponent(next)}`);
+      router.refresh();
+    })();
+  }, [router]);
 
   async function submitPassword(e: React.FormEvent) {
     e.preventDefault();
@@ -53,9 +92,11 @@ export default function LoginPage() {
       // supabase-js sometimes surfaces "{}" or another non-descriptive body for 5xx
       // responses (e.g. an SMTP failure on the server) — show a helpful fallback instead.
       const message =
-        rawMessage && rawMessage !== "{}"
-          ? rawMessage
-          : "메일 발송에 실패했습니다. 잠시 후 다시 시도해 주세요. (서버에서 메일 발송 설정에 문제가 있을 수 있습니다)";
+        /rate limit|security purposes|after \d+ seconds?/i.test(rawMessage)
+          ? "보안을 위해 잠시 후 다시 요청해 주세요."
+          : /email address.*invalid/i.test(rawMessage)
+            ? "올바른 이메일 주소를 입력해 주세요."
+            : "메일 발송에 실패했습니다. 잠시 후 다시 시도해 주세요.";
       setError(message);
     } finally {
       setLoading(false);
@@ -63,7 +104,11 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="grid min-h-screen place-items-center bg-canvas px-5">
+    <div
+      data-testid="login-root"
+      data-hydrated={hydrated ? "true" : "false"}
+      className="grid min-h-screen place-items-center bg-canvas px-5"
+    >
       <div className="w-full max-w-sm rounded-[15px] border border-hairline bg-surface p-7">
         <Link href="/" className="mb-6 flex items-center gap-2 font-bold text-ink">
           <span className="grid h-8 w-8 place-items-center rounded-[10px] bg-primary text-white">
@@ -93,12 +138,14 @@ export default function LoginPage() {
                 onChange={(e) => setPassword(e.target.value)}
               />
               {error ? <p className="text-xs text-danger">{error}</p> : null}
-              <Button type="submit" variant="primary" full disabled={loading}>
+              <Button type="submit" variant="primary" full disabled={loading || !hydrated}>
                 {loading ? "로그인 중…" : "로그인"}
               </Button>
             </form>
 
             <button
+              type="button"
+              disabled={!hydrated}
               onClick={() => {
                 setMode("magic-link");
                 setError(null);
@@ -131,13 +178,15 @@ export default function LoginPage() {
                   onChange={(e) => setEmail(e.target.value)}
                 />
                 {error ? <p className="text-xs text-danger">{error}</p> : null}
-                <Button type="submit" variant="primary" full disabled={loading}>
+                <Button type="submit" variant="primary" full disabled={loading || !hydrated}>
                   {loading ? "발송 중…" : "매직링크 받기"}
                 </Button>
               </form>
             )}
 
             <button
+              type="button"
+              disabled={!hydrated}
               onClick={() => {
                 setMode("password");
                 setSent(false);

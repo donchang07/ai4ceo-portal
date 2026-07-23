@@ -12,7 +12,9 @@ import { ACCOUNT_EMAILS, TEST_PASSWORD } from "./fixtures/accounts";
 
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
 const ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
-const BASE_URL = process.env.TEST_BASE_URL || "https://ai4ceo-portal.vercel.app";
+const BASE_URL = process.env.TEST_BASE_URL || "";
+
+if (!BASE_URL) throw new Error("TEST_BASE_URL is required. Refusing to default to production.");
 
 async function studentSession(): Promise<Session> {
   const client = createClient(SUPABASE_URL, ANON_KEY, {
@@ -41,7 +43,7 @@ async function askTutor(cookie: string, question: string): Promise<{ status: num
 }
 
 test.describe("RAG 스모크", () => {
-  test("AI-02 재학생 '18기 등록비' → 220만원 + 출처", async () => {
+  test("AI-002 AI-02 재학생 '18기 등록비' → 220만원 + 출처", async () => {
     test.setTimeout(150_000);
     const session = await studentSession();
     const cookie = cookieHeader(SUPABASE_URL, session);

@@ -137,9 +137,9 @@ function QuestionItem({
 
       {/* 답변들 */}
       {question.answers.length > 0 && (
-        <div className="mt-3 space-y-2.5 border-l-2 border-hairline pl-3">
+        <ul className="mt-3 space-y-2.5 border-l-2 border-hairline pl-3">
           {question.answers.map((a) => (
-            <div key={a.id} className="flex items-start gap-2">
+            <li key={a.id} className="flex items-start gap-2">
               <span
                 className={`mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full ${
                   a.is_ai ? "bg-info-surface text-info" : a.is_instructor ? "bg-primary text-white" : "bg-surface-muted text-primary"
@@ -152,12 +152,13 @@ function QuestionItem({
                   <span className="font-semibold text-ink">{a.author_name}</span>
                   {a.is_instructor && <Badge tone="progress" className="px-1.5 py-0">강사</Badge>}
                   {a.is_ai && <Badge tone="info" className="bg-info-surface px-1.5 py-0">AI</Badge>}
+                  {!a.is_instructor && !a.is_ai && <Badge tone="neutral" className="px-1.5 py-0">수강생</Badge>}
                 </div>
                 <p className="mt-0.5 whitespace-pre-wrap text-sm text-ink">{a.body}</p>
               </div>
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
       )}
 
       {/* 액션 */}

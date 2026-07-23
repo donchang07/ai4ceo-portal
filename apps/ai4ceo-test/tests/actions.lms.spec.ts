@@ -7,7 +7,7 @@ import path from "node:path";
 loadEnv({ path: path.resolve(__dirname, ".env.local") });
 
 // @ts-expect-error — .mjs 헬퍼(타입 없음)
-import { clientAs, admin, userId } from "./lib/supa.mjs";
+import { clientAs, admin, assertMutationTarget, userId } from "./lib/supa.mjs";
 import { DEMO_SESSION_ID, cleanupTestQa } from "./fixtures/lms";
 
 const COHORT_18_ID = "00000000-0000-0000-0000-0000000000c1";
@@ -16,6 +16,8 @@ test.describe("서버액션 · LMS/관리자 DB 반영", () => {
   const createdQuestions: string[] = [];
   const createdSessions: string[] = [];
   let restoreApplication: { id: string; status: string } | null = null;
+
+  test.beforeAll(() => assertMutationTarget());
 
   test.afterAll(async () => {
     const svc = admin();
@@ -31,7 +33,7 @@ test.describe("서버액션 · LMS/관리자 DB 반영", () => {
   });
 
   // --- LMS Q&A (재학생/강사) ---
-  test("LMS-Q01 LMS-Q04 재학생 질문 등록 → author_name 저장 확인", async () => {
+  test("LMS-015 LMS-Q01 LMS-Q04 재학생 질문 등록 → author_name 저장 확인", async () => {
     const stu = await clientAs("student");
     const marker = `[테스트] 재학생 질문 ${Date.now()}`;
     const ins = await stu.from("session_questions").insert({
@@ -52,7 +54,7 @@ test.describe("서버액션 · LMS/관리자 DB 반영", () => {
     expect(data?.body).toBe(marker);
   });
 
-  test("LMS-A02 강사(admin) 답변 is_instructor=true 저장", async () => {
+  test("LMS-017 LMS-A02 강사(admin) 답변 is_instructor=true 저장", async () => {
     const svc = admin();
     // 대상 질문 시드(service)
     const { data: q } = await svc.from("session_questions").insert({
@@ -127,7 +129,7 @@ test.describe("서버액션 · LMS/관리자 DB 반영", () => {
     expect(upd.data?.title).toBe("[테스트] 수정된 세션");
   });
 
-  test("LMS-ADM01 LMS-ADM04 영상 연결 + 자료 추가 DB 반영", async () => {
+  test("LMS-023 LMS-ADM01 LMS-ADM04 영상 연결 + 자료 추가 DB 반영", async () => {
     const adm = await clientAs("admin");
     const now = new Date();
     const s = await adm.from("sessions").insert({
@@ -195,7 +197,7 @@ test.describe("서버액션 · LMS/관리자 DB 반영", () => {
     expect(map[bId!]).toBe(991);
   });
 
-  test("LMS-ADM05 자료 삭제(deleteMaterial) → materials 삭제 반영", async () => {
+  test("LMS-023 LMS-ADM05 자료 삭제(deleteMaterial) → materials 삭제 반영", async () => {
     const adm = await clientAs("admin");
     const now = new Date();
     const s = await adm.from("sessions").insert({

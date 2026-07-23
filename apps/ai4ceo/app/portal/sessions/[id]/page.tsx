@@ -67,7 +67,7 @@ export default async function SessionDetail({ params }: { params: Promise<{ id: 
       </div>
 
       {/* 영상 + AI 조교 */}
-      <SessionInteractive videoUrl={video?.google_drive_url ?? null} />
+      <SessionInteractive videoUrl={video?.google_drive_url ?? null} sessionId={session.id} />
 
       {/* 강의자료 + 연결 과제 */}
       <div className="mt-5 grid gap-5 lg:grid-cols-[1.7fr_1fr]">

@@ -52,12 +52,15 @@ export async function streamTutor(opts: {
   if (!client) {
     // No API key — return a graceful fallback stream
     return new ReadableStream({
-      start(controller) {
+      async start(controller) {
         controller.enqueue(
           encoder.encode(
-            "AI 조교 API 키가 설정되지 않아 데모 응답을 표시합니다.\n\n1) 질문 내용은 커리큘럼·자료·영상을 근거로 답변됩니다.\n2) 실제 응답은 ANTHROPIC_API_KEY 설정 후 활성화됩니다.\n\n출처: [18기 커리큘럼]\n정확한 내용은 강사 확인이 필요합니다.",
+            "AI 조교가 현재 데모 모드로 응답합니다.\n\n1) 질문 내용은 커리큘럼·자료·영상을 근거로 답변됩니다.\n2) 실제 AI 연결이 준비되면 더 풍부한 답변을 제공합니다.\n\n",
           ),
         );
+        // Keep the fallback observably streaming through preview proxies.
+        await new Promise((resolve) => setTimeout(resolve, 250));
+        controller.enqueue(encoder.encode("출처: [18기 커리큘럼]\n정확한 내용은 강사 확인이 필요합니다."));
         controller.close();
       },
     });

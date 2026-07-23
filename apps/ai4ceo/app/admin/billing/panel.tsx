@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Check, Flag } from "lucide-react";
+import { Flag } from "lucide-react";
 import { Badge, Button, Callout, Card, CardTitle, Chip } from "@/components/ui";
 import type { Invoice } from "@/lib/db/types";
 import { formatKRW } from "@/lib/core/constants";
@@ -45,7 +45,6 @@ function formatDate(iso: string): string {
 export function BillingPanel({ invoices }: { invoices: Invoice[] }) {
   const [tab, setTab] = useState<Tab>("invoices");
   const [rows, setRows] = useState<Invoice[]>(invoices);
-  const [notified, setNotified] = useState<Set<string>>(new Set());
 
   const visible = useMemo(() => {
     if (tab === "deposits") return rows.filter((r) => r.status === "issued");
@@ -58,13 +57,6 @@ export function BillingPanel({ invoices }: { invoices: Invoice[] }) {
     for (const r of rows) c[r.method] += 1;
     return c;
   }, [rows]);
-
-  function confirmDeposit(id: string) {
-    setRows((prev) =>
-      prev.map((r) => (r.id === id ? { ...r, status: "paid", paid_at: new Date().toISOString() } : r)),
-    );
-    setNotified((prev) => new Set(prev).add(id));
-  }
 
   return (
     <div>
@@ -125,13 +117,11 @@ export function BillingPanel({ invoices }: { invoices: Invoice[] }) {
                     {tab === "deposits" && (
                       <td className="px-4 py-3 text-right">
                         {pendingBank ? (
-                          <Button variant="outline" className="min-h-8 px-3 text-xs" onClick={() => confirmDeposit(r.id)}>
-                            입금 확인 처리
-                          </Button>
-                        ) : notified.has(r.id) ? (
-                          <span className="inline-flex items-center gap-1 text-xs font-semibold text-success">
-                            <Check size={13} /> 알림톡 발송됨
-                          </span>
+                          <form method="post" action={`/api/admin/invoices/${r.id}/confirm`}>
+                            <Button type="submit" variant="outline" className="min-h-8 px-3 text-xs">
+                              입금 확인 처리
+                            </Button>
+                          </form>
                         ) : (
                           <span className="text-xs text-faint">—</span>
                         )}

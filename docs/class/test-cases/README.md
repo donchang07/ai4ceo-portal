@@ -1,55 +1,63 @@
-# AI4CEO Portal — 비즈니스 테스트 케이스
+# AI4CEO Portal PRD v3.0 acceptance test specification
 
-PRD v2.6 기반 MVP(15개 화면 + RAG AI 조교)의 비즈니스 시나리오 테스트 모음.
-각 케이스는 **현재 코드의 실제 구현 상태**를 기준으로 작성되었으며, 목업/미구현 부분은
-`⚠ 알려진 갭`으로 명시한다. 즉 이 문서는 테스트 계획인 동시에 **구현 갭 등록부**다.
+이 폴더는 `ai4ceo-portal-PRD-v3_0.docx`를 기준으로 작성한 Playwright 실행 명세다. 구현 현황을 설명하는 체크리스트가 아니라, 관찰 가능한 결과로 합격과 실패를 판정하는 acceptance test가 기준이다.
+
+## 실행 원칙
+
+1. `TEST_BASE_URL`은 Vercel preview 또는 staging이어야 한다. `https://ai4ceo-portal.vercel.app`에서 생성·수정·삭제·상태 전이 테스트를 실행하지 않는다.
+2. 모든 생성 데이터에는 `QA-${RUN_ID}`를 포함한다. `RUN_ID`는 UTC `YYYYMMDDHHmmss` 형식이다.
+3. 테스트는 자신이 만든 데이터만 삭제한다. 기존 운영 데이터의 ID를 하드코딩해 수정하지 않는다.
+4. DB mutation은 `beforeEach`에서 원본을 읽고 `afterEach`의 `finally`에서 원복하며, 원복 결과까지 assertion한다.
+5. UI 성공만으로 통과시키지 않는다. 저장 기능은 UI + 네트워크 + DB를 함께 검증한다.
+6. `known_gap`은 테스트를 생략한다는 뜻이 아니다. 실행해 실패를 확인하되 릴리스 게이트에서 별도 집계한다.
+7. 외부 서비스 이메일·알림톡·Toss·Popbill은 staging provider 또는 mock inbox에서 계약을 검증한다.
+
+## 케이스 필드
+
+| 필드 | 의미 |
+|---|---|
+| ID | 영구적인 테스트 식별자. Playwright 제목의 접두사로 사용한다. |
+| PRD | 원본 PRD 요구사항 또는 유저 스토리 ID |
+| Priority | P0/P1/P2 |
+| Layer | `e2e`, `api`, `db`, `contract`, `static`, `manual` |
+| Preconditions | 계정, seed, 기능 플래그, 초기 상태 |
+| Test data | 입력값과 대상 ID. `00-fixtures.md`의 키를 참조한다. |
+| Steps | 사용자가 수행하는 순서 또는 API 요청 |
+| Assertions | URL, UI, HTTP, DB의 정확한 합격 조건 |
+| Forbidden | 절대 발생하면 안 되는 결과 |
+| Cleanup | 생성 데이터 삭제 또는 변경값 원복 |
+| Gate | `must_pass`, `known_gap`, `manual_only` |
 
 ## 파일 구성
 
-| 파일 | 영역 | 케이스 수 |
-|---|---|---|
-| [01-auth-login.md](01-auth-login.md) | 인증 · 매직링크 · 비밀번호 | 14 |
-| [02-access-control.md](02-access-control.md) | 역할×상태 화면 접근 매트릭스 (핵심) | 42 |
-| [03-ai-tutor-rag.md](03-ai-tutor-rag.md) | AI 조교 · RAG · 권한 | 16 |
-| [04-admin-console.md](04-admin-console.md) | 관리자 콘솔 완비성 | 20 |
-| [05-billing-tax.md](05-billing-tax.md) | 결제 · 세금계산서 · 어댑터 준비도 | 15 |
-| [06-apply-public.md](06-apply-public.md) | 공개 사이트 · 지원서 | 12 |
-| [07-data-rls-security.md](07-data-rls-security.md) | RLS · API 직접 공격 시나리오 | 13 |
-| [08-lms-session.md](08-lms-session.md) | LMS 세션 — 영상·자료·질의응답(강사/동료/AI) | 42 |
-| [PRD-test-automation.md](PRD-test-automation.md) | 테스트 자동화 도구 PRD | — |
+| 파일 | 범위 |
+|---|---|
+| `00-fixtures.md` | 환경, 계정, 고정 입력값, seed/cleanup 계약 |
+| `01-public-application.md` | 공개 사이트, 과정 안내, 지원서, 지원 상태 |
+| `02-auth-access.md` | 로그인, 비밀번호, 역할·상태 접근 제어 |
+| `03-enrollment-billing.md` | 등록, 위임, 인보이스, 입금, 세금계산서, 멤버십 |
+| `04-learning-lms.md` | Cohort Home, 세션, 자료, 과제, Q&A, 따라잡기 |
+| `05-ai-rag.md` | AI 튜터, RAG, 출처, 에스컬레이션 |
+| `06-v3-workflows.md` | 위임 할 일, 결과물, AX 로드맵, 동문 아카이브 |
+| `07-admin.md` | 지원자·커리큘럼·콘텐츠·AI·결제 관리자 기능 |
+| `08-security-nfr.md` | RLS, 직접 공격, 성능, 접근성, 반응형, SEO/PWA |
+| `09-traceability.md` | PRD v3.0 요구사항 추적표와 미커버 갭 |
 
-## 테스트 계정 (모두 비밀번호 `uscdon00`, 프로덕션 Supabase에 실존)
+## Playwright 매핑 규칙
 
-| 이메일 | 역할 | enrollment.status | 멤버십 | 용도 |
-|---|---|---|---|---|
-| donchang0725@gmail.com | admin | (없음) | — | 슈퍼 관리자 |
-| donchang@hanmail.net | student | in_training | — | 재학 수강생 |
-| donchang0725@naver.com | alumni | completed | active | 졸업생 + 멤버십 |
-| donchang@kaist.ac.kr | alumni | completed | (없음) | 졸업생 미가입 |
-| donchang0725@kakao.com | applicant | (없음) | — | 미등록 관심자 |
+```ts
+test("APP-005 지원서 저장", async ({ page }) => { /* ... */ });
+```
 
-## 상태 기반 접근 규칙 (기준 명세 — PRD 1.7)
+- 테스트 제목은 반드시 `ID + 공백 + 시나리오`로 시작한다.
+- `must_pass` 실패는 exit code 1이다.
+- `known_gap`은 `test.fail(true, "PRD gap")`로 실행하며 예상과 다르게 통과하면 새 구현으로 보고 문서를 갱신한다.
+- 실패 시 screenshot, trace, 최종 URL, 관련 API response, 생성 데이터의 primary key를 결과에 남긴다.
 
-| 구역 | 접근 조건 | 코드 게이트 |
-|---|---|---|
-| 공개 페이지 (`/`, `/program`, `/apply`, `/trends`, `/login`) | 누구나 | 없음 |
-| `/portal/billing` | enrollment 레코드 보유자 + admin | `requireBillingAccess` |
-| LMS 인터랙티브 (`/portal/cohort·chat·ai·assignments`) | in_training(enrolled 포함) + assistant + admin | `requireLmsAccess` |
-| 아카이브 (`/portal/sessions`, `/portal/sessions/[id]`, `/portal/files`) | in_training + **졸업생 중 멤버십 active** + admin | `requireArchiveAccess` |
-| 동문 (`/alumni`, `/alumni/membership`) | completed/alumni + admin | `requireAlumniAccess` |
-| 관리자 (`/admin/*`) | role=admin | `app/admin/layout.tsx` |
-| `/api/ai/tutor` | in_training + admin (403) | 라우트 내 검사 |
+## 완료 기준
 
-## 표기 규칙
-
-- **P0** 출시 차단 (돈·보안·데이터 직결) / **P1** 출시 후 1주 내 / **P2** 백로그
-- 상태: ✅ 통과 예상(구현됨) · ⚠ 알려진 갭(목업/부분구현 — 테스트하면 실패하는 것이 정상) · ❓ 미검증
-- 케이스 ID: `영역-번호` (예: AC-07)
-
-## 수동 실행 방법
-
-1. 시크릿 창에서 https://ai4ceo-portal.vercel.app 접속
-2. 위 테스트 계정으로 로그인 후 각 케이스의 절차 수행
-3. 기대결과와 다르면 케이스 ID와 함께 기록
-
-자동화 방안은 [PRD-test-automation.md](PRD-test-automation.md) 참조.
+- P0 `must_pass` 100% 통과
+- P0 보안/RLS 케이스 skip 0건
+- cleanup 실패 0건
+- PRD 추적표의 P0 `uncovered` 0건
+- production mutation 0건

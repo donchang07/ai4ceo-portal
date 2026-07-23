@@ -1,11 +1,11 @@
-// Design Ref: 18기 공식 모집 안내(CEO를 위한 AI코딩스쿨(18기).docx) 기준 — 개강 2026-09-09(수) 18:00
+// Design Ref: 18기 공식 모집 안내 기준 — 개강 2026-09-07 18:00
 // Zoom 온라인 강의라 정원 상한을 두지 않음(capacity: null)
 
 export const COHORT_18 = {
   id: "00000000-0000-0000-0000-0000000000c1",
   name: "18기",
-  eduStart: "2026-09-09T18:00:00+09:00", // 수 18:00 개강
-  eduStartLabel: "2026년 9월 9일(수) 18:00",
+  eduStart: "2026-09-07T18:00:00+09:00",
+  eduStartLabel: "2026년 9월 7일 18:00~21:00 · 총 10회",
   eduEnd: "2026-11-11T21:00:00+09:00",
   recruitEnd: "2026-09-02",
   capacity: null as number | null, // Zoom 강의 — 정원 제한 없음

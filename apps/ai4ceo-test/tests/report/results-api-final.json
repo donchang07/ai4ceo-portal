@@ -1,0 +1,1186 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\donch\\ai4ceo-portal\\apps\\ai4ceo-test\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--project=api",
+      "--workers=1"
+    ],
+    "configFile": "C:\\Users\\donch\\ai4ceo-portal\\apps\\ai4ceo-test\\playwright.config.ts",
+    "rootDir": "C:/Users/donch/ai4ceo-portal/apps/ai4ceo-test/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/donch/ai4ceo-portal/apps/ai4ceo-test/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "public",
+        "name": "public",
+        "testDir": "C:/Users/donch/ai4ceo-portal/apps/ai4ceo-test/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "public/**/*.spec.ts"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/donch/ai4ceo-portal/apps/ai4ceo-test/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "api",
+        "name": "api",
+        "testDir": "C:/Users/donch/ai4ceo-portal/apps/ai4ceo-test/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "api.authz.spec.ts",
+          "rls.security.spec.ts",
+          "rag.smoke.spec.ts",
+          "actions.lms.spec.ts"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/donch/ai4ceo-portal/apps/ai4ceo-test/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "C:/Users/donch/ai4ceo-portal/apps/ai4ceo-test/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "matrix.access.spec.ts"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/donch/ai4ceo-portal/apps/ai4ceo-test/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile",
+        "name": "mobile",
+        "testDir": "C:/Users/donch/ai4ceo-portal/apps/ai4ceo-test/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "matrix.access.spec.ts"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/donch/ai4ceo-portal/apps/ai4ceo-test/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "transitions",
+        "name": "transitions",
+        "testDir": "C:/Users/donch/ai4ceo-portal/apps/ai4ceo-test/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "transitions.spec.ts"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "tests/report/results-api-final.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.61.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "actions.lms.spec.ts",
+      "file": "actions.lms.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "서버액션 · LMS/관리자 DB 반영",
+          "file": "actions.lms.spec.ts",
+          "line": 15,
+          "column": 6,
+          "specs": [
+            {
+              "title": "LMS-015 LMS-Q01 LMS-Q04 재학생 질문 등록 → author_name 저장 확인",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 410,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-23T07:14:30.324Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "49e17b4e75bdab60ae52-b50dedba63cae70282fe",
+              "file": "actions.lms.spec.ts",
+              "line": 36,
+              "column": 7
+            },
+            {
+              "title": "LMS-017 LMS-A02 강사(admin) 답변 is_instructor=true 저장",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 320,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-23T07:14:30.773Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "49e17b4e75bdab60ae52-d3275499b6554084a0f4",
+              "file": "actions.lms.spec.ts",
+              "line": 57,
+              "column": 7
+            },
+            {
+              "title": "LMS-A03 AI 조교 답변 is_ai=true 저장 계약",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 117,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-23T07:14:31.099Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "49e17b4e75bdab60ae52-35b22129d3f5a501edf1",
+              "file": "actions.lms.spec.ts",
+              "line": 82,
+              "column": 7
+            },
+            {
+              "title": "ADM-14 ADM-15 세션 삽입 + 인라인 저장 DB 반영",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 69,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-23T07:14:31.223Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "49e17b4e75bdab60ae52-232efa4d0a40dcf59f43",
+              "file": "actions.lms.spec.ts",
+              "line": 109,
+              "column": 7
+            },
+            {
+              "title": "LMS-023 LMS-ADM01 LMS-ADM04 영상 연결 + 자료 추가 DB 반영",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 116,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-23T07:14:31.299Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "49e17b4e75bdab60ae52-88a149024f4db2e86a3b",
+              "file": "actions.lms.spec.ts",
+              "line": 132,
+              "column": 7
+            },
+            {
+              "title": "ADM-16 세션 reorder → sort_order DB 반영",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 152,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-23T07:14:31.432Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "49e17b4e75bdab60ae52-6bc73a12bab757f57679",
+              "file": "actions.lms.spec.ts",
+              "line": 166,
+              "column": 7
+            },
+            {
+              "title": "LMS-023 LMS-ADM05 자료 삭제(deleteMaterial) → materials 삭제 반영",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 155,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-23T07:14:31.589Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "49e17b4e75bdab60ae52-2bf0b288d680be9f70ea",
+              "file": "actions.lms.spec.ts",
+              "line": 200,
+              "column": 7
+            },
+            {
+              "title": "ADM-10 선발 상태 변경 DB 반영(원복)",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 79,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-23T07:14:31.749Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "49e17b4e75bdab60ae52-2618e314cac6fc604fb4",
+              "file": "actions.lms.spec.ts",
+              "line": 236,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "api.authz.spec.ts",
+      "file": "api.authz.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "API 인가 · /api/ai/tutor",
+          "file": "api.authz.spec.ts",
+          "line": 45,
+          "column": 6,
+          "specs": [
+            {
+              "title": "AI-001 AI-01 재학생 토큰 인가 통과(비403)",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1327,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-23T07:14:32.173Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "856105a3357d80219442-7f115271f4edb0f88328",
+              "file": "api.authz.spec.ts",
+              "line": 49,
+              "column": 7
+            },
+            {
+              "title": "AI-001 LMS-AI04 admin 인가 통과(비403)",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1125,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-23T07:14:33.519Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "856105a3357d80219442-980601d592d42ad310fc",
+              "file": "api.authz.spec.ts",
+              "line": 54,
+              "column": 7
+            },
+            {
+              "title": "AI-001 SEC-008 SEC-10 졸업+멤버십 403",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1507,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-23T07:14:34.656Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "856105a3357d80219442-09b72f5350089272bd2e",
+              "file": "api.authz.spec.ts",
+              "line": 60,
+              "column": 7
+            },
+            {
+              "title": "AI-001 SEC-008 authz 졸업 미가입 403",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1129,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-23T07:14:36.176Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "856105a3357d80219442-f942272a8bb9cebe93e9",
+              "file": "api.authz.spec.ts",
+              "line": 65,
+              "column": 7
+            },
+            {
+              "title": "AI-001 SEC-008 authz 관심자 403",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1256,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-23T07:14:37.319Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "856105a3357d80219442-5c3436d5e81a35550cdc",
+              "file": "api.authz.spec.ts",
+              "line": 70,
+              "column": 7
+            },
+            {
+              "title": "AI-001 SEC-008 authz 비로그인 403",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 572,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-23T07:14:38.594Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "856105a3357d80219442-63dfc2d6b4b263f02276",
+              "file": "api.authz.spec.ts",
+              "line": 75,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "rag.smoke.spec.ts",
+      "file": "rag.smoke.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "RAG 스모크",
+          "file": "rag.smoke.spec.ts",
+          "line": 45,
+          "column": 6,
+          "specs": [
+            {
+              "title": "AI-002 AI-02 재학생 '18기 등록비' → 220만원 + 출처",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 150000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "쿠키 인증 인프라 미동작(403) — RAG 스모크 생략",
+                      "location": {
+                        "file": "C:\\Users\\donch\\ai4ceo-portal\\apps\\ai4ceo-test\\tests\\rag.smoke.spec.ts",
+                        "line": 55,
+                        "column": 14
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "skipped",
+                      "duration": 627,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-23T07:14:39.189Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "쿠키 인증 인프라 미동작(403) — RAG 스모크 생략",
+                          "location": {
+                            "file": "C:\\Users\\donch\\ai4ceo-portal\\apps\\ai4ceo-test\\tests\\rag.smoke.spec.ts",
+                            "line": 55,
+                            "column": 14
+                          }
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "3065afa25dc39a797f7f-606330cf280dfdee2739",
+              "file": "rag.smoke.spec.ts",
+              "line": 46,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "rls.security.spec.ts",
+      "file": "rls.security.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "RLS · 직접 공격 방어",
+          "file": "rls.security.spec.ts",
+          "line": 22,
+          "column": 6,
+          "specs": [
+            {
+              "title": "AI-014 SEC-05 재학생 match_rag_chunks RPC 거부(EXECUTE revoke)",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 39,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-23T07:14:39.844Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "436be1d2ec50e95af208-96a02899a14e6bc43b5f",
+              "file": "rls.security.spec.ts",
+              "line": 32,
+              "column": 7
+            },
+            {
+              "title": "AI-014 AI-15 anon match_rag_chunks RPC 거부",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 31,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-23T07:14:39.919Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "436be1d2ec50e95af208-5c69c1dcb5d992ef30fa",
+              "file": "rls.security.spec.ts",
+              "line": 41,
+              "column": 7
+            },
+            {
+              "title": "AI-014 SEC-06 anon rag_chunks 직접 select 빈 결과",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 31,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-23T07:14:39.963Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "436be1d2ec50e95af208-80a1bac4683595a75d81",
+              "file": "rls.security.spec.ts",
+              "line": 50,
+              "column": 7
+            },
+            {
+              "title": "SEC-003 SEC-03 재학생 applications 전체 조회 차단(admin only)",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 199,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-23T07:14:40.010Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "436be1d2ec50e95af208-d1af6b4a7feb89b7a39f",
+              "file": "rls.security.spec.ts",
+              "line": 57,
+              "column": 7
+            },
+            {
+              "title": "SEC-004 SEC-02 재학생이 타인(admin) profiles 조회 차단",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 68,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-23T07:14:40.226Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "436be1d2ec50e95af208-b704759fef2a06b742f1",
+              "file": "rls.security.spec.ts",
+              "line": 66,
+              "column": 7
+            },
+            {
+              "title": "SEC-01 재학생 invoices 격리(전체 열람 불가)",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 227,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-23T07:14:40.307Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "436be1d2ec50e95af208-ff3324d0cafeb2a3c24f",
+              "file": "rls.security.spec.ts",
+              "line": 74,
+              "column": 7
+            },
+            {
+              "title": "SEC-005 SEC-08 재학생 sessions update 거부",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 33,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-23T07:14:40.546Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "436be1d2ec50e95af208-5de35be42e25299b95da",
+              "file": "rls.security.spec.ts",
+              "line": 108,
+              "column": 7
+            },
+            {
+              "title": "SEC-09 비admin curriculum_change_logs 위조 거부",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 49,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-23T07:14:40.590Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "436be1d2ec50e95af208-a96d933fd98c072db011",
+              "file": "rls.security.spec.ts",
+              "line": 114,
+              "column": 7
+            },
+            {
+              "title": "MEM-003 SEC-009 SEC-12 졸업생 본인 membership status=active 위조 거부",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 180,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-23T07:14:40.652Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "436be1d2ec50e95af208-bade45e7c38928a7aa79",
+              "file": "rls.security.spec.ts",
+              "line": 125,
+              "column": 7
+            },
+            {
+              "title": "LMS-ADM07 재학생 videos 쓰기 거부",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 32,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-23T07:14:40.845Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "436be1d2ec50e95af208-8d5c54da05bfa52a51a8",
+              "file": "rls.security.spec.ts",
+              "line": 132,
+              "column": 7
+            },
+            {
+              "title": "LMS-ADM07 materials 재학생 쓰기 거부",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 39,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-23T07:14:40.888Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "436be1d2ec50e95af208-a8877778bea39d4f9c7e",
+              "file": "rls.security.spec.ts",
+              "line": 143,
+              "column": 7
+            },
+            {
+              "title": "LMS-016 LMS-Q05 비수강생(관심자) session_questions insert 거부",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 199,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-23T07:14:40.939Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "436be1d2ec50e95af208-96d455e169f29aae9434",
+              "file": "rls.security.spec.ts",
+              "line": 155,
+              "column": 7
+            },
+            {
+              "title": "LMS-A06 비수강생(관심자) session_answers insert 거부",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 76,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-23T07:14:41.157Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "436be1d2ec50e95af208-d10340ad0296ab815188",
+              "file": "rls.security.spec.ts",
+              "line": 166,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-07-23T07:14:29.194Z",
+    "duration": 12216.23,
+    "expected": 27,
+    "skipped": 1,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

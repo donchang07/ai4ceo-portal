@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Check, PlayCircle, FileText, Upload, Sparkles, Medal } from "lucide-react";
 import { Card, CardTitle } from "@/components/ui";
@@ -41,8 +41,9 @@ const EMPTY: CatchupState = {
 
 export function SessionCatchup({ userId, sessionId }: { userId: string; sessionId: string }) {
   const [state, setState] = useState<CatchupState>(EMPTY);
-  const [rowId, setRowId] = useState<string | null>(null);
+  const [, setRowId] = useState<string | null>(null);
   const [, setLoaded] = useState(false);
+  const saveQueue = useRef<Promise<void>>(Promise.resolve());
 
   const load = useCallback(async () => {
     try {
@@ -79,7 +80,7 @@ export function SessionCatchup({ userId, sessionId }: { userId: string; sessionI
     const allDone = next.watched && next.materials_done && next.assignment_done && next.asked_ai;
     next.completed_at = allDone ? state.completed_at ?? new Date().toISOString() : null;
     setState(next);
-    try {
+    saveQueue.current = saveQueue.current.catch(() => undefined).then(async () => {
       const sb = getSupabaseBrowser();
       const payload = {
         user_id: userId,
@@ -91,15 +92,17 @@ export function SessionCatchup({ userId, sessionId }: { userId: string; sessionI
         completed_at: next.completed_at,
         updated_at: new Date().toISOString(),
       };
-      if (rowId) {
-        await sb.from("session_catchups").update(payload).eq("id", rowId);
-      } else {
-        const { data } = await sb.from("session_catchups").insert(payload).select("id").maybeSingle();
-        if (data) setRowId(data.id as string);
-      }
-    } catch {
+      const { data, error } = await sb
+        .from("session_catchups")
+        .upsert(payload, { onConflict: "user_id,session_id" })
+        .select("id")
+        .maybeSingle();
+      if (error) throw error;
+      if (data) setRowId(data.id as string);
+    }).catch(() => {
       // 저장 실패 시 다음 토글에서 재시도 — 낙관적 UI 유지
-    }
+    });
+    await saveQueue.current;
   }
 
   const doneCount = [state.watched, state.materials_done, state.assignment_done, state.asked_ai].filter(Boolean).length;
