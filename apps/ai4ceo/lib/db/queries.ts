@@ -89,6 +89,18 @@ export async function getPosts(): Promise<Post[]> {
   );
 }
 
+// /trends/[slug] 상세 — body_mdx 포함 단건 조회 (Design Ref: prd-v3-cycle3.design.md §2)
+export async function getPost(id: string): Promise<Post | null> {
+  try {
+    const sb = await getSupabaseServer();
+    const { data } = await sb.from("posts").select("*").eq("id", id).maybeSingle();
+    if (data) return data as Post;
+  } catch {
+    /* fall through to mock */
+  }
+  return MOCK_POSTS.find((p) => p.id === id) ?? null;
+}
+
 export async function getSessionVideo(sessionId: string): Promise<VideoRec | null> {
   try {
     const sb = await getSupabaseServer();
@@ -114,6 +126,37 @@ export async function getSessionQuestions(sessionId: string): Promise<QuestionWi
       .from("session_questions")
       .select("*")
       .eq("session_id", sessionId)
+      .order("created_at", { ascending: false });
+    if (!questions || questions.length === 0) return [];
+
+    const ids = questions.map((q) => q.id as string);
+    const { data: answers } = await sb
+      .from("session_answers")
+      .select("*")
+      .in("question_id", ids)
+      .order("created_at", { ascending: true });
+
+    const byQuestion = new Map<string, SessionAnswer[]>();
+    for (const a of (answers as SessionAnswer[]) ?? []) {
+      const arr = byQuestion.get(a.question_id) ?? [];
+      arr.push(a);
+      byQuestion.set(a.question_id, arr);
+    }
+    return (questions as QuestionWithAnswers[]).map((q) => ({ ...q, answers: byQuestion.get(q.id) ?? [] }));
+  } catch {
+    return [];
+  }
+}
+
+// /portal/qna 일반 게시판 (D-10) — session_id가 null인 질문(세션에 묶이지 않는 스레드)
+export async function getGeneralQuestions(cohortId: string): Promise<QuestionWithAnswers[]> {
+  try {
+    const sb = await getSupabaseServer();
+    const { data: questions } = await sb
+      .from("session_questions")
+      .select("*")
+      .is("session_id", null)
+      .eq("cohort_id", cohortId)
       .order("created_at", { ascending: false });
     if (!questions || questions.length === 0) return [];
 

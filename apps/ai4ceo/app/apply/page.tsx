@@ -4,8 +4,7 @@ import { useState } from "react";
 import { ArrowLeft, CheckCircle2 } from "lucide-react";
 import { PublicHeader } from "@/components/public-header";
 import { Button, Input, Textarea, Progress, Callout } from "@/components/ui";
-import { COHORT_18 } from "@/lib/core/constants";
-import { getSupabaseBrowser } from "@/lib/db/supabase-client";
+import { submitApplication } from "./actions";
 
 type Field = "name" | "company" | "title" | "phone" | "email" | "referral_code" | "motivation";
 
@@ -58,24 +57,9 @@ export default function ApplyPage() {
 
   async function submit() {
     setSubmitting(true);
-    try {
-      const sb = getSupabaseBrowser();
-      await sb.from("applications").insert({
-        cohort_id: COHORT_18.id,
-        name: form.name,
-        company: form.company,
-        title: form.title,
-        phone: form.phone,
-        email: form.email,
-        motivation: form.motivation,
-        referral_code: form.referral_code.trim() || null,
-        status: "received",
-      });
-    } catch {
-      /* schema may be unapplied — do not block on DB errors */
-    }
-    const rand = Math.floor(1000 + Math.random() * 9000);
-    setReceiptNo(`AP-18-${rand}`);
+    // 서버 액션이 접수 저장 + 알림톡 T-01(접수) 발송을 함께 처리한다 (prd-v30-final §4 F3)
+    const result = await submitApplication(form).catch(() => null);
+    setReceiptNo(result?.receiptNo ?? `AP-18-${Math.floor(1000 + Math.random() * 9000)}`);
     setSubmitting(false);
   }
 
