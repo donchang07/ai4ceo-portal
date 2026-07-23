@@ -46,7 +46,7 @@ create policy payment_events_admin on public.payment_events for select using (is
 
 -- append-only: update/delete 차단
 create or replace function public.payment_events_append_only()
-returns trigger language plpgsql as $$
+returns trigger language plpgsql set search_path = public as $$
 begin
   raise exception 'payment_events is append-only (no update/delete)';
 end;
