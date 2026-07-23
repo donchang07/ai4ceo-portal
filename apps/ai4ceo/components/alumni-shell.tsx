@@ -6,6 +6,7 @@ import { Sparkles } from "lucide-react";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/core/cn";
 import { Badge } from "@/components/ui";
+import { MobileNavMenu } from "@/components/mobile-nav-menu";
 
 const nav = [
   { href: "/alumni", label: "동문 홈" },
@@ -40,7 +41,10 @@ export function AlumniShell({ children }: { children: ReactNode }) {
               </Link>
             ))}
           </nav>
-          <Badge tone="done">멤버십 이용 중</Badge>
+          <div className="flex items-center gap-2">
+            <Badge tone="done">멤버십 이용 중</Badge>
+            <MobileNavMenu items={nav} />
+          </div>
         </div>
       </header>
       <main className="mx-auto max-w-[1200px] px-6 py-8">{children}</main>
