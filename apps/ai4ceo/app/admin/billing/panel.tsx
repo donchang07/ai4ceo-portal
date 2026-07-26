@@ -7,14 +7,31 @@ import type { Invoice } from "@/lib/db/types";
 import { formatKRW } from "@/lib/core/constants";
 import { cn } from "@/lib/core/cn";
 
-type Tab = "invoices" | "deposits" | "tax";
+type Tab = "invoices" | "deposits" | "tax" | "reconcile";
 type Tone = "progress" | "done" | "wait" | "danger" | "info" | "neutral";
 
 const TABS: { key: Tab; label: string }[] = [
   { key: "invoices", label: "인보이스" },
   { key: "deposits", label: "입금 확인" },
   { key: "tax", label: "세금계산서 큐" },
+  { key: "reconcile", label: "결제 대사" },
 ];
+
+interface ReconcileRow {
+  kind: "unpaid" | "amount_mismatch" | "orphan_pending";
+  invoice_id: string;
+  order_id: string | null;
+  biz_name: string | null;
+  invoice_amount: number | null;
+  paid_amount: number | null;
+  detail: string;
+}
+
+const RECONCILE_META: Record<ReconcileRow["kind"], { label: string; tone: Tone }> = {
+  unpaid: { label: "미입금", tone: "wait" },
+  amount_mismatch: { label: "금액 불일치", tone: "danger" },
+  orphan_pending: { label: "고아 pending", tone: "info" },
+};
 
 const METHOD_LABEL: Record<Invoice["method"], string> = {
   bank_transfer: "계좌이체",
@@ -44,7 +61,22 @@ function formatDate(iso: string): string {
 
 export function BillingPanel({ invoices }: { invoices: Invoice[] }) {
   const [tab, setTab] = useState<Tab>("invoices");
-  const [rows, setRows] = useState<Invoice[]>(invoices);
+  const [rows] = useState<Invoice[]>(invoices);
+  const [reconcile, setReconcile] = useState<ReconcileRow[] | null>(null);
+  const [reconcileBusy, setReconcileBusy] = useState(false);
+
+  async function runReconcile() {
+    setReconcileBusy(true);
+    try {
+      const res = await fetch("/api/payments/reconcile");
+      const data = (await res.json()) as { rows?: ReconcileRow[] };
+      setReconcile(data.rows ?? []);
+    } catch {
+      setReconcile([]);
+    } finally {
+      setReconcileBusy(false);
+    }
+  }
 
   const visible = useMemo(() => {
     if (tab === "deposits") return rows.filter((r) => r.status === "issued");
@@ -72,6 +104,7 @@ export function BillingPanel({ invoices }: { invoices: Invoice[] }) {
         세금계산서는 mock 모드입니다 — 발행 시뮬레이션·로그만 기록됩니다. API 키 설정 시 실발행됩니다. Toss 결제 건은 Toss가 증빙을 처리합니다.
       </Callout>
 
+      {tab !== "reconcile" && (
       <div className="mt-4 overflow-hidden rounded-[15px] border border-hairline bg-surface">
         <div className="overflow-x-auto">
           <table className="w-full min-w-[880px] text-sm">
@@ -90,9 +123,11 @@ export function BillingPanel({ invoices }: { invoices: Invoice[] }) {
               {visible.map((r) => {
                 const st = statusInfo(r);
                 const tax = taxInfo(r);
-                const pendingBank = r.status === "issued" && r.method === "bank_transfer";
+                // C-6·C-9: 은행입금·스마트스토어 모두 운영자 수동 입금확인 대상
+                const pendingManual = r.status === "issued" && (r.method === "bank_transfer" || r.method === "smartstore");
+                const refLabel = r.method === "smartstore" ? "스토어 주문번호" : "입금자명";
                 return (
-                  <tr key={r.id} className={cn(pendingBank && "bg-[#FFFBF9]")}>
+                  <tr key={r.id} className={cn(pendingManual && "bg-[#FFFBF9]")}>
                     <td className="px-4 py-3">
                       <div className="font-semibold text-ink">{r.biz_name}</div>
                       <div className="text-xs text-muted">{r.student_name}</div>
@@ -116,8 +151,15 @@ export function BillingPanel({ invoices }: { invoices: Invoice[] }) {
                     <td className="px-4 py-3 tnum text-muted">{formatDate(r.created_at)}</td>
                     {tab === "deposits" && (
                       <td className="px-4 py-3 text-right">
-                        {pendingBank ? (
-                          <form method="post" action={`/api/admin/invoices/${r.id}/confirm`}>
+                        {pendingManual ? (
+                          <form method="post" action={`/api/admin/invoices/${r.id}/confirm`} className="flex items-center justify-end gap-2">
+                            <input
+                              type="text"
+                              name="match_ref"
+                              placeholder={refLabel}
+                              aria-label={refLabel}
+                              className="min-h-8 w-28 rounded-control border border-hairline bg-surface px-2 text-xs text-ink"
+                            />
                             <Button type="submit" variant="outline" className="min-h-8 px-3 text-xs">
                               입금 확인 처리
                             </Button>
@@ -141,7 +183,9 @@ export function BillingPanel({ invoices }: { invoices: Invoice[] }) {
           </table>
         </div>
       </div>
+      )}
 
+      {tab !== "reconcile" && (
       <div className="mt-4 grid gap-4 lg:grid-cols-2">
         <Card>
           <CardTitle>세금계산서 요청 큐</CardTitle>
@@ -182,6 +226,57 @@ export function BillingPanel({ invoices }: { invoices: Invoice[] }) {
           </div>
         </Card>
       </div>
+      )}
+
+      {tab === "reconcile" && (
+        <div className="mt-4">
+          <Callout className="mb-4">
+            결제 대사 — 미입금·금액 불일치(부분/초과)·15분 경과 고아 pending을 DB 기준으로 집계합니다. 라이브 Toss 조회/거래대사 API 연동은 라이브 키 발급 후 확장됩니다.
+          </Callout>
+          <Button variant="outline" onClick={runReconcile} disabled={reconcileBusy} className="text-xs">
+            {reconcileBusy ? "대사 중…" : "대사 실행"}
+          </Button>
+          <div className="mt-4 overflow-hidden rounded-[15px] border border-hairline bg-surface">
+            <div className="overflow-x-auto">
+              <table className="w-full min-w-[720px] text-sm">
+                <thead>
+                  <tr className="border-b border-hairline bg-surface-muted text-left text-xs font-semibold text-muted">
+                    <th className="px-4 py-3">유형</th>
+                    <th className="px-4 py-3">법인</th>
+                    <th className="px-4 py-3">인보이스 금액</th>
+                    <th className="px-4 py-3">승인 금액</th>
+                    <th className="px-4 py-3">비고</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-hairline">
+                  {(reconcile ?? []).map((r, i) => {
+                    const meta = RECONCILE_META[r.kind];
+                    return (
+                      <tr key={`${r.invoice_id}-${i}`}>
+                        <td className="px-4 py-3"><Badge tone={meta.tone}>{meta.label}</Badge></td>
+                        <td className="px-4 py-3 text-ink">{r.biz_name ?? "—"}</td>
+                        <td className="px-4 py-3 tnum text-muted">{r.invoice_amount != null ? formatKRW(r.invoice_amount) : "—"}</td>
+                        <td className="px-4 py-3 tnum text-muted">{r.paid_amount != null ? formatKRW(r.paid_amount) : "—"}</td>
+                        <td className="px-4 py-3 text-xs text-muted">{r.detail}</td>
+                      </tr>
+                    );
+                  })}
+                  {reconcile !== null && reconcile.length === 0 && (
+                    <tr>
+                      <td colSpan={5} className="px-4 py-10 text-center text-muted">불일치 항목이 없습니다.</td>
+                    </tr>
+                  )}
+                  {reconcile === null && (
+                    <tr>
+                      <td colSpan={5} className="px-4 py-10 text-center text-faint">대사 실행을 눌러 결과를 조회하세요.</td>
+                    </tr>
+                  )}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -7,6 +7,7 @@ import type { ReactNode } from "react";
 import { cn } from "@/lib/core/cn";
 import { Badge } from "@/components/ui";
 import { MobileTabbar } from "@/components/mobile-tabbar";
+import { MobileNavMenu } from "@/components/mobile-nav-menu";
 import { useIsAdmin } from "@/lib/core/admin-context";
 
 const nav = [
@@ -76,6 +77,7 @@ export function PortalShell({
         {/* Top bar */}
         <header className="sticky top-0 z-20 flex h-15 items-center justify-between border-b border-hairline bg-surface/90 px-5 py-3 backdrop-blur">
           <div className="flex items-center gap-3">
+            <MobileNavMenu items={items.map((n) => ({ href: n.href, label: n.label, match: n.match }))} />
             <span className="inline-flex items-center gap-2 rounded-full border border-cardline bg-surface px-3 py-1 text-sm font-semibold text-ink">
               18기 <Badge tone="progress">교육 중</Badge>
             </span>

@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { LayoutDashboard, Users, FileText, CreditCard, Sparkles, Newspaper, GraduationCap, CalendarClock, Package } from "lucide-react";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/core/cn";
+import { MobileNavMenu } from "@/components/mobile-nav-menu";
 
 const nav = [
   { href: "/admin", label: "운영 대시보드", icon: LayoutDashboard },
@@ -50,6 +51,19 @@ export function AdminShell({ children }: { children: ReactNode }) {
       </aside>
 
       <div className="md:pl-[224px]">
+        {/* 모바일 상단바 (사이드바가 md:hidden 이라 대체 메뉴 제공) */}
+        <header className="sticky top-0 z-30 flex h-15 items-center justify-between border-b border-white/10 bg-dark px-5 text-white md:hidden">
+          <Link href="/admin" className="flex items-center gap-2 font-bold">
+            <span className="grid h-8 w-8 place-items-center rounded-[10px] bg-primary text-white">
+              <Sparkles size={18} />
+            </span>
+            AI4CEO Admin
+          </Link>
+          <MobileNavMenu
+            items={nav.map((n) => ({ href: n.href, label: n.label }))}
+            dark
+          />
+        </header>
         <main className="mx-auto max-w-[1440px] px-6 py-6">{children}</main>
       </div>
     </div>
