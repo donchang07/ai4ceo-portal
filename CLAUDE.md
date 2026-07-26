@@ -36,4 +36,4 @@
 - 변경 파일 경로와 변경 이유를 명시
 - 검증 명령(build·typecheck) 실행 결과를 포함
 - 패키지 설치 전 반드시 확인 요청
-- 참고 문서: PRD `ai4ceo-portal-PRD-v2_6.docx` · 화면 설계 `PRD v2.6 화면 설계/` · 디자인 토큰 `docs/DESIGN.md`, `docs/brandvoice.md`
+- 참고 문서: PRD `docs/prd/ai4ceo-portal-PRD-v3_2.docx` (md 변환본 `docs/prd/prd-v3.2.md`) · 디자인 토큰 `docs/DESIGN.md`, `docs/brandvoice.md`
