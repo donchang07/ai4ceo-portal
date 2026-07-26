@@ -32,3 +32,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# claude code / bkit runtime (machine-local, not shared state)
+.bkit/audit/
+.bkit/runtime/
+.bkit/state/session-history.json
+.claude/agent-memory/
+
+# 강의 자료 (저장소에 올리지 않음)
+docs/class/
