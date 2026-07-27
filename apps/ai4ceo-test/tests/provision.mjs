@@ -1,5 +1,5 @@
 // FR-1: 5개 테스트 계정 idempotent 생성/갱신 (기존 seed_test_users 패턴 정식화).
-// 비밀번호 uscdon00, email confirm, profiles.has_password=true, role 기준 상태 보장.
+// 비밀번호는 env TEST_ACCOUNT_PASSWORD, email confirm, profiles.has_password=true, role 기준 상태 보장.
 // enrollment/membership 베이스라인은 best-effort(스키마 차이에 견고하게 try/catch).
 //
 // 실행: node tests/provision.mjs

@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 
-// QA 대시보드 접근 보호: basic-auth (env QA_DASHBOARD_USER / QA_DASHBOARD_PASSWORD, 기본 admin/uscdon00).
+// QA 대시보드 접근 보호: basic-auth (env QA_DASHBOARD_USER / QA_DASHBOARD_PASSWORD).
 // TODO(후속): Supabase admin 로그인 연동으로 교체.
 const USER = process.env.QA_DASHBOARD_USER || "admin";
-const PASSWORD = process.env.QA_DASHBOARD_PASSWORD || "uscdon00";
+const PASSWORD = process.env.QA_DASHBOARD_PASSWORD || "<QA_DASHBOARD_PASSWORD>";
 
 export function middleware(req: NextRequest) {
   const auth = req.headers.get("authorization");

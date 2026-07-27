@@ -35,8 +35,8 @@ npm run test:all           # provision → lint-gates → e2e → report
 
 ## 환경변수
 
-`.env.local.example` 참고. 프로덕션 Supabase(ref: olofwxsavfthsmmwjwzk) 재사용, 테스트 계정 5개(비밀번호 `uscdon00`).
-쓰기 테스트는 teardown 에서 정리한다. 대시보드는 `middleware.ts` basic-auth(기본 admin/uscdon00)로 보호.
+`.env.local.example` 참고. 프로덕션 Supabase(ref: olofwxsavfthsmmwjwzk) 재사용, 테스트 계정 5개(비밀번호는 `TEST_ACCOUNT_PASSWORD`).
+쓰기 테스트는 teardown 에서 정리한다. 대시보드는 `middleware.ts` basic-auth(`QA_DASHBOARD_USER`/`QA_DASHBOARD_PASSWORD`)로 보호.
 
 ## 대시보드 빌드
 
