@@ -33,6 +33,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# supabase cli (machine-local link state)
+supabase/.temp/
+
 # claude code / bkit runtime (machine-local, not shared state)
 .bkit/audit/
 .bkit/runtime/

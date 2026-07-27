@@ -1,0 +1,16 @@
+project_id = "ai4ceo-staging"
+
+[auth]
+site_url = "https://ai4ceo-staging-don-changs-projects.vercel.app"
+additional_redirect_urls = [
+  "https://ai4ceo-staging-don-changs-projects.vercel.app/auth/callback"
+]
+
+[auth.mfa.totp]
+enroll_enabled = true
+verify_enabled = true
+
+[auth.email]
+enable_confirmations = true
+max_frequency = "1m"
+otp_length = 8
