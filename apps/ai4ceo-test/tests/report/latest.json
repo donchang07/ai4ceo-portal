@@ -1,18 +1,18 @@
 {
-  "runAt": "2026-07-22T18:44:04.273Z",
-  "commit": "786df73",
+  "runAt": "2026-07-27T03:11:15.639Z",
+  "commit": "8ebed29",
   "env": "staging",
-  "baseUrl": "https://ai4ceo-portal-9ah9bq3hb-don-changs-projects.vercel.app",
+  "baseUrl": "https://ai4ceo-staging-don-changs-projects.vercel.app",
   "summary": {
     "total": 163,
     "automated": 160,
-    "passed": 94,
-    "failed": 66,
-    "regressions": 30,
-    "newlyPassing": 0,
-    "xfail": 36,
+    "passed": 117,
+    "failed": 40,
+    "regressions": 7,
+    "newlyPassing": 1,
+    "xfail": 33,
     "manual": 3,
-    "verified": 0
+    "verified": 2
   },
   "cases": [
     {
@@ -23,7 +23,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 1226,
+      "durationMs": 652,
       "error": null
     },
     {
@@ -32,10 +32,10 @@
       "section": "",
       "priority": "P0",
       "declared": "pass",
-      "result": "fail",
-      "verdict": "regression",
-      "durationMs": 27205,
-      "error": "Error: expect(locator).toBeVisible() failed"
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 1331,
+      "error": null
     },
     {
       "id": "PUB-003",
@@ -43,10 +43,10 @@
       "section": "",
       "priority": "P0",
       "declared": "pass",
-      "result": "fail",
-      "verdict": "regression",
-      "durationMs": 11598,
-      "error": "Error: 지원 자격 FAQ가 보여야 한다"
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 1298,
+      "error": null
     },
     {
       "id": "PUB-004",
@@ -56,7 +56,7 @@
       "declared": "mock",
       "result": "fail",
       "verdict": "xfail",
-      "durationMs": 60190,
+      "durationMs": 60106,
       "error": "Error: expect(locator).toHaveAttribute(expected) failed"
     },
     {
@@ -64,22 +64,22 @@
       "file": "01",
       "section": "",
       "priority": "P1",
-      "declared": "mock",
-      "result": "fail",
-      "verdict": "xfail",
-      "durationMs": 6268,
-      "error": "Error: expect(locator).toBeVisible() failed"
+      "declared": "unknown",
+      "result": "pass",
+      "verdict": "verified",
+      "durationMs": 1556,
+      "error": null
     },
     {
       "id": "PUB-006",
       "file": "01",
       "section": "",
       "priority": "P1",
-      "declared": "mock",
-      "result": "fail",
-      "verdict": "xfail",
-      "durationMs": 16678,
-      "error": "Error: expect(locator).toBeVisible() failed"
+      "declared": "unknown",
+      "result": "pass",
+      "verdict": "verified",
+      "durationMs": 1387,
+      "error": null
     },
     {
       "id": "APP-001",
@@ -89,7 +89,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 1848,
+      "durationMs": 1382,
       "error": null
     },
     {
@@ -100,7 +100,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 1629,
+      "durationMs": 1145,
       "error": null
     },
     {
@@ -111,7 +111,7 @@
       "declared": "mock",
       "result": "fail",
       "verdict": "xfail",
-      "durationMs": 21288,
+      "durationMs": 21046,
       "error": "Error: expect(locator).toBeVisible() failed"
     },
     {
@@ -122,7 +122,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 1810,
+      "durationMs": 3577,
       "error": null
     },
     {
@@ -133,7 +133,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 1764,
+      "durationMs": 2634,
       "error": null
     },
     {
@@ -144,7 +144,7 @@
       "declared": "mock",
       "result": "fail",
       "verdict": "xfail",
-      "durationMs": 39,
+      "durationMs": 37,
       "error": "Error: email·알림톡 outbox 테이블과 계약이 존재해야 한다"
     },
     {
@@ -155,7 +155,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 1790,
+      "durationMs": 1700,
       "error": null
     },
     {
@@ -166,7 +166,7 @@
       "declared": "mock",
       "result": "fail",
       "verdict": "xfail",
-      "durationMs": 5848,
+      "durationMs": 6956,
       "error": "Error: expect(received).toEqual(expected) // deep equality"
     },
     {
@@ -177,7 +177,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 2105,
+      "durationMs": 1703,
       "error": null
     },
     {
@@ -186,10 +186,10 @@
       "section": "",
       "priority": "P0",
       "declared": "pass",
-      "result": "fail",
-      "verdict": "regression",
-      "durationMs": 6373,
-      "error": "Error: expect(locator).toBeVisible() failed"
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 1712,
+      "error": null
     },
     {
       "id": "APP-011",
@@ -199,7 +199,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 1263,
+      "durationMs": 1646,
       "error": null
     },
     {
@@ -210,7 +210,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 1103,
+      "durationMs": 1768,
       "error": null
     },
     {
@@ -221,7 +221,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 1945,
+      "durationMs": 944,
       "error": null
     },
     {
@@ -232,7 +232,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 125,
+      "durationMs": 196,
       "error": null
     },
     {
@@ -243,7 +243,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 4619,
+      "durationMs": 2970,
       "error": null
     },
     {
@@ -254,7 +254,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 1225,
+      "durationMs": 956,
       "error": null
     },
     {
@@ -265,7 +265,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 1475,
+      "durationMs": 826,
       "error": null
     },
     {
@@ -274,10 +274,10 @@
       "section": "",
       "priority": "P0",
       "declared": "pass",
-      "result": "fail",
-      "verdict": "regression",
-      "durationMs": 6359,
-      "error": "Error: expect(locator).toBeVisible() failed"
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 811,
+      "error": null
     },
     {
       "id": "AUTH-005",
@@ -287,8 +287,8 @@
       "declared": "pass",
       "result": "fail",
       "verdict": "regression",
-      "durationMs": 3575,
-      "error": "Error: page.goto: net::ERR_CONNECTION_REFUSED at https://hfuzeddcthgelloufkji.supabase.co/auth/v1/verify?token=[REDACTED]&type=magiclink&redirect_to=http://localhost:3000"
+      "durationMs": 7040,
+      "error": "Error: expect(page).toHaveURL(expected) failed"
     },
     {
       "id": "AUTH-006",
@@ -298,8 +298,8 @@
       "declared": "pass",
       "result": "fail",
       "verdict": "regression",
-      "durationMs": 3515,
-      "error": "Error: page.goto: net::ERR_CONNECTION_REFUSED at https://hfuzeddcthgelloufkji.supabase.co/auth/v1/verify?token=[REDACTED]&type=magiclink&redirect_to=http://localhost:3000"
+      "durationMs": 60035,
+      "error": "Test timeout of 60000ms exceeded."
     },
     {
       "id": "AUTH-007",
@@ -309,8 +309,8 @@
       "declared": "pass",
       "result": "fail",
       "verdict": "regression",
-      "durationMs": 3593,
-      "error": "Error: page.goto: net::ERR_CONNECTION_REFUSED at https://hfuzeddcthgelloufkji.supabase.co/auth/v1/verify?token=[REDACTED]&type=magiclink&redirect_to=http://localhost:3000"
+      "durationMs": 60046,
+      "error": "Test timeout of 60000ms exceeded."
     },
     {
       "id": "AUTH-008",
@@ -320,8 +320,8 @@
       "declared": "pass",
       "result": "fail",
       "verdict": "regression",
-      "durationMs": 3538,
-      "error": "Error: page.goto: net::ERR_CONNECTION_REFUSED at https://hfuzeddcthgelloufkji.supabase.co/auth/v1/verify?token=[REDACTED]&type=magiclink&redirect_to=http://localhost:3000"
+      "durationMs": 60043,
+      "error": "Test timeout of 60000ms exceeded."
     },
     {
       "id": "AUTH-009",
@@ -331,8 +331,8 @@
       "declared": "pass",
       "result": "fail",
       "verdict": "regression",
-      "durationMs": 3508,
-      "error": "Error: page.goto: net::ERR_CONNECTION_REFUSED at https://hfuzeddcthgelloufkji.supabase.co/auth/v1/verify?token=[REDACTED]&type=magiclink&redirect_to=http://localhost:3000"
+      "durationMs": 1434,
+      "error": "Error: expect(received).toBe(expected) // Object.is equality"
     },
     {
       "id": "AUTH-010",
@@ -342,8 +342,8 @@
       "declared": "pass",
       "result": "fail",
       "verdict": "regression",
-      "durationMs": 3468,
-      "error": "Error: page.goto: net::ERR_CONNECTION_REFUSED at https://hfuzeddcthgelloufkji.supabase.co/auth/v1/verify?token=[REDACTED]&type=magiclink&redirect_to=http://localhost:3000"
+      "durationMs": 1765,
+      "error": "Error: expect(received).toBe(expected) // Object.is equality"
     },
     {
       "id": "AUTH-011",
@@ -353,8 +353,8 @@
       "declared": "pass",
       "result": "fail",
       "verdict": "regression",
-      "durationMs": 3588,
-      "error": "Error: page.goto: net::ERR_CONNECTION_REFUSED at https://hfuzeddcthgelloufkji.supabase.co/auth/v1/verify?token=[REDACTED]&type=magiclink&redirect_to=http://localhost:3000"
+      "durationMs": 6863,
+      "error": "Error: expect(page).toHaveURL(expected) failed"
     },
     {
       "id": "AUTH-012",
@@ -364,7 +364,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 1738,
+      "durationMs": 1263,
       "error": null
     },
     {
@@ -375,7 +375,7 @@
       "declared": "mock",
       "result": "fail",
       "verdict": "xfail",
-      "durationMs": 9258,
+      "durationMs": 8475,
       "error": "TimeoutError: locator.click: Timeout 5000ms exceeded."
     },
     {
@@ -386,8 +386,8 @@
       "declared": "mock",
       "result": "fail",
       "verdict": "xfail",
-      "durationMs": 3708,
-      "error": "Error: page.goto: net::ERR_CONNECTION_REFUSED at https://hfuzeddcthgelloufkji.supabase.co/auth/v1/verify?token=[REDACTED]&type=magiclink&redirect_to=http://localhost:3000"
+      "durationMs": 7276,
+      "error": "Error: expect(page).toHaveURL(expected) failed"
     },
     {
       "id": "ACC-001",
@@ -397,7 +397,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 11690,
+      "durationMs": 10829,
       "error": null
     },
     {
@@ -408,7 +408,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 12121,
+      "durationMs": 10372,
       "error": null
     },
     {
@@ -419,7 +419,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 42189,
+      "durationMs": 39931,
       "error": null
     },
     {
@@ -430,7 +430,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 19395,
+      "durationMs": 16200,
       "error": null
     },
     {
@@ -441,7 +441,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 10725,
+      "durationMs": 8002,
       "error": null
     },
     {
@@ -452,7 +452,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 15992,
+      "durationMs": 11718,
       "error": null
     },
     {
@@ -461,10 +461,10 @@
       "section": "",
       "priority": "P0",
       "declared": "pass",
-      "result": "fail",
-      "verdict": "regression",
-      "durationMs": 119,
-      "error": "Error: assistant_links 계약과 RLS가 존재해야 한다"
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 146,
+      "error": null
     },
     {
       "id": "ACC-008",
@@ -474,7 +474,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 81169,
+      "durationMs": 71931,
       "error": null
     },
     {
@@ -485,7 +485,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 16107,
+      "durationMs": 15110,
       "error": null
     },
     {
@@ -496,7 +496,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 7372,
+      "durationMs": 6202,
       "error": null
     },
     {
@@ -507,7 +507,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 11945,
+      "durationMs": 9312,
       "error": null
     },
     {
@@ -518,7 +518,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 7204,
+      "durationMs": 5727,
       "error": null
     },
     {
@@ -529,7 +529,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 6069,
+      "durationMs": 3751,
       "error": null
     },
     {
@@ -540,7 +540,7 @@
       "declared": "mock",
       "result": "fail",
       "verdict": "xfail",
-      "durationMs": 9583,
+      "durationMs": 9172,
       "error": "Error: expect(locator).toBeVisible() failed"
     },
     {
@@ -551,7 +551,7 @@
       "declared": "mock",
       "result": "fail",
       "verdict": "xfail",
-      "durationMs": 6350,
+      "durationMs": 6345,
       "error": "Error: expect(locator).toBeVisible() failed"
     },
     {
@@ -562,7 +562,7 @@
       "declared": "mock",
       "result": "fail",
       "verdict": "xfail",
-      "durationMs": 6242,
+      "durationMs": 6337,
       "error": "Error: expect(locator).toBeVisible() failed"
     },
     {
@@ -573,7 +573,7 @@
       "declared": "mock",
       "result": "fail",
       "verdict": "xfail",
-      "durationMs": 6033,
+      "durationMs": 6169,
       "error": "Error: expect(locator).toBeVisible() failed"
     },
     {
@@ -584,7 +584,7 @@
       "declared": "mock",
       "result": "fail",
       "verdict": "xfail",
-      "durationMs": 6106,
+      "durationMs": 6181,
       "error": "Error: expect(locator).toBeVisible() failed"
     },
     {
@@ -595,7 +595,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 5633,
+      "durationMs": 5676,
       "error": null
     },
     {
@@ -606,7 +606,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 5555,
+      "durationMs": 5629,
       "error": null
     },
     {
@@ -617,7 +617,7 @@
       "declared": "mock",
       "result": "fail",
       "verdict": "xfail",
-      "durationMs": 11740,
+      "durationMs": 10219,
       "error": "Error: expect(locator).toHaveAttribute(expected) failed"
     },
     {
@@ -628,7 +628,7 @@
       "declared": "mock",
       "result": "fail",
       "verdict": "xfail",
-      "durationMs": 10849,
+      "durationMs": 11032,
       "error": "Error: expect(locator).toBeVisible() failed"
     },
     {
@@ -637,10 +637,10 @@
       "section": "",
       "priority": "P0",
       "declared": "pass",
-      "result": "fail",
-      "verdict": "regression",
-      "durationMs": 4148,
-      "error": "Error: expect(received).toBe(expected) // Object.is equality"
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 13282,
+      "error": null
     },
     {
       "id": "BILL-006",
@@ -648,10 +648,10 @@
       "section": "",
       "priority": "P0",
       "declared": "pass",
-      "result": "fail",
-      "verdict": "regression",
-      "durationMs": 315,
-      "error": "Error: expect(received).toBeNull()"
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 795,
+      "error": null
     },
     {
       "id": "BILL-007",
@@ -661,7 +661,7 @@
       "declared": "mock",
       "result": "fail",
       "verdict": "xfail",
-      "durationMs": 706,
+      "durationMs": 869,
       "error": "Error: expect(received).toBeLessThan(expected)"
     },
     {
@@ -672,7 +672,7 @@
       "declared": "mock",
       "result": "fail",
       "verdict": "xfail",
-      "durationMs": 546,
+      "durationMs": 488,
       "error": "Error: expect(received).toBeLessThan(expected)"
     },
     {
@@ -683,7 +683,7 @@
       "declared": "mock",
       "result": "fail",
       "verdict": "xfail",
-      "durationMs": 549,
+      "durationMs": 467,
       "error": "Error: expect(received).toBeLessThan(expected)"
     },
     {
@@ -694,7 +694,7 @@
       "declared": "mock",
       "result": "fail",
       "verdict": "xfail",
-      "durationMs": 555,
+      "durationMs": 471,
       "error": "Error: expect(received).toBeLessThan(expected)"
     },
     {
@@ -705,7 +705,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 10614,
+      "durationMs": 9999,
       "error": null
     },
     {
@@ -714,10 +714,10 @@
       "section": "",
       "priority": "P0",
       "declared": "pass",
-      "result": "fail",
-      "verdict": "regression",
-      "durationMs": 460,
-      "error": "Error: expect(received).toHaveLength(expected)"
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 593,
+      "error": null
     },
     {
       "id": "BILL-013",
@@ -727,7 +727,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 431,
+      "durationMs": 399,
       "error": null
     },
     {
@@ -738,7 +738,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 4874,
+      "durationMs": 3049,
       "error": null
     },
     {
@@ -749,7 +749,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 9137,
+      "durationMs": 6928,
       "error": null
     },
     {
@@ -760,7 +760,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 171,
+      "durationMs": 185,
       "error": null
     },
     {
@@ -771,7 +771,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 5222,
+      "durationMs": 4982,
       "error": null
     },
     {
@@ -782,7 +782,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 8907,
+      "durationMs": 8812,
       "error": null
     },
     {
@@ -793,7 +793,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 6212,
+      "durationMs": 5345,
       "error": null
     },
     {
@@ -804,7 +804,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 6588,
+      "durationMs": 6506,
       "error": null
     },
     {
@@ -815,7 +815,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 6851,
+      "durationMs": 5763,
       "error": null
     },
     {
@@ -826,7 +826,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 6297,
+      "durationMs": 5871,
       "error": null
     },
     {
@@ -837,7 +837,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 6799,
+      "durationMs": 5699,
       "error": null
     },
     {
@@ -848,7 +848,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 10990,
+      "durationMs": 5955,
       "error": null
     },
     {
@@ -857,10 +857,10 @@
       "section": "",
       "priority": "P0",
       "declared": "pass",
-      "result": "fail",
-      "verdict": "regression",
-      "durationMs": 650,
-      "error": "Error: expect(received).toEqual(expected) // deep equality"
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 675,
+      "error": null
     },
     {
       "id": "LMS-010",
@@ -870,7 +870,7 @@
       "declared": "mock",
       "result": "fail",
       "verdict": "xfail",
-      "durationMs": 5536,
+      "durationMs": 4799,
       "error": "Error: expect(received).toBeGreaterThan(expected)"
     },
     {
@@ -881,7 +881,7 @@
       "declared": "mock",
       "result": "fail",
       "verdict": "xfail",
-      "durationMs": 5230,
+      "durationMs": 4436,
       "error": "Error: expect(received).toBeGreaterThan(expected)"
     },
     {
@@ -892,7 +892,7 @@
       "declared": "mock",
       "result": "fail",
       "verdict": "xfail",
-      "durationMs": 4352,
+      "durationMs": 4358,
       "error": "Error: expect(received).toBeGreaterThan(expected)"
     },
     {
@@ -903,7 +903,7 @@
       "declared": "mock",
       "result": "fail",
       "verdict": "xfail",
-      "durationMs": 5407,
+      "durationMs": 4755,
       "error": "Error: expect(received).toBeGreaterThan(expected)"
     },
     {
@@ -914,7 +914,7 @@
       "declared": "mock",
       "result": "fail",
       "verdict": "xfail",
-      "durationMs": 5148,
+      "durationMs": 4858,
       "error": "Error: expect(received).toBeGreaterThan(expected)"
     },
     {
@@ -925,7 +925,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 291,
+      "durationMs": 334,
       "error": null
     },
     {
@@ -936,7 +936,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 182,
+      "durationMs": 183,
       "error": null
     },
     {
@@ -947,7 +947,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 287,
+      "durationMs": 322,
       "error": null
     },
     {
@@ -956,10 +956,10 @@
       "section": "",
       "priority": "P0",
       "declared": "pass",
-      "result": "fail",
-      "verdict": "regression",
-      "durationMs": 12193,
-      "error": "Error: expect(locator).toBeVisible() failed"
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 6221,
+      "error": null
     },
     {
       "id": "LMS-019",
@@ -969,7 +969,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 6685,
+      "durationMs": 5891,
       "error": null
     },
     {
@@ -980,7 +980,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 586,
+      "durationMs": 591,
       "error": null
     },
     {
@@ -991,7 +991,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 13698,
+      "durationMs": 12446,
       "error": null
     },
     {
@@ -1002,7 +1002,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 7143,
+      "durationMs": 6891,
       "error": null
     },
     {
@@ -1013,7 +1013,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 133,
+      "durationMs": 127,
       "error": null
     },
     {
@@ -1024,7 +1024,7 @@
       "declared": "mock",
       "result": "fail",
       "verdict": "xfail",
-      "durationMs": 4249,
+      "durationMs": 4327,
       "error": "Error: expect(received).toBeGreaterThan(expected)"
     },
     {
@@ -1033,10 +1033,10 @@
       "section": "",
       "priority": "P0",
       "declared": "pass",
-      "result": "fail",
-      "verdict": "regression",
-      "durationMs": 1483,
-      "error": "Error: expect(received).not.toBe(expected) // Object.is equality"
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 2325,
+      "error": null
     },
     {
       "id": "AI-002",
@@ -1046,7 +1046,7 @@
       "declared": "pass",
       "result": "skip",
       "verdict": "manual",
-      "durationMs": 630,
+      "durationMs": 679,
       "error": null
     },
     {
@@ -1055,10 +1055,10 @@
       "section": "",
       "priority": "P0",
       "declared": "pass",
-      "result": "fail",
-      "verdict": "regression",
-      "durationMs": 6537,
-      "error": "Error: expect(received).toBe(expected) // Object.is equality"
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 5349,
+      "error": null
     },
     {
       "id": "AI-004",
@@ -1068,7 +1068,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 3370,
+      "durationMs": 2658,
       "error": null
     },
     {
@@ -1079,7 +1079,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 5487,
+      "durationMs": 4630,
       "error": null
     },
     {
@@ -1088,10 +1088,10 @@
       "section": "",
       "priority": "P1",
       "declared": "pass",
-      "result": "fail",
-      "verdict": "regression",
-      "durationMs": 5430,
-      "error": "Error: expect(received).toBeGreaterThanOrEqual(expected)"
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 3385,
+      "error": null
     },
     {
       "id": "AI-007",
@@ -1101,7 +1101,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 2432,
+      "durationMs": 2276,
       "error": null
     },
     {
@@ -1110,10 +1110,10 @@
       "section": "",
       "priority": "P1",
       "declared": "pass",
-      "result": "fail",
-      "verdict": "regression",
-      "durationMs": 2337,
-      "error": "Error: expect(received).not.toMatch(expected)"
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 2166,
+      "error": null
     },
     {
       "id": "AI-009",
@@ -1123,7 +1123,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 3165,
+      "durationMs": 2021,
       "error": null
     },
     {
@@ -1134,7 +1134,7 @@
       "declared": "mock",
       "result": "fail",
       "verdict": "xfail",
-      "durationMs": 5538,
+      "durationMs": 4870,
       "error": "Error: expect(received).toBeGreaterThan(expected)"
     },
     {
@@ -1143,10 +1143,10 @@
       "section": "",
       "priority": "P1",
       "declared": "mock",
-      "result": "fail",
-      "verdict": "xfail",
-      "durationMs": 5850,
-      "error": "Error: expect(received).toBe(expected) // Object.is equality"
+      "result": "pass",
+      "verdict": "newpass",
+      "durationMs": 5272,
+      "error": null
     },
     {
       "id": "AI-012",
@@ -1156,7 +1156,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 5391,
+      "durationMs": 6367,
       "error": null
     },
     {
@@ -1167,7 +1167,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 11746,
+      "durationMs": 10120,
       "error": null
     },
     {
@@ -1178,7 +1178,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 189,
+      "durationMs": 46,
       "error": null
     },
     {
@@ -1189,7 +1189,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 5441,
+      "durationMs": 5310,
       "error": null
     },
     {
@@ -1200,7 +1200,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 9518,
+      "durationMs": 8458,
       "error": null
     },
     {
@@ -1211,7 +1211,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 562,
+      "durationMs": 335,
       "error": null
     },
     {
@@ -1222,7 +1222,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 4824,
+      "durationMs": 4535,
       "error": null
     },
     {
@@ -1233,7 +1233,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 5752,
+      "durationMs": 4800,
       "error": null
     },
     {
@@ -1244,7 +1244,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 5325,
+      "durationMs": 5254,
       "error": null
     },
     {
@@ -1255,7 +1255,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 9513,
+      "durationMs": 9170,
       "error": null
     },
     {
@@ -1266,7 +1266,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 5453,
+      "durationMs": 5095,
       "error": null
     },
     {
@@ -1277,7 +1277,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 179,
+      "durationMs": 195,
       "error": null
     },
     {
@@ -1288,7 +1288,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 6536,
+      "durationMs": 6620,
       "error": null
     },
     {
@@ -1299,7 +1299,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 6261,
+      "durationMs": 6698,
       "error": null
     },
     {
@@ -1310,7 +1310,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 6671,
+      "durationMs": 6155,
       "error": null
     },
     {
@@ -1321,7 +1321,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 174,
+      "durationMs": 219,
       "error": null
     },
     {
@@ -1332,7 +1332,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 4782,
+      "durationMs": 3958,
       "error": null
     },
     {
@@ -1343,7 +1343,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 4543,
+      "durationMs": 4222,
       "error": null
     },
     {
@@ -1354,7 +1354,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 4290,
+      "durationMs": 4859,
       "error": null
     },
     {
@@ -1363,10 +1363,10 @@
       "section": "",
       "priority": "P0",
       "declared": "pass",
-      "result": "fail",
-      "verdict": "regression",
-      "durationMs": 880,
-      "error": "Error: expect(received).toEqual(expected) // deep equality"
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 480,
+      "error": null
     },
     {
       "id": "ADM-001",
@@ -1374,10 +1374,10 @@
       "section": "",
       "priority": "P0",
       "declared": "pass",
-      "result": "fail",
-      "verdict": "regression",
-      "durationMs": 9255,
-      "error": "Error: expect(locator).toHaveCount(expected) failed"
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 4219,
+      "error": null
     },
     {
       "id": "ADM-002",
@@ -1387,7 +1387,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 4209,
+      "durationMs": 4832,
       "error": null
     },
     {
@@ -1396,10 +1396,10 @@
       "section": "",
       "priority": "P0",
       "declared": "pass",
-      "result": "fail",
-      "verdict": "regression",
-      "durationMs": 60092,
-      "error": "Test timeout of 60000ms exceeded."
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 9599,
+      "error": null
     },
     {
       "id": "ADM-004",
@@ -1409,7 +1409,7 @@
       "declared": "mock",
       "result": "fail",
       "verdict": "xfail",
-      "durationMs": 5027,
+      "durationMs": 3566,
       "error": "Error: expect(received).toBeGreaterThan(expected)"
     },
     {
@@ -1420,7 +1420,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 13698,
+      "durationMs": 12446,
       "error": null
     },
     {
@@ -1431,7 +1431,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 7143,
+      "durationMs": 6891,
       "error": null
     },
     {
@@ -1442,7 +1442,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 13498,
+      "durationMs": 9998,
       "error": null
     },
     {
@@ -1453,7 +1453,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 4476,
+      "durationMs": 4144,
       "error": null
     },
     {
@@ -1464,7 +1464,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 11756,
+      "durationMs": 9503,
       "error": null
     },
     {
@@ -1473,10 +1473,10 @@
       "section": "",
       "priority": "P0",
       "declared": "pass",
-      "result": "fail",
-      "verdict": "regression",
-      "durationMs": 4148,
-      "error": "Error: expect(received).toBe(expected) // Object.is equality"
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 13282,
+      "error": null
     },
     {
       "id": "ADM-011",
@@ -1486,7 +1486,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 18242,
+      "durationMs": 14186,
       "error": null
     },
     {
@@ -1497,7 +1497,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 11746,
+      "durationMs": 10120,
       "error": null
     },
     {
@@ -1508,7 +1508,7 @@
       "declared": "mock",
       "result": "fail",
       "verdict": "xfail",
-      "durationMs": 3823,
+      "durationMs": 2470,
       "error": "Error: expect(received).toBeGreaterThan(expected)"
     },
     {
@@ -1519,7 +1519,7 @@
       "declared": "mock",
       "result": "fail",
       "verdict": "xfail",
-      "durationMs": 3073,
+      "durationMs": 3737,
       "error": "Error: expect(received).toBeGreaterThan(expected)"
     },
     {
@@ -1530,7 +1530,7 @@
       "declared": "mock",
       "result": "fail",
       "verdict": "xfail",
-      "durationMs": 3299,
+      "durationMs": 2828,
       "error": "Error: expect(received).toBeGreaterThan(expected)"
     },
     {
@@ -1541,7 +1541,7 @@
       "declared": "mock",
       "result": "fail",
       "verdict": "xfail",
-      "durationMs": 3308,
+      "durationMs": 2641,
       "error": "Error: expect(received).toBeGreaterThan(expected)"
     },
     {
@@ -1552,7 +1552,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 33,
+      "durationMs": 23,
       "error": null
     },
     {
@@ -1563,7 +1563,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 694,
+      "durationMs": 579,
       "error": null
     },
     {
@@ -1574,7 +1574,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 96,
+      "durationMs": 170,
       "error": null
     },
     {
@@ -1585,7 +1585,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 59,
+      "durationMs": 50,
       "error": null
     },
     {
@@ -1596,7 +1596,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 217,
+      "durationMs": 26,
       "error": null
     },
     {
@@ -1607,7 +1607,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 387,
+      "durationMs": 210,
       "error": null
     },
     {
@@ -1618,7 +1618,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 182,
+      "durationMs": 201,
       "error": null
     },
     {
@@ -1629,7 +1629,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 694,
+      "durationMs": 1944,
       "error": null
     },
     {
@@ -1640,7 +1640,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 171,
+      "durationMs": 185,
       "error": null
     },
     {
@@ -1649,10 +1649,10 @@
       "section": "Security and RLS",
       "priority": "P0",
       "declared": "pass",
-      "result": "fail",
-      "verdict": "regression",
-      "durationMs": 279,
-      "error": "Error: expect(received).toEqual(expected) // deep equality"
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 167,
+      "error": null
     },
     {
       "id": "SEC-011",
@@ -1662,7 +1662,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 398,
+      "durationMs": 141,
       "error": null
     },
     {
@@ -1673,7 +1673,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 2595,
+      "durationMs": 2298,
       "error": null
     },
     {
@@ -1684,7 +1684,7 @@
       "declared": "mock",
       "result": "fail",
       "verdict": "xfail",
-      "durationMs": 1012,
+      "durationMs": 749,
       "error": "Error: expect(received).toContain(expected) // indexOf"
     },
     {
@@ -1695,7 +1695,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 6747,
+      "durationMs": 5520,
       "error": null
     },
     {
@@ -1704,10 +1704,10 @@
       "section": "Non-functional",
       "priority": "P0",
       "declared": "pass",
-      "result": "fail",
-      "verdict": "regression",
-      "durationMs": 2084,
-      "error": "Error: expect(received).toEqual(expected) // deep equality"
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 17440,
+      "error": null
     },
     {
       "id": "NFR-002",
@@ -1715,10 +1715,10 @@
       "section": "Non-functional",
       "priority": "P1",
       "declared": "pass",
-      "result": "fail",
-      "verdict": "regression",
-      "durationMs": 16314,
-      "error": "Error: expect(received).toBeLessThan(expected)"
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 11726,
+      "error": null
     },
     {
       "id": "NFR-003",
@@ -1728,7 +1728,7 @@
       "declared": "pass",
       "result": "pass",
       "verdict": "ok",
-      "durationMs": 18864,
+      "durationMs": 36605,
       "error": null
     },
     {
@@ -1737,10 +1737,10 @@
       "section": "Non-functional",
       "priority": "P0",
       "declared": "pass",
-      "result": "fail",
-      "verdict": "regression",
-      "durationMs": 5233,
-      "error": "Error: expect(received).toBeGreaterThanOrEqual(expected)"
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 13389,
+      "error": null
     },
     {
       "id": "NFR-005",
@@ -1748,10 +1748,10 @@
       "section": "Non-functional",
       "priority": "P1",
       "declared": "pass",
-      "result": "fail",
-      "verdict": "regression",
-      "durationMs": 1976,
-      "error": "Error: browserType.launch: Executable doesn't exist at C:\\Users\\donch\\AppData\\Local\\ms-playwright\\webkit-2311\\Playwright.exe"
+      "result": "pass",
+      "verdict": "ok",
+      "durationMs": 6036,
+      "error": null
     },
     {
       "id": "NFR-006",
@@ -1761,7 +1761,7 @@
       "declared": "mock",
       "result": "fail",
       "verdict": "xfail",
-      "durationMs": 849,
+      "durationMs": 539,
       "error": "Error: expect(received).toBe(expected) // Object.is equality"
     },
     {
@@ -1772,7 +1772,7 @@
       "declared": "mock",
       "result": "fail",
       "verdict": "xfail",
-      "durationMs": 7562,
+      "durationMs": 6710,
       "error": "Error: expect(locator).toBeVisible() failed"
     },
     {
@@ -1783,7 +1783,7 @@
       "declared": "mock",
       "result": "fail",
       "verdict": "xfail",
-      "durationMs": 3,
+      "durationMs": 1,
       "error": "Error: expect(received).toBeTruthy()"
     },
     {

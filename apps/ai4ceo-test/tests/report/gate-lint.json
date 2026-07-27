@@ -1,23 +1,23 @@
 {
-  "ok": true,
-  "runAt": "2026-07-22T12:02:07.829Z",
-  "portalPagesChecked": 15,
-  "apiRoutesChecked": 1,
+  "ok": false,
+  "runAt": "2026-07-27T02:43:25.971Z",
+  "portalPagesChecked": 21,
+  "apiRoutesChecked": 8,
   "results": [
     {
       "check": "FR-11 portal/alumni 게이트",
-      "result": "pass",
-      "detail": "15개 페이지 검사"
+      "result": "fail",
+      "detail": "21개 페이지 검사"
     },
     {
       "check": "FR-11 admin layout 게이트 상속",
       "result": "pass",
-      "detail": "admin 페이지 6개 · layout 게이트 확인"
+      "detail": "admin 페이지 9개 · layout 게이트 확인"
     },
     {
       "check": "FR-12 api route 권한 검사",
-      "result": "pass",
-      "detail": "1개 route 검사"
+      "result": "fail",
+      "detail": "8개 route 검사"
     },
     {
       "id": "SEC-11",
@@ -26,5 +26,16 @@
       "detail": "클라이언트 번들 노출 없음"
     }
   ],
-  "violations": []
+  "violations": [
+    {
+      "rule": "FR-11",
+      "file": "app/alumni/[profileSlug]/page.tsx",
+      "message": "require*Access 호출 없음(게이트 누락)"
+    },
+    {
+      "rule": "FR-12",
+      "file": "app/api/applications/status/route.ts",
+      "message": "권한 검사 코드 없음(보호 미흡)"
+    }
+  ]
 }
