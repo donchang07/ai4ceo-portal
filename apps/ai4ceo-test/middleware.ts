@@ -3,11 +3,12 @@ import { NextRequest, NextResponse } from "next/server";
 // QA 대시보드 접근 보호: basic-auth (env QA_DASHBOARD_USER / QA_DASHBOARD_PASSWORD).
 // TODO(후속): Supabase admin 로그인 연동으로 교체.
 const USER = process.env.QA_DASHBOARD_USER || "admin";
-const PASSWORD = process.env.QA_DASHBOARD_PASSWORD || "<QA_DASHBOARD_PASSWORD>";
+const PASSWORD = process.env.QA_DASHBOARD_PASSWORD;
 
 export function middleware(req: NextRequest) {
   const auth = req.headers.get("authorization");
-  if (auth) {
+  // 폴백 비밀번호를 두지 않는다. env 미설정이면 통과시키지 않고 401.
+  if (auth && PASSWORD) {
     const [scheme, encoded] = auth.split(" ");
     if (scheme === "Basic" && encoded) {
       const decoded = Buffer.from(encoded, "base64").toString("utf8");
