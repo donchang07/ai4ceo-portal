@@ -2,6 +2,7 @@
 // 토스페이먼츠 심사 요건 — 홈페이지에 결제 가능한 상품이 1개 이상 게시되어 있어야 한다.
 // 금액은 서버 소스가 유일한 기준이며, 프론트가 보낸 금액은 신뢰하지 않는다.
 import { TUITION_KRW, MEMBERSHIP_KRW, COHORT_18 } from "@/lib/core/constants";
+import { getCohortSchedule } from "@/lib/db/cohort-schedule";
 import type { ArtworkKey } from "@/components/product-artwork";
 
 export interface PublicProduct {
@@ -20,9 +21,8 @@ export const PUBLIC_PRODUCTS: PublicProduct[] = [
     code: "tuition-18",
     name: `AI4CEO ${COHORT_18.name} 수강료`,
     amount: TUITION_KRW,
-    summary: "CEO를 위한 AI 실전 과정 — Zoom 온라인 10회",
+    summary: "CEO를 위한 AI 실전 과정 — Zoom 온라인 진행",
     details: [
-      `${COHORT_18.eduStartLabel}`,
       "Claude Code · Design · Cowork · Harness 4대 트랙",
       "수강생 전용 포털(LMS)·AI 조교·다시보기 제공",
     ],
@@ -46,4 +46,17 @@ export const PUBLIC_PRODUCTS: PublicProduct[] = [
 
 export function findPublicProduct(code: string): PublicProduct | null {
   return PUBLIC_PRODUCTS.find((p) => p.code === code) ?? null;
+}
+
+/**
+ * 화면에 뿌릴 상품 목록. 수강료 카드의 일정 문구는 sessions 에서 읽어 앞에 붙인다.
+ * 서버 컴포넌트에서만 호출할 것.
+ */
+export async function getPublicProducts(): Promise<PublicProduct[]> {
+  const schedule = await getCohortSchedule();
+  if (!schedule) return PUBLIC_PRODUCTS;
+
+  return PUBLIC_PRODUCTS.map((p) =>
+    p.code === "tuition-18" ? { ...p, details: [schedule.label, ...p.details] } : p,
+  );
 }

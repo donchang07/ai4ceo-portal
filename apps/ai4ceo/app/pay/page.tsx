@@ -3,7 +3,7 @@ import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
 import { SectionTitle } from "@/components/ui";
 import { ProductCheckout } from "@/components/product-checkout";
-import { PUBLIC_PRODUCTS } from "@/lib/billing/products";
+import { getPublicProducts } from "@/lib/billing/products";
 import { getTossClientKey } from "@/lib/billing/toss";
 
 export const metadata: Metadata = {
@@ -11,7 +11,9 @@ export const metadata: Metadata = {
   description: "AI4CEO 과정 수강료와 동문 멤버십을 결제합니다.",
 };
 
-export default function PayPage() {
+export default async function PayPage() {
+  const products = await getPublicProducts();
+
   return (
     <div className="min-h-screen bg-canvas">
       <PublicHeader />
@@ -22,7 +24,7 @@ export default function PayPage() {
         </p>
 
         <div className="mt-6">
-          <ProductCheckout products={PUBLIC_PRODUCTS} clientKey={getTossClientKey()} />
+          <ProductCheckout products={products} clientKey={getTossClientKey()} />
         </div>
 
         <div className="mt-6 rounded-[15px] border border-hairline bg-surface p-5">

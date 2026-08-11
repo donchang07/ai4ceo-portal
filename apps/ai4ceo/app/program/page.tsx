@@ -2,6 +2,7 @@ import { Check, CheckCircle2, GraduationCap, Hammer, Laptop, MapPin, MessageCirc
 import { PublicHeader } from "@/components/public-header";
 import { Badge, Button, Card, CardTitle, Callout, SectionTitle } from "@/components/ui";
 import { COHORT_18, TUITION_KRW, BANK_ACCOUNT, formatKRW } from "@/lib/core/constants";
+import { getCohortSchedule } from "@/lib/db/cohort-schedule";
 import { getSupabaseServer } from "@/lib/db/supabase-server";
 import { SelfCheck } from "./self-check";
 import { FaqAccordion } from "./faq-accordion";
@@ -96,6 +97,8 @@ async function getPublicBuilds(): Promise<PublicBuild[]> {
 }
 
 export default async function ProgramPage() {
+  const schedule = await getCohortSchedule();
+
   const publicBuilds = await getPublicBuilds();
   return (
     <div className="min-h-screen bg-canvas">
@@ -121,7 +124,7 @@ export default async function ProgramPage() {
             <Button href="#schedule" variant="secondary">상세 스케줄 보기</Button>
           </div>
           <Callout className="mt-8">
-            개강 {COHORT_18.eduStartLabel} · 매주 수요일 정규 강의 · Zoom 온라인 진행이라
+            {schedule ? `개강 ${schedule.label} · ` : ""}매주 수요일 정규 강의 · Zoom 온라인 진행이라
             정원 제한 없이 모집합니다.
           </Callout>
         </div>
@@ -401,7 +404,7 @@ export default async function ProgramPage() {
           <div>
             <div className="text-xl font-bold text-ink">18기 모집이 진행 중입니다</div>
             <p className="mt-1 text-sm text-muted">
-              개강 {COHORT_18.eduStartLabel} · Zoom 온라인 강의라 정원 제한 없이 모집합니다.
+              {schedule ? `개강 ${schedule.label} · ` : ""}Zoom 온라인 강의라 정원 제한 없이 모집합니다.
             </p>
           </div>
           <Button href="/apply" variant="primary" className="shrink-0">지원하기</Button>

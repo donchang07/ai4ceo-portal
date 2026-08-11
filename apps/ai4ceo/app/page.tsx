@@ -4,9 +4,10 @@ import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ProductCheckout } from "@/components/product-checkout";
 import { Badge, Button, Card, SectionTitle, Callout } from "@/components/ui";
-import { COHORT_18, TRACKS } from "@/lib/core/constants";
-import { PUBLIC_PRODUCTS } from "@/lib/billing/products";
+import { TRACKS } from "@/lib/core/constants";
+import { getPublicProducts } from "@/lib/billing/products";
 import { getTossClientKey } from "@/lib/billing/toss";
+import { getCohortSchedule, type CohortSchedule } from "@/lib/db/cohort-schedule";
 
 const trackIcons: Record<string, LucideIcon> = {
   terminal: Terminal,
@@ -15,14 +16,32 @@ const trackIcons: Record<string, LucideIcon> = {
   settings: Settings,
 };
 
-const stats = [
-  { value: "무제한", label: "모집 정원 (Zoom)" },
-  { value: "10회", label: "정규 과정" },
-  { value: "4대", label: "핵심 트랙" },
-  { value: "9/9(수)", label: "개강" },
-];
+// 회차 수·개강일은 sessions 에서 온다 — 화면마다 다른 날짜가 뜨는 일이 없도록 한 곳에서만 계산한다.
+function buildStats(schedule: CohortSchedule | null) {
+  let openingDay = "미정";
+  if (schedule) {
+    const parts = new Intl.DateTimeFormat("ko-KR", {
+      timeZone: "Asia/Seoul",
+      month: "numeric",
+      day: "numeric",
+      weekday: "short",
+    }).formatToParts(new Date(schedule.startsAt));
+    const get = (type: string) => parts.find((p) => p.type === type)?.value ?? "";
+    openingDay = `${get("month")}/${get("day")}(${get("weekday")})`;
+  }
 
-export default function Landing() {
+  return [
+    { value: "무제한", label: "모집 정원 (Zoom)" },
+    { value: schedule ? `${schedule.sessionCount}회` : "—", label: "정규 과정" },
+    { value: `${TRACKS.length}대`, label: "핵심 트랙" },
+    { value: openingDay, label: "개강" },
+  ];
+}
+
+export default async function Landing() {
+  const [products, schedule] = await Promise.all([getPublicProducts(), getCohortSchedule()]);
+  const stats = buildStats(schedule);
+
   return (
     <div className="min-h-screen bg-canvas">
       <PublicHeader />
@@ -99,7 +118,7 @@ export default function Landing() {
             아래에서 바로 결제하실 수 있습니다. 로그인 없이 신용·체크카드로 결제됩니다.
           </p>
           <div className="mt-6">
-            <ProductCheckout products={PUBLIC_PRODUCTS} clientKey={getTossClientKey()} />
+            <ProductCheckout products={products} clientKey={getTossClientKey()} />
           </div>
         </div>
       </section>
@@ -110,7 +129,7 @@ export default function Landing() {
           <div>
             <div className="text-xl font-bold text-ink">18기 모집이 진행 중입니다</div>
             <p className="mt-1 text-sm text-muted">
-              개강 {COHORT_18.eduStartLabel} · Zoom 온라인 강의라 정원 제한 없이 모집합니다.
+              {schedule ? `개강 ${schedule.label} · ` : ""}Zoom 온라인 강의라 정원 제한 없이 모집합니다.
               로그인 없이 5분이면 지원할 수 있습니다.
             </p>
           </div>

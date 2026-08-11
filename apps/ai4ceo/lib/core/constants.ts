@@ -1,12 +1,11 @@
 // Design Ref: 18기 공식 모집 안내 기준 — 개강 2026-09-07 18:00
 // Zoom 온라인 강의라 정원 상한을 두지 않음(capacity: null)
 
+// 개강일·회차 수는 여기에 두지 않는다 — sessions 테이블이 유일한 기준이고,
+// 화면에 쓸 문구는 lib/db/cohort-schedule.ts 의 getCohortSchedule() 로 조회한다.
 export const COHORT_18 = {
   id: "00000000-0000-0000-0000-0000000000c1",
   name: "18기",
-  eduStart: "2026-09-07T18:00:00+09:00",
-  eduStartLabel: "2026년 9월 7일 18:00~21:00 · 총 10회",
-  eduEnd: "2026-11-11T21:00:00+09:00",
   recruitEnd: "2026-09-02",
   capacity: null as number | null, // Zoom 강의 — 정원 제한 없음
   versionLabel: "v18",
