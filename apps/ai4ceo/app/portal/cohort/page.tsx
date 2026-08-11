@@ -43,7 +43,7 @@ export default async function CohortHome() {
   const recentChat = MOCK_CHAT.filter((m) => m.message_type !== "notice").slice(-2);
 
   return (
-    <PortalShell title="Cohort Home">
+    <PortalShell title="수강생 홈">
       <div className="mb-6">
         <SectionTitle>안녕하세요, 대표님</SectionTitle>
         <p className="mt-1 text-sm text-muted">
@@ -56,7 +56,7 @@ export default async function CohortHome() {
         <div className="flex flex-col gap-5">
           {/* My Build */}
           <Card>
-            <CardTitle>My Build</CardTitle>
+            <CardTitle>내 결과물 만들기</CardTitle>
             <p className="mt-1 text-sm text-muted">우리 회사 문제 하나를 5단계로 완성합니다.</p>
 
             <ol className="mt-5 flex items-start justify-between">
@@ -103,7 +103,7 @@ export default async function CohortHome() {
 
           {/* This Week */}
           <Card>
-            <CardTitle>This Week</CardTitle>
+            <CardTitle>이번 주</CardTitle>
             <div className="mt-4 grid gap-3 sm:grid-cols-2">
               {/* Next session */}
               {nextSession ? (
