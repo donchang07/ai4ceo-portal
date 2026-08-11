@@ -64,10 +64,10 @@ export const MOCK_INVOICES: Invoice[] = [
 ];
 
 export const MOCK_POSTS: Post[] = [
-  { id: "p1", board: "brief", title: "의사결정 브리프: 사내 에이전트 도입, 지금 결정할 3가지", excerpt: "도구·권한·가드레일을 어떻게 정할지 한 장으로 정리했습니다.", category: "ax", audience: "alumni", external_url: null, tags: ["AX", "거버넌스"], thumbnail: true, published_at: "2026-07-15T09:00:00+09:00" },
+  { id: "p1", board: "brief", title: "의사결정 브리프: 사내 에이전트 도입, 지금 결정할 3가지", excerpt: "도구·권한·가드레일을 어떻게 정할지 한 장으로 정리했습니다.", category: "ax", audience: "public", external_url: null, tags: ["AX", "거버넌스"], thumbnail: true, published_at: "2026-07-15T09:00:00+09:00" },
   { id: "p2", board: "ai_trend", title: "Claude 신규 모델 업데이트 — CEO가 알아야 할 변화", excerpt: "긴 컨텍스트·에이전트 성능 향상이 실무에 주는 의미.", category: "ai_news", external_url: "https://www.anthropic.com/news", audience: "public", tags: ["AI 뉴스"], thumbnail: false, published_at: "2026-07-12T09:00:00+09:00" },
-  { id: "p3", board: "ai_trend", title: "RAG vs 파인튜닝 — 우리 회사엔 무엇이 맞나", excerpt: "사내 데이터 활용 관점의 기술 비교.", category: "tech", external_url: null, audience: "student", tags: ["기술", "RAG"], thumbnail: true, published_at: "2026-07-10T09:00:00+09:00" },
-  { id: "p4", board: "brief", title: "부서별 PoC 설계 체크리스트", excerpt: "작게 시작해서 빠르게 검증하는 법.", category: "ax", audience: "student", external_url: null, tags: ["AX", "PoC"], thumbnail: false, published_at: "2026-07-08T09:00:00+09:00" },
+  { id: "p3", board: "ai_trend", title: "RAG vs 파인튜닝 — 우리 회사엔 무엇이 맞나", excerpt: "사내 데이터 활용 관점의 기술 비교.", category: "tech", external_url: null, audience: "public", tags: ["기술", "RAG"], thumbnail: true, published_at: "2026-07-10T09:00:00+09:00" },
+  { id: "p4", board: "brief", title: "부서별 PoC 설계 체크리스트", excerpt: "작게 시작해서 빠르게 검증하는 법.", category: "ax", audience: "public", external_url: null, tags: ["AX", "PoC"], thumbnail: false, published_at: "2026-07-08T09:00:00+09:00" },
 ];
 
 export const MOCK_CHAT: ChatMessage[] = [

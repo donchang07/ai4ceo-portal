@@ -26,7 +26,7 @@ export default async function AdminVersionPacksPage() {
 
   return (
     <AdminShell>
-      <SectionTitle>Cohort Version Pack 관리</SectionTitle>
+      <SectionTitle>수강 스케줄 관리</SectionTitle>
       <p className="mt-1 text-sm text-muted">
         기수별 커리큘럼 스냅샷의 잠금 상태를 확인하고 관리합니다. 잠금 후 변경은 이력으로
         남습니다.

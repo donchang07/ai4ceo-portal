@@ -14,7 +14,7 @@ const nav = [
   { href: "/admin/cohorts", label: "기수 관리", icon: GraduationCap },
   { href: "/admin/curriculum", label: "커리큘럼 편집", icon: FileText },
   { href: "/admin/bookings", label: "예약 관리", icon: CalendarClock },
-  { href: "/admin/version-packs", label: "버전 팩", icon: Package },
+  { href: "/admin/version-packs", label: "수강 스케줄 관리", icon: Package },
   { href: "/admin/contents", label: "AI 뉴스·브리프", icon: Newspaper },
   { href: "/admin/billing", label: "결제·세금계산서", icon: CreditCard },
   { href: "/admin/security", label: "보안 설정", icon: ShieldCheck },

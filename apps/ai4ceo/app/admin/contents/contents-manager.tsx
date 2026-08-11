@@ -11,12 +11,7 @@ const CATEGORY_LABEL: Record<Post["category"], string> = {
   tech: "기술",
   ax: "기업 AX",
 };
-const AUDIENCE_LABEL: Record<Post["audience"], string> = {
-  public: "전체 공개",
-  student: "수강생",
-  alumni: "수료생",
-  admin_only: "관리자만",
-};
+
 const BOARD_LABEL: Record<"ai_trend" | "brief" | "notice", string> = {
   ai_trend: "AI 트렌드",
   brief: "의사결정 브리프",
@@ -28,6 +23,7 @@ type FormState = {
   board: "ai_trend" | "brief" | "notice";
   title: string;
   category: Post["category"];
+  // AI 브리프는 전부 공개다. 폼에서 고르지 않고 항상 public 으로 저장한다.
   audience: Post["audience"];
   excerpt: string;
   body_mdx: string;
@@ -138,19 +134,6 @@ export function ContentsManager({ posts }: { posts: Post[] }) {
                   <option value="ax">기업 AX</option>
                 </select>
               </label>
-              <label className="flex flex-col gap-1 text-xs font-medium text-muted">
-                공개 범위
-                <select
-                  value={form.audience}
-                  onChange={(e) => setForm({ ...form, audience: e.target.value as Post["audience"] })}
-                  className={selectClass}
-                >
-                  <option value="public">전체 공개</option>
-                  <option value="student">수강생</option>
-                  <option value="alumni">수료생</option>
-                  <option value="admin_only">관리자만</option>
-                </select>
-              </label>
             </div>
             <Textarea
               rows={2}
@@ -204,7 +187,6 @@ export function ContentsManager({ posts }: { posts: Post[] }) {
                   <div className="flex flex-wrap items-center gap-1.5">
                     <Badge tone="info">{BOARD_LABEL[post.board as "ai_trend" | "brief" | "notice"] ?? post.board}</Badge>
                     <Badge tone="neutral">{CATEGORY_LABEL[post.category]}</Badge>
-                    <Badge tone={post.audience === "public" ? "done" : "progress"}>{AUDIENCE_LABEL[post.audience]}</Badge>
                   </div>
                   <CardTitle className="mt-2">{post.title}</CardTitle>
                   {post.excerpt ? <p className="mt-1 text-sm text-muted">{post.excerpt}</p> : null}

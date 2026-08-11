@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Lock, ExternalLink } from "lucide-react";
-import { Badge, Button, Card, Chip } from "@/components/ui";
+import { ExternalLink } from "lucide-react";
+import { Badge, Card, Chip } from "@/components/ui";
 import type { Post } from "@/lib/db/types";
 
 const CATEGORY_LABEL: Record<Post["category"], string> = {
@@ -44,40 +44,6 @@ function TagChips({ tags }: { tags: string[] }) {
 }
 
 function PostCard({ post }: { post: Post }) {
-  const locked = post.audience !== "public";
-
-  // (c) Locked card — student/alumni content on the public feed
-  if (locked) {
-    return (
-      <Card className="overflow-hidden p-0">
-        {post.thumbnail && (
-          <div className="relative h-[130px] bg-gradient-to-br from-dark to-[#2a3a4d]">
-            <div className="absolute left-4 top-4">
-              <Badge tone="info">
-                {post.audience === "alumni" ? "의사결정 브리프 · 동문 전용" : "수강생 전용"}
-              </Badge>
-            </div>
-          </div>
-        )}
-        <div className="p-5">
-          <h3 className="text-base font-semibold text-ink">{post.title}</h3>
-          <p className="mt-1.5 select-none text-sm text-muted blur-[3px]" aria-hidden>
-            {post.excerpt}
-          </p>
-          <div className="mt-4 flex flex-col items-start gap-3 rounded-control border border-cardline bg-surface-muted px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
-            <span className="flex items-center gap-2 text-[13px] font-medium text-ink">
-              <Lock size={15} className="text-faint" />
-              수강생·수료생 공개 글 — 지원하고 열람하기
-            </span>
-            <Button href="/apply" variant="primary" className="shrink-0">
-              지원하기
-            </Button>
-          </div>
-        </div>
-      </Card>
-    );
-  }
-
   // (a) Thumbnail card
   if (post.thumbnail) {
     return (
