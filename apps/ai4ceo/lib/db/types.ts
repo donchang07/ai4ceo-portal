@@ -78,14 +78,27 @@ export interface Assignment {
 export interface Application {
   id: string;
   name: string;
-  company: string;
-  title: string;
+  // 간소화된 지원서(이름·전화·이메일)에서는 비어 있다 — 과거 기수 데이터 호환을 위해 유지.
+  company: string | null;
+  title: string | null;
   phone: string;
   email: string;
-  motivation: string;
+  motivation: string | null;
   status: "received" | "reviewing" | "accepted" | "rejected" | "waitlist";
   referral_code: string | null;
   referral_label?: string | null;
+  created_at: string;
+}
+
+export interface Inquiry {
+  id: string;
+  name: string;
+  email: string | null;
+  phone: string | null;
+  message: string;
+  source: string | null;
+  status: "new" | "in_progress" | "done";
+  admin_note: string | null;
   created_at: string;
 }
 

@@ -10,6 +10,7 @@ import {
 import type {
   Application,
   Assignment,
+  Inquiry,
   Invoice,
   Material,
   Post,
@@ -73,6 +74,17 @@ export async function getApplications(): Promise<Application[]> {
     async (sb) => (await sb.from("applications").select("*").order("created_at", { ascending: false })).data as Application[] | null,
     MOCK_APPLICATIONS,
   );
+}
+
+// 문의는 실제 접수만 의미가 있으므로 목업 폴백을 두지 않는다(빈 목록 = 접수 없음).
+export async function getInquiries(): Promise<Inquiry[]> {
+  try {
+    const sb = await getSupabaseServer();
+    const { data } = await sb.from("inquiries").select("*").order("created_at", { ascending: false });
+    return (data as Inquiry[] | null) ?? [];
+  } catch {
+    return [];
+  }
 }
 
 export async function getInvoices(): Promise<Invoice[]> {

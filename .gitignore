@@ -44,3 +44,6 @@ supabase/.temp/
 
 # 강의 자료 (저장소에 올리지 않음)
 docs/class/
+
+# playwright mcp 임시 캡처·스냅샷 (machine-local)
+.playwright-mcp/

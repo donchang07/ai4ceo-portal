@@ -129,7 +129,7 @@ export function SelfCheck() {
           <p className="mt-1.5 text-[13px] leading-relaxed text-muted">{result.body}</p>
           <div className="mt-4 flex flex-wrap gap-2">
             <Button href="/apply" variant="primary">18기 지원하기</Button>
-            <Button href="mailto:donchang0725@gmail.com" variant="secondary">문의하기</Button>
+            <Button href="/contact?from=program-self-check" variant="secondary">문의하기</Button>
             <Button variant="ghost" onClick={reset}>
               <RotateCcw size={14} /> 다시 하기
             </Button>
