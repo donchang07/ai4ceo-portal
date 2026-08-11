@@ -89,7 +89,19 @@ export function PortalShell({
               <Bell size={20} />
               <span className="absolute -right-1 -top-1 h-2 w-2 rounded-full bg-danger" />
             </button>
-            <span className="grid h-8 w-8 place-items-center rounded-full bg-surface-muted text-sm font-semibold text-primary">나</span>
+            <Link
+              href="/portal/profile"
+              aria-label="내 정보"
+              title="내 정보"
+              className={cn(
+                "grid h-8 w-8 place-items-center rounded-full text-sm font-semibold transition-colors",
+                pathname === "/portal/profile"
+                  ? "bg-primary text-white"
+                  : "bg-surface-muted text-primary hover:bg-info-surface",
+              )}
+            >
+              나
+            </Link>
           </div>
         </header>
 
