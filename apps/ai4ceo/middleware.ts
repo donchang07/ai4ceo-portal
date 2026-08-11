@@ -9,6 +9,8 @@ export async function middleware(request: NextRequest) {
   if (!SUPABASE_CONFIGURED) return NextResponse.next({ request });
 
   const requestHeaders = new Headers(request.headers);
+  // 레이아웃(서버 컴포넌트)에서 현재 경로를 알아야 관리자 기기 등록·인증 화면을 가드에서 제외할 수 있다.
+  requestHeaders.set("x-ai4ceo-path", request.nextUrl.pathname);
   const refreshedCookies: CookieToSet[] = [];
 
   const supabase = createServerClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
