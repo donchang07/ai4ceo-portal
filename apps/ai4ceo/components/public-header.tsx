@@ -8,6 +8,8 @@ import { Button } from "@/components/ui";
 const NAV_LINKS = [
   { href: "/program", label: "과정 안내" },
   { href: "/trends", label: "AI 브리프" },
+  { href: "/pay", label: "수강료 결제" },
+  { href: "/contact", label: "문의하기" },
   { href: "/login", label: "로그인" },
 ] as const;
 

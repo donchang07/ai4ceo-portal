@@ -16,6 +16,15 @@ export const COHORT_18 = {
 export const TUITION_KRW = 2_200_000;
 export const MEMBERSHIP_KRW = 550_000;
 
+// 사업자정보 — 사업자등록증 기재 내용과 완전히 일치해야 한다 (토스페이먼츠 심사 요건)
+export const BUSINESS_INFO = {
+  name: "에이아이비비랩(AIBB LAB) 주식회사",
+  ceo: "장동인(CHANG DONG IN)",
+  registrationNumber: "125-87-01333",
+  address: "서울시 강서구 마곡중앙1로 10 801호(한일노벨리아빌딩)",
+  phone: "010-5259-9509",
+} as const;
+
 export const BANK_ACCOUNT = {
   bank: "신한은행",
   number: "140-012-546787",

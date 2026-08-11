@@ -1,8 +1,12 @@
 import { Terminal, Layout, Users, Settings, ArrowRight, Layers } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { PublicHeader } from "@/components/public-header";
+import { SiteFooter } from "@/components/site-footer";
+import { ProductCheckout } from "@/components/product-checkout";
 import { Badge, Button, Card, SectionTitle, Callout } from "@/components/ui";
 import { COHORT_18, TRACKS } from "@/lib/core/constants";
+import { PUBLIC_PRODUCTS } from "@/lib/billing/products";
+import { getTossClientKey } from "@/lib/billing/toss";
 
 const trackIcons: Record<string, LucideIcon> = {
   terminal: Terminal,
@@ -87,8 +91,21 @@ export default function Landing() {
         </Callout>
       </section>
 
+      {/* 수강료 안내 — 안내에서 끝나지 않고 이 자리에서 바로 결제할 수 있다 */}
+      <section id="pricing" className="border-t border-hairline bg-surface-muted/40">
+        <div className="mx-auto max-w-[1100px] px-6 py-14">
+          <SectionTitle>수강료 안내</SectionTitle>
+          <p className="mt-1 text-sm text-muted">
+            아래에서 바로 결제하실 수 있습니다. 로그인 없이 신용·체크카드로 결제됩니다.
+          </p>
+          <div className="mt-6">
+            <ProductCheckout products={PUBLIC_PRODUCTS} clientKey={getTossClientKey()} />
+          </div>
+        </div>
+      </section>
+
       {/* Bottom CTA */}
-      <section className="border-t border-hairline bg-surface-muted/40">
+      <section className="border-t border-hairline bg-canvas">
         <div className="mx-auto flex max-w-[1100px] flex-col items-start gap-4 px-6 py-14 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <div className="text-xl font-bold text-ink">18기 모집이 진행 중입니다</div>
@@ -97,17 +114,18 @@ export default function Landing() {
               로그인 없이 5분이면 지원할 수 있습니다.
             </p>
           </div>
-          <Button href="/apply" variant="primary" className="shrink-0">
-            지원하기 <ArrowRight size={16} />
-          </Button>
+          <div className="flex shrink-0 gap-2">
+            <Button href="/apply" variant="primary">
+              지원하기 <ArrowRight size={16} />
+            </Button>
+            <Button href="/pay" variant="secondary">
+              수강료 결제
+            </Button>
+          </div>
         </div>
       </section>
 
-      <footer className="border-t border-hairline bg-canvas">
-        <div className="mx-auto max-w-[1100px] px-6 py-8 text-xs text-faint">
-          AI4CEO Portal · AIBB LAB · 장동인 교수 · {COHORT_18.versionLabel}
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }
