@@ -12,7 +12,7 @@ interface Enrollment {
   secret: string;
 }
 
-export function TotpSetup({ enrolled }: { enrolled: boolean }) {
+export function TotpSetup({ enrolled, required }: { enrolled: boolean; required: boolean }) {
   const router = useRouter();
   const [enrollment, setEnrollment] = useState<Enrollment | null>(null);
   const [code, setCode] = useState("");
@@ -71,13 +71,17 @@ export function TotpSetup({ enrolled }: { enrolled: boolean }) {
       <Card>
         <div className="flex items-center gap-2">
           <CardTitle>2단계 인증</CardTitle>
-          <Badge tone="done">등록됨</Badge>
+          <Badge tone={required ? "done" : "neutral"}>{required ? "사용 중" : "등록됨 · 사용 안 함"}</Badge>
         </div>
         <p className="mt-2 text-[13px] leading-relaxed text-muted">
-          인증 앱이 등록되어 있습니다. 로그인할 때마다 6자리 코드를 입력하게 됩니다.
+          {required
+            ? "인증 앱이 등록되어 있습니다. 로그인할 때마다 6자리 코드를 입력하게 됩니다."
+            : "인증 앱은 등록되어 있지만 지금은 요구하지 않습니다. 관리자 화면은 등록된 기기만으로 보호됩니다."}
         </p>
         <Callout className="mt-4">
-          인증 앱을 바꾸시려면 Supabase 콘솔에서 기존 인증 수단을 삭제한 뒤 이 화면에서 다시 등록해 주세요.
+          {required
+            ? "인증 앱을 바꾸시려면 Supabase 콘솔에서 기존 인증 수단을 삭제한 뒤 이 화면에서 다시 등록해 주세요."
+            : "다시 사용하시려면 환경변수 ADMIN_MFA_REQUIRED 를 on 으로 두고 재배포하세요. 등록된 인증 앱이 그대로 동작합니다."}
         </Callout>
       </Card>
     );

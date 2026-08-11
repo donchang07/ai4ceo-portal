@@ -21,6 +21,14 @@ export function isAdminDeviceGuardEnabled(): boolean {
   return (process.env.ADMIN_DEVICE_GUARD ?? "").toLowerCase() === "on";
 }
 
+// 2단계 인증(TOTP) 강제 여부. 기본 off —
+// 등록된 기기에서만 열리는 이상 TOTP는 기기 도난 시나리오만 추가로 막는데,
+// 세션이 끊길 때마다 코드를 다시 물어 실사용 부담이 컸다.
+// 다시 켜려면 ADMIN_MFA_REQUIRED=on. (등록해둔 인증 앱은 그대로 남아 바로 동작한다.)
+export function isAdminMfaRequired(): boolean {
+  return (process.env.ADMIN_MFA_REQUIRED ?? "").toLowerCase() === "on";
+}
+
 function hashToken(token: string): string {
   return createHash("sha256").update(token).digest("hex");
 }
