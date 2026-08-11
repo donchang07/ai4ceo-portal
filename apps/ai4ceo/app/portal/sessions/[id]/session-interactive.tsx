@@ -84,7 +84,7 @@ export function SessionInteractive({ videoUrl, sessionId }: { videoUrl: string |
   }
 
   return (
-    <div className="grid gap-5 lg:grid-cols-[1.7fr_1fr]">
+    <div className="flex max-w-[860px] flex-col gap-5">
       {/* 영상 */}
       <div>
         {videoUrl ? (

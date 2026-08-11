@@ -22,7 +22,7 @@ export default async function AdminSecurityPage() {
         {isAdminMfaRequired() && " 여기에 더해 로그인할 때마다 2단계 인증을 거칩니다."}
       </p>
 
-      <div className="mt-6 grid gap-5 lg:grid-cols-2 lg:items-start">
+      <div className="mt-6 flex max-w-[720px] flex-col gap-5">
         <DeviceList devices={devices} guardEnabled={isAdminDeviceGuardEnabled()} />
         <TotpSetup enrolled={totpEnrolled} required={isAdminMfaRequired()} />
       </div>

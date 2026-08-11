@@ -34,7 +34,7 @@ export function ProfileForm({ email, roleLabel, initial }: ProfileFormProps) {
   }
 
   return (
-    <div className="grid gap-5 lg:grid-cols-[1.4fr_1fr] lg:items-start">
+    <div className="mx-auto flex max-w-[680px] flex-col gap-5">
       <Card>
         <CardTitle>내 정보</CardTitle>
         <p className="mt-1 text-[13px] text-muted">
@@ -100,7 +100,7 @@ export function ProfileForm({ email, roleLabel, initial }: ProfileFormProps) {
                 checked={form.marketing_opt_in}
                 onChange={(e) => set("marketing_opt_in", e.target.checked)}
               />
-              <span>새 기수·행사 안내를 받아봅니다.</span>
+              <span>행사 안내를 받아봅니다.</span>
             </label>
           </div>
 

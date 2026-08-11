@@ -51,7 +51,7 @@ export default async function CohortHome() {
         </p>
       </div>
 
-      <div className="grid gap-5 lg:grid-cols-[1.6fr_1fr]">
+      <div className="flex max-w-[860px] flex-col gap-5">
         {/* Left column */}
         <div className="flex flex-col gap-5">
           {/* My Build */}

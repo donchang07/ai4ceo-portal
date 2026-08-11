@@ -70,7 +70,7 @@ export default async function SessionDetail({ params }: { params: Promise<{ id: 
       <SessionInteractive videoUrl={video?.google_drive_url ?? null} sessionId={session.id} />
 
       {/* 강의자료 + 연결 과제 */}
-      <div className="mt-5 grid gap-5 lg:grid-cols-[1.7fr_1fr]">
+      <div className="mt-5 flex max-w-[860px] flex-col gap-5">
         <Card>
           <CardTitle>강의자료</CardTitle>
           {materials.length === 0 ? (
