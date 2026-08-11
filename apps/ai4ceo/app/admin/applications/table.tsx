@@ -70,8 +70,10 @@ export function ApplicationsTable({ applications }: { applications: Application[
       if (!q) return true;
       return (
         a.name.toLowerCase().includes(q) ||
-        a.company.toLowerCase().includes(q) ||
-        a.title.toLowerCase().includes(q)
+        (a.company ?? "").toLowerCase().includes(q) ||
+        (a.title ?? "").toLowerCase().includes(q) ||
+        (a.email ?? "").toLowerCase().includes(q) ||
+        (a.phone ?? "").includes(q)
       );
     });
   }, [applications, filter, query]);
@@ -136,11 +138,13 @@ export function ApplicationsTable({ applications }: { applications: Application[
                   </td>
                   <td className="px-4 py-3">
                     <div className="font-semibold text-ink">{a.name}</div>
-                    <div className="text-xs text-muted">{a.title}</div>
+                    {a.title && <div className="text-xs text-muted">{a.title}</div>}
+                    <div className="text-xs text-faint">{a.phone}</div>
+                    <div className="text-xs text-faint">{a.email}</div>
                   </td>
-                  <td className="px-4 py-3 text-ink">{a.company}</td>
+                  <td className="px-4 py-3 text-ink">{a.company ?? <span className="text-faint">—</span>}</td>
                   <td className="max-w-[260px] px-4 py-3">
-                    <span className="block truncate text-muted">{a.motivation}</span>
+                    <span className="block truncate text-muted">{a.motivation ?? "—"}</span>
                   </td>
                   <td className="px-4 py-3">
                     {a.referral_label ? (
@@ -212,7 +216,7 @@ export function ApplicationsTable({ applications }: { applications: Application[
         </div>
       )}
       <Callout className="mt-4">
-        합격으로 변경 시 알림톡 T-02와 초대 링크, 인보이스가 자동 발송됩니다.
+        등록 방법을 문자로 알려드립니다.
       </Callout>
     </div>
   );

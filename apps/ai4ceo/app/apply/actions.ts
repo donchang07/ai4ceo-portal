@@ -8,12 +8,8 @@ import { COHORT_18 } from "@/lib/core/constants";
 // applications_insert RLS는 public insert를 허용하므로 서버 액션에서도 anon 클라이언트로 충분하다.
 export async function submitApplication(form: {
   name: string;
-  company: string;
-  title: string;
   phone: string;
   email: string;
-  referral_code: string;
-  motivation: string;
 }): Promise<{ ok: boolean; receiptNo: string }> {
   const rand = Math.floor(1000 + Math.random() * 9000);
   const receiptNo = `AP-18-${rand}`;
@@ -23,12 +19,8 @@ export async function submitApplication(form: {
     await sb.from("applications").insert({
       cohort_id: COHORT_18.id,
       name: form.name,
-      company: form.company,
-      title: form.title,
       phone: form.phone,
       email: form.email,
-      motivation: form.motivation,
-      referral_code: form.referral_code.trim() || null,
       status: "received",
     });
 
