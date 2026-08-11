@@ -41,7 +41,8 @@ export function PortalShell({
     <div className="min-h-screen bg-canvas">
       {/* Desktop sidebar */}
       <aside className="fixed inset-y-0 left-0 hidden w-[248px] flex-col border-r border-hairline bg-surface px-4 py-5 md:flex">
-        <Link href="/portal/cohort" className="mb-6 flex items-center gap-2 px-2 font-bold text-ink">
+        {/* 로고는 어느 화면에서든 홈으로 — 세션 쿠키는 그대로라 로그인은 유지된다 */}
+        <Link href="/" className="mb-6 flex items-center gap-2 px-2 font-bold text-ink">
           <span className="grid h-8 w-8 place-items-center rounded-[10px] bg-primary text-white">
             <Sparkles size={18} />
           </span>

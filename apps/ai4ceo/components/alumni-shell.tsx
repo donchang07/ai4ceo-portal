@@ -24,7 +24,8 @@ export function AlumniShell({ children }: { children: ReactNode }) {
     <div className="min-h-screen bg-canvas">
       <header className="sticky top-0 z-30 border-b border-hairline bg-surface/90 backdrop-blur">
         <div className="mx-auto flex h-15 max-w-[1200px] items-center justify-between px-6 py-3">
-          <Link href="/alumni" className="flex items-center gap-2 font-bold text-ink">
+          {/* 로고는 어느 화면에서든 홈으로 — 세션 쿠키는 그대로라 로그인은 유지된다 */}
+          <Link href="/" className="flex items-center gap-2 font-bold text-ink">
             <span className="grid h-8 w-8 place-items-center rounded-[10px] bg-primary text-white">
               <Sparkles size={18} />
             </span>

@@ -25,7 +25,8 @@ export function AdminShell({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen bg-canvas">
       <aside className="fixed inset-y-0 left-0 hidden w-[224px] flex-col bg-dark px-4 py-5 text-white md:flex">
-        <Link href="/admin" className="mb-6 flex items-center gap-2 px-2 font-bold">
+        {/* 로고는 어느 화면에서든 홈으로 — 세션 쿠키는 그대로라 로그인은 유지된다 */}
+        <Link href="/" className="mb-6 flex items-center gap-2 px-2 font-bold">
           <span className="grid h-8 w-8 place-items-center rounded-[10px] bg-primary text-white">
             <Sparkles size={18} />
           </span>
@@ -55,7 +56,7 @@ export function AdminShell({ children }: { children: ReactNode }) {
       <div className="md:pl-[224px]">
         {/* 모바일 상단바 (사이드바가 md:hidden 이라 대체 메뉴 제공) */}
         <header className="sticky top-0 z-30 flex h-15 items-center justify-between border-b border-white/10 bg-dark px-5 text-white md:hidden">
-          <Link href="/admin" className="flex items-center gap-2 font-bold">
+          <Link href="/" className="flex items-center gap-2 font-bold">
             <span className="grid h-8 w-8 place-items-center rounded-[10px] bg-primary text-white">
               <Sparkles size={18} />
             </span>
