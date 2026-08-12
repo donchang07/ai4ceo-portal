@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Sparkles, Send, Share2, CalendarPlus, Flag, LifeBuoy } from "lucide-react";
 import { PortalShell } from "@/components/portal-shell";
 import { Badge, Callout, Chip, Input } from "@/components/ui";
+import { Markdown } from "@/components/markdown";
 import { RECOMMENDED_QUESTIONS } from "@/lib/db/mock";
 import { getSupabaseBrowser } from "@/lib/db/supabase-client";
 
@@ -150,8 +151,12 @@ export function AiTutorView() {
                     <Sparkles size={16} />
                   </span>
                   <div className="max-w-[85%]">
-                    <div className="whitespace-pre-wrap rounded-2xl rounded-tl-sm bg-info-surface px-3.5 py-2.5 text-sm text-ink">
-                      {t.body || <span className="text-faint">답변을 작성 중입니다…</span>}
+                    <div className="rounded-2xl rounded-tl-sm bg-info-surface px-3.5 py-2.5 text-sm text-ink">
+                      {t.body ? (
+                        <Markdown>{t.body}</Markdown>
+                      ) : (
+                        <span className="text-faint">답변을 작성 중입니다…</span>
+                      )}
                     </div>
 
                     {!t.streaming ? (

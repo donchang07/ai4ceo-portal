@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import { Badge } from "@/components/ui";
+import { Markdown } from "@/components/markdown";
 import type { Post } from "@/lib/db/types";
 
 // Design Ref: prd-v3-cycle3.design.md §3 — F-1·F-5·F-6 상세 렌더
@@ -39,9 +40,7 @@ export function PostDetail({ post }: { post: Post }) {
 
       <h1 className="mt-3 text-2xl font-bold tracking-tight text-ink">{post.title}</h1>
 
-      <p className="mt-4 whitespace-pre-wrap text-[15px] leading-relaxed text-ink">
-        {post.body_mdx?.trim() || post.excerpt}
-      </p>
+      <Markdown className="mt-4 text-[15px]">{post.body_mdx?.trim() || post.excerpt}</Markdown>
       {post.external_url ? (
         <a
           href={post.external_url}

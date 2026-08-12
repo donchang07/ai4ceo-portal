@@ -4,6 +4,7 @@ import { useState, useTransition } from "react";
 import { MessageCircleQuestion, Send, Sparkles, GraduationCap, User } from "lucide-react";
 import { PortalShell } from "@/components/portal-shell";
 import { Card, CardTitle, Input, Badge, Button, SectionTitle } from "@/components/ui";
+import { Markdown } from "@/components/markdown";
 import type { QuestionWithAnswers } from "@/lib/db/types";
 import { askGeneralQuestion, answerGeneralQuestion, answerGeneralWithAi } from "./actions";
 
@@ -149,7 +150,7 @@ function QuestionItem({ question, canAnswer }: { question: QuestionWithAnswers; 
                   {a.is_instructor ? <Badge tone="progress" className="px-1.5 py-0">강사</Badge> : null}
                   {a.is_ai ? <Badge tone="info" className="bg-info-surface px-1.5 py-0">AI</Badge> : null}
                 </div>
-                <p className="mt-0.5 whitespace-pre-wrap text-sm text-ink">{a.body}</p>
+                <Markdown className="mt-0.5">{a.body}</Markdown>
               </div>
             </div>
           ))}

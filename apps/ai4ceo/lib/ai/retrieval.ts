@@ -38,7 +38,8 @@ async function embedQuery(text: string): Promise<number[] | null> {
 
 // Best-effort: any failure (missing keys, empty index) returns [] so the tutor
 // still answers from the curriculum context.
-export async function retrieveRagChunks(question: string, matchCount = 6): Promise<RagChunk[]> {
+// 응답 상한이 64k라 근거 자료도 넉넉히 붙인다 (기존 6개 → 20개).
+export async function retrieveRagChunks(question: string, matchCount = 20): Promise<RagChunk[]> {
   try {
     const supabase = getServiceClient();
     if (!supabase) return [];

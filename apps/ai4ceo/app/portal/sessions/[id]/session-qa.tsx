@@ -3,6 +3,7 @@
 import { useState, useTransition } from "react";
 import { MessageCircleQuestion, Send, Sparkles, GraduationCap, User } from "lucide-react";
 import { Card, CardTitle, Input, Badge, Button } from "@/components/ui";
+import { Markdown } from "@/components/markdown";
 import type { QuestionWithAnswers } from "@/lib/db/types";
 import { askQuestion, answerQuestion, answerWithAi } from "./actions";
 
@@ -154,7 +155,7 @@ function QuestionItem({
                   {a.is_ai && <Badge tone="info" className="bg-info-surface px-1.5 py-0">AI</Badge>}
                   {!a.is_instructor && !a.is_ai && <Badge tone="neutral" className="px-1.5 py-0">수강생</Badge>}
                 </div>
-                <p className="mt-0.5 whitespace-pre-wrap text-sm text-ink">{a.body}</p>
+                <Markdown className="mt-0.5">{a.body}</Markdown>
               </div>
             </li>
           ))}
