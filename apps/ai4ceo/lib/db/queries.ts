@@ -18,6 +18,12 @@ import type {
   VideoRec,
   QuestionWithAnswers,
   SessionAnswer,
+  ReferralStat,
+  NotificationLog,
+  OutboxEvent,
+  ChatRoomSummary,
+  ChatFileRec,
+  DriveVideoPolicy,
 } from "./types";
 
 // Each query attempts Supabase (RLS enforced). When the schema is not yet
@@ -186,6 +192,130 @@ export async function getGeneralQuestions(cohortId: string): Promise<QuestionWit
       byQuestion.set(a.question_id, arr);
     }
     return (questions as QuestionWithAnswers[]).map((q) => ({ ...q, answers: byQuestion.get(q.id) ?? [] }));
+  } catch {
+    return [];
+  }
+}
+
+// ---------- 관리자 운영 화면 (PRD §7.2 /admin/referrals · /admin/notifications · /admin/chat · /admin/drive-policy) ----------
+// 운영 로그·현황은 실제 데이터만 의미가 있으므로 목업 폴백을 두지 않는다(빈 목록 = 기록 없음).
+
+export async function getReferralStats(): Promise<ReferralStat[]> {
+  try {
+    const sb = await getSupabaseServer();
+    const [{ data: codes }, { data: apps }] = await Promise.all([
+      sb.from("referrals").select("code, label, created_at").order("created_at", { ascending: false }),
+      sb.from("applications").select("referral_code, status"),
+    ]);
+    if (!codes) return [];
+    return codes.map((c) => {
+      const matched = (apps ?? []).filter((a) => a.referral_code === c.code);
+      return {
+        code: c.code as string,
+        label: (c.label as string | null) ?? null,
+        applications: matched.length,
+        accepted: matched.filter((a) => a.status === "accepted").length,
+        created_at: c.created_at as string,
+      };
+    });
+  } catch {
+    return [];
+  }
+}
+
+export async function getNotificationLogs(limit = 100): Promise<NotificationLog[]> {
+  try {
+    const sb = await getSupabaseServer();
+    const { data } = await sb
+      .from("notifications")
+      .select("id, channel, template_code, phone, status, sent_at, created_at")
+      .order("created_at", { ascending: false })
+      .limit(limit);
+    return (data as NotificationLog[] | null) ?? [];
+  } catch {
+    return [];
+  }
+}
+
+export async function getOutboxEvents(limit = 50): Promise<OutboxEvent[]> {
+  try {
+    const sb = await getSupabaseServer();
+    const { data } = await sb
+      .from("notification_outbox")
+      .select("id, entity_type, event_type, status, created_at, sent_at")
+      .order("created_at", { ascending: false })
+      .limit(limit);
+    return (data as OutboxEvent[] | null) ?? [];
+  } catch {
+    return [];
+  }
+}
+
+export async function getChatRoomSummaries(): Promise<ChatRoomSummary[]> {
+  try {
+    const sb = await getSupabaseServer();
+    const { data: rooms } = await sb
+      .from("chat_rooms")
+      .select("id, title, status, google_drive_folder_url, cohorts(name)")
+      .order("created_at", { ascending: false });
+    if (!rooms) return [];
+
+    return await Promise.all(
+      rooms.map(async (r) => {
+        const roomId = r.id as string;
+        const [members, messages, files, last] = await Promise.all([
+          sb.from("chat_members").select("id", { count: "exact", head: true }).eq("chat_room_id", roomId),
+          sb.from("chat_messages").select("id", { count: "exact", head: true }).eq("chat_room_id", roomId),
+          sb.from("chat_files").select("id", { count: "exact", head: true }).eq("chat_room_id", roomId),
+          sb
+            .from("chat_messages")
+            .select("created_at")
+            .eq("chat_room_id", roomId)
+            .order("created_at", { ascending: false })
+            .limit(1)
+            .maybeSingle(),
+        ]);
+        const cohort = r.cohorts as { name: string } | { name: string }[] | null;
+        return {
+          id: roomId,
+          title: (r.title as string | null) ?? null,
+          status: (r.status as string) ?? "open",
+          cohort_name: Array.isArray(cohort) ? (cohort[0]?.name ?? null) : (cohort?.name ?? null),
+          google_drive_folder_url: (r.google_drive_folder_url as string | null) ?? null,
+          members: members.count ?? 0,
+          messages: messages.count ?? 0,
+          files: files.count ?? 0,
+          last_message_at: (last.data?.created_at as string | null) ?? null,
+        };
+      }),
+    );
+  } catch {
+    return [];
+  }
+}
+
+export async function getChatFiles(limit = 100): Promise<ChatFileRec[]> {
+  try {
+    const sb = await getSupabaseServer();
+    const { data } = await sb
+      .from("chat_files")
+      .select("id, name, mime_type, size_bytes, permission, google_drive_url, created_at")
+      .order("created_at", { ascending: false })
+      .limit(limit);
+    return (data as ChatFileRec[] | null) ?? [];
+  } catch {
+    return [];
+  }
+}
+
+export async function getVideoPolicies(): Promise<DriveVideoPolicy[]> {
+  try {
+    const sb = await getSupabaseServer();
+    const { data } = await sb
+      .from("videos")
+      .select("id, title, visibility, google_drive_url, published_at")
+      .order("published_at", { ascending: false, nullsFirst: false });
+    return (data as DriveVideoPolicy[] | null) ?? [];
   } catch {
     return [];
   }

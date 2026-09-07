@@ -12,6 +12,12 @@ export interface PublicProduct {
   summary: string;
   details: string[];
   artwork: ArtworkKey;
+  /**
+   * 결제 시점부터 서비스 제공이 끝날 때까지의 기간.
+   * 토스페이먼츠 심사 요건 — 구매자가 인지할 수 있도록 상품 페이지에 반드시 노출해야 하며,
+   * 12개월을 넘기면 입점이 불가하므로 어떤 상품도 12개월을 초과해선 안 된다.
+   */
+  period: string;
   /** 구매 전 반드시 고지해야 하는 이용 조건 (없으면 표시하지 않음) */
   notice?: string;
 }
@@ -27,20 +33,22 @@ export const PUBLIC_PRODUCTS: PublicProduct[] = [
       "수강생 전용 포털(LMS)·AI 조교·다시보기 제공",
     ],
     artwork: "tuition",
+    period: "개강일부터 종강일까지 약 3개월 (매주 수요일 정규 강의 10회)",
   },
   {
     code: "membership-alumni",
     name: "동문 멤버십 (연간)",
     amount: MEMBERSHIP_KRW,
-    summary: "수료 후 1년간 동문 네트워크·자료 업데이트 이용권",
+    summary: "결제일부터 1년간 동문 네트워크·자료 업데이트 이용권",
     details: [
       "동문 디렉터리 및 네트워킹 세션 참여",
       "버전 팩·최신 커리큘럼 자료 업데이트",
       "AI 조교 계속 이용",
     ],
     artwork: "membership",
+    period: "결제일로부터 12개월",
     notice:
-      "동문 멤버십은 AI4CEO 과정을 수료하신 분께만 적용됩니다. 수료 전에 결제하시면 이용권은 '적용 대기' 상태로 보관되며, 과정을 수료하신 시점부터 1년간 자동으로 활성화됩니다. 멤버십만 단독으로 이용하실 수는 없습니다.",
+      "동문 멤버십은 AI4CEO 과정을 수료하신 분을 위한 이용권입니다. 결제일로부터 12개월간 이용하실 수 있으므로 수료 후에 결제하시기를 권해 드립니다. 멤버십만 단독으로 이용하실 수는 없습니다.",
   },
 ];
 

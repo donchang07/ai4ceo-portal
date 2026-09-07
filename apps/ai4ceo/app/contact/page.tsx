@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PublicHeader } from "@/components/public-header";
+import { getCurrentUser } from "@/lib/db/auth";
 import { SiteFooter } from "@/components/site-footer";
 import { SectionTitle } from "@/components/ui";
 import { ContactForm } from "./contact-form";
@@ -16,10 +17,11 @@ export default async function ContactPage({
 }) {
   const sp = await searchParams;
   const from = Array.isArray(sp.from) ? sp.from[0] : sp.from;
+  const user = await getCurrentUser();
 
   return (
     <div className="min-h-screen bg-canvas">
-      <PublicHeader />
+      <PublicHeader user={user} />
       <main className="mx-auto max-w-[620px] px-6 py-10">
         <SectionTitle>문의하기</SectionTitle>
         <p className="mt-1 text-sm text-muted">

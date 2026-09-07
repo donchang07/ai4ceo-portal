@@ -1,6 +1,7 @@
 import { Terminal, Layout, Users, Settings, ArrowRight, Layers } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { PublicHeader } from "@/components/public-header";
+import { getCurrentUser } from "@/lib/db/auth";
 import { SiteFooter } from "@/components/site-footer";
 import { ProductCheckout } from "@/components/product-checkout";
 import { Badge, Button, Card, SectionTitle, Callout } from "@/components/ui";
@@ -39,12 +40,16 @@ function buildStats(schedule: CohortSchedule | null) {
 }
 
 export default async function Landing() {
-  const [products, schedule] = await Promise.all([getPublicProducts(), getCohortSchedule()]);
+  const [products, schedule, user] = await Promise.all([
+    getPublicProducts(),
+    getCohortSchedule(),
+    getCurrentUser(),
+  ]);
   const stats = buildStats(schedule);
 
   return (
     <div className="min-h-screen bg-canvas">
-      <PublicHeader />
+      <PublicHeader user={user} />
 
       {/* Hero */}
       <section className="bg-gradient-to-b from-white to-canvas">
@@ -115,7 +120,8 @@ export default async function Landing() {
         <div className="mx-auto max-w-[1100px] px-6 py-14">
           <SectionTitle>수강료 안내</SectionTitle>
           <p className="mt-1 text-sm text-muted">
-            아래에서 바로 결제하실 수 있습니다. 로그인 없이 신용·체크카드로 결제됩니다.
+            아래에서 바로 결제하실 수 있습니다. 로그인 없이 신용·체크카드, 계좌이체, 가상계좌(무통장입금)로
+            결제하실 수 있습니다.
           </p>
           <div className="mt-6">
             <ProductCheckout products={products} clientKey={getTossClientKey()} />

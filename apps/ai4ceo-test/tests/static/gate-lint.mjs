@@ -15,6 +15,9 @@ const OUT = path.resolve(__dirname, "../report/gate-lint.json");
 const GUARD_RE = /require(Lms|Archive|Billing|Alumni)Access/;
 const REDIRECT_RE = /\bredirect\(/;
 const API_AUTH_RE = /(getCurrentUser|auth\.getUser|isAdmin|canAccess\w+|status:\s*403|next=\/login)/;
+// 의도적으로 인증 없이 공개하는 경로는 소스에 `@public-route: <이유>` 를 선언한다.
+// 규칙을 조용히 약화시키지 않고 예외를 파일에 남겨 감사 가능하게 한다(리포트에 목록 출력).
+const PUBLIC_MARK_RE = /@public-route:\s*(.+)/;
 
 function walk(dir, filter, acc = []) {
   if (!fs.existsSync(dir)) return acc;
@@ -36,6 +39,15 @@ function rel(p) {
 
 const violations = [];
 const results = [];
+const publicExemptions = [];
+
+// `@public-route:` 선언이 있으면 예외로 기록하고 true 를 돌려준다.
+function isDeclaredPublic(file, src, rule) {
+  const m = src.match(PUBLIC_MARK_RE);
+  if (!m) return false;
+  publicExemptions.push({ rule, file: rel(file), reason: m[1].trim() });
+  return true;
+}
 
 // --- FR-11: portal/alumni 페이지 게이트 ---
 const guardedRoots = [path.join(APP_DIR, "portal"), path.join(APP_DIR, "alumni")];
@@ -46,7 +58,7 @@ for (const root of guardedRoots) {
     const src = fs.readFileSync(file, "utf8");
     const hasGuard = GUARD_RE.test(src);
     const isRedirectStub = REDIRECT_RE.test(src) && !/from\s+["']@\/lib\/db\/queries/.test(src);
-    if (!hasGuard && !isRedirectStub) {
+    if (!hasGuard && !isRedirectStub && !isDeclaredPublic(file, src, "FR-11")) {
       violations.push({ rule: "FR-11", file: rel(file), message: "require*Access 호출 없음(게이트 누락)" });
     }
   }
@@ -100,7 +112,7 @@ let apiRoutes = 0;
 for (const file of walk(apiDir, (f) => f.endsWith("route.ts"))) {
   apiRoutes++;
   const src = fs.readFileSync(file, "utf8");
-  if (!API_AUTH_RE.test(src)) {
+  if (!API_AUTH_RE.test(src) && !isDeclaredPublic(file, src, "FR-12")) {
     violations.push({ rule: "FR-12", file: rel(file), message: "권한 검사 코드 없음(보호 미흡)" });
   }
 }
@@ -138,6 +150,7 @@ const report = {
   apiRoutesChecked: apiRoutes,
   results,
   violations,
+  publicExemptions,
 };
 
 fs.mkdirSync(path.dirname(OUT), { recursive: true });
@@ -145,6 +158,10 @@ fs.writeFileSync(OUT, JSON.stringify(report, null, 2), "utf8");
 
 console.log(`[gate-lint] portal/alumni 페이지 ${portalPages}개, api route ${apiRoutes}개 검사`);
 for (const r of results) console.log(`  ${r.result === "pass" ? "✅" : "🔴"} ${r.check} — ${r.detail}`);
+if (publicExemptions.length) {
+  console.log(`[gate-lint] 공개 선언 예외 ${publicExemptions.length}건(@public-route):`);
+  for (const e of publicExemptions) console.log(`  ⚪ [${e.rule}] ${e.file} — ${e.reason}`);
+}
 if (!ok) {
   console.error("[gate-lint] 위반 발견:");
   for (const v of violations) console.error(`  🔴 [${v.rule}] ${v.file} — ${v.message}`);

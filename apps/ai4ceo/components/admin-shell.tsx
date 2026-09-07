@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, Users, FileText, CreditCard, Sparkles, Newspaper, GraduationCap, CalendarClock, Package, MessageSquare, ShieldCheck } from "lucide-react";
+import { LayoutDashboard, Users, FileText, CreditCard, Sparkles, Newspaper, GraduationCap, CalendarClock, Package, MessageSquare, MessagesSquare, ShieldCheck, Bell, Share2, FolderLock } from "lucide-react";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/core/cn";
 import { MobileNavMenu } from "@/components/mobile-nav-menu";
@@ -15,7 +15,11 @@ const nav = [
   { href: "/admin/curriculum", label: "커리큘럼 편집", icon: FileText },
   { href: "/admin/bookings", label: "예약 관리", icon: CalendarClock },
   { href: "/admin/version-packs", label: "수강 스케줄 관리", icon: Package },
+  { href: "/admin/chat", label: "대화방 관리", icon: MessagesSquare },
+  { href: "/admin/drive-policy", label: "Drive 권한 정책", icon: FolderLock },
   { href: "/admin/contents", label: "AI 뉴스·브리프", icon: Newspaper },
+  { href: "/admin/notifications", label: "알림 로그", icon: Bell },
+  { href: "/admin/referrals", label: "추천 코드·성과", icon: Share2 },
   { href: "/admin/billing", label: "결제·세금계산서", icon: CreditCard },
   { href: "/admin/security", label: "보안 설정", icon: ShieldCheck },
 ];

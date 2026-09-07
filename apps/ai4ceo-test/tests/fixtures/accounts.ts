@@ -61,7 +61,12 @@ export async function ensureStorageState(browser: Browser, account: AccountKey):
   }));
   const context = await browser.newContext();
   await context.addCookies(cookies);
-  await context.storageState({ path: file });
+  // desktop/mobile 프로젝트가 같은 spec 을 동시에 실행하므로 같은 경로에 직접 쓰면
+  // 다른 워커가 반쯤 쓰인 파일을 읽는다. 임시 파일에 쓴 뒤 원자적으로 교체한다.
+  const state = await context.storageState();
+  const tmp = `${file}.${process.pid}.${Date.now()}.tmp`;
+  fs.writeFileSync(tmp, JSON.stringify(state));
+  fs.renameSync(tmp, file);
   await context.close();
   return file;
 }

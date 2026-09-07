@@ -34,14 +34,19 @@ export function assertEnv() {
   if (missing.length) throw new Error(`환경변수 누락: ${missing.join(", ")}`);
 }
 
+// 운영 대상 목록. Supabase 프로젝트를 교체하면 여기도 함께 바꿔야 가드가 살아 있다
+// (2026-09 프로젝트 교체 때 구 ref만 남아 가드가 무력화된 적이 있다).
+const PROD_HOSTS = new Set(["ai4ceo.app", "www.ai4ceo.app", "ai4ceo-portal.vercel.app"]);
+const PROD_SUPABASE_HOSTS = new Set(["qkhmpejlktjwhbeksane.supabase.co"]);
+
 export function assertMutationTarget() {
   assertEnv();
   const baseHost = new URL(BASE_URL).host;
   const supabaseHost = new URL(SUPABASE_URL).host;
-  if (baseHost === "ai4ceo-portal.vercel.app") {
+  if (PROD_HOSTS.has(baseHost)) {
     throw new Error("운영 TEST_BASE_URL에서는 mutation을 실행할 수 없습니다.");
   }
-  if (supabaseHost === "olofwxsavfthsmmwjwzk.supabase.co") {
+  if (PROD_SUPABASE_HOSTS.has(supabaseHost)) {
     throw new Error("운영 Supabase에서는 mutation을 실행할 수 없습니다.");
   }
 }

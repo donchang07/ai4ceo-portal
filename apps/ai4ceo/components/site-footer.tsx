@@ -18,6 +18,7 @@ export function SiteFooter() {
           <span>AI4CEO Portal · {COHORT_18.versionLabel}</span>
           <Link href="/program" className="hover:text-ink">과정 소개</Link>
           <Link href="/pay" className="hover:text-ink">수강료 결제</Link>
+          <Link href="/terms" className="hover:text-ink">결제 및 환불 정책</Link>
           <Link href="/contact" className="hover:text-ink">문의하기</Link>
         </div>
 

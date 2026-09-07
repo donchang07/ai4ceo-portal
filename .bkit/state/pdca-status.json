@@ -1,9 +1,26 @@
 {
   "version": "3.0",
-  "lastUpdated": "2026-06-12T05:34:48.387Z",
-  "activeFeatures": [],
-  "primaryFeature": null,
-  "features": {},
+  "lastUpdated": "2026-09-04T05:50:00.000Z",
+  "activeFeatures": [
+    "v32-restore"
+  ],
+  "primaryFeature": "v32-restore",
+  "features": {
+    "v32-restore": {
+      "phase": "completed",
+      "matchRate": 98.5,
+      "iterationCount": 1,
+      "qaStatus": "PASS",
+      "startedAt": "2026-09-04T05:00:00.000Z",
+      "completedAt": "2026-09-04T05:50:00.000Z",
+      "documents": {
+        "plan": "docs/01-plan/features/v32-restore.plan.md",
+        "design": "docs/02-design/features/v32-restore.design.md",
+        "analysis": "docs/03-analysis/v32-restore.analysis.md",
+        "report": "docs/04-report/v32-restore.report.md"
+      }
+    }
+  },
   "pipeline": {
     "currentPhase": 1,
     "level": "Dynamic",
@@ -14,7 +31,15 @@
     "onboardingCompleted": false,
     "lastActivity": "2026-06-12T05:34:48.387Z"
   },
-  "history": [],
+  "history": [
+    {
+      "at": "2026-09-04T05:50:00.000Z",
+      "feature": "v32-restore",
+      "event": "cycle_completed",
+      "matchRate": 98.5,
+      "gate": "pass"
+    }
+  ],
   "stateMachine": {
     "defaultWorkflow": "default",
     "activeWorkflows": {},

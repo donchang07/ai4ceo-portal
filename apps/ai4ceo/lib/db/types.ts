@@ -148,3 +148,60 @@ export interface BuildStep {
   label: string;
   state: "done" | "current" | "future";
 }
+
+export interface ReferralStat {
+  code: string;
+  label: string | null;
+  applications: number;
+  accepted: number;
+  created_at: string;
+}
+
+export interface NotificationLog {
+  id: string;
+  channel: "alimtalk" | "email" | "sms";
+  template_code: string | null;
+  phone: string | null;
+  status: "queued" | "sent" | "failed";
+  sent_at: string | null;
+  created_at: string;
+}
+
+export interface OutboxEvent {
+  id: string;
+  entity_type: string;
+  event_type: string;
+  status: "queued" | "sent" | "failed";
+  created_at: string;
+  sent_at: string | null;
+}
+
+export interface ChatRoomSummary {
+  id: string;
+  title: string | null;
+  status: string;
+  cohort_name: string | null;
+  google_drive_folder_url: string | null;
+  members: number;
+  messages: number;
+  files: number;
+  last_message_at: string | null;
+}
+
+export interface ChatFileRec {
+  id: string;
+  name: string | null;
+  mime_type: string | null;
+  size_bytes: number | null;
+  permission: string;
+  google_drive_url: string | null;
+  created_at: string;
+}
+
+export interface DriveVideoPolicy {
+  id: string;
+  title: string | null;
+  visibility: string;
+  google_drive_url: string | null;
+  published_at: string | null;
+}

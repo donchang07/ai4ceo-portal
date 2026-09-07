@@ -1,5 +1,6 @@
 import { Check, CheckCircle2, GraduationCap, Hammer, Laptop, MapPin, MessageCircleQuestion, Minus, Sparkles } from "lucide-react";
 import { PublicHeader } from "@/components/public-header";
+import { getCurrentUser } from "@/lib/db/auth";
 import { Badge, Button, Card, CardTitle, Callout, SectionTitle } from "@/components/ui";
 import { COHORT_18, TUITION_KRW, BANK_ACCOUNT, formatKRW } from "@/lib/core/constants";
 import { getCohortSchedule } from "@/lib/db/cohort-schedule";
@@ -52,7 +53,7 @@ const SCHEDULE: { week: string; date: string; content: string }[] = [
 const FAQ = [
   { q: "지원 자격은 어떻게 되나요?", a: "CEO·임원뿐 아니라 AI를 업무에 적용하려는 실무자도 지원할 수 있습니다." },
   { q: "결제는 어떻게 하나요?", a: "계좌이체와 안내된 온라인 결제 수단을 이용할 수 있습니다." },
-  { q: "환불 규정은 어떻게 되나요?", a: "개강 전후 시점과 수강 진행률에 따라 관련 규정에 맞춰 안내합니다." },
+  { q: "환불 규정은 어떻게 되나요?", a: "개강 전에 취소하시면 전액 환불되고, 개강 후에는 이미 진행된 회차분을 제외한 잔여 회차 금액을 환불해 드립니다. 자세한 내용은 화면 맨 아래 [결제 및 환불 정책]에서 확인하실 수 있습니다." },
   { q: "꼭 기업의 CEO나 임원들만 들어야 하나요?", a: "가장 많은 효과를 얻는 분들은 CEO·임원이지만, 실무자가 들어도 얼마든지 좋은 내용입니다. 임원들과 함께 들으면 앞서 나가는 리더들의 시각을 접할 수 있는 좋은 기회가 됩니다." },
   { q: "컴퓨터 언어에 기본 지식이 필요한가요?", a: "전혀 필요 없습니다. Python을 알면 매우 좋지만 몰라도 Claude Code로 AI 코딩하는 방법을 처음부터 알려드립니다." },
   { q: "노트북 사양은 어떻게 준비해야 하나요?", a: "16GB RAM 이상 개인 노트북이 필요합니다. 오픈소스 LLM(Qwen·Llama4·Exaone·Gemma·Deepseek 등)을 직접 다운로드해 사용하기 때문입니다. GPU가 있는 노트북이면 더 좋습니다." },
@@ -97,12 +98,12 @@ async function getPublicBuilds(): Promise<PublicBuild[]> {
 }
 
 export default async function ProgramPage() {
-  const schedule = await getCohortSchedule();
+  const [schedule, user] = await Promise.all([getCohortSchedule(), getCurrentUser()]);
 
   const publicBuilds = await getPublicBuilds();
   return (
     <div className="min-h-screen bg-canvas">
-      <PublicHeader />
+      <PublicHeader user={user} />
 
       {/* Hero */}
       <section className="bg-gradient-to-b from-white to-canvas">

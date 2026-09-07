@@ -1,33 +1,29 @@
-# 테스트 리포트 — 2026-07-27T03:11:15.639Z
+# 테스트 리포트 — 2026-07-27T08:00:35.137Z
 
-대상 커밋: 8ebed29 · 환경: staging · baseUrl: https://ai4ceo-staging-don-changs-projects.vercel.app
+대상 커밋: 2e6eb9d · 환경: staging · baseUrl: https://ai4ceo-staging-don-changs-projects.vercel.app
 
 ## 요약
 | 구분 | 수 |
 |---|---:|
 | 전체 케이스(문서) | 163 |
-| 자동화 실행 | 160 |
-| ✅ 정상 통과 | 117 |
-| 🔴 회귀(문서 ✅ ↔ 실패) | 7 |
+| 자동화 실행 | 157 |
+| ✅ 정상 통과 | 118 |
+| 🔴 회귀(문서 ✅ ↔ 실패) | 3 |
 | 🟢 신규 통과(문서 ⚠ ↔ 통과) | 1 |
 | ⚪ 예상 미구현(xfail) | 33 |
 | 🟡 미검증→검증됨 | 2 |
-| ⚪ 미자동화/미실행(manual) | 3 |
+| ⚪ 미자동화/미실행(manual) | 6 |
 
 ## 정적 게이트 린트
-- 🔴 FR-11 portal/alumni 게이트 — 21개 페이지 검사
+- ✅ FR-11 portal/alumni 게이트 — 21개 페이지 검사
 - ✅ FR-11 admin layout 게이트 상속 — admin 페이지 9개 · layout 게이트 확인
-- 🔴 FR-12 api route 권한 검사 — 8개 route 검사
+- ✅ FR-12 api route 권한 검사 — 8개 route 검사
 - ✅ SEC-11 service_role 키 클라이언트 미노출 — 클라이언트 번들 노출 없음
 
-## 🔴 회귀 (배포 차단) — 7건
-- AUTH-005 (02, P0) — Error: expect(page).toHaveURL(expected) failed
-- AUTH-006 (02, P0) — Test timeout of 60000ms exceeded.
-- AUTH-007 (02, P1) — Test timeout of 60000ms exceeded.
-- AUTH-008 (02, P1) — Test timeout of 60000ms exceeded.
-- AUTH-009 (02, P0) — Error: expect(received).toBe(expected) // Object.is equality
-- AUTH-010 (02, P0) — Error: expect(received).toBe(expected) // Object.is equality
-- AUTH-011 (02, P1) — Error: expect(page).toHaveURL(expected) failed
+## 🔴 회귀 (배포 차단) — 3건
+- APP-001 (01, P0) — Test timeout of 60000ms exceeded.
+- APP-007 (01, P0) — Test timeout of 60000ms exceeded.
+- LMS-001 (04, P0) — Error: expect(locator).toBeVisible() failed
 
 ## 🟢 신규 통과 → 문서 상태 갱신 필요
 - AI-011 (05) : 문서 ⚠ → 실제 통과. 상태 갱신 검토.
@@ -41,13 +37,13 @@
 | PUB-004 | 01 | P0 | ⚠ | fail | ⚪ |
 | PUB-005 | 01 | P1 | ❓ | pass | 🟡 |
 | PUB-006 | 01 | P1 | ❓ | pass | 🟡 |
-| APP-001 | 01 | P0 | ✅ | pass | ✅ |
+| APP-001 | 01 | P0 | ✅ | fail | 🔴 |
 | APP-002 | 01 | P0 | ✅ | pass | ✅ |
 | APP-003 | 01 | P0 | ⚠ | fail | ⚪ |
 | APP-004 | 01 | P0 | ✅ | pass | ✅ |
 | APP-005 | 01 | P0 | ✅ | pass | ✅ |
 | APP-006 | 01 | P0 | ⚠ | fail | ⚪ |
-| APP-007 | 01 | P0 | ✅ | pass | ✅ |
+| APP-007 | 01 | P0 | ✅ | fail | 🔴 |
 | APP-008 | 01 | P0 | ⚠ | fail | ⚪ |
 | APP-009 | 01 | P0 | ✅ | pass | ✅ |
 | APP-010 | 01 | P0 | ✅ | pass | ✅ |
@@ -59,13 +55,13 @@
 | AUTH-002 | 02 | P0 | ✅ | pass | ✅ |
 | AUTH-003 | 02 | P1 | ✅ | pass | ✅ |
 | AUTH-004 | 02 | P0 | ✅ | pass | ✅ |
-| AUTH-005 | 02 | P0 | ✅ | fail | 🔴 |
-| AUTH-006 | 02 | P0 | ✅ | fail | 🔴 |
-| AUTH-007 | 02 | P1 | ✅ | fail | 🔴 |
-| AUTH-008 | 02 | P1 | ✅ | fail | 🔴 |
-| AUTH-009 | 02 | P0 | ✅ | fail | 🔴 |
-| AUTH-010 | 02 | P0 | ✅ | fail | 🔴 |
-| AUTH-011 | 02 | P1 | ✅ | fail | 🔴 |
+| AUTH-005 | 02 | P0 | ✅ | pass | ✅ |
+| AUTH-006 | 02 | P0 | ✅ | pass | ✅ |
+| AUTH-007 | 02 | P1 | ✅ | pass | ✅ |
+| AUTH-008 | 02 | P1 | ✅ | pass | ✅ |
+| AUTH-009 | 02 | P0 | ✅ | pass | ✅ |
+| AUTH-010 | 02 | P0 | ✅ | pass | ✅ |
+| AUTH-011 | 02 | P1 | ✅ | pass | ✅ |
 | AUTH-012 | 02 | P2 | ✅ | pass | ✅ |
 | AUTH-013 | 02 | P1 | ⚠ | fail | ⚪ |
 | AUTH-014 | 02 | P0 | ⚠ | fail | ⚪ |
@@ -78,9 +74,9 @@
 | ACC-007 | 02 | P0 | ✅ | pass | ✅ |
 | ACC-008 | 02 | P0 | ✅ | pass | ✅ |
 | ACC-009 | 02 | P0 | ✅ | pass | ✅ |
-| ACC-010 | 02 | P0 | ✅ | pass | ✅ |
-| ACC-011 | 02 | P0 | ✅ | pass | ✅ |
-| ACC-012 | 02 | P0 | ✅ | pass | ✅ |
+| ACC-010 | 02 | P0 | ✅ | skip | ⚪ |
+| ACC-011 | 02 | P0 | ✅ | skip | ⚪ |
+| ACC-012 | 02 | P0 | ✅ | skip | ⚪ |
 | ACC-013 | 02 | P1 | ✅ | pass | ✅ |
 | ACC-014 | 02 | P1 | ⚠ | fail | ⚪ |
 | ENR-001 | 03 | P0 | ⚠ | fail | ⚪ |
@@ -103,7 +99,7 @@
 | MEM-001 | 03 | P0 | ✅ | pass | ✅ |
 | MEM-002 | 03 | P0 | ✅ | pass | ✅ |
 | MEM-003 | 03 | P0 | ✅ | pass | ✅ |
-| LMS-001 | 04 | P0 | ✅ | pass | ✅ |
+| LMS-001 | 04 | P0 | ✅ | fail | 🔴 |
 | LMS-002 | 04 | P0 | ✅ | pass | ✅ |
 | LMS-003 | 04 | P0 | ✅ | pass | ✅ |
 | LMS-004 | 04 | P1 | ✅ | pass | ✅ |

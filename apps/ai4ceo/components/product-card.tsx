@@ -1,6 +1,6 @@
 "use client";
 
-import { CreditCard, Info } from "lucide-react";
+import { CalendarClock, CreditCard, Info } from "lucide-react";
 import { Button } from "@/components/ui";
 import { cn } from "@/lib/core/cn";
 import { formatKRW } from "@/lib/core/constants";
@@ -58,6 +58,14 @@ export function ProductCard({ product, selected, onSelect, onPay, paying, disabl
           <li key={d}>· {d}</li>
         ))}
       </ul>
+
+      {/* 토스페이먼츠 심사 요건 — 서비스 제공기간을 구매자가 결제 전에 볼 수 있어야 한다 */}
+      <p className="mt-3 flex gap-2 text-[13px] text-muted">
+        <CalendarClock size={15} className="mt-0.5 shrink-0 text-primary" />
+        <span>
+          <span className="font-semibold text-ink">서비스 제공기간</span> · {product.period}
+        </span>
+      </p>
 
       {product.notice && (
         <div className="mt-4 flex gap-2 rounded-[12px] border border-cardline bg-info-surface px-4 py-3">

@@ -1,14 +1,15 @@
 import { PublicHeader } from "@/components/public-header";
 import { SectionTitle } from "@/components/ui";
+import { getCurrentUser } from "@/lib/db/auth";
 import { getPosts } from "@/lib/db/queries";
 import { TrendsFeed } from "./trends-feed";
 
 export default async function TrendsPage() {
-  const posts = await getPosts();
+  const [posts, user] = await Promise.all([getPosts(), getCurrentUser()]);
 
   return (
     <div className="min-h-screen bg-canvas">
-      <PublicHeader />
+      <PublicHeader user={user} />
       <main className="mx-auto max-w-[720px] px-5 py-8">
         <SectionTitle>AI 브리프</SectionTitle>
         <p className="mt-2 text-sm text-muted">

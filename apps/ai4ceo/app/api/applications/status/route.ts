@@ -1,6 +1,9 @@
 import { NextRequest } from "next/server";
 import { getSupabaseServer } from "@/lib/db/supabase-server";
 
+// @public-route: 비로그인 지원 상태 조회(APP-014). email+phone 완전 일치만 반환하고
+// 응답에 name/email/phone/motivation 등 PII 를 포함하지 않는다(보호는 RPC 쪽에서 수행).
+
 export async function POST(req: NextRequest) {
   const body = (await req.json().catch(() => ({}))) as { email?: string; phone?: string };
   if (!body.email || !body.phone) return Response.json({ error: "invalid input" }, { status: 400 });

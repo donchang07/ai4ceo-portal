@@ -4,17 +4,43 @@ import { useState } from "react";
 import Link from "next/link";
 import { Sparkles, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui";
+import {
+  canAccessAlumni,
+  canAccessLms,
+  isAdmin,
+  type EnrollmentStatus,
+  type Role,
+} from "@/lib/core/access";
 
-const NAV_LINKS = [
+const BASE_LINKS = [
   { href: "/program", label: "과정 안내" },
   { href: "/trends", label: "AI 브리프" },
   { href: "/pay", label: "수강료 결제" },
   { href: "/contact", label: "문의하기" },
-  { href: "/login", label: "로그인" },
 ] as const;
 
-export function PublicHeader() {
+export interface HeaderUser {
+  role: Role;
+  enrollmentStatus: EnrollmentStatus | null;
+}
+
+// 로그인한 사람이 공개 화면(AI 브리프 등)에 들어왔을 때 돌아갈 곳.
+function homeTarget(user: HeaderUser): { href: string; label: string } {
+  if (isAdmin(user.role)) return { href: "/admin", label: "관리자 화면" };
+  if (canAccessLms(user.role, user.enrollmentStatus)) {
+    return { href: "/portal/cohort", label: "내 강의실" };
+  }
+  if (canAccessAlumni(user.role, user.enrollmentStatus)) {
+    return { href: "/alumni", label: "동문 라운지" };
+  }
+  return { href: "/apply/status", label: "지원 현황" };
+}
+
+// user를 넘기지 않으면 로그인 전 화면으로 렌더된다(지원 퍼널 화면들의 기존 동작).
+export function PublicHeader({ user }: { user?: HeaderUser | null }) {
   const [open, setOpen] = useState(false);
+  const home = user ? homeTarget(user) : null;
+  const navLinks = home ? [...BASE_LINKS, home] : [...BASE_LINKS, { href: "/login", label: "로그인" }];
 
   return (
     <header className="sticky top-0 z-30 border-b border-hairline bg-surface/90 backdrop-blur">
@@ -28,7 +54,7 @@ export function PublicHeader() {
 
         {/* 데스크톱 네비게이션 */}
         <nav className="hidden items-center gap-6 text-sm text-muted md:flex">
-          {NAV_LINKS.map((l) => (
+          {navLinks.map((l) => (
             <Link key={l.href} href={l.href} className="hover:text-ink">
               {l.label}
             </Link>
@@ -36,7 +62,9 @@ export function PublicHeader() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <Button href="/apply" variant="primary">지원하기</Button>
+          <Button href={home ? home.href : "/apply"} variant="primary">
+            {home ? home.label : "지원하기"}
+          </Button>
           {/* 모바일 햄버거 */}
           <button
             type="button"
@@ -54,7 +82,7 @@ export function PublicHeader() {
       {open && (
         <nav className="border-t border-hairline bg-surface md:hidden">
           <div className="mx-auto flex max-w-[1200px] flex-col px-6 py-2">
-            {NAV_LINKS.map((l) => (
+            {navLinks.map((l) => (
               <Link
                 key={l.href}
                 href={l.href}

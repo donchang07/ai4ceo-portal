@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { PublicHeader } from "@/components/public-header";
+import { getCurrentUser } from "@/lib/db/auth";
 import { getPost } from "@/lib/db/queries";
 import { PostDetail } from "./post-detail";
 
@@ -7,12 +8,12 @@ import { PostDetail } from "./post-detail";
 // [slug] 파라미터는 실제로 posts.id (Plan D-1 — 별도 slug 컬럼 없음).
 export default async function TrendDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const post = await getPost(slug);
+  const [post, user] = await Promise.all([getPost(slug), getCurrentUser()]);
   if (!post) notFound();
 
   return (
     <div className="min-h-screen bg-canvas">
-      <PublicHeader />
+      <PublicHeader user={user} />
       <main className="mx-auto max-w-[720px] px-5 py-8">
         <PostDetail post={post} />
       </main>
